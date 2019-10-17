@@ -12,18 +12,26 @@ import java.sql.Date;
 public class JobPostEntity {
 
 		private int jobPostId;
+		private String jobTitle;
 		private String jobDescription;
 		private boolean isActive;
-		private int experience;
+		private String experience;
 		private int noOfApplicants;
 		private Date postDate;
 		private String specialities;
+		private int noOfVacancies;
 
 		public int getJobPostId() {
 			return jobPostId;
 		}
 		public void setJobPostId(int jobPostId) {
 			this.jobPostId = jobPostId;
+		}
+		public String getJobTitle() {
+			return jobTitle;
+		}
+		public void setJobTitle(String jobTitle) {
+			this.jobTitle = jobTitle;
 		}
 		public String getJobDescription() {
 			return jobDescription;
@@ -37,11 +45,17 @@ public class JobPostEntity {
 		public void setActive(boolean isActive) {
 			this.isActive = isActive;
 		}
-		public int getExperience() {
+		public String getExperience() {
 			return experience;
 		}
-		public void setExperience(int experience) {
+		public void setExperience(String experience) {
 			this.experience = experience;
+		}
+		public int getNoOfVacancies() {
+			return noOfVacancies;
+		}
+		public void setNoOfVacancies(int noOfVacancies) {
+			this.noOfVacancies = noOfVacancies;
 		}
 		public int getNoOfApplicants() {
 			return noOfApplicants;
@@ -61,5 +75,6 @@ public class JobPostEntity {
 		public void setSpecialities(String specialities) {
 			this.specialities = specialities;
 		}
+		
 		
 }
