@@ -4,30 +4,29 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.springframework.stereotype.Service;
-import com.sony.project.entities.CompanyDetails;
+import com.sony.project.entities.CompanyDetailsEntity;
 
-@Service
-public class CompanyServices {
-	LinkedList<CompanyDetails> companyService = new LinkedList<CompanyDetails>();
 
-	public void addCompanyDetails(CompanyDetails companyDetails) {
+import com.sony.project.entities.CompanyDetailsEntity;
+
+
+public class CompanyServices { 
+	LinkedList<CompanyDetailsEntity> companyService = new LinkedList<CompanyDetailsEntity>();
+  
+	public void addCompanyDetails(CompanyDetailsEntity companyDetails)
+	{ 
 		companyService.add(companyDetails);
 		int index = companyService.indexOf(companyDetails);
 		companyService.get(index).setCompanyId(index);
-		// System.out.println(index);
-
-	}
-
-	public LinkedList<CompanyDetails> getCompany() {
-
+}
+	public LinkedList<CompanyDetailsEntity> getCompany() {
 		return companyService;
-
 	}
 
-	public CompanyDetails getCompanyDetails(int id) {
-		Iterator<CompanyDetails> i = companyService.iterator();
+	public CompanyDetailsEntity getCompanyDetails(int id) {
+		Iterator<CompanyDetailsEntity> i = companyService.iterator();
 		while (i.hasNext()) {
-			CompanyDetails companyDetails = i.next();
+			CompanyDetailsEntity companyDetails = i.next();
 			if (companyDetails.getCompanyId() == id) {
 				return companyDetails;
 			}
@@ -35,10 +34,10 @@ public class CompanyServices {
 		return null;
 	}
 
-	public void updateCompanyDetails(int id, CompanyDetails obj) {
-		Iterator<CompanyDetails> i = companyService.iterator();
+	public void updateCompanyDetails(int id, CompanyDetailsEntity obj) {
+		Iterator<CompanyDetailsEntity> i = companyService.iterator();
 		while (i.hasNext()) {
-			CompanyDetails companyDetails = i.next();
+			CompanyDetailsEntity companyDetails = i.next();
 			if (companyDetails.getCompanyId() == id) {
 				int index = companyService.indexOf(companyDetails);
 				companyService.set(index, obj);
@@ -47,9 +46,9 @@ public class CompanyServices {
 	}
 
 	public void deleteCompanyDetails(int id) {
-		Iterator<CompanyDetails> i = companyService.iterator();
+		Iterator<CompanyDetailsEntity> i = companyService.iterator();
 		while (i.hasNext()) {
-			CompanyDetails companyDetails = i.next();
+			CompanyDetailsEntity companyDetails = i.next();
 			if (companyDetails.getCompanyId() == id) {
 				int index = companyService.indexOf(companyService);
 companyService.remove(index);
