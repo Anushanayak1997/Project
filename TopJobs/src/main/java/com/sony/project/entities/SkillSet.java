@@ -1,4 +1,4 @@
-package com.sony.project.entities;
+package com.sony.project.entities; 
 
 public class SkillSet {
 	private int skillId;
