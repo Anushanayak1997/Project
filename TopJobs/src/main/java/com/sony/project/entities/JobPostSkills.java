@@ -12,7 +12,7 @@ public class JobPostSkills {
 		this.job_post_skill_id = job_post_skill_id;
 	}
 	public String getSkill_level() {
-		return skill_level;
+		return skill_level; 
 	}
 	public void setSkill_level(String skill_level) {
 		this.skill_level = skill_level;
