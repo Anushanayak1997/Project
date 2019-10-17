@@ -1,6 +1,6 @@
 package com.sony.project.entities; 
  
-public class SkillSet {
+public class SkillSetEntity {
 	private int skillId;
 	private String skillName;
 	public int getSkillId() { 

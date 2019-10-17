@@ -1,6 +1,6 @@
 package com.sony.project.entities;
 
-public class Location {
+public class LocationEntity {
 
 	private int locationId;
 	private String streetAdddress;

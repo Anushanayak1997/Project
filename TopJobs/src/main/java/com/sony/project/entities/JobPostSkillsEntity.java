@@ -1,6 +1,6 @@
 package com.sony.project.entities;
 
-public class JobPostSkills {
+public class JobPostSkillsEntity {
 
 	private int job_post_skill_id;
 	private String skill_level;
