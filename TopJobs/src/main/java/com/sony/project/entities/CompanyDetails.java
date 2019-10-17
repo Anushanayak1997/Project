@@ -1,6 +1,6 @@
 package com.sony.project.entities;
 
-import java.util.*;
+import java.util.*; 
 
 public class CompanyDetails {
 	private int companyId;
