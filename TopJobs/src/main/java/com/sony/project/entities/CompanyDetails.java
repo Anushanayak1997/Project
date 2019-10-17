@@ -6,9 +6,9 @@ public class CompanyDetails {
 	private int companyId;
 	private String companyName;
 	private String companyDescription;
-	private Date establishmentDate;
+	private String establishmentDate;
 	private String websiteUrl;
-	private String headQuarters;
+	private String headquarter;
 	private String specialities;
 	private String industry;
 	private String type;
@@ -37,11 +37,13 @@ public class CompanyDetails {
 		this.companyDescription = companyDescription;
 	}
 
-	public Date getEstablishmentDate() {
+	
+
+	public String getEstablishmentDate() {
 		return establishmentDate;
 	}
 
-	public void setEstablishmentDate(Date establishmentDate) {
+	public void setEstablishmentDate(String establishmentDate) {
 		this.establishmentDate = establishmentDate;
 	}
 
@@ -53,12 +55,14 @@ public class CompanyDetails {
 		this.websiteUrl = websiteUrl;
 	}
 
-	public String getHeadQuarters() {
-		return headQuarters;
+
+
+	public String getHeadquarter() {
+		return headquarter;
 	}
 
-	public void setHeadQuarters(String headQuarters) {
-		this.headQuarters = headQuarters;
+	public void setHeadquarter(String headquarter) {
+		this.headquarter = headquarter;
 	}
 
 	public String getSpecialities() {
