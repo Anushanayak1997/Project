@@ -9,7 +9,7 @@ import java.sql.Date;
  * @author 7000020632
  *
  */
-public class JobPost {
+public class JobPostEntity {
 
 		private int jobPostId;
 		private String jobDescription;

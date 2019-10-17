@@ -1,5 +1,5 @@
 package com.sony.project.entities;
-  
+
 import java.util.*; 
 
 public class CompanyDetails {
