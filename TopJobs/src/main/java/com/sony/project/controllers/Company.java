@@ -13,7 +13,7 @@ import com.sony.project.entities.CompanyDetails;
 import com.sony.project.services.CompanyServices;
   
 @RestController
-public class Company {
+public class Company { 
 
 	@Autowired
 	CompanyServices companyServices;

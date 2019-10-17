@@ -18,6 +18,7 @@ public class JobPostEntity {
 		private int noOfApplicants;
 		private Date postDate;
 		private String specialities;
+
 		public int getJobPostId() {
 			return jobPostId;
 		}
