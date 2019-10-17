@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.project.entities.CompanyDetails;
 import com.sony.project.services.CompanyServices;
- 
+  
 @RestController
 public class Company {
 
