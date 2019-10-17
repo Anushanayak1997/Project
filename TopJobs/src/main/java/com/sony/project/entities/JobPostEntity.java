@@ -9,7 +9,7 @@ import java.sql.Date;
  * @author 7000020632
  *
  */
-public class JobPost {
+public class JobPostEntity {
 
 		private int jobPostId;
 		private String jobDescription;
@@ -18,6 +18,7 @@ public class JobPost {
 		private int noOfApplicants;
 		private Date postDate;
 		private String specialities;
+		
 		public int getJobPostId() {
 			return jobPostId;
 		}
