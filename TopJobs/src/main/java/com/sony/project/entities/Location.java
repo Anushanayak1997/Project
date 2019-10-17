@@ -14,7 +14,7 @@ public class Location {
 	}
 	
 	public void setLocationId(int locationId) {
-		this.locationId = locationId;
+		this.locationId = locationId; 
 	}
 	
 	public String getStreetAdddress() {
