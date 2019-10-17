@@ -6,19 +6,17 @@ import java.util.LinkedList;
 import org.springframework.stereotype.Service;
 import com.sony.project.entities.CompanyDetailsEntity;
 
-
 import com.sony.project.entities.CompanyDetailsEntity;
 
-
-public class CompanyServices { 
+public class CompanyServices {
 	LinkedList<CompanyDetailsEntity> companyService = new LinkedList<CompanyDetailsEntity>();
-  
-	public void addCompanyDetails(CompanyDetailsEntity companyDetails)
-	{ 
+
+	public void addCompanyDetails(CompanyDetailsEntity companyDetails) {
 		companyService.add(companyDetails);
 		int index = companyService.indexOf(companyDetails);
 		companyService.get(index).setCompanyId(index);
-}
+	}
+
 	public LinkedList<CompanyDetailsEntity> getCompany() {
 		return companyService;
 	}
@@ -51,10 +49,9 @@ public class CompanyServices {
 			CompanyDetailsEntity companyDetails = i.next();
 			if (companyDetails.getCompanyId() == id) {
 				int index = companyService.indexOf(companyService);
-companyService.remove(index);
+				companyService.remove(index);
 			}
 		}
 	}
-
 
 }
