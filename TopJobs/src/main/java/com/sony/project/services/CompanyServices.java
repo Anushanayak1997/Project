@@ -8,7 +8,7 @@ import com.sony.project.entities.CompanyDetails;
 @Service
 public class CompanyServices {
 	LinkedList<CompanyDetails> companyService = new LinkedList<CompanyDetails>();
-
+ 
 	public void addCompanyDetails(CompanyDetails companyDetails)
 	{
 		companyService.add(companyDetails);
