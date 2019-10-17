@@ -14,7 +14,7 @@ public class JobPostSkills {
 	}
 
 	public String getSkill_level() {
-		return skill_level;
+		return skill_level; 
 	}
 
 	public void setSkill_level(String skill_level) {
