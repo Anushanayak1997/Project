@@ -3,6 +3,10 @@ import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+import { CompanyService } from '../company.service';
+import { Company } from '../company';
+
+
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
@@ -10,33 +14,32 @@ import { environment } from 'src/environments/environment';
 })
 export class CompanyDetailsComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private http: HttpClient) { }
+ 
 
   ngOnInit() {
   }
 
-   url = environment.apiBaseUrl + "companydetails";
+ 
 
-  profileForm = this.fb.group({
-    companyName: [''],
-    companyDescription: [''],
-    establishmentDate: [''],
-    websiteUrl: [''],
-    headquarter: [''],
-    specialities: [''],
-    industry: [''],
-    type: [''],
-  });
 
-  onSubmit() {
-    console.log(this.profileForm.value)
-    this.http.post( this.url, this.profileForm.value).subscribe(
-      () =>{
-        console.log("posted");
-        console.log(this.profileForm)
-      }
-    )
-    
-  }
+   title = 'app';
+   
+   userModel = new Company('Rob','asasass','rob@test.com', "sdfs", 'default', 'morning', "true","Sd");
+   
+  
+   errorMsg = '';
+ 
+   constructor(private _enrollmentService: CompanyService) {}
+ 
+   
+ 
+   onSubmit() {
+   
+     this._enrollmentService.enroll(this.userModel)
+       .subscribe(
+         response => console.log('Success!', response),
+         error => this.errorMsg = error.statusText
+       )
+   }
 
 }

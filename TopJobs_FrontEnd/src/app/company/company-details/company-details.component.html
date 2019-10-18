@@ -1,52 +1,93 @@
 <div class="container">
+    <h2>Company Details</h2>
 
-    <form [formGroup]="profileForm"  *ngIf="!submitted" (ngSubmit)="onSubmit()">
-            <label>
-                    CompanyName
-                    <input type="text" formControlName="companyName" required>
-                </label>
-                <br>
-        <label>
-           
-            CompanyDescription<br>
-            <textarea formControlName="companyDescription">
-                At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+
+    <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-group">
+            <label>companyName</label>
+            <input type="text" #companyName="ngModel" required class="form-control"
+                [class.is-invalid]="companyName.invalid && companyName.touched" name="companyName"
+                [(ngModel)]="userModel.companyName">
+            <small class="text-danger" [class.d-none]="companyName.valid || companyName.untouched">Name is
+                required</small>
+        </div>
+
+        <div class="form-group">
+            <label>companyDescription </label>
+            <textarea type="textarea" #companyDescription="ngModel" required class="form-control"
+                [class.is-invalid]="companyDescription.invalid && companyDescription.touched"
+                name="companyDescription" [(ngModel)]="userModel.companyDescription">
             </textarea>
-        </label>
-        <br>
-        <label>
-            EstablishmentDate
-            <input type="text" formControlName="establishmentDate" required>
-        </label>
-        <br>
-        <label>
-            WebsiteUrl
-            <input type="text" formControlName="websiteUrl">
-        </label>
-        <br>
-        <label>
-            Specialities
-            <input type="text" formControlName="specialities">
-        </label>
-        <br>
-        <label>
-            Type
-            <input type="text" formControlName="type">
-        </label>
-        <br>
-        <label>
-            Headquarter
-            <input type="text" formControlName="headquarter">
-        </label>
-        <br>
-        <label>
-            Industry
-            <input type="text" formControlName="industry">
-        </label>
-        <br>
-        <button  class="btn btn-primary"  type="submit">Submit</button>
+            <small class="text-danger"
+                [class.d-none]="companyDescription.valid || companyDescription.untouched">companyDescription is
+                required</small>
+        </div>
+
+        <div class="form-group">
+            <label>establishmentDate </label>
+            <input type="text" #establishmentDate="ngModel" required class="form-control"
+                [class.is-invalid]="establishmentDate.invalid && establishmentDate.touched" name="establishmentDate"
+                [(ngModel)]="userModel.establishmentDate">
+            <small class="text-danger"
+                [class.d-none]="establishmentDate.valid || establishmentDate.untouched">companyDescription is
+                required</small>
+        </div>
+
+        <div class="form-group">
+            <label>websiteUrl </label>
+            <input type="text" #websiteUrl="ngModel" required class="form-control"
+                [class.is-invalid]="websiteUrl.invalid && websiteUrl.touched" name="websiteUrl"
+                [(ngModel)]="userModel.websiteUrl">
+            <small class="text-danger" [class.d-none]="websiteUrl.valid || websiteUrl.untouched">companyDescription is
+                required</small>
+        </div>
+
+
+        <div class="form-group">
+            <label>headquarter </label>
+            <input type="text" #headquarter="ngModel" required class="form-control"
+                [class.is-invalid]="headquarter.invalid && headquarter.touched" name="headquarter"
+                [(ngModel)]="userModel.headquarter">
+            <small class="text-danger" [class.d-none]="headquarter.valid || headquarter.untouched">companyDescription is
+                required</small>
+        </div>
+
+        <div class="form-group">
+            <label>specialities </label>
+            <input type="text" #specialities="ngModel" required class="form-control"
+                [class.is-invalid]="specialities.invalid && specialities.touched" name="specialities "
+                [(ngModel)]="userModel.specialities ">
+            <small class="text-danger" [class.d-none]="specialities.valid || specialities.untouched">companyDescription
+                is
+                required</small>
+        </div>
+        <div class="form-group">
+            <label>industry </label>
+            <input type="text" #industry="ngModel" required class="form-control"
+                [class.is-invalid]="industry.invalid && industry.touched" name="industry "
+                [(ngModel)]="userModel.industry ">
+            <small class="text-danger" [class.d-none]="industry.valid || industry.untouched">companyDescription
+                is
+                required</small>
+        </div>
+        <div class="form-group">
+            <label>type  </label>
+            <input type="text" #type ="ngModel" required class="form-control"
+                [class.is-invalid]="type.invalid && type.touched" name="type"
+                [(ngModel)]="userModel.type ">
+            <small class="text-danger" [class.d-none]="type.valid || type.untouched">companyDescription
+                is
+                required</small>
+        </div>
+
+
+
+        <button class="btn btn-primary" [disabled]="userForm.form.invalid || topicHasError" type="submit">Submit
+            form</button>
+
     </form>
-
+    <div class="alert alert-danger" *ngIf="errorMsg">
+        {{errorMsg}}
+    </div>
 </div>
-
-

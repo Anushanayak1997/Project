@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
@@ -21,8 +22,10 @@ import { CompanyModule } from './company/company.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+
     CompanyModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
