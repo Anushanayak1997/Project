@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.sony.project.entities.CompanyDetailsEntity;
-import com.sony.project.entities.CompanyDetailsEntity;
 import com.sony.project.services.CompanyServices;
 
 @RestController
 public class Company {
 
-	@Autowired
 	CompanyServices companyServices;
 
 	@RequestMapping(value = "/companydetails", method = RequestMethod.POST)

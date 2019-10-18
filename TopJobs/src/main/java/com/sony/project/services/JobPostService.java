@@ -9,12 +9,12 @@ import com.sony.project.entities.JobPostEntity;
 @Service
 public class JobPostService {
 
-	List<JobPostEntity> jobposts;
+	List<JobPostEntity> jobposts = new LinkedList<JobPostEntity>();
 	
 	public JobPostService() {
-		jobposts = new LinkedList<JobPostEntity>();
-		jobposts.add(new JobPostEntity(1, "Software Engineer", "Development", true, "2-3 years", 3, "12/23/1030", "something", 6));
-		jobposts.add(new JobPostEntity(2, "Software Developer", "Software Development", true, "2-3 years", 3, "12/10/1030", "something something", 8));
+//		jobposts = new LinkedList<JobPostEntity>();
+		//jobposts.add(new JobPostEntity(1, "Software Engineer", "Development", true, "2-3 years", 3, "12/23/1030", "something", 6));
+		//jobposts.add(new JobPostEntity(2, "Software Developer", "Software Development", true, "2-3 years", 3, "12/10/1030", "something something", 8));
 	}
 	
 	public List<JobPostEntity> getJobPost() {
