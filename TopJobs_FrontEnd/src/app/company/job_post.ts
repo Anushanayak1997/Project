@@ -1,8 +1,6 @@
 export class job_details {
     constructor(
-
-
-
+      public index:number,
       public  JobTitle: String,
       public    Applicants: number,
       public    Status: String,
@@ -12,8 +10,13 @@ export class job_details {
       public   experience: String,
       public   Specalities: String,
 
-      public   location: any
+      public   Street: any,
+      public   City: any,
+      public   State: any,
+      public   Country: any,
+      public  Zipcode: any
     ) {
 
     }
 }
+

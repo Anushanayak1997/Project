@@ -35,11 +35,13 @@ export class CompanyDetailsComponent implements OnInit {
  
    onSubmit() {
    
-     this._enrollmentService.enroll(this.userModel)
+    console.log()
+     /*
        .subscribe(
          response => console.log('Success!', response),
          error => this.errorMsg = error.statusText
        )
    }
-
+*/
+  }
 }
