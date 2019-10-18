@@ -31,6 +31,11 @@ export class EditPostComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmitSecond(){
+    console.log("sasas")
+    console.log(this.userModel);
+  }
+
   userModel = new job_details(
     1,
     "web-devloper",
@@ -73,11 +78,8 @@ export class EditPostComponent implements OnInit {
     )
 
 
-
   }
 
-  onSubmitSecond(){
-    console.log(this.userModel)
-  }
+  
 
 }
