@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder,FormsModule } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormArray } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { job_details } from '../job_post';
+
 
 @Component({
   selector: 'app-edit-post',
@@ -15,7 +17,11 @@ export class EditPostComponent implements OnInit {
 
   id: number;
   job_post:any;
-  url = environment.apiBaseUrl + "addjobpost";
+ // userModel:any;
+ 
+    
+   
+  url = environment.apiBaseUrl+"addjobpost";
   constructor(private fb: FormBuilder, private route: Router, private router: ActivatedRoute,private http: HttpClient) {
 
     this.id = router.snapshot.params.id
@@ -24,49 +30,29 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  JobPostForm = this.fb.group({
-
-    JobTitle: ['web-devloper'],
-    Applicants:['10'],
-    Status: ['Active'],
-    Vacancy: ['4'],
-    PostDate: ['12/12/12'],
-    jobDescription: ['sucks'],
-    experience: ['11'],
-    Specalities:['dfgudy'],
-    address: this.fb.group({
-      street: ['marthalli'],
-      city: ['bengalur'],
-      state: ['karnataka'],
-      country: ['India'],
-      zip: ['12345'],
-     
-    }),
-   
-
-  });
-
-
+location={street:"fehue",city:"hefuru",state:"dheuidh",country:"ruefhur",zip:"ieyufd"};
+ userModel=new job_details("web-devloper",10,"Active", 4,"dyfy","uwdyeu", "3 years","ueyduewis", this.location)
 
 
   onSubmit() {
-    console.log(this.JobPostForm.value)
-    this.job_post={jobTitle:this.JobPostForm.controls.JobTitle,
-                   jobDescription:this.JobPostForm.controls.jobDescription,
-                  isActive:this.JobPostForm.controls.Status,
-                  experience:this.JobPostForm.controls.experience,
-                  noOfApplicants:this.JobPostForm.controls.Applicants,
-                  postDate:this.JobPostForm.controls.PostDate,
-                  specalities:this.JobPostForm.controls.Specalities,
-                  noOfVacancies:this.JobPostForm.controls.Vacancy,
-                  location:this.JobPostForm.controls.address
+    console.log("hi");
+    this.job_post={jobTitle:this.userModel.JobTitle,
+
+      
+                   jobDescription:this.userModel.jobDescription,
+                  isActive:this.userModel.Status,
+                  experience:this.userModel.experience,
+                  noOfApplicants:this.userModel.Applicants,
+                  postDate:this.userModel.PostDate,
+                  
+                  noOfVacancies:this.userModel.Vacancy,
+                  location:this.userModel.location
                  
                   }
-    this.http.post( this.url, this.job_post).subscribe(
+ this.http.post( this.url, this.job_post).subscribe(
       () =>{
         console.log("posted");
-        console.log(this.JobPostForm)
+       
       }
     )
     
