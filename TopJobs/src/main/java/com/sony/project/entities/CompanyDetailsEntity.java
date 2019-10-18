@@ -2,7 +2,7 @@ package com.sony.project.entities;
  
 import java.util.*;  
 
-public class CompanyDetails {
+public class CompanyDetailsEntity {
 	private int companyId;
 	private String companyName;
 	private String companyDescription;
