@@ -14,15 +14,16 @@ import com.sony.project.services.JobPostService;
 @RestController
 public class JobPost {
 
+	@Autowired
 	JobPostService jobpostservice;
-	
-	@RequestMapping(value="/getjobpost")
+
+	@RequestMapping(value = "/getjobpost")
 	public List<JobPostEntity> getJobPost() {
 		return jobpostservice.getJobPost();
 	}
-	
-	@RequestMapping(value="/addjobpost", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/addjobpost", method = RequestMethod.POST)
 	public void addJobPost(@RequestBody JobPostEntity jobpostentity) {
-		jobpostservice.addJobPost(jobpostentity);
+			jobpostservice.addJobPost(jobpostentity);
 	}
 }

@@ -4,6 +4,7 @@
 package com.sony.project.entities;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @author 7000020632
@@ -20,19 +21,25 @@ public class JobPostEntity {
 	private String postDate;
 	private String specialities;
 	private int noOfVacancies;
+	private LocationEntity location;
+	private CompanyDetailsEntity company;
 
-	public JobPostEntity(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
-			int noOfApplicants, String postDate, String specialities, int noOfVacancies) {
-		this.jobPostId = jobPostId;
-		this.jobTitle = jobTitle;
-		this.jobDescription = jobDescription;
-		this.isActive = isActive;
-		this.experience = experience;
-		this.noOfApplicants = noOfApplicants;
-		this.postDate = postDate;
-		this.specialities = specialities;
-		this.noOfVacancies = noOfVacancies;
-	}
+//	public JobPostEntity() {
+//		this(0,"","",false,"",0,"","",0);
+//	}
+//	
+//	public JobPostEntity(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+//			int noOfApplicants, String postDate, String specialities, int noOfVacancies) {
+//		this.jobPostId = jobPostId;
+//		this.jobTitle = jobTitle;
+//		this.jobDescription = jobDescription;
+//		this.isActive = isActive;
+//		this.experience = experience;
+//		this.noOfApplicants = noOfApplicants;
+//		this.postDate = postDate;
+//		this.specialities = specialities;
+//		this.noOfVacancies = noOfVacancies;
+//	}
 
 	public int getJobPostId() {
 		return jobPostId;
@@ -106,4 +113,20 @@ public class JobPostEntity {
 		this.specialities = specialities;
 	}
 
+	public LocationEntity getLocation() {
+		return location;
+	}
+
+	public void setLocation(LocationEntity location) {
+		this.location = location;
+	}
+
+	public CompanyDetailsEntity getCompany() {
+		return company;
+	}
+
+	public void setCompany(CompanyDetailsEntity company) {
+		this.company = company;
+	}
+	
 }
