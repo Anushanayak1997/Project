@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JobPostsComponent } from './job-posts/job-posts.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import {FormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class CompanyModule { }
