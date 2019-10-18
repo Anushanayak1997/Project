@@ -1,0 +1,52 @@
+<div class="container">
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <label>
+                    CompanyName
+                    <input type="text" formControlName="companyName" required>
+                </label>
+                <br>
+        <label>
+           
+            CompanyDescription<br>
+            <textarea formControlName="companyDescription">
+                At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+            </textarea>
+        </label>
+        <br>
+        <label>
+            EstablishmentDate
+            <input type="text" formControlName="establishmentDate" required>
+        </label>
+        <br>
+        <label>
+            WebsiteUrl
+            <input type="text" formControlName="websiteUrl">
+        </label>
+        <br>
+        <label>
+            Specialities
+            <input type="text" formControlName="specialities">
+        </label>
+        <br>
+        <label>
+            Type
+            <input type="text" formControlName="type">
+        </label>
+        <br>
+        <label>
+            Headquarter
+            <input type="text" formControlName="headquarter">
+        </label>
+        <br>
+        <label>
+            Industry
+            <input type="text" formControlName="industry">
+        </label>
+        <br>
+        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    </form>
+
+</div>
+
+

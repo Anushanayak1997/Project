@@ -1,0 +1,125 @@
+<div class="container">
+    <div class="companyProfile">
+        <h4>Company name</h4>
+
+    </div>
+
+
+    <div *ngIf="id;else elseBlock">
+        <form [formGroup]="PostForm" (ngSubmit)="onSubmit()">
+            <div class="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Apllicants</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><input type="number" formControlName="index" required></th>
+                            <th scope="row"><input type="text" formControlName="Position" required></th>
+                            <th scope="row"><input type="text" formControlName="Status" required></th>
+                            <th scope="row"><input type="number" formControlName="Apllication" required></th>
+                            <th scope="row"><input type="date" formControlName="Date" required></th>
+                        </tr>
+                        <button type="submit" [disabled]="!PostForm.valid">Submit</button>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </form>
+    </div>
+
+    <ng-template #elseBlock>
+        <div class="container">
+
+            <form [formGroup]="JobPostForm" (ngSubmit)="onSubmit()">
+                <label>
+                    JobTitle
+                    <input type="text" formControlName="JobTitle" required>
+                </label>
+                <br>
+
+                <br>
+                <label>
+                    Status
+                    <input type="text" formControlName="Status" required>
+                </label>
+                <br>
+                <label>
+                    Vacancy
+                    <input type="number" formControlName="Vacancy">
+                </label>
+                <br>
+                <label>
+                    Experience
+                    <input type="number" formControlName="experience">
+                </label>
+                <br>
+                <label>
+                    Apllicants
+                    <input type="number" formControlName="Apllicants">
+                </label>
+                <!--Sills-->
+                
+                <!--Address-->
+                <div formGroupName="address">
+                    <h3>Address</h3>
+
+                    <label>
+                        Street:
+                        <input type="text" formControlName="street">
+                    </label>
+                    <br>
+                    <label>
+                        City:
+                        <input type="text" formControlName="city">
+                    </label>
+                    <br>
+                    <label>
+                        State:
+                        <input type="text" formControlName="state">
+                    </label>
+                    <br>
+                    <label>
+                        country:
+                        <input type="text" formControlName="country">
+                    </label>
+                    <br>
+                    <label>
+                        Zip Code:
+                        <input type="text" formControlName="zip">
+                    </label>
+                </div>
+                <br>
+                <!--Address ends-->
+
+                <label>
+                    PostDate
+                    <input type="date" formControlName="PostDate">
+                </label>
+                <br>
+
+                Specalities<br>
+                <textarea formControlName="Specalities">
+                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                </textarea>
+
+
+                Job Description<br>
+                <textarea formControlName="jobDescription">
+                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+                </textarea>
+                <button type="submit" [disabled]="!JobPostForm.valid">Submit</button>
+            </form>
+
+        </div>
+
+
+
+    </ng-template>
