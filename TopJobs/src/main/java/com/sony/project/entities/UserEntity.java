@@ -5,16 +5,25 @@ package com.sony.project.entities;
 
 import java.sql.Blob;
 
-public class User {
+public class UserEntity {
 
 	private int userID;
-	private char[] password;
+	private String password;
 	private String firstName;
 	private String lastName;
 	private String emailID;
 	private long contactNumber;
-	private Blob image;
+	// private Blob image;
 	private String userType;
+	private String companyName;
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
 
 	public int getUserID() {
 		return userID;
@@ -24,11 +33,11 @@ public class User {
 		this.userID = userID;
 	}
 
-	public char[] getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(char[] password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -62,14 +71,6 @@ public class User {
 
 	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
-	}
-
-	public Blob getImage() {
-		return image;
-	}
-
-	public void setImage(Blob image) {
-		this.image = image;
 	}
 
 	public String getUserType() {

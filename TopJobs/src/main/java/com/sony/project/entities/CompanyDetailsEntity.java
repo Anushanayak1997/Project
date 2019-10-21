@@ -12,6 +12,7 @@ public class CompanyDetailsEntity {
 	private String specialities;
 	private String industry;
 	private String type;
+	private List jobposts;
 
 	public int getCompanyId() {
 		return companyId;
@@ -55,7 +56,13 @@ public class CompanyDetailsEntity {
 		this.websiteUrl = websiteUrl;
 	}
 
+	public List getJobposts() {
+		return jobposts;
+	}
 
+	public void setJobposts(List jobposts) {
+		this.jobposts = jobposts;
+	}
 
 	public String getHeadquarter() {
 		return headquarter;

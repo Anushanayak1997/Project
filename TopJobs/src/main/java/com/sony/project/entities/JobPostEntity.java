@@ -19,10 +19,9 @@ public class JobPostEntity {
 	private String experience;
 	private int noOfApplicants;
 	private String postDate;
-	private String specialities;
 	private int noOfVacancies;
+	private List jobPostSkills;
 	private LocationEntity location;
-	private CompanyDetailsEntity company;
 
 //	public JobPostEntity() {
 //		this(0,"","",false,"",0,"","",0);
@@ -105,14 +104,6 @@ public class JobPostEntity {
 		this.postDate = postDate;
 	}
 
-	public String getSpecialities() {
-		return specialities;
-	}
-
-	public void setSpecialities(String specialities) {
-		this.specialities = specialities;
-	}
-
 	public LocationEntity getLocation() {
 		return location;
 	}
@@ -121,12 +112,13 @@ public class JobPostEntity {
 		this.location = location;
 	}
 
-	public CompanyDetailsEntity getCompany() {
-		return company;
+	public List getJobPostSkills() {
+		return jobPostSkills;
 	}
 
-	public void setCompany(CompanyDetailsEntity company) {
-		this.company = company;
+	public void setJobPostSkills(List jobPostSkills) {
+		this.jobPostSkills = jobPostSkills;
 	}
+	
 	
 }

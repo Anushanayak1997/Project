@@ -10,15 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.sony.project.entities.CompanyDetailsEntity;
 import com.sony.project.services.CompanyServices;
+import com.sony.project.services.UserService;
 
 @RestController
 public class Company {
 
+	@Autowired
 	CompanyServices companyServices;
+	
 
-	@RequestMapping(value = "/companydetails", method = RequestMethod.POST)
-	public void addProducts(@RequestBody CompanyDetailsEntity companyDetails) {
-		companyServices.addCompanyDetails(companyDetails);
+	@RequestMapping(value = "/addcompanydetails", method = RequestMethod.POST)
+	public Integer addCompanyDetails(@RequestBody CompanyDetailsEntity companyDetails) {
+		return companyServices.addCompanyDetails(companyDetails);
 	}
 
 	@RequestMapping(value = "/companydetails")
@@ -30,14 +33,14 @@ public class Company {
 	public CompanyDetailsEntity getCompanyDetails(@PathVariable int id) {
 		return companyServices.getCompanyDetails(id);
 	}
-	  @RequestMapping(value="/companydetails/update/{id}",method=RequestMethod.PUT)
-      public void updateCompanyDetails(@PathVariable int id,@RequestBody CompanyDetailsEntity companyDetails)
-      {
-      	companyServices.updateCompanyDetails(id, companyDetails);
-      }
-      @RequestMapping(value="/companydetails/delete/{id}",method=RequestMethod.DELETE)
-      public void deleteCompanyDetails(@PathVariable int id)
-      {
-      	companyServices.deleteCompanyDetails(id);
-      }
+
+	@RequestMapping(value = "/companydetails/update/{id}", method = RequestMethod.PUT)
+	public void updateCompanyDetails(@PathVariable int id, @RequestBody CompanyDetailsEntity companyDetails) {
+		companyServices.updateCompanyDetails(id, companyDetails);
+	}
+
+	@RequestMapping(value = "/companydetails/delete/{id}", method = RequestMethod.DELETE)
+	public void deleteCompanyDetails(@PathVariable int id) {
+		companyServices.deleteCompanyDetails(id);
+	}
 }
