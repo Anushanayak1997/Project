@@ -1,42 +1,54 @@
 <div class="container">
-<div class="companyProfile">
-    <h4>Company name</h4>
-</div>
-
-<div class="postJob">
-        <button (click)="toCreatePost()" type="button" class="btn btn-link">Post</button>
-</div>
-    <div class="table">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Apllicants</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>10/9/19</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>10/9/19</td>
-                </tr>
-               
-
-            </tbody>
-        </table>
+    <div class="companyProfile mainCard ">
+        <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded">
+            <h4>Company name:</h4>
+            <h4>Company Details:</h4>
+        </div>
     </div>
+
+    <div class="">
+            <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="toCreatePost()"
+                type="button"><strong>Job-Post</strong>
+            </button>
+        </div>
+
+
+
+
+    <div class="mainCard container">
+        <div class="table  card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded">
+            <table class="table">
+                <thead>
+                    <tr style="background-color: #00AA9E; color: wheat;">
+                        <th scope="col">Index</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Apllicants</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>10/9/19</td>
+                        
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>10/9/19</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>

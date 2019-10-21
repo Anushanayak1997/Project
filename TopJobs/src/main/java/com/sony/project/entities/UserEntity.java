@@ -15,6 +15,15 @@ public class UserEntity {
 	private long contactNumber;
 	// private Blob image;
 	private String userType;
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 	private String companyName;
 
 	public String getCompanyName() {
@@ -72,13 +81,4 @@ public class UserEntity {
 	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
-	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
 }

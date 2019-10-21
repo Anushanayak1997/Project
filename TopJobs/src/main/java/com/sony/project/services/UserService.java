@@ -48,7 +48,7 @@ public class UserService {
 		return false;
 	}
 	
-	public LinkedList getUsers() {
+	public LinkedList<UserEntity> getUsers() {
 		return users;
 	}
 

@@ -1,125 +1,260 @@
 <div class="container">
     <div class="companyProfile">
         <h4>Company name</h4>
-
     </div>
+</div>
 
 
-    <div *ngIf="id;else elseBlock">
-        <form [formGroup]="PostForm" (ngSubmit)="onSubmit()">
-            <div class="table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Index</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Apllicants</th>
-                            <th scope="col">Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><input type="number" formControlName="index" required></th>
-                            <th scope="row"><input type="text" formControlName="Position" required></th>
-                            <th scope="row"><input type="text" formControlName="Status" required></th>
-                            <th scope="row"><input type="number" formControlName="Apllication" required></th>
-                            <th scope="row"><input type="date" formControlName="Date" required></th>
-                        </tr>
-                        <button type="submit" [disabled]="!PostForm.valid">Submit</button>
-                    </tbody>
-                </table>
+<div class="container" *ngIf="id;else elseBlock">
+    <form name="PostForm" #PostForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Index</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Apllicants</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <input type="text" #index="ngModel" required class="form-control"
+                                [class.is-invalid]="index.invalid && index.touched" name="index"
+                                [(ngModel)]="userModel.index">
+                            <small class="text-danger" [class.d-none]="index.valid || index.untouched">index is
+                                required</small>
+                        </th>
 
-            </div>
+                        <th scope="row">
+                            <input type="text" #JobTitle="ngModel" required class="form-control"
+                                [class.is-invalid]="JobTitle.invalid && JobTitle.touched" name="JobTitle"
+                                [(ngModel)]="userModel.JobTitle">
+                            <small class="text-danger" [class.d-none]="JobTitle.valid || JobTitle.untouched">JobTitle is
+                                required</small>
+                        </th>
 
-        </form>
-    </div>
+                        <th scope="row">
+                            <input type="text" #Status="ngModel" required class="form-control"
+                                [class.is-invalid]="Status.invalid && Status.touched" name="Applicants"
+                                [(ngModel)]="userModel.Status">
+                            <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
+                                required</small>
 
-    <ng-template #elseBlock>
-        <div class="container">
+                        </th>
 
-            <form [formGroup]="JobPostForm" (ngSubmit)="onSubmit()">
-                <label>
-                    JobTitle
-                    <input type="text" formControlName="JobTitle" required>
-                </label>
-                <br>
+                        <th scope="row">
+                            <input type="text" #Applicants="ngModel" required class="form-control"
+                                [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
+                                [(ngModel)]="userModel.Applicants">
+                            <small class="text-danger"
+                                [class.d-none]="Applicants.valid || Applicants.untouched">Applicants is
+                                required</small>
+                        </th>
 
-                <br>
-                <label>
-                    Status
-                    <input type="text" formControlName="Status" required>
-                </label>
-                <br>
-                <label>
-                    Vacancy
-                    <input type="number" formControlName="Vacancy">
-                </label>
-                <br>
-                <label>
-                    Experience
-                    <input type="number" formControlName="experience">
-                </label>
-                <br>
-                <label>
-                    Apllicants
-                    <input type="number" formControlName="Apllicants">
-                </label>
-                <!--Sills-->
-                
-                <!--Address-->
-                <div formGroupName="address">
-                    <h3>Address</h3>
+                        <th scope="row">
+                            <input type="text" #PostDate="ngModel" required class="form-control"
+                                [class.is-invalid]="PostDate.invalid && PostDate.touched" name="Applicants"
+                                [(ngModel)]="userModel.PostDate">
+                            <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
+                                required</small>
 
-                    <label>
-                        Street:
-                        <input type="text" formControlName="street">
-                    </label>
-                    <br>
-                    <label>
-                        City:
-                        <input type="text" formControlName="city">
-                    </label>
-                    <br>
-                    <label>
-                        State:
-                        <input type="text" formControlName="state">
-                    </label>
-                    <br>
-                    <label>
-                        country:
-                        <input type="text" formControlName="country">
-                    </label>
-                    <br>
-                    <label>
-                        Zip Code:
-                        <input type="text" formControlName="zip">
-                    </label>
-                </div>
-                <br>
-                <!--Address ends-->
-
-                <label>
-                    PostDate
-                    <input type="date" formControlName="PostDate">
-                </label>
-                <br>
-
-                Specalities<br>
-                <textarea formControlName="Specalities">
-                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
-                </textarea>
+                        </th>
 
 
-                Job Description<br>
-                <textarea formControlName="jobDescription">
-                    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
-                </textarea>
-                <button type="submit" [disabled]="!JobPostForm.valid">Submit</button>
-            </form>
+
+                    </tr>
+                    <div class="container">
+                        <button class="btn btn-primary" type="submit" click="onSubmit()"
+                            [disabled]="PostForm.form.invalid">Submit</button>
+                    </div>
+                </tbody>
+            </table>
 
         </div>
+    </form>
+</div>
 
+<!------------------------------------------- Else Block--------------------------------------->
+<ng-template #elseBlock>
+    <div class="container mainCard">
 
+        <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
+            <div class="card-header " style="background-color: #00AA9E; ">
+                <div class="">
+                    <h2>Job Details</h2>
+                </div>
+            </div>
+            <article class="card-body mx-auto " style="min-width: 70%;">
+                <form #userForm="ngForm" (ngSubmit)="onSubmitSecond()" novalidate>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>JobTitle</strong></span>
+                        </div>
 
-    </ng-template>
+                        <input type="text" #JobTitle="ngModel" minlength="5" required class="form-control"
+                            [class.is-invalid]="JobTitle.invalid && JobTitle.touched" name="JobTitle"
+                            [(ngModel)]="userModel.JobTitle">
+                          
+                        <small class="text-danger" [class.d-none]="JobTitle.valid || JobTitle.untouched">JobTitle is
+                            required</small>
+
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Status</strong></span>
+                                </div>
+                        
+                            
+                            <input type="text" #Status="ngModel" required class="form-control"
+                                [class.is-invalid]="Status.invalid && Status.touched" name="Status"
+                                [(ngModel)]="userModel.Status">
+                            <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
+                                required</small>
+                       
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Vacancy</strong></span>
+                                </div>
+                            
+                            <input type="number" #Vacancy="ngModel" required class="form-control"
+                                [class.is-invalid]="Vacancy.invalid && Vacancy.touched" name="Vacancy"
+                                [(ngModel)]="userModel.Vacancy">
+                            <small class="text-danger" [class.d-none]="Vacancy.valid || Vacancy.untouched">Vacancy is
+                                required</small>
+                        
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>experience</strong></span>
+                                </div>
+                            
+                            <input type="text" #experience="ngModel" required class="form-control"
+                                [class.is-invalid]="experience.invalid && experience.touched" name="experience"
+                                [(ngModel)]="userModel.experience">
+                            <small class="text-danger"
+                                [class.d-none]="experience.valid || experience.untouched">experience
+                                is required</small>
+                        
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Applicants</strong></span>
+                                </div>
+                            
+                            <input type="number" #Applicants="ngModel" required class="form-control"
+                                [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
+                                [(ngModel)]="userModel.Applicants">
+                            <small class="text-danger"
+                                [class.d-none]="Applicants.valid || Applicants.untouched">Applicants
+                                is required</small>
+                        
+                    </div>
+                    <h4 class="address">Address</h4>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Street</strong></span>
+                                </div>
+                            
+                            <input type="text" #Street="ngModel" required class="form-control"
+                                [class.is-invalid]="Street.invalid && Street.touched" name="Street"
+                                [(ngModel)]="userModel.Street">
+                            <small class="text-danger" [class.d-none]="Street.valid || Street.untouched">Street is
+                                required</small>
+                        
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>City</strong></span>
+                                </div>
+                            
+                            <input type="text" #City="ngModel" required class="form-control"
+                                [class.is-invalid]="City.invalid && City.touched" name="City"
+                                [(ngModel)]="userModel.City">
+                            <small class="text-danger" [class.d-none]="City.valid || City.untouched">city is
+                                required</small>
+                       
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>State</strong></span>
+                                </div>
+                            
+                            <input type="text" #State="ngModel" required class="form-control"
+                                [class.is-invalid]="State.invalid && State.touched" name="State"
+                                [(ngModel)]="userModel.City">
+                            <small class="text-danger" [class.d-none]="State.valid || State.untouched">City is
+                                required</small>
+                        
+                    </div>
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Country</strong></span>
+                                </div>
+                            
+                            <input type="text" #Country="ngModel" required class="form-control"
+                                [class.is-invalid]="Country.invalid && Country.touched" name="Country"
+                                [(ngModel)]="userModel.Country">
+                            <small class="text-danger" [class.d-none]="Country.valid || Country.untouched">Country is
+                                required</small>
+                       
+                    </div>
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Zipcode</strong></span>
+                                </div>
+                            
+                            <input type="text" #Zipcode="ngModel" required class="form-control"
+                                [class.is-invalid]="Zipcode.invalid && Zipcode.touched" name="Zipcode"
+                                [(ngModel)]="userModel.Zipcode">
+                            <small class="text-danger" [class.d-none]="Zipcode.valid || Zipcode.untouched">Zipcode is
+                                required</small>
+                        
+                    </div>
+                    <!--Address ends-->
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>PostDate</strong></span>
+                                </div>
+                            
+                            <input type="date" #PostDate="ngModel" required class="form-control"
+                                [class.is-invalid]="PostDate.invalid && PostDate.touched" name="PostDate"
+                                [(ngModel)]="userModel.PostDate">
+                            <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
+                                required</small>
+                       
+                    </div>
+
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>jobDescription</strong></span>
+                                </div>
+                            
+                            <textarea type="textarea" #jobDescription="ngModel" required class="form-control"
+                                [class.is-invalid]="jobDescription.invalid && jobDescription.touched"
+                                name="jobDescription" [(ngModel)]="userModel.jobDescription">
+                <small class="text-danger" [class.d-none]="jobDescription.valid || jobDescription.untouched">jobDescription is
+                    required</small>
+                </textarea>
+                        
+                    </div>
+
+                </form>
+                <button class="btn btn-primary btnStyle" type="submit" (click)="onSubmitSecond()"
+                    [disabled]="userForm.form.invalid " >Submit</button>
+            </article>
+        </div>
+
+    </div>
+    <!--Card-->
+</ng-template>

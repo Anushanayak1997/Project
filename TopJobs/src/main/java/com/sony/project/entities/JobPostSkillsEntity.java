@@ -2,14 +2,23 @@ package com.sony.project.entities;
 
 public class JobPostSkillsEntity {
 
-	private String skill_level;
+	private int jobPostSkillID;
+	private String skillLevel;
 
-	public String getSkill_level() {
-		return skill_level; 
+	public int getJobPostSillID() {
+		return jobPostSkillID;
 	}
 
-	public void setSkill_level(String skill_level) {
-		this.skill_level = skill_level;
+	public void setJobPostSillID(int jobPostSillID) {
+		this.jobPostSkillID = jobPostSillID;
+	}
+
+	public String getSkillLevel() {
+		return skillLevel;
+	}
+
+	public void setSkillLevel(String skillLevel) {
+		this.skillLevel = skillLevel;
 	}
 
 }

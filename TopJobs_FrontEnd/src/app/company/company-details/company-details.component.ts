@@ -3,40 +3,49 @@ import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+import { CompanyService } from '../company.service';
+import { Company } from '../company';
+
+
 @Component({
   selector: 'app-company-details',
   templateUrl: './company-details.component.html',
   styleUrls: ['./company-details.component.css']
 })
 export class CompanyDetailsComponent implements OnInit {
-
-  constructor(private fb: FormBuilder,private http: HttpClient) { }
+ 
+  model;
 
   ngOnInit() {
   }
 
-   url = environment.apiBaseUrl + "companydetails";
+ 
 
-  profileForm = this.fb.group({
-    companyName: [''],
-    companyDescription: [''],
-    establishmentDate: [''],
-    websiteUrl: [''],
-    headquarter: [''],
-    specialities: [''],
-    industry: [''],
-    type: [''],
-  });
 
-  onSubmit() {
-    console.log(this.profileForm.value)
-    this.http.post( this.url, this.profileForm.value).subscribe(
-      () =>{
-        console.log("posted");
-        console.log(this.profileForm)
-      }
-    )
-    
+   title = 'app';
+   
+   userModel = new Company('','','.', "", '', '', "","");
+   
+  
+   errorMsg = '';
+ 
+   constructor(private _enrollmentService: CompanyService) {}
+ 
+   
+ 
+   onSubmit() {
+   
+    console.log()
+     /*
+       .subscribe(
+         response => console.log('Success!', response),
+         error => this.errorMsg = error.statusText
+       )
+   }
+*/
   }
 
+  goEmployerDetails(){
+    
+  }
 }
