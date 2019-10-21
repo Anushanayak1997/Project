@@ -17,11 +17,12 @@ export class EditPostComponent implements OnInit {
 
   id: number;
   job_post: any;
-  // userModel:any;
+
 
 
 
   url = environment.apiBaseUrl + "addjobpost";
+
   constructor(private fb: FormBuilder, private route: Router, private router: ActivatedRoute, private http: HttpClient) {
 
     this.id = router.snapshot.params.id
@@ -32,7 +33,7 @@ export class EditPostComponent implements OnInit {
   }
 
   onSubmitSecond(){
-    console.log("sasas")
+   
     console.log(this.userModel);
   }
 
