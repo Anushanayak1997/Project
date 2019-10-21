@@ -142,10 +142,10 @@
             <div class="form-group">
                 <label>
                     Street
-                    <input type="text" #Street="ngModel" required class="form-control"
-                        [class.is-invalid]="Street.invalid && Street.touched" name="Street"
-                        [(ngModel)]="userModel.Street">
-                    <small class="text-danger" [class.d-none]="Street.valid || Street.untouched">Street is
+                    <input type="text" #StreetAddress="ngModel" required class="form-control"
+                        [class.is-invalid]="StreetAddress.invalid && StreetAddress.touched" name="StreetAddress"
+                        [(ngModel)]="userModel.StreetAddress">
+                    <small class="text-danger" [class.d-none]="StreetAddress.valid || StreetAddress.untouched">Street is
                         required</small>
                 </label>
             </div>
@@ -164,8 +164,8 @@
                 <label>
                     State
                     <input type="text" #City="ngModel" required class="form-control"
-                        [class.is-invalid]="City.invalid && City.touched" name="City" [(ngModel)]="userModel.City">
-                    <small class="text-danger" [class.d-none]="City.valid || City.untouched">City is
+                        [class.is-invalid]="State.invalid && State.touched" name="State" [(ngModel)]="userModel.State">
+                    <small class="text-danger" [class.d-none]="State.valid || State.untouched">State is
                         required</small>
                 </label>
             </div>
@@ -214,7 +214,7 @@
         </div>
                     
         </form>
-        <button class="btn btn-primary" type="submit" (click)="onSubmitSecond()"
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()"
         [disabled]="userForm.form.invalid ">Submit</button>
     </div>
 </ng-template>

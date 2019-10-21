@@ -17,7 +17,7 @@ export class EditPostComponent implements OnInit {
 
   id: number;
   job_post: any;
-  // userModel:any;
+ location:any;
 
 
 
@@ -56,6 +56,7 @@ export class EditPostComponent implements OnInit {
 
   onSubmit() {
     console.log("hi");
+    this.location={streetAddress:this.userModel.StreetAddress,city:this.userModel.City,state:this.userModel.State,country:this.userModel.Country,pincode:this.userModel.Zipcode}
     this.job_post = {
       jobTitle: this.userModel.JobTitle,
 
@@ -65,7 +66,7 @@ export class EditPostComponent implements OnInit {
       experience: this.userModel.experience,
       noOfApplicants: this.userModel.Applicants,
       postDate: this.userModel.PostDate,
-
+      location:this.location,
       noOfVacancies: this.userModel.Vacancy,
       
 
