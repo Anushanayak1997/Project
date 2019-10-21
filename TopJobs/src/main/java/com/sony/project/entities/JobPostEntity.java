@@ -6,10 +6,7 @@ package com.sony.project.entities;
 import java.sql.Date;
 import java.util.List;
 
-/**
- * @author 7000020632
- *
- */
+
 public class JobPostEntity {
 
 	private int jobPostId;

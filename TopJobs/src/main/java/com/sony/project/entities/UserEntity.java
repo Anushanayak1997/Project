@@ -5,7 +5,7 @@ package com.sony.project.entities;
 
 import java.sql.Blob;
 
-public class User {
+public class UserEntity {
 
 	private int userID;
 	private char[] password;

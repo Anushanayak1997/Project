@@ -6,7 +6,7 @@ package com.sony.project.entities;
 import java.sql.Date;
 
 
-public class JobSeekerEducation {
+public class JobSeekerEducationEntity {
 	private Date startingDate;
 	private Date endingDate;
 	private double marksPercentages;
