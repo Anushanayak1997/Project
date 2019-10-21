@@ -19,7 +19,7 @@ import com.sony.project.entities.CompanyDetailsEntity;
 public class CompanyServices {
 
 	LinkedList<CompanyDetailsEntity> company = new LinkedList<CompanyDetailsEntity>();
-	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+	// private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
 	@Autowired
 	HttpSession httpSession;
@@ -40,23 +40,22 @@ public class CompanyServices {
 		company.get(index).setCompanyId(index);
 		companyid = company.get(index).getCompanyId();
 		httpSession.setAttribute("companyid", companyid);
-		//logger.info("Company ID", companyid);
-		//logger.info("Company ID in add company name", httpSession.getAttribute("companyid"));
 		employercompany.addEmployerCompany();
 		return companyid;
 	}
 
 	public Integer addCompanyDetails(CompanyDetailsEntity companyDetails) {
 		Iterator<CompanyDetailsEntity> iterator = company.iterator();
+		int flag = 0;
 		while (iterator.hasNext()) {
 			CompanyDetailsEntity companydetails = iterator.next();
-			companyDetails.setCompanyName(companydetails.getCompanyName());
 			if (companyDetails.getCompanyId() == (Integer) httpSession.getAttribute("companyid")) {
 				company.set(company.indexOf(companydetails), companyDetails);
+				flag = 1;
 			}
-			return (Integer) httpSession.getAttribute("companyid");
+			return flag;
 		}
-		return (Integer) httpSession.getAttribute("companyid");
+		return flag;
 	}
 
 	public CompanyDetailsEntity getCompanyDetails(int id) {
@@ -90,5 +89,11 @@ public class CompanyServices {
 				company.remove(index);
 			}
 		}
+	}
+	
+	public void addJobPost(JobPostEntity jobpostentity) {
+		int companyid = (Integer)httpSession.getAttribute("companyid");
+		CompanyDetailsEntity companydetails = company.get(companyid);
+		companydetails.getJobposts().add(jobpostentity);
 	}
 }
