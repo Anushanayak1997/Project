@@ -44,18 +44,21 @@ public class CompanyServices {
 		return companyid;
 	}
 
-	public Integer addCompanyDetails(CompanyDetailsEntity companyDetails) {
+	public CompanyDetailsEntity addCompanyDetails(CompanyDetailsEntity companyDetails) {
 		Iterator<CompanyDetailsEntity> iterator = company.iterator();
 		int flag = 0;
+		CompanyDetailsEntity companydetails = null;
 		while (iterator.hasNext()) {
-			CompanyDetailsEntity companydetails = iterator.next();
-			if (companyDetails.getCompanyId() == (Integer) httpSession.getAttribute("companyid")) {
+			companydetails = iterator.next();
+			if (companydetails.getCompanyId() == (Integer) httpSession.getAttribute("companyid")) {
+				companyDetails.setCompanyName(companydetails.getCompanyName());
+				companyDetails.setCompanyId(companydetails.getCompanyId());
 				company.set(company.indexOf(companydetails), companyDetails);
 				flag = 1;
+				return companydetails;
 			}
-			return flag;
 		}
-		return flag;
+		return companydetails;
 	}
 
 	public CompanyDetailsEntity getCompanyDetails(int id) {
