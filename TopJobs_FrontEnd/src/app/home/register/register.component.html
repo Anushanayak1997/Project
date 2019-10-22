@@ -1,0 +1,124 @@
+<div class="container mainCard">
+
+    <form #userForm="ngForm" *ngIf="!submitted" novalidate>
+        <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
+            <div class="card-header " style="background-color: #00AA9E; ">
+                <div class="">
+                    <h2> Registrations</h2>
+                </div>
+            </div>
+
+            <article class="card-body mx-auto " style="min-width: 70%;">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><strong>I am </strong></span>
+                    </div>
+                    <select class="form-control" id="" [(ngModel)]="regiseterModel.userType"  name="userType" 
+                    (blur)="validateTopic(userType.value)" (change)="validateTopic(userType.value)" #userType="ngModel" [class.is-invalid]="topicHasError && userType.touched" required>
+                     
+                    <option value="JobSeeker">JobSeeker</option>
+                        <option value="Employer">Employer</option>
+
+                    </select>
+                    <small class="text-danger" [class.d-none]="!topicHasError || userType.untouched">Please choose a topic</small>   
+                   
+                </div>
+
+
+
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text glyphicon glyphicon-check" id=""><i class="fas fa-file"></i><strong></strong></span>
+                    </div>
+                    
+                    <input input-smtype="text" #firstName="ngModel" required class="form-control" minlength="3"
+                        [class.is-invalid]="firstName.invalid && firstName.touched" name="firstName"
+                        [(ngModel)]="regiseterModel.firstName" placeholder="firstName">
+                        <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">lastName
+                                is
+                                required</small>
+
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><strong>lastName</strong></span>
+                    </div>
+
+                    <input type="text" #lastName="ngModel" required class="form-control"
+                        [class.is-invalid]="lastName.invalid && lastName.touched" name="lastName"
+                        [(ngModel)]="regiseterModel.lastName">
+                    <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">lastName
+                        is
+                        required</small>
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><strong>emailID</strong></span>
+                    </div>
+
+                    <input type="email" #emailID="ngModel" required class="form-control"
+                        [class.is-invalid]="emailID.invalid && emailID.touched" name="emailID"
+                        [(ngModel)]="regiseterModel.emailID">
+                    <small class="text-danger" [class.d-none]="emailID.valid || emailID.untouched">emailID
+                        is
+                        required</small>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><strong>password</strong></span>
+                    </div>
+
+                    <input type="password" #password="ngModel" required class="form-control"
+                        [class.is-invalid]="password.invalid && password.touched" name="password"
+                        [(ngModel)]="regiseterModel.password">
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password
+                        is
+                        required</small>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><strong>contactNumber</strong></span>
+                    </div>
+
+                    <input type="number" #contactNumber="ngModel" required class="form-control"
+                        [class.is-invalid]="contactNumber.invalid && contactNumber.touched" name="contactNumber"
+                        [(ngModel)]="regiseterModel.contactNumber">
+                    <small class="text-danger"
+                        [class.d-none]="contactNumber.valid || contactNumber.untouched">contactNumber
+                        is
+                        required</small>
+                </div>
+
+                <div *ngIf = "regiseterModel.userType=='Employer'">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Company</strong></span>
+                        </div>
+                        <select class="form-control" id="" [(ngModel)]="regiseterModel.companyName" name="companyName"
+                            required>
+                            <option *ngFor="let company of details ; let i=index" [value]="company.companyName">
+                                {{company.companyName}}
+                            </option>
+                            <option value="others"> others</option>
+
+                        </select>
+                        <small class="text-danger" [class.d-none]="!topicHasError || companyName.untouched">Please
+                            choose a Company</small>
+                    </div>
+
+                </div>
+
+
+
+                <button class="btn btn-primary btn-space btnStyle" (click)="onSubmit()" [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
+                </button>
+            </article>
+
+
+        </div>
+    </form>
+
+</div>
