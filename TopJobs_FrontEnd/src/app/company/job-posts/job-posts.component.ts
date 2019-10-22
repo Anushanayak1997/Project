@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -8,10 +10,19 @@ import {  Router } from '@angular/router';
   styleUrls: ['./job-posts.component.css']
 })
 export class JobPostsComponent implements OnInit {
-
-  constructor( private route:Router) { }
+  url=environment.apiBaseUrl+"getjobpost";
+  job_posts:any;
+  constructor( private route:Router , private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get(this.url).subscribe(
+      (response) => {
+
+        this.job_posts=response;
+        console.log(this.job_posts)
+
+      }
+    )
   }
 
   toCreatePost(){

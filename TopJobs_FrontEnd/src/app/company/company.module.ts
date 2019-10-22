@@ -6,7 +6,7 @@ import { JobPostsComponent } from './job-posts/job-posts.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule } from '@angular/forms'
-
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 
 @NgModule({
   declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent],
@@ -17,7 +17,9 @@ import {FormsModule } from '@angular/forms'
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DlDateTimeDateModule,  // <--- Determines the data type of the model
+    DlDateTimePickerModule,
   ]
 })
 export class CompanyModule { }

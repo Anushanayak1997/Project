@@ -13,8 +13,8 @@ import { Company } from '../company';
   styleUrls: ['./company-details.component.css']
 })
 export class CompanyDetailsComponent implements OnInit {
-
  
+  model;
 
   ngOnInit() {
   }
@@ -24,7 +24,7 @@ export class CompanyDetailsComponent implements OnInit {
 
    title = 'app';
    
-   userModel = new Company('Rob','asasass','rob@test.com', "sdfs", 'default', 'morning', "true","Sd");
+   userModel = new Company('','','.', "", '', '', "","");
    
   
    errorMsg = '';
@@ -43,5 +43,9 @@ export class CompanyDetailsComponent implements OnInit {
        )
    }
 */
+  }
+
+  goEmployerDetails(){
+    
   }
 }

@@ -22,6 +22,7 @@ export class EditPostComponent implements OnInit {
 
 
   url = environment.apiBaseUrl + "addjobpost";
+
   constructor(private fb: FormBuilder, private route: Router, private router: ActivatedRoute, private http: HttpClient) {
 
     this.id = router.snapshot.params.id
@@ -29,15 +30,18 @@ export class EditPostComponent implements OnInit {
   }
 
   ngOnInit() {
+   
+
+
   }
 
   onSubmitSecond(){
-    console.log("sasas")
+   
     console.log(this.userModel);
   }
 
   userModel = new job_details(
-    1,
+   
     "web-devloper",
     10,
     "Active"
@@ -68,7 +72,7 @@ export class EditPostComponent implements OnInit {
       postDate: this.userModel.PostDate,
       location:this.location,
       noOfVacancies: this.userModel.Vacancy,
-      
+      specialities:this.userModel.Specalities
 
     }
     this.http.post(this.url, this.job_post).subscribe(

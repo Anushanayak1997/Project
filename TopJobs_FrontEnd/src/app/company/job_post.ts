@@ -1,6 +1,6 @@
 export class job_details {
     constructor(
-      public index:number,
+      
       public  JobTitle: String,
       public    Applicants: number,
       public    Status: String,
