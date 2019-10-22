@@ -18,7 +18,7 @@ export class EditPostComponent implements OnInit {
   id: number;
   job_post: any;
 
-
+  location:any;
 
 
   url = environment.apiBaseUrl + "addjobpost";
@@ -32,48 +32,51 @@ export class EditPostComponent implements OnInit {
   ngOnInit() {
   }
 
+ 
+
+  userModel = new job_details(
+   "",
+    "",
+    "",
+    ""
+    ,"",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+   
+  )
+
+  
   onSubmitSecond(){
    
     console.log(this.userModel);
   }
-
-  userModel = new job_details(
-    1,
-    "web-devloper",
-    10,
-    "Active"
-    , 4,
-    "dyfy",
-    "uwdyeu",
-    "3 years",
-    "ueyduewis",
-    "fehue",
-    "fehue",
-    "fehue",
-    "fehue",
-    "fehue"
-  )
-
-
+  
   onSubmit() {
     console.log("hi");
+    this.location={streetAdddress:this.userModel.StreetAddress,city:this.userModel.City,state:this.userModel.State,country:this.userModel.Country,pincode:this.userModel.Zipcode}
     this.job_post = {
       jobTitle: this.userModel.JobTitle,
-
-
       jobDescription: this.userModel.jobDescription,
       isActive: this.userModel.Status,
       experience: this.userModel.experience,
       noOfApplicants: this.userModel.Applicants,
       postDate: this.userModel.PostDate,
-
       noOfVacancies: this.userModel.Vacancy,
-      
+      location:this.location,
+      specialities:this.userModel.Specalities
 
     }
+
     this.http.post(this.url, this.job_post).subscribe(
-      () => {
-        console.log("posted");
+      (response) => {
+        console.log('Success!', response),
+        console.log(this.job_post);
 
       }
     )

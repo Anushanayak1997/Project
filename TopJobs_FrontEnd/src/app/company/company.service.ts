@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class CompanyService {
   constructor(private _http: HttpClient) { }
 
-  url = environment.apiBaseUrl + "companydetails";
+  url = environment.apiBaseUrl + "addcompanydetails";
 
   enroll (user: Company) {
     return this._http.post<any>(this.url, user)
@@ -19,5 +19,10 @@ export class CompanyService {
 
   errorHandler(error: HttpErrorResponse) {
     return throwError(error)
+  }
+
+
+  getCompany(){
+   return this._http.get(this.url)
   }
 }

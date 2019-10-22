@@ -67,7 +67,7 @@
 
                     </tr>
                     <div class="container">
-                        <button class="btn btn-primary" type="submit" click="onSubmit()"
+                        <button class="btn btn-primary" type="submit" click="onSubmitSecond()"
                             [disabled]="PostForm.form.invalid">Submit</button>
                     </div>
                 </tbody>
@@ -143,18 +143,32 @@
                                 is required</small>
                         
                     </div>
-
                     <div class="form-group input-group">
                             <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Applicants</strong></span>
+                                    <span class="input-group-text" id=""><strong>Specalities</strong></span>
                                 </div>
                             
-                            <input type="number" #Applicants="ngModel" required class="form-control"
-                                [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
-                                [(ngModel)]="userModel.Applicants">
+                            <input type="text" #Specalities="ngModel" required class="form-control"
+                                [class.is-invalid]="Specalities.invalid && Specalities.touched" name="Specalities"
+                                [(ngModel)]="userModel.Specalities">
                             <small class="text-danger"
-                                [class.d-none]="Applicants.valid || Applicants.untouched">Applicants
+                                [class.d-none]="Specalities.valid || experience.untouched">Specalities
                                 is required</small>
+                        
+                    </div>
+
+                   
+                    <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>jobDescription</strong></span>
+                                </div>
+                            
+                            <textarea type="textarea" #jobDescription="ngModel" required class="form-control"
+                                [class.is-invalid]="jobDescription.invalid && jobDescription.touched"
+                                name="jobDescription" [(ngModel)]="userModel.jobDescription">
+                <small class="text-danger" [class.d-none]="jobDescription.valid || jobDescription.untouched">jobDescription is
+                    required</small>
+                </textarea>
                         
                     </div>
                     <h4 class="address">Address</h4>
@@ -164,10 +178,10 @@
                                     <span class="input-group-text" id=""><strong>Street</strong></span>
                                 </div>
                             
-                            <input type="text" #Street="ngModel" required class="form-control"
-                                [class.is-invalid]="Street.invalid && Street.touched" name="Street"
-                                [(ngModel)]="userModel.Street">
-                            <small class="text-danger" [class.d-none]="Street.valid || Street.untouched">Street is
+                            <input type="text" #StreetAddress="ngModel" required class="form-control"
+                                [class.is-invalid]="StreetAddress.invalid && StreetAddress.touched" name="StreetAddress"
+                                [(ngModel)]="userModel.StreetAddress">
+                            <small class="text-danger" [class.d-none]="StreetAddress.valid || StreetAddress.untouched">Street is
                                 required</small>
                         
                     </div>
@@ -192,7 +206,7 @@
                             
                             <input type="text" #State="ngModel" required class="form-control"
                                 [class.is-invalid]="State.invalid && State.touched" name="State"
-                                [(ngModel)]="userModel.City">
+                                [(ngModel)]="userModel.State">
                             <small class="text-danger" [class.d-none]="State.valid || State.untouched">City is
                                 required</small>
                         
@@ -235,22 +249,10 @@
                        
                     </div>
 
-                    <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>jobDescription</strong></span>
-                                </div>
-                            
-                            <textarea type="textarea" #jobDescription="ngModel" required class="form-control"
-                                [class.is-invalid]="jobDescription.invalid && jobDescription.touched"
-                                name="jobDescription" [(ngModel)]="userModel.jobDescription">
-                <small class="text-danger" [class.d-none]="jobDescription.valid || jobDescription.untouched">jobDescription is
-                    required</small>
-                </textarea>
-                        
-                    </div>
+                   
 
                 </form>
-                <button class="btn btn-primary btnStyle" type="submit" (click)="onSubmitSecond()"
+                <button class="btn btn-primary btnStyle" type="submit" (click)="onSubmit()"
                     [disabled]="userForm.form.invalid " >Submit</button>
             </article>
         </div>
