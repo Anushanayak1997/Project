@@ -7,9 +7,10 @@ import { EditPostComponent } from './edit-post/edit-post.component';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule } from '@angular/forms'
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import { EmployerDetailsComponent } from './employer-details/employer-details.component';
 
 @NgModule({
-  declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent],
+  declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent],
   exports: [
     CompanyDetailsComponent
   ],

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 
 import { CompanyService } from '../company.service';
 import { Company } from '../company';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,39 +14,45 @@ import { Company } from '../company';
   styleUrls: ['./company-details.component.css']
 })
 export class CompanyDetailsComponent implements OnInit {
- 
-  model;
+
+
 
   ngOnInit() {
   }
 
- 
 
 
-   title = 'app';
-   
-   userModel = new Company('','','.', "", '', '', "","");
-   
-  
-   errorMsg = '';
- 
-   constructor(private _enrollmentService: CompanyService) {}
- 
-   
- 
-   onSubmit() {
-   
+
+  title = 'app';
+
+  userModel = new Company('', '', '.', "", '', '', "", "");
+
+
+  errorMsg = '';
+
+  constructor(private _enrollmentService: CompanyService, private route: Router) { }
+
+
+
+  onSubmit() {
+
     console.log()
-     /*
-       .subscribe(
-         response => console.log('Success!', response),
-         error => this.errorMsg = error.statusText
-       )
-   }
-*/
+    this._enrollmentService.enroll(this.userModel).subscribe(
+      (response) => {
+        console.log('Success!', response),
+          console.log(this.userModel);
+      }
+    )
+
   }
 
-  goEmployerDetails(){
-    
+  goEmployerDetails() {
+    this.route.navigate(['company/employee-details']);
   }
+
+ 
+
 }
+
+
+

@@ -2,9 +2,9 @@ export class job_details {
     constructor(
       
       public  JobTitle: String,
-      public    Applicants: number,
+      public    Applicants: any,
       public    Status: String,
-      public    Vacancy: number,
+      public    Vacancy: any,
       public   PostDate: String,
       public   jobDescription: String,
       public   experience: String,

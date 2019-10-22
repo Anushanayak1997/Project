@@ -5,6 +5,10 @@ import { CompanyDetailsComponent } from './company/company-details/company-detai
 import { AppComponent } from './app.component';
 import { JobPostsComponent } from './company/job-posts/job-posts.component';
 import { EditPostComponent } from './company/edit-post/edit-post.component';
+import { EmployerDetailsComponent } from './company/employer-details/employer-details.component';
+import { MainComponent } from './home/main/main.component';
+import { LoginComponent } from './home/login/login.component';
+import { RegisterComponent } from './home/register/register.component';
 
 
 const routes: Routes = [
@@ -20,7 +24,21 @@ const routes: Routes = [
   },
   {
     path: "company/create-post", component: EditPostComponent,
-  }
+  },
+  {
+    path: "company/employee-details", component: EmployerDetailsComponent,
+  },
+  {
+    path: "home", component: MainComponent,
+  },
+  {
+    path: "login", component: LoginComponent,
+  },
+  {
+    path: "register", component: RegisterComponent,
+  },
+  
+
 
 
 ];

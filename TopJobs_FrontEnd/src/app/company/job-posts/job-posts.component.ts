@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CompanyService } from '../company.service';
+import { User } from '../users';
+
+import { Company } from '../company';
 import { environment } from 'src/environments/environment';
 
 
@@ -27,6 +31,10 @@ export class JobPostsComponent implements OnInit {
 
   toCreatePost(){
     this.route.navigate(['company/create-post'])
+  }
+
+  getCompanyDetails(){
+   
   }
 
 

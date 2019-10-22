@@ -1,6 +1,6 @@
 package com.sony.project.entities;
- 
-import java.util.*;  
+
+import java.util.*;
 
 public class CompanyDetailsEntity {
 	private int companyId;
@@ -12,6 +12,11 @@ public class CompanyDetailsEntity {
 	private String specialities;
 	private String industry;
 	private String type;
+	private LinkedList<JobPostEntity> jobposts;
+	
+	public CompanyDetailsEntity() {
+		jobposts = new LinkedList<JobPostEntity>();
+	}
 
 	public int getCompanyId() {
 		return companyId;
@@ -37,8 +42,6 @@ public class CompanyDetailsEntity {
 		this.companyDescription = companyDescription;
 	}
 
-	
-
 	public String getEstablishmentDate() {
 		return establishmentDate;
 	}
@@ -55,7 +58,13 @@ public class CompanyDetailsEntity {
 		this.websiteUrl = websiteUrl;
 	}
 
+	public LinkedList<JobPostEntity> getJobposts() {
+		return jobposts;
+	}
 
+	public void setJobposts(LinkedList<JobPostEntity> jobposts) {
+		this.jobposts = jobposts;
+	}
 
 	public String getHeadquarter() {
 		return headquarter;

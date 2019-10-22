@@ -1,16 +1,16 @@
 <div class="container">
     <div class="companyProfile mainCard ">
-        <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded">
-            <h4>Company name:</h4>
-            <h4>Company Details:</h4>
+        <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded" >
+            <h4>{{company}}</h4>
+            <h4>{{companyDesc}}</h4>
         </div>
     </div>
 
     <div class="">
-            <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="toCreatePost()"
-                type="button"><strong>Job-Post</strong>
-            </button>
-        </div>
+        <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="toCreatePost()"
+            type="button"><strong>Job-Post</strong>
+        </button>
+    </div>
 
 
 
@@ -50,5 +50,6 @@
             </table>
         </div>
     </div>
-
 </div>
+
+
