@@ -14,7 +14,7 @@ import com.sony.project.dao.CompanyDAO;
 import com.sony.project.dao.CompanyDAOImpl;
 import com.sony.project.entities.CompanyDetailsEntity;
 import com.sony.project.entities.JobPostEntity;
-
+ 
 @Service
 public class CompanyServicesImpl implements CompanyService {
 
