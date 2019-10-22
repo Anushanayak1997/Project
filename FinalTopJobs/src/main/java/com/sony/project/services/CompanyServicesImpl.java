@@ -16,11 +16,10 @@ import com.sony.project.entities.UserEntity;
 import com.sony.project.entities.CompanyDetailsEntity;
 
 @Service
-public class CompanyServices {
+public class CompanyServicesImpl {
 
 	LinkedList<CompanyDetailsEntity> company = new LinkedList<CompanyDetailsEntity>();
-	// private static final Logger logger =
-	// LoggerFactory.getLogger(UserService.class);
+
 
 	@Autowired
 	HttpSession httpSession;

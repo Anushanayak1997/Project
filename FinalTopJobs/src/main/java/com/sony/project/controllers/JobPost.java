@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.project.entities.JobPostEntity;
-import com.sony.project.services.CompanyServices;
+import com.sony.project.services.CompanyServicesImpl;
 import com.sony.project.services.JobPostService;
 
 @RestController
@@ -20,7 +20,7 @@ public class JobPost {
 	JobPostService jobpostservice;
 	
 	@Autowired
-	CompanyServices companyservice;
+	CompanyServicesImpl companyservice;
 
 //	@RequestMapping(value = "/getjobpost")
 //	public List<JobPostEntity> getJobPost() {

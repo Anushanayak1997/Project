@@ -26,7 +26,7 @@ public class UserService {
 	EmployerCompanyService employercompany;
 	
 	@Autowired
-	CompanyServices companyservice;
+	CompanyServicesImpl companyservice;
 
 	public int registerUser(UserEntity userentity) {
 		users.add(userentity);
