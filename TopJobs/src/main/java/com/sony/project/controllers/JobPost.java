@@ -28,7 +28,7 @@ public class JobPost {
 //	}
 
 	@RequestMapping(value = "/addjobpost", method = RequestMethod.POST)
-	public void addJobPost(@RequestBody JobPostEntity jobpostentity) {
-			companyservice.addJobPost(jobpostentity);
+	public Integer addJobPost(@RequestBody JobPostEntity jobpostentity) {
+			return companyservice.addJobPost(jobpostentity);
 	}
 }

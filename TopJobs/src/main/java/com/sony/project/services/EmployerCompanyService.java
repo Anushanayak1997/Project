@@ -18,6 +18,10 @@ public class EmployerCompanyService {
 
 	LinkedList<EmployerCompanyEntity> employercompanylist = new LinkedList<EmployerCompanyEntity>();
 	
+	public LinkedList<EmployerCompanyEntity> getEmployerCompany(){
+		return employercompanylist;
+	}
+	
 	public void addEmployerCompany() {
 		int userid = (Integer) httpSession.getAttribute("userid");
 		int companyid = (Integer) httpSession.getAttribute("companyid");
@@ -25,12 +29,14 @@ public class EmployerCompanyService {
 		employercompanylist.add(employercompany);
 	}
 	
-	public void setSessionCompanyId(int userId) {
+	public Integer setSessionCompanyId(int userId) {
 		Iterator<EmployerCompanyEntity> iterator = employercompanylist.iterator();
 		while(iterator.hasNext()) {
-			if(iterator.next().getUserId() == userId) {
-				httpSession.setAttribute("companyid", iterator.next().getCompanyId());
+			EmployerCompanyEntity employercompany = iterator.next();
+			if(employercompany.getUserId() == userId) {
+				return employercompany.getCompanyId();
 			}
 		}
+		return -1;
 	}
 }

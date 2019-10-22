@@ -9,6 +9,7 @@ import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sony.project.entities.EmployerCompanyEntity;
 import com.sony.project.entities.LoginEntity;
 import com.sony.project.entities.UserEntity;
 
@@ -35,17 +36,18 @@ public class UserService {
 		return companyservice.addCompanyName(userentity.getCompanyName());
 	}
 	
-	public boolean loginUser(LoginEntity loginentity) {
+	public Integer loginUser(LoginEntity loginentity) {
 		Iterator<UserEntity> iterator = users.iterator();
 		while(iterator.hasNext()) {
 			UserEntity userentity = iterator.next();
 			if(userentity.getEmailID().equals(loginentity.getEmail()) && userentity.getPassword().equals(loginentity.getPassword())) {
+				int companyid = employercompany.setSessionCompanyId(userentity.getUserID());
 				httpSession.setAttribute("userid", userentity.getUserID());
-				employercompany.setSessionCompanyId(userentity.getUserID());
-				return true;
+				httpSession.setAttribute("companyid",companyid);
+				return (Integer)httpSession.getAttribute("userid");
 			}
 		}
-		return false;
+		return (Integer)httpSession.getAttribute("userid");
 	}
 	
 	public LinkedList<UserEntity> getUsers() {

@@ -20,8 +20,8 @@ public class Company {
 	
 
 	@RequestMapping(value = "/addcompanydetails", method = RequestMethod.POST)
-	public CompanyDetailsEntity addCompanyDetails(@RequestBody CompanyDetailsEntity companyDetails) {
-		return companyServices.addCompanyDetails(companyDetails);
+	public void addCompanyDetails(@RequestBody CompanyDetailsEntity companyDetails) {
+		companyServices.addCompanyDetails(companyDetails);
 	}
 
 	@RequestMapping(value = "/companydetails")

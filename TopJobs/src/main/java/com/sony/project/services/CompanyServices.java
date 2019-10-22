@@ -19,7 +19,8 @@ import com.sony.project.entities.CompanyDetailsEntity;
 public class CompanyServices {
 
 	LinkedList<CompanyDetailsEntity> company = new LinkedList<CompanyDetailsEntity>();
-	// private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(UserService.class);
 
 	@Autowired
 	HttpSession httpSession;
@@ -44,9 +45,8 @@ public class CompanyServices {
 		return companyid;
 	}
 
-	public CompanyDetailsEntity addCompanyDetails(CompanyDetailsEntity companyDetails) {
+	public void addCompanyDetails(CompanyDetailsEntity companyDetails) {
 		Iterator<CompanyDetailsEntity> iterator = company.iterator();
-		int flag = 0;
 		CompanyDetailsEntity companydetails = null;
 		while (iterator.hasNext()) {
 			companydetails = iterator.next();
@@ -54,11 +54,8 @@ public class CompanyServices {
 				companyDetails.setCompanyName(companydetails.getCompanyName());
 				companyDetails.setCompanyId(companydetails.getCompanyId());
 				company.set(company.indexOf(companydetails), companyDetails);
-				flag = 1;
-				return companydetails;
 			}
 		}
-		return companydetails;
 	}
 
 	public CompanyDetailsEntity getCompanyDetails(int id) {
@@ -93,10 +90,21 @@ public class CompanyServices {
 			}
 		}
 	}
-	
-	public void addJobPost(JobPostEntity jobpostentity) {
-		int companyid = (Integer)httpSession.getAttribute("companyid");
+
+	public Integer addJobPost(JobPostEntity jobpostentity) {
+		int companyid = (Integer) httpSession.getAttribute("companyid");
 		CompanyDetailsEntity companydetails = company.get(companyid);
-		companydetails.getJobposts().add(jobpostentity);
+		// companydetails.getJobposts().add(jobpostentity);
+		LinkedList<JobPostEntity> jobposts = companydetails.getJobposts();
+		if (!jobposts.isEmpty()) {
+			int lastid = jobposts.getLast().getJobPostId();
+			if (lastid >= 0) {
+				jobpostentity.setJobPostId(lastid + 1);
+			} else {
+				jobpostentity.setJobPostId(0);
+			}
+		}
+		jobposts.add(jobpostentity);
+		return (Integer) httpSession.getAttribute("companyid");
 	}
 }
