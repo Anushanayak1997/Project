@@ -16,19 +16,19 @@ import com.sony.model.entity.UserEntity;
 public class User {
 	
 	@Autowired
-	UserService userservice;
+	public UserService userService;
 	
 	@RequestMapping(value = "/getallusers")
 	public List<UserEntity> getAllUsers() {
-		return userservice.getAllUsers();
+		return userService.getAllUsers();
 	}
 	
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public boolean addUser(@RequestBody UserEntity userentity) {
-		return userservice.addUser(userentity);
+		return userService.addUser(userentity);
 	}
 	@RequestMapping(value = "/loginuser")
 	public boolean loginUser(@RequestBody UserEntity userentity) {
-		return userservice.authenticateuser(userentity);
+		return userService.authenticateuser(userentity);
 	}
 }

@@ -1,6 +1,5 @@
 package com.sony.model.service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +12,19 @@ import com.sony.model.entity.UserEntity;
 public class UserServiceImpl implements UserService {
 	 
 	@Autowired
-	UserDAO userdao;
-
+	private UserDAO userDao;
 
 	public boolean addUser(UserEntity userenity) {
-		return userdao.addUser(userenity);
+		return userDao.addUser(userenity);
 	}
 
 	public List<UserEntity> getAllUsers() {
-		return userdao.getAllUsers();
+		return userDao.getAllUsers();
 	}
 
 	public boolean authenticateuser(UserEntity userentity)
 	{
-		return userdao.authenticateuser(userentity);
+		return userDao.authenticateuser(userentity);
 	}
 
 	
