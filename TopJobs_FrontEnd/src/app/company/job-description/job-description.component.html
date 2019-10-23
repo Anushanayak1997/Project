@@ -1,0 +1,16 @@
+<div class="container mainCard">
+    <div class="card bg-light  shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="card-header shadow-lg p-3 mb-5 " style="background-color: #00AA9E; ">
+            <div class="" *ngIf = "jobDetails">
+                <h2> {{jobDetails[0].jobTitle}} </h2>
+            </div>
+        </div>
+      <div *ngIf = "jobDetails">
+           {{jobDetails[0].jobDescription}} <br>
+           {{jobDetails[0].isActive}} <br>
+           {{jobDetails[0].experience}} <br>
+           {{jobDetails[0].noOfVacancies}} <br>
+
+    </div>
+
+</div>

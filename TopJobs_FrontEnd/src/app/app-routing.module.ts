@@ -13,6 +13,7 @@ import { SeekerPageComponent } from './job-seeker/seeker-page/seeker-page.compon
 import { SeekerProfileComponent } from './job-seeker/seeker-profile/seeker-profile.component';
 import { ApplicationStatusComponent } from './job-seeker/application-status/application-status.component';
 import { ManageAccountComponent } from './job-seeker/manage-account/manage-account.component';
+import { JobDescriptionComponent } from './company/job-description/job-description.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path: "company/employee-details", component: EmployerDetailsComponent,
+  },
+  {
+    path: "company/job_discription", component: JobDescriptionComponent,
   },
   {
     path: "home", component: MainComponent,
