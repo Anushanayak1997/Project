@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserDAO userdao;
 
-	public void addUser(UserEntity userenity) {
-		userdao.addUser(userenity);
+	public boolean addUser(UserEntity userenity) {
+		return userdao.addUser(userenity);
 	}
 
 	public List<UserEntity> getAllUsers() {
