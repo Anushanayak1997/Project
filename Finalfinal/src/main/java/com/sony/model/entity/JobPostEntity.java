@@ -33,10 +33,12 @@ public class JobPostEntity {
 	public void setJobDescription(String jobDescription) {
 		this.jobDescription = jobDescription;
 	} 
-	public boolean isActive() {
+	 
+	
+	public boolean getIsActive() {
 		return isActive;
 	}
-	public void setActive(boolean isActive) {
+	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
 	public String getExperience() {
