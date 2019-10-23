@@ -1,7 +1,7 @@
 package com.sony.model.entity;
 
 import java.util.List;
-
+ 
 //import com.sony.project.entities.LocationEntity;
 
 public class JobPostEntity {
