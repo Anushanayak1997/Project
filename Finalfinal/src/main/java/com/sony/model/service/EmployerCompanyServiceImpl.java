@@ -8,6 +8,6 @@ import com.sony.dao.EmployerCompanyDAO;
 @Service
 public class EmployerCompanyServiceImpl implements EmployerCompanyService {
 
-	@Autowired
+	//@Autowired
 	EmployerCompanyDAO employercompanydao;
 }
