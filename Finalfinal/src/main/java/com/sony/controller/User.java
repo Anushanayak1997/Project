@@ -1,6 +1,6 @@
 package com.sony.controller;
-
-import java.util.LinkedList;
+ 
+import java.util.LinkedList; 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +27,8 @@ public class User {
 	public boolean addUser(@RequestBody UserEntity userentity) {
 		return userservice.addUser(userentity);
 	}
-	
+	@RequestMapping(value = "/loginuser")
+	public boolean loginUser(@RequestBody UserEntity userentity) {
+		return userservice.authenticateuser(userentity);
+	}
 }

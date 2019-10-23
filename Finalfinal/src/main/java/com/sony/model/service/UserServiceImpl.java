@@ -11,9 +11,10 @@ import com.sony.model.entity.UserEntity;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+	 
 	@Autowired
 	UserDAO userdao;
+
 
 	public boolean addUser(UserEntity userenity) {
 		return userdao.addUser(userenity);
@@ -23,4 +24,10 @@ public class UserServiceImpl implements UserService {
 		return userdao.getAllUsers();
 	}
 
+	public boolean authenticateuser(UserEntity userentity)
+	{
+		return userdao.authenticateuser(userentity);
+	}
+
+	
 }

@@ -1,5 +1,5 @@
-package com.sony.dao;
-
+package com.sony.dao; 
+ 
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,4 +10,6 @@ public interface UserDAO {
 	public boolean addUser(UserEntity userenity);
 	
 	public List<UserEntity> getAllUsers();
+	
+	public boolean authenticateuser(UserEntity userentity);
 }
