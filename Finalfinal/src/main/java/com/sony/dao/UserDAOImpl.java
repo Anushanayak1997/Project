@@ -32,7 +32,7 @@ public class UserDAOImpl implements UserDAO {
 	public boolean addUser(UserEntity userentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer userId = null;
+		Integer userId = null; 
 		
 		if(isUserExists(userentity)) return false;
 
