@@ -32,7 +32,7 @@ public class JobPostEntity {
 	}
 	public void setJobDescription(String jobDescription) {
 		this.jobDescription = jobDescription;
-	}
+	} 
 	public boolean isActive() {
 		return isActive;
 	}
