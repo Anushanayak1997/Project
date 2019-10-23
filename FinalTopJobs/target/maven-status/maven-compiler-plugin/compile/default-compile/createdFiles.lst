@@ -1,4 +1,5 @@
 com\sony\project\entities\JobSeekerProjectEntity.class
+com\sony\project\services\CompanyService.class
 com\sony\project\entities\UserEntity.class
 com\sony\project\entities\LocationEntity.class
 com\sony\project\entities\SeekerJobPostStatusEntity.class
@@ -8,13 +9,13 @@ com\sony\project\services\EmployerCompanyService.class
 com\sony\project\entities\LoginEntity.class
 com\sony\project\services\UserService.class
 com\sony\project\controllers\JobPost.class
-com\sony\project\services\CompanyServices.class
 com\sony\project\controllers\User.class
 com\sony\project\entities\JobSeekerEducationEntity.class
 com\sony\project\entities\SpecializationEntitity.class
 com\sony\project\services\JobPostService.class
 com\sony\project\controllers\Company.class
 com\sony\project\entities\SkillSetEntity.class
+com\sony\project\services\CompanyServicesImpl.class
 com\sony\project\entities\JobSeekerExperienceEntity.class
 com\sony\project\main\MainApp.class
 com\sony\project\entities\JobPostSkillsEntity.class
@@ -22,5 +23,7 @@ com\sony\project\entities\EducationTypeEntity.class
 com\sony\project\entities\CertificatesEntity.class
 com\sony\project\entities\JobSeekerSkillsEntity.class
 com\sony\project\controllers\RestConfiguration.class
+com\sony\project\dao\CompanyDAO.class
 com\sony\project\entities\EmployerCompanyEntity.class
+com\sony\project\dao\CompanyDAOImpl.class
 com\sony\project\entities\CompanyDetailsEntity.class

@@ -2,21 +2,21 @@ package com.sony.project.services;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.sony.project.dao.CompanyDAO;
+import com.sony.project.dao.CompanyDAOImpl;
 import com.sony.project.entities.CompanyDetailsEntity;
 import com.sony.project.entities.JobPostEntity;
-import com.sony.project.entities.UserEntity;
-import com.sony.project.entities.CompanyDetailsEntity;
-
+ 
 @Service
-public class CompanyServicesImpl {
+public class CompanyServicesImpl implements CompanyService {
 
 	LinkedList<CompanyDetailsEntity> company = new LinkedList<CompanyDetailsEntity>();
 
@@ -24,37 +24,44 @@ public class CompanyServicesImpl {
 	@Autowired
 	HttpSession httpSession;
 
-	@Autowired
+	@Autowired	
 	EmployerCompanyService employercompany;
+	
+	
+	private CompanyDAOImpl companyDAOImpl;
 
 	public LinkedList<CompanyDetailsEntity> getCompany() {
 		return company;
 	}
 
-	public int addCompanyName(String companyname) {
-		int index, companyid;
-		CompanyDetailsEntity companyDetails = new CompanyDetailsEntity();
-		companyDetails.setCompanyName(companyname);
-		company.add(companyDetails);
-		index = company.indexOf(companyDetails);
-		company.get(index).setCompanyId(index);
-		companyid = company.get(index).getCompanyId();
-		httpSession.setAttribute("companyid", companyid);
-		employercompany.addEmployerCompany();
-		return companyid;
-	}
+//	public void addCompanyName(String companyname) {
+//		//int index, companyid;
+//		CompanyDetailsEntity companyDetails = new CompanyDetailsEntity();
+//		companyDetails.setCompanyName(companyname);
+//		company.add(companyDetails);
+//		//index = company.indexOf(companyDetails);
+//		//company.get(index).setCompanyId(index);
+//		//companyid = company.get(index).getCompanyId();
+//		// httpSession.setAttribute("companyid", companyid);
+//		// employercompany.addEmployerCompany();
+//		companyDAO.addCompanyDetails(companyDetails);
+//	}
 
-	public void addCompanyDetails(CompanyDetailsEntity companyDetails) {
-		Iterator<CompanyDetailsEntity> iterator = company.iterator();
-		CompanyDetailsEntity companydetails = null;
-		while (iterator.hasNext()) {
-			companydetails = iterator.next();
-			if (companydetails.getCompanyId() == (Integer) httpSession.getAttribute("companyid")) {
-				companyDetails.setCompanyName(companydetails.getCompanyName());
-				companyDetails.setCompanyId(companydetails.getCompanyId());
-				company.set(company.indexOf(companydetails), companyDetails);
-			}
-		}
+	public Integer addCompanyDetails(CompanyDetailsEntity companyDetails) {
+		
+		//Iterator<CompanyDetailsEntity> iterator = company.iterator();
+//		CompanyDetailsEntity companydetails = null;
+//		while (iterator.hasNext()) {
+//			companydetails = iterator.next();
+//			if (companydetails.getCompanyId() == (Integer) httpSession.getAttribute("companyid")) {
+//				companyDetails.setCompanyName(companydetails.getCompanyName());
+//				companyDetails.setCompanyId(companydetails.getCompanyId());
+//				company.set(company.indexOf(companydetails), companyDetails);
+//			}
+//		}
+//		return companyDetails;
+			return companyDAOImpl.addCompanyDetails(companyDetails);
+			
 	}
 
 	public CompanyDetailsEntity getCompanyDetails(int id) {

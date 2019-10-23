@@ -1,9 +1,9 @@
-package com.sony.project.dao;
+package com.sony.project.services;
 
 import com.sony.project.entities.CompanyDetailsEntity;
 import com.sony.project.entities.JobPostEntity;
 
-public interface CompanyDAO {
+public interface CompanyService {
 	
 	//public void addCompanyName(String companyname);
 	
