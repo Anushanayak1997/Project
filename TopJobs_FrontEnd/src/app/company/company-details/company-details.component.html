@@ -2,7 +2,7 @@
 
 
 
-    <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
+    <form #userForm="ngForm" *ngIf="!submitted"  novalidate>
 
         <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
             <div class="card-header " style="background-color: #00AA9E; ">
@@ -128,7 +128,7 @@
 
 
                     <button class="btn btn-primary btn-space btnStyle" [disabled]="userForm.form.invalid || topicHasError" type="submit"
-                    ><strong>Save</strong>
+                    (click)="onSubmit()"><strong>Save</strong>
                     </button>
                    
                     <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="goEmployerDetails()" type="button" 

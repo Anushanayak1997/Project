@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import { CompanyService } from '../company.service';
 import { Company } from '../company';
 import { Router } from '@angular/router';
+
+import { pipe, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 @Component({
@@ -14,8 +17,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./company-details.component.css']
 })
 export class CompanyDetailsComponent implements OnInit {
-
-
+  compDetails:any;
+  url = environment.apiBaseUrl + "addcompanydetails";
 
   ngOnInit() {
   }
@@ -25,29 +28,43 @@ export class CompanyDetailsComponent implements OnInit {
 
   title = 'app';
 
-  userModel = new Company('', '', '.', "", '', '', "", "");
-
-
+  userModel = new Company('a1', 'a1', 'a1', "a1", 'a1', 'a1', "a1", "a1");
+  
   errorMsg = '';
 
-  constructor(private _enrollmentService: CompanyService, private route: Router) { }
+  constructor(private _http: HttpClient, private route: Router) { }
 
 
 
   onSubmit() {
+    this.compDetails = {
+      companyName:this.userModel.companyName,
+      companyDescription:this.userModel.companyDescription,
+      establishmentDate:this.userModel.establishmentDate,
+      websiteUrl:this.userModel.websiteUrl,
+      headquarter:this.userModel.headquarter,
+      specialiaties:this.userModel.specialities,
+      industry:this.userModel.industry,
+      type:this.userModel.type
+    }
+    console.log(this.compDetails)
 
-    console.log()
-    this._enrollmentService.enroll(this.userModel).subscribe(
+    this._http.post(this.url,this.compDetails).subscribe(
       (response) => {
         console.log('Success!', response),
-          console.log(this.userModel);
+          console.log(this.userModel)
       }
-    )
+    ) || pipe(catchError(this.errorHandler) )
 
   }
 
+  errorHandler(error: HttpErrorResponse) {
+    console.log(error)
+    return throwError(error)
+  }
+
   goEmployerDetails() {
-    this.route.navigate(['company/employee-details']);
+    this.route.navigate(['company/jobpost']);
   }
 
  
