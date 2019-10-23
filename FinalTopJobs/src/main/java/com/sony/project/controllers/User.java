@@ -27,10 +27,10 @@ public class User {
 		return userservice.getUsers();
 	}
 
-	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public int registerUser(@RequestBody UserEntity userentity) {
-		return userservice.registerUser(userentity);
-	}
+//	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
+////	public int registerUser(@RequestBody UserEntity userentity) {
+////		return userservice.registerUser(userentity);
+////	}
 
 	@RequestMapping(value = "/loginuser")
 	public Integer loginUser(@RequestBody LoginEntity loginentity) {

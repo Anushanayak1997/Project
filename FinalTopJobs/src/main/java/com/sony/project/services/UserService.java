@@ -28,12 +28,12 @@ public class UserService {
 	@Autowired
 	CompanyServicesImpl companyservice;
 
-	public int registerUser(UserEntity userentity) {
+	public void registerUser(UserEntity userentity) {
 		users.add(userentity);
 		int index = users.indexOf(userentity);
 		users.get(index).setUserID(index);
 		httpSession.setAttribute("userid", userentity.getUserID());
-		return companyservice.addCompanyName(userentity.getCompanyName());
+		//companyservice.addCompanyName(userentity.getCompanyName());
 	}
 	
 	public Integer loginUser(LoginEntity loginentity) {

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.sony.project.entities.CompanyDetailsEntity;
+import com.sony.project.services.CompanyService;
 import com.sony.project.services.CompanyServicesImpl;
 import com.sony.project.services.UserService;
 
@@ -16,17 +17,17 @@ import com.sony.project.services.UserService;
 public class Company {
 
 	@Autowired
-	CompanyServicesImpl companyServices;
+	CompanyService companyServices;
 	
 
 	@RequestMapping(value = "/addcompanydetails", method = RequestMethod.POST)
-	public void addCompanyDetails(@RequestBody CompanyDetailsEntity companyDetails) {
-		companyServices.addCompanyDetails(companyDetails);
+	public Integer addCompanyDetails(@RequestBody CompanyDetailsEntity companyDetails) {
+		return companyServices.addCompanyDetails(companyDetails);
 	}
 
 	@RequestMapping(value = "/companydetails")
 	public LinkedList<CompanyDetailsEntity> details() {
-		return companyServices.getCompany();
+		return null;//companyServices.getCompany();
 	}
 
 	@RequestMapping(value = "/companydetails/{id}")

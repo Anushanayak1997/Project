@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sony.project</groupId>
-	<artifactId>FinalTopJobs</artifactId>
+	<groupId>com.sony.topjob</groupId>
+	<artifactId>Finalfinal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<parent>
@@ -11,7 +11,7 @@
 		<version>2.1.6.RELEASE</version>
 	</parent>
 
-	<repositories>
+	<repositories> 
 		<repository>
 			<id>JBoss repository</id>
 			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
@@ -55,8 +55,8 @@
 
 		<dependency>
 			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>6</version>
+			<artifactId>ojdbc6</artifactId>
+			<version>1.0</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/ojdbc6.jar</systemPath>
 		</dependency>
