@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sony.project.entities.CompanyDetailsEntity;
 import com.sony.project.entities.JobPostEntity;
 
-@Repository("companyDAOImpl")
+@Repository
 public class CompanyDAOImpl implements CompanyDAO{
 
 	@Autowired

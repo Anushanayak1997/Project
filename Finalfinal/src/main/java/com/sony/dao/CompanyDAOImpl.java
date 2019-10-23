@@ -12,7 +12,6 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.CompanyEntity;
-import com.sony.model.entity.UserEntity;
 
 @Repository
 public class CompanyDAOImpl implements CompanyDAO {

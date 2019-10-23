@@ -13,11 +13,12 @@ com\sony\project\controllers\User.class
 com\sony\project\entities\JobSeekerEducationEntity.class
 com\sony\project\entities\SpecializationEntitity.class
 com\sony\project\services\JobPostService.class
+com\sony\project\services\UserServiceImpl.class
 com\sony\project\controllers\Company.class
 com\sony\project\entities\SkillSetEntity.class
 com\sony\project\services\CompanyServicesImpl.class
 com\sony\project\entities\JobSeekerExperienceEntity.class
-com\sony\project\main\MainApp.class
+com\sony\project\MainApp.class
 com\sony\project\entities\JobPostSkillsEntity.class
 com\sony\project\entities\EducationTypeEntity.class
 com\sony\project\entities\CertificatesEntity.class

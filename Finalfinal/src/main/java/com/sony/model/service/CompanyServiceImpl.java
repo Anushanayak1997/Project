@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.sony.dao.CompanyDAO;
 import com.sony.model.entity.CompanyEntity;
+import com.sony.model.entity.EmployerCompanyEntity;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
@@ -20,6 +21,9 @@ public class CompanyServiceImpl implements CompanyService{
 	@Autowired
 	HttpSession httpsession;
 	
+	@Autowired
+	EmployerCompanyService employerservice;
+	
 	public List<CompanyEntity> getAllCompany() {
 		return companydao.getAllCompany();
 	}
@@ -28,6 +32,10 @@ public class CompanyServiceImpl implements CompanyService{
 		Integer companyId = companydao.addCompany(company);
 		if(companyId != null) {
 			httpsession.setAttribute("companyid", companyId);
+			Integer userid = (Integer) httpsession.getAttribute("userid");
+			Integer companyid = (Integer) httpsession.getAttribute("companyid");
+			EmployerCompanyEntity employercompanyentity = new EmployerCompanyEntity(userid, companyid);
+			employerservice.addEmployerCompany(employercompanyentity);
 			return true;
 		}
 		return false;
