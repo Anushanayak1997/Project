@@ -12,8 +12,8 @@ export class CompanyService {
 
   url = environment.apiBaseUrl + "addcompanydetails";
 
-  enroll (user: Company) {
-    return this._http.post<any>(this.url, user)
+  enroll (company: Company) {
+    return this._http.post<any>(this.url, company)
       .pipe(catchError(this.errorHandler))
   }
 

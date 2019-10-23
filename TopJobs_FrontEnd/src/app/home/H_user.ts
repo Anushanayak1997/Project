@@ -1,7 +1,8 @@
 export class loginUser{
     constructor(
-        public username:string,
-        public password:string
+        public emailID:string,
+        public password:string,
+        public userType:string,
     ){}
 }
 

@@ -10,23 +10,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  url1 = environment.apiBaseUrl + "companydetails";  
+  url1 = environment.apiBaseUrl + "companydetails";
   url2 = environment.apiBaseUrl + "adduser";
   details: any;
   company: any;
-  PostCompany:any;
+  PostCompany: any;
   topicHasError = true;
 
   constructor(private router: Router, private _http: HttpClient) { }
 
   regiseterModel = new RegiseterUser(
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "a1",
+    "a1",
+    "a1",
+    "a1",
+    "a1",
+    "1",
+    "a1",
   )
 
   ngOnInit() {
@@ -38,32 +38,36 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  
+
   onSubmit() {
     console.log(this.regiseterModel);
-    this.PostCompany ={
-      firstName:this.regiseterModel.firstName,
-      lastName:this.regiseterModel.lastName,
-      password:this.regiseterModel.password,
-      emailID:this.regiseterModel.emailID,
-      contactNumber:this.regiseterModel.contactNumber,
-      userType:this.regiseterModel.userType,
-      companyName:this.regiseterModel.companyName
+    this.PostCompany = {
+      firstName: this.regiseterModel.firstName,
+      lastName: this.regiseterModel.lastName,
+      password: this.regiseterModel.password,
+      emailID: this.regiseterModel.emailID,
+      contactNumber: this.regiseterModel.contactNumber,
+      userType: this.regiseterModel.userType,
+
     }
-    
-    this._http.post(this.url2,this.PostCompany).subscribe(
-      ()=>{
+
+    this._http.post(this.url2, this.PostCompany).subscribe(
+      (Response) => {
+        console.log(Response);
         console.log("succees");
-        
+
       }
     )
-    /*
-    if(this.regiseterModel.companyName == 'others'){
-      this.router.navigate(['company/employee-details']);
+    if (this.regiseterModel.userType == 'Employer') {
+      if (this.regiseterModel.companyName == 'others') {
+        this.router.navigate(['company/details']);
+      } else {
+        this.router.navigate(['company/jobpost']);
+      }
     }else{
-      this.router.navigate(['company/jobpost']);
+      alert("nothing")
     }
-    */
+
   }
 
   getCompanies() {

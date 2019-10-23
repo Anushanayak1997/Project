@@ -1,27 +1,61 @@
-<nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-            alt="">
-        TopJobs
-    </a>
-  
-</nav>
-<div class="container">
-    <div class="form-group dropdown show">
-        <strong>I am</strong>
-        <select>
-            <option *ngFor="let topic of topics">{{ topic }}</option>
-        </select>
-
-    </div>
-</div>
-
-
-
 <div class="container mainCard">
-        <form #userForm="ngForm">
-       
+    <form #userForm="ngForm"  (ngSubmit)="onSubmit()" novalidate>
+        <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
+            <div class="card-header " style="background-color: #00AA9E; ">
+                <div class="">
+                    <h2> Login</h2>
+                </div>
+            </div>
 
+            <article class="card-body mx-auto " style="min-width: 70%;">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><strong>I am </strong></span>
+                    </div>
+                    <select class="form-control" id="" [(ngModel)]="userModel.userType" name="userType"
+                        (blur)="validateTopic(userType.value)" (change)="validateTopic(userType.value)"
+                        #userType="ngModel" [class.is-invalid]="topicHasError && userType.touched" required>
 
+                        <option value="JobSeeker">JobSeeker</option>
+                        <option value="Employer">Employer</option>
+
+                    </select>
+                    <small class="text-danger" [class.d-none]="!topicHasError || userType.untouched">Please choose a
+                        topic</small>
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i><strong></strong>*</span>
+                    </div>
+
+                    <input type="text" #emailID="ngModel" required class="form-control" minlength="3"
+                        [class.is-invalid]="emailID.invalid && emailID.touched" name="emailID"
+                        [(ngModel)]="userModel.emailID" placeholder="emailID">
+                    <small class="text-danger" [class.d-none]="emailID.valid || emailID.untouched">emailID
+                        is
+                        required</small>
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i><strong></strong>*</span>
+                    </div>
+
+                    <input type="password" #password="ngModel" required class="form-control" minlength="3"
+                        [class.is-invalid]="password.invalid && password.touched" name="password"
+                        [(ngModel)]="userModel.password" placeholder="**">
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password
+                        is
+                        required</small>
+
+                        
+                </div>
+                <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="onSubmit()" type="button" 
+                ><strong>Next</strong>
+          </button>
+
+            </article>
+        </div>
     </form>
 </div>

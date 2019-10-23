@@ -9,6 +9,10 @@ import { EmployerDetailsComponent } from './company/employer-details/employer-de
 import { MainComponent } from './home/main/main.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
+import { SeekerPageComponent } from './job-seeker/seeker-page/seeker-page.component';
+import { SeekerProfileComponent } from './job-seeker/seeker-profile/seeker-profile.component';
+import { ApplicationStatusComponent } from './job-seeker/application-status/application-status.component';
+import { ManageAccountComponent } from './job-seeker/manage-account/manage-account.component';
 
 
 const routes: Routes = [
@@ -37,7 +41,18 @@ const routes: Routes = [
   {
     path: "register", component: RegisterComponent,
   },
-  
+  {
+    path: "seeker/home", component: SeekerPageComponent,
+  },
+  {
+    path: "seeker/profile", component:SeekerProfileComponent
+  },
+  {
+    path: "seeker/status", component: ApplicationStatusComponent,
+  },
+  {
+    path: "seeker/account", component: ManageAccountComponent,
+  },
 
 
 
