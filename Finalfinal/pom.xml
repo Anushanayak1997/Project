@@ -11,7 +11,7 @@
 		<version>2.1.6.RELEASE</version>
 	</parent>
 
-	<repositories>
+	<repositories> 
 		<repository>
 			<id>JBoss repository</id>
 			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
