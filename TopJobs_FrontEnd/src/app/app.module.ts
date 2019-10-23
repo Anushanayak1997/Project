@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CompanyModule } from './company/company.module';
 import { HomeModule } from './home/home.module';
+import { JobSeekerModule } from './job-seeker/job-seeker.module';
 
 
 
@@ -25,7 +26,8 @@ import { HomeModule } from './home/home.module';
     FormsModule,
 
     CompanyModule,
-    HomeModule
+    HomeModule,
+    JobSeekerModule
 
   ],
   providers: [],

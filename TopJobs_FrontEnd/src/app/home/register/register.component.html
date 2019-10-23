@@ -13,15 +13,17 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id=""><strong>I am </strong></span>
                     </div>
-                    <select class="form-control" id="" [(ngModel)]="regiseterModel.userType"  name="userType" 
-                    (blur)="validateTopic(userType.value)" (change)="validateTopic(userType.value)" #userType="ngModel" [class.is-invalid]="topicHasError && userType.touched" required>
-                     
-                    <option value="JobSeeker">JobSeeker</option>
+                    <select class="form-control" id="" [(ngModel)]="regiseterModel.userType" name="userType"
+                        (blur)="validateTopic(userType.value)" (change)="validateTopic(userType.value)"
+                        #userType="ngModel" [class.is-invalid]="topicHasError && userType.touched" required>
+
+                        <option value="JobSeeker">JobSeeker</option>
                         <option value="Employer">Employer</option>
 
                     </select>
-                    <small class="text-danger" [class.d-none]="!topicHasError || userType.untouched">Please choose a topic</small>   
-                   
+                    <small class="text-danger" [class.d-none]="!topicHasError || userType.untouched">Please choose a
+                        topic</small>
+
                 </div>
 
 
@@ -29,26 +31,25 @@
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text glyphicon glyphicon-check" id=""><i class="fas fa-file"></i><strong></strong></span>
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i><strong></strong>*</span>
                     </div>
-                    
+
                     <input input-smtype="text" #firstName="ngModel" required class="form-control" minlength="3"
                         [class.is-invalid]="firstName.invalid && firstName.touched" name="firstName"
                         [(ngModel)]="regiseterModel.firstName" placeholder="firstName">
-                        <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">lastName
-                                is
-                                required</small>
-
+                    <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">lastName
+                        is
+                        required</small>
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id=""><strong>lastName</strong></span>
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i><strong></strong></span>
                     </div>
 
                     <input type="text" #lastName="ngModel" required class="form-control"
                         [class.is-invalid]="lastName.invalid && lastName.touched" name="lastName"
-                        [(ngModel)]="regiseterModel.lastName">
+                        [(ngModel)]="regiseterModel.lastName" placeholder="lastName">
                     <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">lastName
                         is
                         required</small>
@@ -56,46 +57,44 @@
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id=""><strong>emailID</strong></span>
+                        <span class="input-group-text" id=""><i class='fas fa-at'></i><strong></strong></span>
                     </div>
 
                     <input type="email" #emailID="ngModel" required class="form-control"
                         [class.is-invalid]="emailID.invalid && emailID.touched" name="emailID"
-                        [(ngModel)]="regiseterModel.emailID">
+                        [(ngModel)]="regiseterModel.emailID" placeholder="emailID">
                     <small class="text-danger" [class.d-none]="emailID.valid || emailID.untouched">emailID
                         is
                         required</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id=""><strong>password</strong></span>
+                        <span class="input-group-text" id=""><i class="fa fa-key"></i><strong></strong></span>
                     </div>
 
                     <input type="password" #password="ngModel" required class="form-control"
                         [class.is-invalid]="password.invalid && password.touched" name="password"
-                        [(ngModel)]="regiseterModel.password">
-                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password
-                        is
-                        required</small>
+                        [(ngModel)]="regiseterModel.password" placeholder=""  required minlength="6" >
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id=""><strong>contactNumber</strong></span>
+                        <span class="input-group-text" id=""><i class="fa fa-mobile" aria-hidden="true"></i></span>
                     </div>
 
                     <input type="number" #contactNumber="ngModel" required class="form-control"
                         [class.is-invalid]="contactNumber.invalid && contactNumber.touched" name="contactNumber"
-                        [(ngModel)]="regiseterModel.contactNumber">
+                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber">
                     <small class="text-danger"
                         [class.d-none]="contactNumber.valid || contactNumber.untouched">contactNumber
                         is
                         required</small>
                 </div>
 
-                <div *ngIf = "regiseterModel.userType=='Employer'">
+                <div *ngIf="regiseterModel.userType=='Employer'">
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id=""><strong>Company</strong></span>
+                            <span class="input-group-text" id=""><i class="fa fa-building"></i><strong></strong></span>
                         </div>
                         <select class="form-control" id="" [(ngModel)]="regiseterModel.companyName" name="companyName"
                             required>
@@ -113,7 +112,8 @@
 
 
 
-                <button class="btn btn-primary btn-space btnStyle" (click)="onSubmit()" [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
+                <button class="btn btn-primary btn-space btnStyle" (click)="onSubmit()"
+                    [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
                 </button>
             </article>
 
