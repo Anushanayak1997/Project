@@ -36,7 +36,7 @@ public class JobPostEntity {
 	    
 	
 	public boolean getIsActive() {
-		return isActive;
+		return isActive; 
 	}
 	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
