@@ -30,10 +30,12 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
-	public void addUser(UserEntity userentity) {
+	public boolean addUser(UserEntity userentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer userId = null;
+		
+		if(isUserExists(userentity)) return false;
 
 		try {
 			tx = session.beginTransaction();
@@ -46,6 +48,29 @@ public class UserDAOImpl implements UserDAO {
 		} finally {
 			session.close();
 		}
+		return true;
+	}
+
+	public boolean isUserExists(UserEntity userentity) {
+		Session session = factory.openSession();
+		boolean result = false;
+		Transaction tx = null;
+		try {
+			tx = session.getTransaction();
+			tx.begin();
+			Query query = session.createQuery("from UserEntity where emailID='" + userentity.getEmailID() + "'");
+			UserEntity u = (UserEntity) query.uniqueResult();
+			tx.commit();
+			if (u != null)
+				result = true;
+		} catch (Exception ex) {
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 
 	public List<UserEntity> getAllUsers() {

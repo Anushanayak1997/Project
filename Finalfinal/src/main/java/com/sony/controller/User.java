@@ -24,8 +24,8 @@ public class User {
 	}
 	
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public void addUser(@RequestBody UserEntity userentity) {
-		userservice.addUser(userentity);
+	public boolean addUser(@RequestBody UserEntity userentity) {
+		return userservice.addUser(userentity);
 	}
 	@RequestMapping(value = "/loginuser")
 	public boolean loginUser(@RequestBody UserEntity userentity) {
