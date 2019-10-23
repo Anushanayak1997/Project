@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -10,15 +11,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.JobPostEntity;
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.CompanyEntity;
 
 @Repository
-public class JobPostDAOImpl implements JobPostDAO {
+public class CompanyDAOImpl implements CompanyDAO {
 
 	private static SessionFactory factory;
 
-	public JobPostDAOImpl() {
+	public CompanyDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -26,14 +26,15 @@ public class JobPostDAOImpl implements JobPostDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-      
-	public boolean addJobPost(JobPostEntity jobpostentity) {
+
+	public Integer addCompany(CompanyEntity companyentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobpostId ;
+		Integer companyId = null;
+
 		try {
 			tx = session.beginTransaction();
-			jobpostId = (Integer) session.save(jobpostentity);
+			companyId = (Integer) session.save(companyentity);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -42,18 +43,17 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		return true;
-
+		return companyId;
 	}
 
-	public List<JobPostEntity> getAllJobs() {
+	public List<CompanyEntity> getAllCompany() {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<JobPostEntity> jobs = new ArrayList<JobPostEntity>();
+		List<CompanyEntity> companies = new ArrayList<CompanyEntity>();
 
 		try {
 			tx = session.beginTransaction();
-			jobs = session.createQuery("FROM JobPostEntity").list();
+			companies = session.createQuery("FROM CompanyEntity").list();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -62,8 +62,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		return jobs;
-
+		return companies;
 	}
 
 }

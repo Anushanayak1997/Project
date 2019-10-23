@@ -9,5 +9,6 @@ public interface UserService {
 	public boolean addUser(UserEntity userenity);
 	
 	public List<UserEntity> getAllUsers();
+	
 	public boolean authenticateuser(UserEntity userentity);
 }

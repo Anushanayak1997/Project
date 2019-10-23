@@ -39,7 +39,7 @@ public class JobPostEntity {
 		return isActive; 
 	}
 	public void setIsActive(boolean isActive) {
-		this.isActive = isActive;
+		this.isActive = isActive; 
 	}
 	public String getExperience() {
 		return experience;

@@ -7,7 +7,7 @@ import com.sony.model.entity.UserEntity;
 
 public interface UserDAO {
 	
-	public boolean addUser(UserEntity userenity);
+	public Integer addUser(UserEntity userenity);
 	
 	public List<UserEntity> getAllUsers();
 	

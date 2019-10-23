@@ -2,6 +2,8 @@ package com.sony.model.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,20 @@ public class UserServiceImpl implements UserService {
 	 
 	@Autowired
 	private UserDAO userDao;
+	
+	UserDAO userdao;
+
+	@Autowired
+	HttpSession httpsession;
 
 	public boolean addUser(UserEntity userenity) {
-		return userDao.addUser(userenity);
+	
+		Integer userId = userdao.addUser(userenity);
+		if(userId != null) {
+			httpsession.setAttribute("userid", userId);
+			return true;
+		}
+		return false;
 	}
 
 	public List<UserEntity> getAllUsers() {
@@ -24,8 +37,7 @@ public class UserServiceImpl implements UserService {
 
 	public boolean authenticateuser(UserEntity userentity)
 	{
-		return userDao.authenticateuser(userentity);
-	}
 
-	
+		return userdao.authenticateuser(userentity);
+	}	
 }

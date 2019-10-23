@@ -13,8 +13,13 @@
 		<property name="hibernate.defaut_schema">ANUSHA</property>
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create</property>
-		
+
+		<mapping resource="com/sony/mapping/employercompany.hbm.xml" />
 		<mapping resource="com/sony/mapping/user.hbm.xml"></mapping>
+
 		<mapping resource="com/sony/mapping/jobpost.hbm.xml"></mapping>
+
+		<mapping resource="com/sony/mapping/company.hbm.xml" />
+
 	</session-factory>
 </hibernate-configuration>
