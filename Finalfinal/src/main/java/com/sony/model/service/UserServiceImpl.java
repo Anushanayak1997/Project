@@ -23,4 +23,10 @@ public class UserServiceImpl implements UserService {
 		return userdao.getAllUsers();
 	}
 
+	public boolean authenticateuser(UserEntity userentity)
+	{
+		return userdao.authenticateuser(userentity);
+	}
+
+	
 }

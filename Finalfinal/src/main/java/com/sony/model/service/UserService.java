@@ -11,4 +11,5 @@ public interface UserService {
 	public void addUser(UserEntity userenity);
 	
 	public List<UserEntity> getAllUsers();
+	public boolean authenticateuser(UserEntity userentity);
 }
