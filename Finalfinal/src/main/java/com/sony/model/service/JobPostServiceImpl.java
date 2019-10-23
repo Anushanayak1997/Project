@@ -13,7 +13,7 @@ import com.sony.model.entity.JobPostEntity;
 @Service
 public class JobPostServiceImpl implements JobPostService {
 
-	// @Autowired   
+	// @Autowired    
 	public JobPostDAO jobpostdao;
 
 	@Autowired
