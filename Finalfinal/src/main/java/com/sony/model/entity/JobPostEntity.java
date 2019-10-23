@@ -9,7 +9,7 @@ public class JobPostEntity {
 	private String jobTitle;
 	private String jobDescription;
 	private boolean isActive;
-	private String experience;
+	private String experience; 
 	private int noOfApplicants;
 	private String postDate;
 	private int noOfVacancies;
