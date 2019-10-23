@@ -30,12 +30,12 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
-	public boolean addUser(UserEntity userentity) {
+	public Integer addUser(UserEntity userentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer userId = null;
+		Integer userId = null; 
 		
-		if(isUserExists(userentity)) return false;
+		if(isUserExists(userentity)) return userId;
 
 		try {
 			tx = session.beginTransaction();
@@ -48,7 +48,7 @@ public class UserDAOImpl implements UserDAO {
 		} finally {
 			session.close();
 		}
-		return true;
+		return userId;
 	}
 
 	public boolean isUserExists(UserEntity userentity) {

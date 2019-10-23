@@ -8,18 +8,19 @@
 		<meta attribute="class-description">
 			This class contains the user detail.
 		</meta>
-	
-			<id name="userID" type="int" column="user_id">
-				<generator class="native" />
-			</id>
 
-			<property name="password" column="password" type="string" />
-			<property name="firstName" column="firstname" type="string" />
-			<property name="lastName" column="lastname" type="string" />
-			<property name="emailID" column="email_id" type="string" />
-			<property name="contactNumber" column="contact_no" type="string" />
-			<property name="userType" column="user_type" type="string" />
+		<id name="userID" type="int" column="user_id">
+			<generator class="native">
+				<param name="sequence">USER_ID_SEQ</param>
+			</generator>
+		</id>
+
+		<property name="password" column="password" type="string" />
+		<property name="firstName" column="firstname" type="string" />
+		<property name="lastName" column="lastname" type="string" />
+		<property name="emailID" column="email_id" type="string" />
+		<property name="contactNumber" column="contact_no" type="string" />
+		<property name="userType" column="user_type" type="string" />
 
 	</class>
-
 </hibernate-mapping>

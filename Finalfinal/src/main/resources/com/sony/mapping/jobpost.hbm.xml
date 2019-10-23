@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.sony.model.entity.JobPostEntity" table="JOB_POST">
+		<meta attribute="class-description">
+			This class contains the user detail.
+		</meta>
+	
+			<id name="jobPostId" type="int" column="job_post__id">
+				<generator class="native" />
+			</id>
+		
+			<property name="jobTitle" column="job_title" type="string" />
+			<property name="jobDescription" column="job_description" type="string" />
+			<property name="isActive" column="is_active" type="boolean" />
+			<property name="experience" column="experience" type="string" />
+			<property name="noOfApplicants" column="no_of_applicants" type="int" />
+			<property name="postDate" column="post_date" type="string" />
+			<property name="noOfVacancies" column="no_of_vacancies" type="int" />
+
+	</class>
+
+</hibernate-mapping>
