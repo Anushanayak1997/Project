@@ -11,7 +11,7 @@ import com.sony.model.entity.UserEntity;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+	 
 	@Autowired
 	UserDAO userdao;
  

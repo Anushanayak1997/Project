@@ -74,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
 			return true;
 		} else {
 			return false;
-		}
+		} 
 	}
  
 	private UserEntity getUserByemailId(String emailID) {
