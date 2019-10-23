@@ -1,7 +1,8 @@
 package com.sony.model.service;
 
-import java.util.LinkedList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,21 +14,30 @@ import com.sony.model.entity.UserEntity;
 public class UserServiceImpl implements UserService {
 	 
 	@Autowired
+	private UserDAO userDao;
+	
 	UserDAO userdao;
 
+	@Autowired
+	HttpSession httpsession;
 
 	public boolean addUser(UserEntity userenity) {
-		return userdao.addUser(userenity);
+	
+		Integer userId = userdao.addUser(userenity);
+		if(userId != null) {
+			httpsession.setAttribute("userid", userId);
+			return true;
+		}
+		return false;
 	}
 
 	public List<UserEntity> getAllUsers() {
-		return userdao.getAllUsers();
+		return userDao.getAllUsers();
 	}
 
 	public boolean authenticateuser(UserEntity userentity)
 	{
-		return userdao.authenticateuser(userentity);
-	}
 
-	
+		return userdao.authenticateuser(userentity);
+	}	
 }

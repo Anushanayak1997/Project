@@ -76,4 +76,5 @@ public class UserEntity {
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
+	
 }
