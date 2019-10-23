@@ -26,7 +26,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-  
+   
 	public boolean addJobPost(JobPostEntity jobpostentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
