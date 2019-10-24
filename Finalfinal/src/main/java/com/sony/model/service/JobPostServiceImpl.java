@@ -30,7 +30,7 @@ public class JobPostServiceImpl implements JobPostService {
 		return jobpostdao.getJobsByCompId(company);
 	}
 
-	public boolean addJobPost(JobPostEntity jobpostentity) {
+	public boolean addJobPost(JobPostEntity jobpostentity) { 
 		Integer companyid = (Integer) httpsession.getAttribute("companyid");
 		CompanyEntity company = companydao.getCompanyById(companyid);
 		jobpostentity.setCompanyentity(company);
