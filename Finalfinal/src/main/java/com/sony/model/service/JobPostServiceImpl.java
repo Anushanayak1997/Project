@@ -12,8 +12,8 @@ import com.sony.model.entity.JobPostEntity;
 
 @Service
 public class JobPostServiceImpl implements JobPostService {
- 
-	// @Autowired          
+
+	@Autowired
 	public JobPostDAO jobpostdao;
 
 	@Autowired
@@ -25,13 +25,14 @@ public class JobPostServiceImpl implements JobPostService {
 
 	public boolean addJobPost(JobPostEntity jobpostentity) {
 
-//		Integer jobpostId = jobpostdao.addJobPost(jobpostentity);
-//		if(jobpostId != null) {  
+//		 jobpostId = jobpostdao.addJobPost(jobpostentity);
+//		if (jobpostId != null) {
 //			httpsession.setAttribute("jobpostid", jobpostId);
 //			return true;
 //		}
-		 return jobpostdao.addJobPost(jobpostentity);
-	//	return false;
+//		//
+		return jobpostdao.addJobPost(jobpostentity);
+		//return false;
 	}
 
 }

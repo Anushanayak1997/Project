@@ -22,10 +22,10 @@
 		<property name="establishmentDate" column="establishment_date"
 			type="string" />
 		<property name="websiteUrl" column="website_url" type="string" />
-		<property name="headquarter" column="headquater" type="string" />
+		<property name="headquarter" column="headquarter" type="string" />
 		<property name="specialities" column="specialities" type="string" />
 		<property name="industry" column="industry" type="string" />
-		<property name="type" column="type" type="string" />
+		<property name="type" column="company_type" type="string" />
 
 	</class>
 

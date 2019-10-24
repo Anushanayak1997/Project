@@ -6,7 +6,7 @@ import com.sony.model.entity.JobPostEntity;
 
 public interface JobPostDAO {
 
-	List<JobPostEntity> getAllJobs();
+	public List<JobPostEntity> getAllJobs();
 
-	boolean addJobPost(JobPostEntity jobpostentity);
+	public boolean addJobPost(JobPostEntity jobpostentity);
 }
