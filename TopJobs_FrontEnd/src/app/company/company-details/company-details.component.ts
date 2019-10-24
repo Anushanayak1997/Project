@@ -47,7 +47,8 @@ export class CompanyDetailsComponent implements OnInit {
       industry:this.userModel.industry,
       type:this.userModel.type
     }
-    console.log(this.compDetails)
+    console.log(this.compDetails);
+    console.log("000000")
 
     this._http.post(this.url,this.compDetails).subscribe(
       (response) => {
