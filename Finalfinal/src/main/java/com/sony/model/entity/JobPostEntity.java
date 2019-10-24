@@ -13,8 +13,16 @@ public class JobPostEntity {
 	private int noOfApplicants;
 	private String postDate;
 	private int noOfVacancies;
-	private List jobPostSkills;
+	private CompanyEntity companyentity;
+	// private List jobPostSkills;
 	//private LocationEntity location;
+	
+	public CompanyEntity getCompanyentity() {
+		return companyentity;
+	}
+	public void setCompanyentity(CompanyEntity companyentity) {
+		this.companyentity = companyentity;
+	}
 	public int getJobPostId() {
 		return jobPostId;
 	}
@@ -65,11 +73,11 @@ public class JobPostEntity {
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
-	public List getJobPostSkills() {
-		return jobPostSkills;
-	}
-	public void setJobPostSkills(List jobPostSkills) {
-		this.jobPostSkills = jobPostSkills;
-	}
+//	public List getJobPostSkills() {
+//		return jobPostSkills;
+//	}
+//	public void setJobPostSkills(List jobPostSkills) {
+//		this.jobPostSkills = jobPostSkills;
+//	}
 	
 }

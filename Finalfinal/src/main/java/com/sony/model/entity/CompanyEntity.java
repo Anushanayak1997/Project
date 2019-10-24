@@ -20,10 +20,8 @@ public class CompanyEntity {
 	private String specialities;
 	private String industry;
 	private String type;
-	// private LinkedList<JobPostEntity> jobposts;
 
 	public CompanyEntity() {
-		// jobposts = new LinkedList<JobPostEntity>();
 	}
 
 	public int getCompanyId() {

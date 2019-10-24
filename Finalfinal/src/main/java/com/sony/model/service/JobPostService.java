@@ -7,8 +7,8 @@ import com.sony.model.entity.JobPostEntity;
 public interface JobPostService {
 
 
-	boolean addJobPost(JobPostEntity jobpostentity);
+	public boolean addJobPost(JobPostEntity jobpostentity);
 
-	List<JobPostEntity> getAllJobs();
+	public List<JobPostEntity> getJobsByCompId();
 
 }

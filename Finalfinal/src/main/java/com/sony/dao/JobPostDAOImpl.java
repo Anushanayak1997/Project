@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.entity.CompanyEntity;
+import com.sony.model.entity.EmployerCompanyEntity;
 import com.sony.model.entity.JobPostEntity;
 import com.sony.model.entity.UserEntity;
 
@@ -26,11 +29,12 @@ public class JobPostDAOImpl implements JobPostDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-      
-	public boolean addJobPost(JobPostEntity jobpostentity) {
+
+	public Integer addJobPost(JobPostEntity jobpostentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobpostId ;
+		Integer jobpostId = null;
+
 		try {
 			tx = session.beginTransaction();
 			jobpostId = (Integer) session.save(jobpostentity);
@@ -42,28 +46,31 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		return true;
+		return jobpostId;
 
 	}
 
-	public List<JobPostEntity> getAllJobs() {
+	public List<JobPostEntity> getJobsByCompId(CompanyEntity company) {
 		Session session = factory.openSession();
-		Transaction tx = null;
-		List<JobPostEntity> jobs = new ArrayList<JobPostEntity>();
+		List<JobPostEntity> jobposts = new ArrayList<JobPostEntity>();
+		Integer companyId = company.getCompanyId();
 
 		try {
-			tx = session.beginTransaction();
-			jobs = session.createQuery("FROM JobPostEntity").list();
-			tx.commit();
+			String hql = "FROM JobPostEntity where companyentity.companyId = :companyid";
+			Query query = session.createQuery(hql);
+			query.setParameter("companyid", companyId);
+
+			List<JobPostEntity> result = query.list();
+			if (!result.isEmpty()) {
+				JobPostEntity jpe = (JobPostEntity) result.get(0);
+				jobposts.add(jpe);
+			}
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return jobs;
-
+		return jobposts;
 	}
 
 }
