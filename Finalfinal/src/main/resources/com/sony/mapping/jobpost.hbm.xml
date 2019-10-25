@@ -8,18 +8,31 @@
 		<meta attribute="class-description">
 			This class contains the user detail.
 		</meta>
-	
-			<id name="jobPostId" type="int" column="job_post__id">
-				<generator class="native" />
-			</id>
+
+		<id name="jobPostId" type="int" column="job_post_id">
+			<generator class="native">
+				<param name="sequence">JOBPOST_ID_SEQ</param>
+			</generator>
+		</id>
+
+		<many-to-one lazy="false" name="companyentity" column="company_id"
+			class="com.sony.model.entity.CompanyEntity" not-null="true" />
+
+		<!--  <set name="skillSet" cascade="save-update" table="JOB_POST_SKILLS">
+			<key column="job_post_id" />
+			<many-to-many column="skill_id" class="SkillSet" />
+		</set>
+		-->
 		
-			<property name="jobTitle" column="job_title" type="string" />
-			<property name="jobDescription" column="job_description" type="string" />
-			<property name="isActive" column="is_active" type="boolean" />
-			<property name="experience" column="experience" type="string" />
-			<property name="noOfApplicants" column="no_of_applicants" type="int" />
-			<property name="postDate" column="post_date" type="string" />
-			<property name="noOfVacancies" column="no_of_vacancies" type="int" />
+		<property name="jobTitle" column="job_title" type="string" />
+		<property name="jobDescription" column="job_description"
+			type="string" />
+		<property name="isActive" column="is_active" type="boolean" />
+		<property name="experience" column="experience" type="string" />
+		<property name="noOfApplicants" column="no_of_applicants"
+			type="int" />
+		<property name="postDate" column="post_date" type="string" />
+		<property name="noOfVacancies" column="no_of_vacancies" type="int" />
 
 	</class>
 

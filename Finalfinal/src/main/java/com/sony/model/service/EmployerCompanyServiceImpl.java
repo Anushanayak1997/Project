@@ -9,7 +9,7 @@ import com.sony.model.entity.EmployerCompanyEntity;
 @Service
 public class EmployerCompanyServiceImpl implements EmployerCompanyService {
 
-	//@Autowired
+	@Autowired
 	EmployerCompanyDAO employercompanydao;
 
 	public boolean addEmployerCompany(EmployerCompanyEntity employercompany) {

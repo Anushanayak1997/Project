@@ -11,5 +11,5 @@ public interface UserDAO {
 	
 	public List<UserEntity> getAllUsers();
 	
-	public boolean authenticateuser(UserEntity userentity);
+	public UserEntity authenticateuser(UserEntity userentity);
 }

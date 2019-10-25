@@ -12,8 +12,8 @@ import com.sony.model.entity.JobPostEntity;
 import com.sony.model.entity.UserEntity;
 import com.sony.model.service.JobPostService;
 @RestController
-public class jobpost {
-	
+public class JobPostController {
+	      
 	@Autowired
 	JobPostService jobpostservice;
 

@@ -24,6 +24,6 @@ public class Company {
 
 	@RequestMapping(value = "/addcompanydetails", method = RequestMethod.POST)
 	public boolean addCompany(@RequestBody CompanyEntity company) {
-		return companyservice.addCompany(company);
+		return(companyservice.addCompany(company));
 	}
 }

@@ -7,31 +7,45 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sony.dao.CompanyDAO;
 import com.sony.dao.JobPostDAO;
+
+import com.sony.model.entity.CompanyEntity;
 import com.sony.model.entity.JobPostEntity;
 
 @Service
 public class JobPostServiceImpl implements JobPostService {
  
-	// @Autowired          
-	public JobPostDAO jobpostdao;
-
+	@Autowired          
+	private JobPostDAO jobpostdao;
+	
+	@Autowired
+	private CompanyDAO companydao;  
+	
+	
+    
 	@Autowired
 	HttpSession httpsession;
 
-	public List<JobPostEntity> getAllJobs() {
-		return jobpostdao.getAllJobs();
+	public List<JobPostEntity> getJobsByCompId() {
+		Integer companyid = (Integer) httpsession.getAttribute("companyid");
+		CompanyEntity company = companydao.getCompanyById(companyid);
+		return jobpostdao.getJobsByCompId(company);
+	}
+    
+    
+	public boolean addJobPost(JobPostEntity jobpostentity) { 
+		Integer companyid = (Integer) httpsession.getAttribute("companyid");
+		CompanyEntity company = companydao.getCompanyById(companyid);
+		jobpostentity.setCompanyentity(company);
+		Integer jobpostid = jobpostdao.addJobPost(jobpostentity);
+		if(jobpostid != null)
+			return true;
+		else {
+			return false;
+		}
 	}
 
-	public boolean addJobPost(JobPostEntity jobpostentity) {
 
-//		Integer jobpostId = jobpostdao.addJobPost(jobpostentity);
-//		if(jobpostId != null) {  
-//			httpsession.setAttribute("jobpostid", jobpostId);
-//			return true;
-//		}
-		 return jobpostdao.addJobPost(jobpostentity);
-	//	return false;
-	}
 
 }
