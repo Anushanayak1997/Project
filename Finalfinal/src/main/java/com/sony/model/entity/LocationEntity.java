@@ -1,4 +1,4 @@
-package com.sony.model.entity;
+ package com.sony.model.entity;
 
 public class LocationEntity {
 	private int locationId;
