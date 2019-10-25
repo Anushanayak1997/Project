@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sony.dao.EmployerCompanyDAO;
 import com.sony.dao.UserDAO;
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.User;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	HttpSession httpsession;
 
-	public boolean addUser(UserEntity userenity) {
+	public boolean addUser(User userenity) {
 	
 		Integer userId = userdao.addUser(userenity);
 		if(userId != null) {
@@ -33,15 +33,15 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
-	public List<UserEntity> getAllUsers() {
+	public List<User> getAllUsers() {
 		return userdao.getAllUsers();
 	}
 
-	public boolean authenticateuser(UserEntity userentity)
+	public boolean authenticateuser(User userentity)
 	{
 		boolean status;
 		Integer companyid;
-		UserEntity user = userdao.authenticateuser(userentity); 
+		User user = userdao.authenticateuser(userentity); 
 		if( user != null) {
 			companyid = employercompanydao.getCompanyId(user.getUserID());
 			httpsession.setAttribute("userid", user.getUserID());

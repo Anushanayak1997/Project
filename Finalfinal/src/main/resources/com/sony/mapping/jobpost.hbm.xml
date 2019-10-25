@@ -33,6 +33,9 @@
 			type="int" />
 		<property name="postDate" column="post_date" type="string" />
 		<property name="noOfVacancies" column="no_of_vacancies" type="int" />
+		<property name="streetAddress" column="street_address" type="string" />
+		<property name="city" column="city" type="string" />
+		<property name="state" column="state" type="string" />
 
 	</class>
 

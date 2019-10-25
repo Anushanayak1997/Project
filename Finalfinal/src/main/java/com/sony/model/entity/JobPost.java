@@ -3,20 +3,61 @@ package com.sony.model.entity;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.*;
 
-public class JobPostEntity {
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="job_post")
+public class JobPost {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO, generator = "job_post_sequence")
+    @SequenceGenerator(name = "job_post_sequence", sequenceName = "JOB_POST_ID_SEQ")
+	@Column(name = "job_post_id")
 	private int jobPostId;
+	
+	@Column(name="job_title")
 	private String jobTitle;
+	
+	@Column(name="job_description")
 	private String jobDescription;
+	
+	@Column(name="is_active")
 	private boolean isActive;
+	
+	@Column(name="experience")
 	private String experience;
+	
+	@Column(name="no_of_applicants")
 	private int noOfApplicants;
+	
+	@Column(name="post_date")
 	private String postDate;
+	
+	@Column(name="no_of_vacancies")
 	private int noOfVacancies;
+	
+	@Column(name="street_address")
 	private String streetAddress;
-	private CompanyEntity companyentity;
-	private Set<SkillSet> skillSet;
+	
+	@ManyToOne 
+	@JoinColumn(name="company_id")
+	private Company companyentity;
+	
+
+	
+	@Column(name="city")
 	private String city;
+	
+	@Column(name="state")
 	private String state;
 	
 	public String getStreetAddress() {
@@ -43,11 +84,11 @@ public class JobPostEntity {
 		this.state = state;
 	}
 
-	public CompanyEntity getCompanyentity() {
+	public Company getCompanyentity() {
 		return companyentity;
 	}
 
-	public void setCompanyentity(CompanyEntity companyentity) {
+	public void setCompanyentity(Company companyentity) {
 		this.companyentity = companyentity;
 	}
 
@@ -114,10 +155,5 @@ public class JobPostEntity {
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
-	public Set<SkillSet> getSkillSet() {
-		return skillSet;
-	}
-	public void setSkillSet(Set<SkillSet> skillSet) {
-		this.skillSet = skillSet;
-	}
+	
 }

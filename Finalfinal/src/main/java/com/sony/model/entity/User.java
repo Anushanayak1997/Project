@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "USER_REGISTER")
-public class UserEntity {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_sequence")
@@ -40,16 +40,6 @@ public class UserEntity {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
-	}
-
-	private String companyName;
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
 	}
 
 	public int getUserID() {

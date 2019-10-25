@@ -11,10 +11,10 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.CompanyEntity;
-import com.sony.model.entity.EmployerCompanyEntity;
-import com.sony.model.entity.JobPostEntity;
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.Company;
+import com.sony.model.entity.EmployerCompany;
+import com.sony.model.entity.JobPost;
+import com.sony.model.entity.User;
 
 @Repository
 public class JobPostDAOImpl implements JobPostDAO {
@@ -30,7 +30,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		}
 	}
 
-	public Integer addJobPost(JobPostEntity jobpostentity) {
+	public Integer addJobPost(JobPost jobpostentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer jobpostId = null;
@@ -50,18 +50,18 @@ public class JobPostDAOImpl implements JobPostDAO {
 
 	}
 
-	public List<JobPostEntity> getJobsByCompId(CompanyEntity company) {
+	public List<JobPost> getJobsByCompId(Company company) {
 		Session session = factory.openSession();
-		List<JobPostEntity> jobposts = new ArrayList<JobPostEntity>();
+		List<JobPost> jobposts = new ArrayList<JobPost>();
 		Integer companyId = company.getCompanyId();
 	
 
 		try {
-			String hql = "FROM JobPostEntity where companyentity.companyId = :companyid";
+			String hql = "FROM JobPost where companyentity.companyId = :companyid";
 			Query query = session.createQuery(hql);
 			query.setParameter("companyid", companyId);
 
-			List<JobPostEntity> result = query.list();
+			List<JobPost> result = query.list();
 			if (!result.isEmpty()) {
 				// JobPostEntity jpe = (JobPostEntity) result.get(0);
 				jobposts.addAll(result);

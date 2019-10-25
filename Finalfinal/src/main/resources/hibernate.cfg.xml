@@ -12,14 +12,22 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.defaut_schema">ANUSHA</property>
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">update</property>
-		<mapping class="com.sony.model.entity.UserEntity" />
+		<property name="hbm2ddl.auto">create</property>
+		<mapping class="com.sony.model.entity.User" />
+		
+		<mapping class="com.sony.model.entity.JobPost"/>
+		<mapping class="com.sony.model.entity.Company"/>
+		<mapping class="com.sony.model.entity.EmployerCompany"/>
 		<mapping class="com.sony.model.entity.SkillSet" />
+		<mapping class="com.sony.model.entity.JobSeekerProject" />
+		<mapping class="com.sony.model.entity.JobSeekerExperience" />
+		<mapping class="com.sony.model.entity.JobSeekerSkills" />
+		<mapping class="com.sony.model.entity.JobSeekerEducation" />
    				
 
-		<mapping resource="com/sony/mapping/employercompany.hbm.xml" />
-		<!-- <mapping resource="com/sony/mapping/user.hbm.xml"></mapping> -->
+	<!--	<mapping resource="com/sony/mapping/employercompany.hbm.xml" />
+		 <mapping resource="com/sony/mapping/user.hbm.xml"></mapping> 
 		<mapping resource="com/sony/mapping/jobpost.hbm.xml"></mapping>
-		<mapping resource="com/sony/mapping/company.hbm.xml" />
+		<mapping resource="com/sony/mapping/company.hbm.xml" />-->
 		</session-factory>
 </hibernate-configuration>

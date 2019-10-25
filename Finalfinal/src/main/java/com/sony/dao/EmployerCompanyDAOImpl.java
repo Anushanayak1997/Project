@@ -11,8 +11,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.CompanyEntity;
-import com.sony.model.entity.EmployerCompanyEntity;
+import com.sony.model.entity.Company;
+import com.sony.model.entity.EmployerCompany;
 
 @Repository
 public class EmployerCompanyDAOImpl implements EmployerCompanyDAO {
@@ -28,7 +28,7 @@ public class EmployerCompanyDAOImpl implements EmployerCompanyDAO {
 		}
 	}
 
-	public Integer addEmployerCompany(EmployerCompanyEntity employercompanyentity) {
+	public Integer addEmployerCompany(EmployerCompany employercompanyentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer employercompanyId = null;
@@ -50,11 +50,11 @@ public class EmployerCompanyDAOImpl implements EmployerCompanyDAO {
 	public Integer getCompanyId(Integer UserId) {
 		Session session = factory.openSession();
 		Integer companyId = null;
-		List<EmployerCompanyEntity> companies = new ArrayList<EmployerCompanyEntity>();
+		List<EmployerCompany> companies = new ArrayList<EmployerCompany>();
 
 		try {
-			Query query = session.createQuery("from EmployerCompanyEntity where userId='" + UserId + "'");
-			EmployerCompanyEntity employercompany = (EmployerCompanyEntity) query.uniqueResult();
+			Query query = session.createQuery("from EmployerCompany where userId='" + UserId + "'");
+			EmployerCompany employercompany = (EmployerCompany) query.uniqueResult();
 			if (employercompany != null)
 				companyId = employercompany.getCompanyId();
 		} catch (HibernateException e) {

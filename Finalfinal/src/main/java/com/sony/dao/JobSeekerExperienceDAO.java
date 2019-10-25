@@ -10,4 +10,6 @@ public interface JobSeekerExperienceDAO {
 
 	List<JobSeekerExperience> getAllSeekerExperience();
 
+	
+
 }

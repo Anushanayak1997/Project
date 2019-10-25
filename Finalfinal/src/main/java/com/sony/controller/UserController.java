@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.service.UserService;
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.User;
 
 @RestController
-public class User {
+public class UserController {
 	
 	@Autowired
 	public UserService userService;
 	
 	@RequestMapping(value = "/getallusers")
-	public List<UserEntity> getAllUsers() {
+	public List<User> getAllUsers() {
 		return userService.getAllUsers();
 	}
 	
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public boolean addUser(@RequestBody UserEntity userentity) {
+	public boolean addUser(@RequestBody User userentity) {
 		return userService.addUser(userentity);
 	}
 
 	@RequestMapping(value = "/loginuser")
-	public boolean loginUser(@RequestBody UserEntity userentity) {
+	public boolean loginUser(@RequestBody User userentity) {
 		return userService.authenticateuser(userentity);
 	}
 }
