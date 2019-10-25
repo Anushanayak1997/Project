@@ -27,6 +27,7 @@ public class User {
 	public boolean addUser(@RequestBody UserEntity userentity) {
 		return userService.addUser(userentity);
 	}
+
 	@RequestMapping(value = "/loginuser")
 	public boolean loginUser(@RequestBody UserEntity userentity) {
 		return userService.authenticateuser(userentity);

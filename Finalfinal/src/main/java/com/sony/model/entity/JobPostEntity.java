@@ -1,6 +1,7 @@
 package com.sony.model.entity;
 
 import java.util.List;
+import java.util.Set;
  
 //import com.sony.project.entities.LocationEntity;
 
@@ -14,7 +15,7 @@ public class JobPostEntity {
 	private String postDate;
 	private int noOfVacancies;
 	private CompanyEntity companyentity;
-	// private List jobPostSkills;
+	private Set<SkillSet> skillSet;
 	//private LocationEntity location;
 	
 	public CompanyEntity getCompanyentity() {
@@ -73,6 +74,14 @@ public class JobPostEntity {
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
+	public Set<SkillSet> getSkillSet() {
+		return skillSet;
+	}
+	public void setSkillSet(Set<SkillSet> skillSet) {
+		this.skillSet = skillSet;
+	}
+	
+	
 //	public List getJobPostSkills() {
 //		return jobPostSkills;
 //	}

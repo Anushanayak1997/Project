@@ -4,24 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.CompanyEntity;
-import com.sony.model.entity.EmployerCompanyEntity;
-import com.sony.model.entity.JobPostEntity;
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.SkillSet;
 
 @Repository
-public class JobPostDAOImpl implements JobPostDAO {
+public class SkillSetDAOImpl implements SkillSetDAO {
 
 	private static SessionFactory factory;
-
-	public JobPostDAOImpl() {
+	
+	public SkillSetDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -30,14 +26,14 @@ public class JobPostDAOImpl implements JobPostDAO {
 		}
 	}
 
-	public Integer addJobPost(JobPostEntity jobpostentity) {
+	public Integer addSkillSet(SkillSet skillset) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobpostId = null;
+		Integer skillId = null;
 
 		try {
 			tx = session.beginTransaction();
-			jobpostId = (Integer) session.save(jobpostentity);
+			skillId = (Integer) session.save(skillset);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -46,31 +42,21 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		return jobpostId;
-
+		return skillId;
 	}
 
-	public List<JobPostEntity> getJobsByCompId(CompanyEntity company) {
+	public List<SkillSet> getAllSkills() {
 		Session session = factory.openSession();
-		List<JobPostEntity> jobposts = new ArrayList<JobPostEntity>();
-		Integer companyId = company.getCompanyId();
+		List<SkillSet> skillset = new ArrayList<SkillSet>();
 
 		try {
-			String hql = "FROM JobPostEntity where companyentity.companyId = :companyid";
-			Query query = session.createQuery(hql);
-			query.setParameter("companyid", companyId);
-
-			List<JobPostEntity> result = query.list();
-			if (!result.isEmpty()) {
-				// JobPostEntity jpe = (JobPostEntity) result.get(0);
-				jobposts.addAll(result);
-			}
+			skillset = session.createQuery("FROM SkillSet").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return jobposts;
+		return skillset;
 	}
 
 }
