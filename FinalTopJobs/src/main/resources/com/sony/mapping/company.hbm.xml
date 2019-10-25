@@ -4,18 +4,14 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.sony.entities.Employees" table="EMPLOYEE">
+	<class name="com.sony.project.entities.CompanyDetailsEntity" table="COMPANY">
 		<meta attribute="class-description">
-			This class contains the employee detail.
+			This class contains the company detail.
 		</meta>
 
 			<id name="companyId" type="int" column="companyId">
 				<generator class="native" />
 			</id>
-
-			<!-- <list name="listCertificates" cascade="all"> <key column="employee_id" 
-				/> <list-index column="idx" base="0" /> <one-to-many class="com.sony.entities.Certificates" 
-				/> </list> -->
 
 			<property name="companyName" column="companyName" type="string" />
 			<property name="companyDescription" column="companyDescription" type="string" />
@@ -26,7 +22,6 @@
 			<property name="industry" column="industry" type="string" />
 			<property name="type" column="type" type="string" />
 
-			<!-- <many-to-one name="address" column="address" class="com.sony.entities.Address" not-null="true" /> -->
 	</class>
 
 </hibernate-mapping>

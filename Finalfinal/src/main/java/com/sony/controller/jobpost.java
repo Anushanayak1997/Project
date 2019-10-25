@@ -17,9 +17,9 @@ public class jobpost {
 	@Autowired
 	JobPostService jobpostservice;
 
-	@RequestMapping(value = "/getalljobpost")
-	public List<JobPostEntity> getAllJobs() {
-		return jobpostservice.getAllJobs();
+	@RequestMapping(value = "/getalljobs")
+	public List<JobPostEntity> getJobsByCompId() {
+		return jobpostservice.getJobsByCompId();
 	}
 	
 	@RequestMapping(value = "/addjobs", method = RequestMethod.POST)

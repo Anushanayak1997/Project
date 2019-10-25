@@ -8,9 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule } from '@angular/forms'
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { EmployerDetailsComponent } from './employer-details/employer-details.component';
+import { JobDescriptionComponent } from './job-description/job-description.component';
 
 @NgModule({
-  declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent],
+  declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent, JobDescriptionComponent],
   exports: [
     CompanyDetailsComponent
   ],

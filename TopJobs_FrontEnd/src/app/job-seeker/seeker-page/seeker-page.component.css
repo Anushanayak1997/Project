@@ -1,0 +1,21 @@
+#success_message{ display: none;}
+
+.mainCard{
+    margin-top: 0.45%;
+    
+}
+.btn-space {
+    margin-right: 5px;
+}
+
+.btnStyle{
+    background-color: #00AA9E;
+     border-color:#00AA9E ; 
+     color: wheat;
+}
+
+.seekercss{
+    background:  #00AA9E;
+     margin-top: 0.5%;
+}
+

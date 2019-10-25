@@ -9,6 +9,8 @@ public interface JobPostService {
 
 	public boolean addJobPost(JobPostEntity jobpostentity);
 
-	public List<JobPostEntity> getAllJobs();
+
+
+	public List<JobPostEntity> getJobsByCompId();
 
 }

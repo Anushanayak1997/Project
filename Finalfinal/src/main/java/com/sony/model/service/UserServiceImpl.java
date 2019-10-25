@@ -7,16 +7,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sony.dao.EmployerCompanyDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.entity.UserEntity;
 
 @Service
 public class UserServiceImpl implements UserService {
-	 
-	@Autowired
-	private UserDAO userDao;
 	
+	@Autowired
 	UserDAO userdao;
+	
+	@Autowired
+	EmployerCompanyDAO employercompanydao;
 
 	@Autowired
 	HttpSession httpsession;
@@ -32,12 +34,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<UserEntity> getAllUsers() {
-		return userDao.getAllUsers();
+		return userdao.getAllUsers();
 	}
 
 	public boolean authenticateuser(UserEntity userentity)
 	{
-
-		return userdao.authenticateuser(userentity);
+		boolean status;
+		Integer companyid;
+		UserEntity user = userdao.authenticateuser(userentity); 
+		if( user != null) {
+			companyid = employercompanydao.getCompanyId(user.getUserID());
+			httpsession.setAttribute("userid", user.getUserID());
+			httpsession.setAttribute("companyid", companyid);
+			status = true;
+		} else {
+			status = false;
+		}
+		return status;
 	}	
 }

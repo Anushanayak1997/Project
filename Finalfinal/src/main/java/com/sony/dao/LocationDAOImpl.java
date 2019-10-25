@@ -1,26 +1,24 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.CompanyEntity;
+import com.sony.model.entity.LocationEntity;
 import com.sony.model.entity.UserEntity;
 
 @Repository
-public class CompanyDAOImpl implements CompanyDAO {
+public class LocationDAOImpl implements LocationDAO {
 
 	private static SessionFactory factory;
 
-	public CompanyDAOImpl() {
+	public LocationDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -29,14 +27,15 @@ public class CompanyDAOImpl implements CompanyDAO {
 		}
 	}
 
-	public Integer addCompany(CompanyEntity companyentity) {
+	public Integer addLocation(LocationEntity location) {
+
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer companyId = null;
+		Integer locationid = null;
 
 		try {
 			tx = session.beginTransaction();
-			companyId = (Integer) session.save(companyentity);
+			locationid = (Integer) session.save(location);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -45,35 +44,22 @@ public class CompanyDAOImpl implements CompanyDAO {
 		} finally {
 			session.close();
 		}
-		return companyId;
+		return locationid;
+
 	}
 
-	public CompanyEntity getCompanyById(int companyId) {
+	public List<LocationEntity> getAllLocation() {
 		Session session = factory.openSession();
-		CompanyEntity result = null;
-		try {
-			Query query = session.createQuery("from CompanyEntity where companyId='" + companyId + "'");
-			CompanyEntity company = (CompanyEntity) query.uniqueResult();
-			if (company != null)
-				result = company;
-		} catch (Exception ex) {
-		} finally {
-			session.close();
-		}
-		return result;
-	}
-
-	public List<CompanyEntity> getAllCompany() {
-		Session session = factory.openSession();
-		List<CompanyEntity> companies = new ArrayList<CompanyEntity>();
+		List<LocationEntity> location = new ArrayList<LocationEntity>();
 
 		try {
-			companies = session.createQuery("FROM CompanyEntity").list();
+			location = session.createQuery("FROM LocationEntity").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return companies;
+		return location;
 	}
+
 }
