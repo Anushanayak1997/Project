@@ -53,7 +53,7 @@ public class EmployerCompanyDAOImpl implements EmployerCompanyDAO {
 		List<EmployerCompanyEntity> companies = new ArrayList<EmployerCompanyEntity>();
 
 		try {
-			Query query = session.createQuery("from EmployerComoanyEntity where userId='" + UserId + "'");
+			Query query = session.createQuery("from EmployerCompanyEntity where userId='" + UserId + "'");
 			EmployerCompanyEntity employercompany = (EmployerCompanyEntity) query.uniqueResult();
 			if (employercompany != null)
 				companyId = employercompany.getCompanyId();

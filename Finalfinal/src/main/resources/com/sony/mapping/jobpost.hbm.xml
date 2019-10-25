@@ -18,10 +18,11 @@
 		<many-to-one lazy="false" name="companyentity" column="company_id"
 			class="com.sony.model.entity.CompanyEntity" not-null="true" />
 
-		<set name="skillSet" cascade="save-update" table="JOB_POST_SKILLS">
+		<!--  <set name="skillSet" cascade="save-update" table="JOB_POST_SKILLS">
 			<key column="job_post_id" />
 			<many-to-many column="skill_id" class="SkillSet" />
 		</set>
+		-->
 		
 		<property name="jobTitle" column="job_title" type="string" />
 		<property name="jobDescription" column="job_description"
