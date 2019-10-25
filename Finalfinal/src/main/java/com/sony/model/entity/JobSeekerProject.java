@@ -20,7 +20,7 @@ public class JobSeekerProject {
 	
     @Column(name="title")
 	private String title;
-    
+     
     @Column(name="description")
 	private String description;
     

@@ -29,7 +29,7 @@ public class User {
 	
 	@Column(name = "contact_no")
 	private String contactNumber;
-	// private Blob image;
+	// private Blob image; 
 	
 	@Column(name = "user_type")
 	private String userType;

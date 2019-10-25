@@ -48,7 +48,7 @@ public class JobPost {
 	@Column(name="street_address")
 	private String streetAddress;
 	
-	@ManyToOne 
+	@ManyToOne  
 	@JoinColumn(name="company_id")
 	private Company companyentity;
 	

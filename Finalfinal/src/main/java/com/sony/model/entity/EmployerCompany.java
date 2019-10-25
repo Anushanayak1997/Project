@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="emp_company")
-public class EmployerCompany {
+public class EmployerCompany { 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator = "emp_company_sequence")

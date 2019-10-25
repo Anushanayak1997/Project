@@ -21,7 +21,7 @@ public class JobSeekerSkills {
 	private int jobSeekerSkillId;
 	
 	@Column(name="certificate_name")
-	private String certificateName;
+	private String certificateName; 
 	
 	@Column(name="issued_date")
 	private String issuedDate;

@@ -15,7 +15,7 @@ public class SkillSet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator = "skill_sequence")
     @SequenceGenerator(name = "skill_sequence", sequenceName = "SKILL_ID_SEQ")
-	@Column(name = "skill_id")
+	@Column(name = "skill_id") 
 	private int skillId;
 	
 	@Column(name = "skill_name")

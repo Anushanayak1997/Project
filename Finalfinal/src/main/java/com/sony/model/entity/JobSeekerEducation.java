@@ -34,7 +34,7 @@ public class JobSeekerEducation {
 
 	public String getStartingDate() {
 		return startingDate;
-	}
+	} 
 
 	public void setStartingDate(String startingDate) {
 		this.startingDate = startingDate;

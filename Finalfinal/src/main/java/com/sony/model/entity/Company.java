@@ -20,7 +20,7 @@ public class Company {
 	@GeneratedValue(strategy=GenerationType.AUTO, generator = "company_sequence")
     @SequenceGenerator(name = "company_sequence", sequenceName = "COMPANY_ID_SEQ")
 	@Column(name = "company_id")
-	private int companyId;
+	private int companyId; 
 	
 	@Column(name="company_name")
 	private String companyName;

@@ -15,7 +15,7 @@ import com.sony.model.entity.JobSeekerExperience;
 
 @Repository
 public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
-
+ 
 	private static SessionFactory factory;
 
 	public JobSeekerEducationDAOImpl() {

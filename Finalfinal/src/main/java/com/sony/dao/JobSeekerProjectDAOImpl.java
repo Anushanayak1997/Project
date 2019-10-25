@@ -43,7 +43,7 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			session.close();
 		}
 		return jobseekerprojectid;
-	}
+	} 
 
 	public List<JobSeekerProject> getAllProject() {
 		Session session = factory.openSession();

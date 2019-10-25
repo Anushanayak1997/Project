@@ -49,7 +49,7 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 	public List<JobSeekerExperience> getAllSeekerExperience() {
 		Session session = factory.openSession();
 		List<JobSeekerExperience> experience = new ArrayList<JobSeekerExperience>();
-
+ 
 		try {
 			experience= session.createQuery("FROM JobSeekerExperience").list();
 		} catch (HibernateException e) {

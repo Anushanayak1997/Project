@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.sony.model.entity.JobSeekerEducation;
 
-
+ 
 public interface JobSeekerEducationDAO {
 
 
