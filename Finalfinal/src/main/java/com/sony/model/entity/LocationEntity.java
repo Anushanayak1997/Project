@@ -1,5 +1,5 @@
  package com.sony.model.entity;
-   
+    
 public class LocationEntity {
 	private int locationId;
 	private String streetAddress;
