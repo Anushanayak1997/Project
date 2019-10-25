@@ -54,6 +54,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		Session session = factory.openSession();
 		List<JobPostEntity> jobposts = new ArrayList<JobPostEntity>();
 		Integer companyId = company.getCompanyId();
+	
 
 		try {
 			String hql = "FROM JobPostEntity where companyentity.companyId = :companyid";
@@ -72,5 +73,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		}
 		return jobposts;
 	}
+
+	
 
 }

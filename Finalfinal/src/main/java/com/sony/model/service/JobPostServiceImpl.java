@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sony.dao.CompanyDAO;
 import com.sony.dao.JobPostDAO;
+
 import com.sony.model.entity.CompanyEntity;
 import com.sony.model.entity.JobPostEntity;
 
@@ -19,8 +20,10 @@ public class JobPostServiceImpl implements JobPostService {
 	private JobPostDAO jobpostdao;
 	
 	@Autowired
-	private CompanyDAO companydao;
-
+	private CompanyDAO companydao;  
+	
+	
+    
 	@Autowired
 	HttpSession httpsession;
 
@@ -29,7 +32,8 @@ public class JobPostServiceImpl implements JobPostService {
 		CompanyEntity company = companydao.getCompanyById(companyid);
 		return jobpostdao.getJobsByCompId(company);
 	}
-
+    
+    
 	public boolean addJobPost(JobPostEntity jobpostentity) { 
 		Integer companyid = (Integer) httpsession.getAttribute("companyid");
 		CompanyEntity company = companydao.getCompanyById(companyid);
@@ -41,5 +45,7 @@ public class JobPostServiceImpl implements JobPostService {
 			return false;
 		}
 	}
+
+
 
 }
