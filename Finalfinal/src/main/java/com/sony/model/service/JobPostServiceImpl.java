@@ -20,7 +20,7 @@ public class JobPostServiceImpl implements JobPostService {
 	private JobPostDAO jobpostdao;
 	
 	@Autowired
-	private CompanyDAO companydao;
+	private CompanyDAO companydao; 
 	
 	@Autowired
 	private LocationDAO locationdao;
