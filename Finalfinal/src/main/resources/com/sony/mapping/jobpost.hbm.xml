@@ -17,8 +17,10 @@
 
 		<many-to-one lazy="false" name="companyentity" column="company_id"
 			class="com.sony.model.entity.CompanyEntity" not-null="true" />
-		<one-to-one lazy="false" name="locationentity" column="location_id"
+
+		<many-to-one name="location" column="location_id"
 			class="com.sony.model.entity.LocationEntity" not-null="true" />
+
 		<property name="jobTitle" column="job_title" type="string" />
 		<property name="jobDescription" column="job_description"
 			type="string" />

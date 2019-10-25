@@ -7,24 +7,43 @@ import java.util.List;
 public class JobPostEntity {
 	private int jobPostId;
 	private String jobTitle;
-
-	public LocationEntity getLocation() {
-		return location;
-	}
-
-	public void setLocation(LocationEntity location) {
-		this.location = location;
-	}
-
 	private String jobDescription;
 	private boolean isActive;
 	private String experience;
 	private int noOfApplicants;
 	private String postDate;
 	private int noOfVacancies;
+	private String streetAddress;
+	private String city;
+	private String state;
+	
+	public String getStreetAddress() {
+		return streetAddress;
+	}
+
+	public void setStreetAddress(String streetAddress) {
+		this.streetAddress = streetAddress;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	private CompanyEntity companyentity;
 	// private List jobPostSkills;
-	private LocationEntity location;
+	
 
 	public CompanyEntity getCompanyentity() {
 		return companyentity;

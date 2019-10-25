@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sony.dao.CompanyDAO;
 import com.sony.dao.JobPostDAO;
-import com.sony.dao.LocationDAO;
+
 import com.sony.model.entity.CompanyEntity;
 import com.sony.model.entity.JobPostEntity;
 
@@ -22,8 +22,7 @@ public class JobPostServiceImpl implements JobPostService {
 	@Autowired
 	private CompanyDAO companydao;  
 	
-	@Autowired
-	private LocationDAO locationdao;
+	
     
 	@Autowired
 	HttpSession httpsession;

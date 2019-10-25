@@ -18,7 +18,5 @@
 		<mapping resource="com/sony/mapping/user.hbm.xml"></mapping>
 		<mapping resource="com/sony/mapping/jobpost.hbm.xml"></mapping>
 		<mapping resource="com/sony/mapping/company.hbm.xml" />
-		<mapping resource="com/sony/mapping/location.hbm.xml" />
-
-	</session-factory>
+		</session-factory>
 </hibernate-configuration>
