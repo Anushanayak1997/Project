@@ -6,7 +6,7 @@ import com.sony.model.entity.JobSeekerEducation;
 
  
 public interface JobSeekerEducationDAO {
-
+ 
 
 	Integer addJobSeekerEducation(JobSeekerEducation education);
 
