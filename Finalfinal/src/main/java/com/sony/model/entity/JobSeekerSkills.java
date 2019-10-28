@@ -32,8 +32,8 @@ public class JobSeekerSkills {
 	public void setCertificateName(String certificateName) {
 		this.certificateName = certificateName;
 	}
-	public String getIssuedDate() {
-		return issuedDate;
+	public String getIssuedDate() { 
+		return issuedDate; 
 	}
 	public void setIssuedDate(String issuedDate) {
 		this.issuedDate = issuedDate;
