@@ -10,15 +10,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.JobSeekerExperience;
-import com.sony.model.entity.JobSeekerProject;
+import com.sony.model.entity.JobSeekerCourse;
 
 @Repository
-public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
+public class JobSeekerCourseDAOImpl implements JobSeekerCourseDAO {
 
 	private static SessionFactory factory;
 
-	public JobSeekerProjectDAOImpl() {
+	public JobSeekerCourseDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -26,14 +25,15 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-	public Integer addJobSeekerProject(JobSeekerProject project) {
+
+	public Integer addJobSeekerCourse(JobSeekerCourse course) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobseekerprojectid = null;
+		Integer jobseekercourseid = null;
 
 		try {
 			tx = session.beginTransaction();
-			jobseekerprojectid = (Integer) session.save(project);
+			jobseekercourseid = (Integer) session.save(course);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -42,22 +42,21 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		} finally {
 			session.close();
 		}
-		return jobseekerprojectid;
+		return jobseekercourseid;
 	}
 
-	public List<JobSeekerProject> getAllProject() {
+	public List<JobSeekerCourse> getAllSeekerCourse() {
 		Session session = factory.openSession();
-		List<JobSeekerProject> project = new ArrayList<JobSeekerProject>();
- 
+		List<JobSeekerCourse> course = new ArrayList<JobSeekerCourse>();
+
 		try {
-			project= session.createQuery("FROM JobSeekerProject").list();
+			course = session.createQuery("FROM JobSeekerCourse").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return project;
+		return course;
 	}
-	
 
 }
