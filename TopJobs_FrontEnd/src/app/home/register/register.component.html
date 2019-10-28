@@ -98,7 +98,7 @@
                         </div>
                         <select class="form-control" id="" [(ngModel)]="regiseterModel.companyName" name="companyName"
                             required>
-                            <option *ngFor="let company of details ; let i=index" [value]="company.companyName">
+                            <option *ngFor="let company of details ; let i=index" [value]="company.companyId">
                                 {{company.companyName}}
                             </option>
                             <option value="others"> others</option>

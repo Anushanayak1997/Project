@@ -10,13 +10,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  url1 = environment.apiBaseUrl + "companydetails";
+  url1 = environment.apiBaseUrl + "addcompanydetails";
   url2 = environment.apiBaseUrl + "adduser";
+  url3= environment.apiBaseUrl + "getallcompany";
   details: any;
   company: any;
   PostCompany: any;
   topicHasError = true;
-
+  comp:any;
+ 
   constructor(private router: Router, private _http: HttpClient) { }
 
   regiseterModel = new RegiseterUser(
@@ -51,27 +53,51 @@ export class RegisterComponent implements OnInit {
 
     }
 
-    this._http.post(this.url2, this.PostCompany).subscribe(
+    if(this.regiseterModel.companyName=="others"){
+      this.comp=null;
+    }
+      else{
+        console.log("hi");
+        for (let company of this.details) {
+          console.log(company);
+         if(company.companyId==this.regiseterModel.companyName){
+          console.log("true");
+          this.comp=company;
+         }
+          
+        }
+
+    }
+    
+    console.log("company status");
+    console.log(this.comp);
+    this._http.post(this.url2,this.PostCompany ).subscribe(
+      (Response) => {
+        console.log(Response);
+        console.log("added user");
+
+       
+
+      }
+
+      
+    )
+
+
+
+    this._http.post(this.url1, this.comp).subscribe(
       (Response) => {
         console.log(Response);
         console.log("succees");
 
       }
     )
-    if (this.regiseterModel.userType == 'Employer') {
-      if (this.regiseterModel.companyName == 'others') {
-        this.router.navigate(['company/details']);
-      } else {
-        this.router.navigate(['company/jobpost']);
-      }
-    }else{
-      alert("nothing")
-    }
+    
 
   }
 
   getCompanies() {
-    let obs = this._http.get(this.url1)
+    let obs = this._http.get(this.url3)
     obs.subscribe(
       (Response) => {
         console.log(Response);

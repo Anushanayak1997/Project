@@ -1,0 +1,292 @@
+<nav class="navbar bg-dark navbar-dark">
+    <div class=" navbar navbar-inverse container-fluid" href="#"><a style="color: honeydew;">Navbar</a></div>
+</nav>
+
+<div class="container seekercss">
+    <div class="" style="padding:1%">
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="..." class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{userName}} {{userLastName}}</h5>
+                        <h6>{{userEmail}}</h6>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="" style="background:  #00AA9E;;">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Education</h5>
+                    <h6>School</h6>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Start Date</strong></span>
+                        </div>
+
+                        <input type="date" #startingDate="ngModel" required class="form-control"
+                            [class.is-invalid]="startingDate.invalid && startingDate.touched" name="startingDate"
+                            [(ngModel)]="userModel.startingDate">
+                        <small class="text-danger"
+                            [class.d-none]="startingDate.valid || startingDate.untouched">starting date is
+                            required</small>
+                    </div>
+
+
+                    <button type="button" class="btn btn-link">Read More</button>
+                </div>
+
+            </div>
+            <br>
+
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">Projects</h5>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Job Title</strong></span>
+                        </div>
+
+                        <input type="text" #title="ngModel" required class="form-control"
+                            [class.is-invalid]="title.invalid && title.touched" name="title"
+                            [(ngModel)]="userModel.title">
+                        <small class="text-danger" [class.d-none]="title.valid || title.untouched">Project title is
+                            required</small>
+                    </div>
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Role</strong></span>
+                        </div>
+
+                        <input type="text" #role="ngModel" required class="form-control"
+                            [class.is-invalid]="role.invalid && role.touched" name="role" [(ngModel)]="userModel.role">
+                        <small class="text-danger" [class.d-none]="role.valid || role.untouched">project role is
+                            required</small>
+                    </div>
+
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>Project Description</strong></span>
+                        </div>
+
+                        <textarea rows="2" type="textarea" #projectDesc="ngModel" required class="form-control"
+                            [class.is-invalid]="projectDesc.invalid && projectDesc.touched" name="projectDesc"
+                            [(ngModel)]="userModel.projectDesc" placeholder="companyName" placeholder="projectDesc">
+            </textarea>
+
+                        <small class="text-danger"
+                            [class.d-none]="projectDesc.valid || projectDesc.untouched">project Description
+                            is required</small>
+                    </div>
+
+                    <button type="button" class="btn btn-link">Add </button>
+                </div>
+
+
+                <br>
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Skills</h5>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id=""><strong>Certificate name</strong></span>
+                            </div>
+    
+                            <input type="text" #certificateName="ngModel" required class="form-control"
+                                [class.is-invalid]="certificateName.invalid && certificateName.touched" name="certificateName"
+                                [(ngModel)]="userModel.certificateName">
+                            <small class="text-danger" [class.d-none]="certificateName.valid || certificateName.untouched">Job certificateName is
+                                required</small>
+                        </div>
+    
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id=""><strong>Issued Date</strong></span>
+                            </div>
+    
+                            <input type="date" #issuedDate="ngModel" required class="form-control"
+                                [class.is-invalid]="issuedDate.invalid && issuedDate.touched" name="issuedDate" [(ngModel)]="userModel.issuedDate">
+                            <small class="text-danger" [class.d-none]="issuedDate.valid || issuedDate.untouched"> Issued Date is
+                                required</small>
+                        </div>
+    
+    
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><strong>Skill level</strong></span>
+                            </div>
+                            <input type="number" max="10" min='1' #skillLevel="ngModel" required class="form-control"
+                            [class.is-invalid]="skillLevel.invalid && skillLevel.touched" name="skillLevel" [(ngModel)]="userModel.skillLevel">
+                           
+    
+                            <small class="text-danger"
+                                [class.d-none]="skillLevel.valid || skillLevel.untouched">skill Level
+                                is required</small>
+                        </div>
+
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id=""><i class="fa fa-building"></i><strong>Skill</strong></span>
+                            </div>
+                            <select class="form-control" id="" [(ngModel)]="regiseterModel.skillName" name="skillName"
+                                required>
+                        <option *ngFor="let skill of Skills ; let i=index" [value]="skill.name">
+                            {{skill.name}}
+                        </option>
+
+                    </select>
+                    <small class="text-danger" [class.d-none]="skillName.valid || skillName.untouched">Please
+                        choose a skill</small>
+                </div>
+                        
+    
+                        <button type="button" class="btn btn-link">Add </button>
+                    </div>
+
+
+
+                    <br>
+
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Job experience</h5>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Job title</strong></span>
+                                </div>
+        
+                                <input type="text" #jobTitle="ngModel" required class="form-control"
+                                    [class.is-invalid]="jobTitle.invalid && jobTitle.touched" name="jobTitle"
+                                    [(ngModel)]="userModel.jobTitle">
+                                <small class="text-danger" [class.d-none]="jobTitle.valid || jobTitle.untouched"> jobTitle is
+                                    required</small>
+                            </div>
+        
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>Start Date</strong></span>
+                                </div>
+        
+                                <input type="date" #startDate="ngModel" required class="form-control"
+                                    [class.is-invalid]="startDate.invalid && startDate.touched" name="startDate" [(ngModel)]="userModel.startDate">
+                                <small class="text-danger" [class.d-none]="startDate.valid || startDate.untouched"> Issued Date is
+                                    required</small>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id=""><strong>End Date</strong></span>
+                                </div>
+        
+                                <input type="date" #endDate="ngModel" required class="form-control"
+                                    [class.is-invalid]="endDate.invalid && endDate.touched" name="endDate" [(ngModel)]="userModel.endDate">
+                                <small class="text-danger" [class.d-none]="endDate.valid || endDate.untouched"> Issued Date is
+                                    required</small>
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><strong>Job Description</strong></span>
+                                </div>
+        
+                                <textarea rows="2" type="textarea" #jobDesc="ngModel" required class="form-control"
+                                    [class.is-invalid]="jobDesc.invalid && jobDesc.touched" name="jobDesc"
+                                    [(ngModel)]="userModel.jobDesc" placeholder="jobDesc" >
+                    </textarea>
+        
+                                <small class="text-danger"
+                                    [class.d-none]="jobDesc.valid || jobDesc.untouched">job Description
+                                    is required</small>
+                            </div>
+        
+                        <h4 class="address">Address</h4>
+    
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><strong>Street</strong></span>
+                                    </div>
+                                
+                                <input type="text" #StreetAddress="ngModel" required class="form-control"
+                                    [class.is-invalid]="StreetAddress.invalid && StreetAddress.touched" name="StreetAddress"
+                                    [(ngModel)]="userModel.StreetAddress">
+                                <small class="text-danger" [class.d-none]="StreetAddress.valid || StreetAddress.untouched">Street is
+                                    required</small>
+                            
+                        </div>
+    
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><strong>City</strong></span>
+                                    </div>
+                                
+                                <input type="text" #City="ngModel" required class="form-control"
+                                    [class.is-invalid]="City.invalid && City.touched" name="City"
+                                    [(ngModel)]="userModel.City">
+                                <small class="text-danger" [class.d-none]="City.valid || City.untouched">city is
+                                    required</small>
+                           
+                        </div>
+    
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><strong>State</strong></span>
+                                    </div>
+                                
+                                <input type="text" #State="ngModel" required class="form-control"
+                                    [class.is-invalid]="State.invalid && State.touched" name="State"
+                                    [(ngModel)]="userModel.State">
+                                <small class="text-danger" [class.d-none]="State.valid || State.untouched">City is
+                                    required</small>
+                            
+                        </div>
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><strong>Country</strong></span>
+                                    </div>
+                                
+                                <input type="text" #Country="ngModel" required class="form-control"
+                                    [class.is-invalid]="Country.invalid && Country.touched" name="Country"
+                                    [(ngModel)]="userModel.Country">
+                                <small class="text-danger" [class.d-none]="Country.valid || Country.untouched">Country is
+                                    required</small>
+                           
+                        </div>
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><strong>Zipcode</strong></span>
+                                    </div>
+                                
+                                <input type="text" #Zipcode="ngModel" required class="form-control"
+                                    [class.is-invalid]="Zipcode.invalid && Zipcode.touched" name="Zipcode"
+                                    [(ngModel)]="userModel.Zipcode">
+                                <small class="text-danger" [class.d-none]="Zipcode.valid || Zipcode.untouched">Zipcode is
+                                    required</small>
+                            
+                        </div>
+                            
+                        </div>
+                            <button type="button" class="btn btn-link">Add </button>
+                        </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+</div>

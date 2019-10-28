@@ -5,7 +5,7 @@ import { ApplicationStatusComponent } from './application-status/application-sta
 import { ManageAccountComponent } from './manage-account/manage-account.component';
 import { SeekerPageComponent } from './seeker-page/seeker-page.component';
 import { SeekerProfileComponent } from './seeker-profile/seeker-profile.component';
-
+import{FormsModule}from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { SeekerProfileComponent } from './seeker-profile/seeker-profile.componen
     SeekerPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class JobSeekerModule { }
