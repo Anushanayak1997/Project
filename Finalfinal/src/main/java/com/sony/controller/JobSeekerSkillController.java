@@ -12,7 +12,7 @@ import com.sony.model.entity.JobSeekerSkills;
 import com.sony.model.service.JobSeekerSkillService;
 
 @RestController 
-public class JobSeekerSkillController {
+public class JobSeekerSkillController { 
 	@Autowired
 	public JobSeekerSkillService jobseekerskillservice;
 	
