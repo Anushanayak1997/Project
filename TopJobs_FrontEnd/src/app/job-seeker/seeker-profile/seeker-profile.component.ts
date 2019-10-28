@@ -9,7 +9,7 @@ import { job_seeker_education, job_seeker_skills, job_seeker_project, job_seeker
   styleUrls: ['./seeker-profile.component.css']
 })
 export class SeekerProfileComponent implements OnInit {
-
+skills:any;
   
   userInfo = new RegiseterUser(
     "",
