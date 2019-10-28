@@ -9,16 +9,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
-
-import com.sony.model.entity.JobSeekerExperience;
-import com.sony.model.entity.JobSeekerProject;
+import com.sony.model.entity.JobSeekerEducationType;
 
 @Repository
-public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
+public class JobSeekerEducationTypeDAOImpl implements JobSeekerEducationTypeDAO{
+
 
 	private static SessionFactory factory;
 
-	public JobSeekerProjectDAOImpl() {
+	public JobSeekerEducationTypeDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -26,14 +25,15 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-	public Integer addJobSeekerProject(JobSeekerProject project) {
+
+	public Integer addJobSeekerEducationType(JobSeekerEducationType educationType) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobseekerprojectid = null;
+		Integer jobseekereducationTypeid = null;
 
 		try {
 			tx = session.beginTransaction();
-			jobseekerprojectid = (Integer) session.save(project);
+			jobseekereducationTypeid = (Integer) session.save(educationType);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -42,22 +42,21 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		} finally {
 			session.close();
 		}
-		return jobseekerprojectid;
+		return jobseekereducationTypeid;
 	}
 
-	public List<JobSeekerProject> getAllProject() {
+	public List<JobSeekerEducationType> getAllSeekerEducationType() {
 		Session session = factory.openSession();
-		List<JobSeekerProject> project = new ArrayList<JobSeekerProject>();
- 
+		List<JobSeekerEducationType> educationType = new ArrayList<JobSeekerEducationType>();
+
 		try {
-			project= session.createQuery("FROM JobSeekerProject").list();
+			educationType= session.createQuery("FROM JobSeekerEducationType").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return project;
+		return educationType;
 	}
 	
-
 }

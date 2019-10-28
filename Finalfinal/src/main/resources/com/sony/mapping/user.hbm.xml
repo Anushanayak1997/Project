@@ -4,7 +4,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.sony.model.entity.UserEntity" table="USER_REGISTER">
+	<class name="com.sony.model.entity.User" table="USER_REGISTER">
 		<meta attribute="class-description">
 			This class contains the user detail.
 		</meta>

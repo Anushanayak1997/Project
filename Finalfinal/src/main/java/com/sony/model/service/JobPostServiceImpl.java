@@ -15,15 +15,13 @@ import com.sony.model.entity.JobPost;
 
 @Service
 public class JobPostServiceImpl implements JobPostService {
- 
-	@Autowired          
-	private JobPostDAO jobpostdao;
-	
+
 	@Autowired
-	private CompanyDAO companydao;  
-	
-	
-    
+	private JobPostDAO jobpostdao;
+
+	@Autowired
+	private CompanyDAO companydao;
+
 	@Autowired
 	HttpSession httpsession;
 
@@ -39,13 +37,16 @@ public class JobPostServiceImpl implements JobPostService {
 		Company company = companydao.getCompanyById(companyid);
 		jobpostentity.setCompanyentity(company);
 		Integer jobpostid = jobpostdao.addJobPost(jobpostentity);
-		if(jobpostid != null)
+		httpsession.setAttribute("jobpostid", jobpostid);
+		if (jobpostid != null)
 			return true;
 		else {
 			return false;
 		}
 	}
-
-
+	
+	public JobPost getJobById(Integer jobpostid) {
+		return jobpostdao.getJobById(jobpostid);
+	}
 
 }

@@ -54,7 +54,6 @@ public class JobPostDAOImpl implements JobPostDAO {
 		Session session = factory.openSession();
 		List<JobPost> jobposts = new ArrayList<JobPost>();
 		Integer companyId = company.getCompanyId();
-	
 
 		try {
 			String hql = "FROM JobPost where companyentity.companyId = :companyid";
@@ -63,7 +62,6 @@ public class JobPostDAOImpl implements JobPostDAO {
 
 			List<JobPost> result = query.list();
 			if (!result.isEmpty()) {
-				// JobPostEntity jpe = (JobPostEntity) result.get(0);
 				jobposts.addAll(result);
 			}
 		} catch (HibernateException e) {
@@ -74,6 +72,24 @@ public class JobPostDAOImpl implements JobPostDAO {
 		return jobposts;
 	}
 
-	
+	public JobPost getJobById(Integer jobpostid) {
+		Session session = factory.openSession();
+		JobPost jobpost = new JobPost();
+
+		try {
+			String hql = "FROM JobPost where jobPostId = :jobpostid";
+			Query query = session.createQuery(hql);
+			query.setParameter("jobpostid", jobpostid);
+			JobPost job = (JobPost) query.uniqueResult();
+			if(job != null) {
+				jobpost = job;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return jobpost;
+	}
 
 }
