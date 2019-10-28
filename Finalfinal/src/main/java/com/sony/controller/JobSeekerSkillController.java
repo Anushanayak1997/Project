@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sony.model.entity.JobSeekerSkills;
 import com.sony.model.service.JobSeekerSkillService;
 
-@RestController
+@RestController 
 public class JobSeekerSkillController {
 	@Autowired
 	public JobSeekerSkillService jobseekerskillservice;
