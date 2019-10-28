@@ -1,12 +1,14 @@
-package com.sony.dao; 
+package com.sony.dao;
 
 import java.util.List;
-     
-import com.sony.model.entity.JobPostEntity;
+
+import com.sony.model.entity.Company;
+import com.sony.model.entity.JobPost;
 
 public interface JobPostDAO {
 
-	List<JobPostEntity> getAllJobs();
+	
+	public List<JobPost> getJobsByCompId(Company company);
 
-	boolean addJobPost(JobPostEntity jobpostentity);
+	public Integer addJobPost(JobPost jobpostentity);
 }

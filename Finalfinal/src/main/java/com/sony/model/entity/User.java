@@ -1,14 +1,37 @@
 package com.sony.model.entity;
 
-public class UserEntity {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "USER_REGISTER")
+public class User {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_sequence")
+    @SequenceGenerator(name = "user_sequence", sequenceName = "USER_ID_SEQ")
+	@Column(name = "user_id")
 	private int userID;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "firstname")
 	private String firstName;
+	
+	@Column(name = "lastname")
 	private String lastName;
+	
+	@Column(name = "email_id")
 	private String emailID;
+	
+	@Column(name = "contact_no")
 	private String contactNumber;
-	// private Blob image;
+	// private Blob image; 
+	
+	@Column(name = "user_type")
 	private String userType;
 
 	public String getUserType() {
@@ -17,16 +40,6 @@ public class UserEntity {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
-	}
-
-	private String companyName;
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
 	}
 
 	public int getUserID() {

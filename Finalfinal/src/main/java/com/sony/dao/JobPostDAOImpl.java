@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.JobPostEntity;
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.Company;
+import com.sony.model.entity.EmployerCompany;
+import com.sony.model.entity.JobPost;
+import com.sony.model.entity.User;
 
 @Repository
 public class JobPostDAOImpl implements JobPostDAO {
@@ -26,11 +29,12 @@ public class JobPostDAOImpl implements JobPostDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-      
-	public boolean addJobPost(JobPostEntity jobpostentity) {
+
+	public Integer addJobPost(JobPost jobpostentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobpostId ;
+		Integer jobpostId = null;
+
 		try {
 			tx = session.beginTransaction();
 			jobpostId = (Integer) session.save(jobpostentity);
@@ -42,28 +46,34 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		return true;
+		return jobpostId;
 
 	}
 
-	public List<JobPostEntity> getAllJobs() {
+	public List<JobPost> getJobsByCompId(Company company) {
 		Session session = factory.openSession();
-		Transaction tx = null;
-		List<JobPostEntity> jobs = new ArrayList<JobPostEntity>();
+		List<JobPost> jobposts = new ArrayList<JobPost>();
+		Integer companyId = company.getCompanyId();
+	
 
 		try {
-			tx = session.beginTransaction();
-			jobs = session.createQuery("FROM JobPostEntity").list();
-			tx.commit();
+			String hql = "FROM JobPost where companyentity.companyId = :companyid";
+			Query query = session.createQuery(hql);
+			query.setParameter("companyid", companyId);
+
+			List<JobPost> result = query.list();
+			if (!result.isEmpty()) {
+				// JobPostEntity jpe = (JobPostEntity) result.get(0);
+				jobposts.addAll(result);
+			}
 		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return jobs;
-
+		return jobposts;
 	}
+
+	
 
 }

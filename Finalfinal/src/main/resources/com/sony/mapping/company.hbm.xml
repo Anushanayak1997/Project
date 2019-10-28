@@ -15,17 +15,15 @@
 				<param name="sequence">COMPANY_ID_SEQ</param>
 			</generator>
 		</id>
-
+		
 		<property name="companyName" column="company_name" type="string" />
-		<property name="companyDescription" column="company_description"
-			type="string" />
-		<property name="establishmentDate" column="establishment_date"
-			type="string" />
+		<property name="companyDescription" column="company_description" type="string" />
+		<property name="establishmentDate" column="establishment_date" type="string" />
 		<property name="websiteUrl" column="website_url" type="string" />
-		<property name="headquarter" column="headquater" type="string" />
+		<property name="headquarter" column="headquarter" type="string" />
 		<property name="specialities" column="specialities" type="string" />
 		<property name="industry" column="industry" type="string" />
-		<property name="type" column="type" type="string" />
+		<property name="type" column="company_type" type="string" />
 
 	</class>
 

@@ -16,14 +16,15 @@ export class RegisterComponent implements OnInit {
   details: any;
   company: any;
   PostCompany: any;
+  PostCompanyid: any;
   topicHasError = true;
   comp:any;
  
   constructor(private router: Router, private _http: HttpClient) { }
 
   regiseterModel = new RegiseterUser(
-    "a1",
-    "a1",
+    "Ak",
+    "sa",
     "a1",
     "a1",
     "a1",
@@ -50,8 +51,12 @@ export class RegisterComponent implements OnInit {
       emailID: this.regiseterModel.emailID,
       contactNumber: this.regiseterModel.contactNumber,
       userType: this.regiseterModel.userType,
-
     }
+
+    this.PostCompanyid ={
+      companyID:this.regiseterModel.companyID
+    }
+      
 
     if(this.regiseterModel.companyName=="others"){
       this.comp=null;

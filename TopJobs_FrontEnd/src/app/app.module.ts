@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,10 +28,11 @@ import { JobSeekerModule } from './job-seeker/job-seeker.module';
 
     CompanyModule,
     HomeModule,
-    JobSeekerModule
+    JobSeekerModule,
+    NgbModule
 
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

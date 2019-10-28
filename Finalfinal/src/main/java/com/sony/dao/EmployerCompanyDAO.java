@@ -1,8 +1,10 @@
 package com.sony.dao;
 
-import com.sony.model.entity.EmployerCompanyEntity;
+import com.sony.model.entity.EmployerCompany;
 
 public interface EmployerCompanyDAO {
 
-	public Integer addEmployerCompany(EmployerCompanyEntity employercompany);
+	public Integer addEmployerCompany(EmployerCompany employercompany);
+	
+	public Integer getCompanyId(Integer UserId);
 }

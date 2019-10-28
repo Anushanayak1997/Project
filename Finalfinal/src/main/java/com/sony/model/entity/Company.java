@@ -2,28 +2,51 @@ package com.sony.model.entity;
 
 import java.util.LinkedList;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 // import com.sony.model.entity.JobPostEntity;
 
-public class CompanyEntity {
+@Entity
+@Table(name="COMPANY")
+public class Company {
 
-	private int companyId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO, generator = "company_sequence")
+    @SequenceGenerator(name = "company_sequence", sequenceName = "COMPANY_ID_SEQ")
+	@Column(name = "company_id")
+	private int companyId; 
+	
+	@Column(name="company_name")
 	private String companyName;
+	
+	@Column(name="company_description")
 	private String companyDescription;
+	
+	@Column(name="establishment_date")
 	private String establishmentDate;
+	
+	@Column(name="website_url")
 	private String websiteUrl;
+	
+	@Column(name="headquarter")
 	private String headquarter;
+	
+	@Column(name="specialities")
 	private String specialities;
+	
+	@Column(name="industry")
 	private String industry;
+	
+	@Column(name="type")
 	private String type;
-	// private LinkedList<JobPostEntity> jobposts;
 
-	public CompanyEntity() {
-		// jobposts = new LinkedList<JobPostEntity>();
+	public Company() {
 	}
 
 	public int getCompanyId() {

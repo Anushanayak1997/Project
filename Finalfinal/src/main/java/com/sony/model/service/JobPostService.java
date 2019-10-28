@@ -2,13 +2,15 @@ package com.sony.model.service;
 
 import java.util.List;
 
-import com.sony.model.entity.JobPostEntity;
+import com.sony.model.entity.JobPost;
 
 public interface JobPostService {
 
 
-	boolean addJobPost(JobPostEntity jobpostentity);
+	public boolean addJobPost(JobPost jobpostentity);
 
-	List<JobPostEntity> getAllJobs();
+
+
+	public List<JobPost> getJobsByCompId();
 
 }

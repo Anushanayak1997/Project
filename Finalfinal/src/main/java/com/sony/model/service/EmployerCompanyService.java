@@ -1,8 +1,8 @@
 package com.sony.model.service;
 
-import com.sony.model.entity.EmployerCompanyEntity;
+import com.sony.model.entity.EmployerCompany;
 
 public interface EmployerCompanyService {
 
-	public boolean addEmployerCompany(EmployerCompanyEntity employercompany);
+	public boolean addEmployerCompany(EmployerCompany employercompany);
 }

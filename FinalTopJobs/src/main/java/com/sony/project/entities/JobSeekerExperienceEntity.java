@@ -5,7 +5,7 @@ import java.sql.Date;
 public class JobSeekerExperienceEntity {
 
 	private String jobTitle;
-	private boolean isCurrentJob;
+
 	private Date startDate;
 	private Date endDate;
 	private String jobDescription;
@@ -18,14 +18,7 @@ public class JobSeekerExperienceEntity {
 		this.jobTitle = jobTitle;
 	}
 
-	public boolean isCurrentJob() {
-		return isCurrentJob;
-	}
-
-	public void setCurrentJob(boolean isCurrentJob) {
-		this.isCurrentJob = isCurrentJob;
-	}
-
+	
 	public Date getStartDate() {
 		return startDate;
 	}

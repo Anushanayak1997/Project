@@ -7,6 +7,7 @@ D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\CertificatesEnt
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\LoginEntity.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\controllers\User.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\controllers\Company.java
+D:\Projects\FinalTopJobs\src\main\java\com\sony\project\MainApp.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\CompanyDetailsEntity.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\LocationEntity.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\CourseEntity.java
@@ -22,8 +23,8 @@ D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\SeekerJobPostSt
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\JobSeekerSkillsEntity.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\JobSeekerProjectEntity.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\EducationTypeEntity.java
-D:\Projects\FinalTopJobs\src\main\java\com\sony\project\main\MainApp.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\services\EmployerCompanyService.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\controllers\RestConfiguration.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\JobPostEntity.java
+D:\Projects\FinalTopJobs\src\main\java\com\sony\project\services\UserServiceImpl.java
 D:\Projects\FinalTopJobs\src\main\java\com\sony\project\entities\JobPostSkillsEntity.java
