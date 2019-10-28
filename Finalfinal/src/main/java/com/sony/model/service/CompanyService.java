@@ -12,4 +12,5 @@ public interface CompanyService {
 	public List<Company> getAllCompany();
 	
 	public Integer setCompanyIdSession(Company company);
+
 }

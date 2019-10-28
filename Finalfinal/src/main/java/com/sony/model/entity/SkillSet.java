@@ -22,6 +22,7 @@ public class SkillSet {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "skill_sequence")
 	@SequenceGenerator(name = "skill_sequence", sequenceName = "SKILL_ID_SEQ")
 	@Column(name = "skill_id")
+
 	private int skillId;
 	
 	private LinkedList<JobPostSkill> jobpostskill = new LinkedList<JobPostSkill>();

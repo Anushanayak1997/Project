@@ -38,7 +38,7 @@ public class CompanyServiceImpl implements CompanyService{
 				employerservice.addEmployerCompany(employercompanyentity);
 				return true;
 			}
-		return false;
+			return false;
 	}
 	
 	public Integer setCompanyIdSession(Company company) {
