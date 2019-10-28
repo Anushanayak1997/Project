@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.entity.JobSeekerSkills;
 import com.sony.model.entity.SkillSet;
 
@@ -59,5 +60,7 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 		}
 		return skills;
 	}
+	}
 
-}
+	
+

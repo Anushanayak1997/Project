@@ -24,5 +24,8 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 	public List<JobSeekerSkills> getAllSkills() {
 		return jobseekerskilldao.getAllSkills();
 	}
+	
+	
+
 
 }

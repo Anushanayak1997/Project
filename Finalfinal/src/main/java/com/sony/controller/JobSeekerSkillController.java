@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.entity.JobSeekerSkills;
 import com.sony.model.service.JobSeekerSkillService;
 
@@ -16,8 +17,9 @@ public class JobSeekerSkillController {
 	@Autowired
 	public JobSeekerSkillService jobseekerskillservice;
 	
+	
 	@RequestMapping(value = "/getallseekerskills")
-	public List<JobSeekerSkills> getAllSkills() {
+	public List<JobSeekerSkills> getAllSkill() {
 		return jobseekerskillservice.getAllSkills();
 	}
 	
