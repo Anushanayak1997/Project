@@ -12,16 +12,19 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   url1 = environment.apiBaseUrl + "companydetails";
   url2 = environment.apiBaseUrl + "adduser";
+  url3 = environment.apiBaseUrl + "sendcompany"
   details: any;
   company: any;
   PostCompany: any;
+  PostCompanyid: any;
   topicHasError = true;
+
 
   constructor(private router: Router, private _http: HttpClient) { }
 
   regiseterModel = new RegiseterUser(
-    "a1",
-    "a1",
+    "Ak",
+    "sa",
     "a1",
     "a1",
     "a1",
@@ -48,8 +51,12 @@ export class RegisterComponent implements OnInit {
       emailID: this.regiseterModel.emailID,
       contactNumber: this.regiseterModel.contactNumber,
       userType: this.regiseterModel.userType,
-
     }
+
+    this.PostCompanyid ={
+      companyID:this.regiseterModel.companyID
+    }
+      
 
     this._http.post(this.url2, this.PostCompany).subscribe(
       (Response) => {
@@ -65,7 +72,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['company/jobpost']);
       }
     }else{
-      alert("nothing")
+      console.log("nothing")
     }
 
   }

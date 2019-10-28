@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { loginUser } from '../H_user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,11 @@ export class LoginComponent implements OnInit {
   login:any;
   url = environment.apiBaseUrl +"loginuser";
   status:boolean = false;
+  cookieValue:string;
 
 
-  constructor(private router: Router,private _http: HttpClient) { }
-
+  constructor(private router: Router,private _http: HttpClient,private cookieService: CookieService) { }
+  
   ngOnInit() {
   }
 
@@ -48,8 +50,12 @@ export class LoginComponent implements OnInit {
       email:this.userModel.emailID,
       password:this.userModel.password
     }
-  
 
+    this.cookieService.set("email",this.login.email);
+    this.cookieValue = this.cookieService.get('email');
+    console.log("-->"+this.cookieValue)
+    this.router.navigate(['home'])
+    /*
     this._http.post(this.url,this.login).subscribe(
       (response)=>{
         if(response!=null){
@@ -72,7 +78,10 @@ export class LoginComponent implements OnInit {
 
       
     )
+    */
       
     }
+
+    
 
   }

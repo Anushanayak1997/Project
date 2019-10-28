@@ -19,9 +19,13 @@
     "@angular/platform-browser": "~8.2.3",
     "@angular/platform-browser-dynamic": "~8.2.3",
     "@angular/router": "~8.2.3",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.1",
     "angular-bootstrap-datetimepicker": "^3.0.0",
     "bootstrap": "^4.3.1",
     "moment": "^2.24.0",
+    "ng-modals": "^1.0.4",
+    "ngx-cookie-service": "^2.2.0",
+    "ngx-smart-modal": "^7.2.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
