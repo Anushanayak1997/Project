@@ -1,10 +1,14 @@
 package com.sony.model.entity;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
-public class JobPostEntity {
+public class JobPost {
+
 	private int jobPostId;
 	private String jobTitle;
 	private String jobDescription;
@@ -14,11 +18,11 @@ public class JobPostEntity {
 	private String postDate;
 	private int noOfVacancies;
 	private String streetAddress;
-	private CompanyEntity companyentity;
-	private Set<SkillSet> skillSet;
+	private Company companyentity;
 	private String city;
 	private String state;
-	
+	private LinkedList<JobPostSkill> jobpostskill = new LinkedList<JobPostSkill>();
+
 	public String getStreetAddress() {
 		return streetAddress;
 	}
@@ -43,11 +47,11 @@ public class JobPostEntity {
 		this.state = state;
 	}
 
-	public CompanyEntity getCompanyentity() {
+	public Company getCompanyentity() {
 		return companyentity;
 	}
 
-	public void setCompanyentity(CompanyEntity companyentity) {
+	public void setCompanyentity(Company companyentity) {
 		this.companyentity = companyentity;
 	}
 
@@ -114,10 +118,15 @@ public class JobPostEntity {
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
-	public Set<SkillSet> getSkillSet() {
-		return skillSet;
+
+	@OneToMany(mappedBy = "skillset")
+	public LinkedList<JobPostSkill> getJobpostskill() {
+		return jobpostskill;
 	}
-	public void setSkillSet(Set<SkillSet> skillSet) {
-		this.skillSet = skillSet;
+
+	public void setJobpostskill(LinkedList<JobPostSkill> jobpostskill) {
+		this.jobpostskill = jobpostskill;
 	}
+	
+
 }

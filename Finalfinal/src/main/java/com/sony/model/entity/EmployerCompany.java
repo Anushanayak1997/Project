@@ -1,11 +1,14 @@
 package com.sony.model.entity;
 
-public class EmployerCompanyEntity {
+public class EmployerCompany {
 	private int Id;
 	private int userId;
 	private int companyId;
+	
+	public EmployerCompany() {
+	}
 
-	public EmployerCompanyEntity(int userId, int companyId) {
+	public EmployerCompany(int userId, int companyId) {
 		this.userId = userId;
 		this.companyId = companyId;
 	}

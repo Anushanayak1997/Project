@@ -7,9 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-// import com.sony.model.entity.JobPostEntity;
+// import com.sony.model.entity.JobPost;
 
-public class CompanyEntity {
+public class Company {
 
 	private int companyId;
 	private String companyName;
@@ -21,7 +21,7 @@ public class CompanyEntity {
 	private String industry;
 	private String type;
 
-	public CompanyEntity() {
+	public Company() {
 	}
 
 	public int getCompanyId() {
@@ -64,11 +64,11 @@ public class CompanyEntity {
 		this.websiteUrl = websiteUrl;
 	}
 
-//	public LinkedList<JobPostEntity> getJobposts() {
+//	public LinkedList<JobPost> getJobposts() {
 //		return jobposts;
 //	}
 //
-//	public void setJobposts(LinkedList<JobPostEntity> jobposts) {
+//	public void setJobposts(LinkedList<JobPost> jobposts) {
 //		this.jobposts = jobposts;
 //	}
 
