@@ -27,7 +27,7 @@ public class CompanyController {
 		return(companyservice.addCompany(company));
 	}
 	
-	@RequestMapping(value = "/setcompanyid", method = RequestMethod.POST)
+	@RequestMapping(value = "/setcompanyid", method = RequestMethod.POST) 
 	public Integer setCompanyIdSession(@RequestBody Company company) {
 		return (companyservice.setCompanyIdSession(company));
 	}
