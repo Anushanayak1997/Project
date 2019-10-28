@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.JobSeekerEducation;
-import com.sony.model.entity.JobSeekerExperience;
+
 
 @Repository
 public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {

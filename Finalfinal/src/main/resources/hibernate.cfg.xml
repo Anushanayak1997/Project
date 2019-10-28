@@ -23,6 +23,10 @@
 		<mapping class="com.sony.model.entity.JobSeekerExperience" />
 		<mapping class="com.sony.model.entity.JobSeekerSkills" />
 		<mapping class="com.sony.model.entity.JobSeekerEducation" />
+		<mapping class="com.sony.model.entity.JobSeekerCourse" />
+		<mapping class="com.sony.model.entity.JobSeekerEducationType" />
+		<mapping class="com.sony.model.entity.JobSeekerSpecialization" />
+	
    				
 
 	<!--	<mapping resource="com/sony/mapping/employercompany.hbm.xml" />

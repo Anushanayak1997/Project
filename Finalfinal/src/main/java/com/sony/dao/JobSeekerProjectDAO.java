@@ -1,12 +1,14 @@
 package com.sony.dao;
 
-import java.util.List; 
+import java.util.List;
 
 import com.sony.model.entity.JobSeekerProject;
 
+
 public interface JobSeekerProjectDAO {
+	Integer addJobSeekerProject(JobSeekerProject project);
 
-	public Integer addJobSeekerProject(JobSeekerProject jobseekerproject);
 
-	public List<JobSeekerProject> getAllProject();
+
+	List<JobSeekerProject> getAllProject();
 }
