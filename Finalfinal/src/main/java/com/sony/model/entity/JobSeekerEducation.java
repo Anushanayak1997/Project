@@ -56,4 +56,12 @@ public class JobSeekerEducation {
 		this.marksPercentages = marksPercentages;
 	}
 
+	public int getJobSeekerEducationId() {
+		return jobSeekerEducationId;
+	}
+
+	public void setJobSeekerEducationId(int jobSeekerEducationId) {
+		this.jobSeekerEducationId = jobSeekerEducationId;
+	}
+
 }
