@@ -115,6 +115,10 @@
                 <button class="btn btn-primary btn-space btnStyle" (click)="onSubmit()"
                     [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
                 </button>
+                &nbsp;
+                <button class="btn btn-primary btn-space btnStyle" (click)="onNext()"
+                [disabled]="userForm.form.invalid || topicHasError "><strong>next</strong>
+            </button>
             </article>
 
 

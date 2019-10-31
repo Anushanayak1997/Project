@@ -2,32 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegiseterUser } from '../H_user';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
-  url1 = environment.apiBaseUrl + "addcompanydetails";
+  url1 = environment.apiBaseUrl + "setcompanyid";
   url2 = environment.apiBaseUrl + "adduser";
   url3= environment.apiBaseUrl + "getallcompany";
   details: any;
   company: any;
+  user:any;
   PostCompany: any;
   PostCompanyid: any;
   topicHasError = true;
   comp:any;
- 
+  headers={
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    })
+  }
   constructor(private router: Router, private _http: HttpClient) { }
 
   regiseterModel = new RegiseterUser(
-    "Ak",
-    "sa",
-    "a1",
-    "a1",
-    "a1",
+    "Namrata",
+    "Nadang",
+    "nammu@gmail.com ",
+    "nammu9989",
+    "987654321",
     "1",
     "a1",
   )
@@ -44,22 +51,46 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.regiseterModel);
-    this.PostCompany = {
-      firstName: this.regiseterModel.firstName,
-      lastName: this.regiseterModel.lastName,
-      password: this.regiseterModel.password,
-      emailID: this.regiseterModel.emailID,
-      contactNumber: this.regiseterModel.contactNumber,
-      userType: this.regiseterModel.userType,
-    }
+    this.user={'firstName': this.regiseterModel.firstName,
+    'lastName':this.regiseterModel.lastName,
+    'password':this.regiseterModel.password,
+    'emailID':this.regiseterModel.emailID,
+    'contactNumber':this.regiseterModel.contactNumber,
+    'userType':this.regiseterModel.userType}
+    
 
     this.PostCompanyid ={
       companyID:this.regiseterModel.companyID
     }
-      
 
+    this._http.post(this.url2,this.user).subscribe(
+      (Response) => {
+        console.log(Response);
+        let user_id='user_id';
+      
+        localStorage.setItem('user_id',Response.toString());
+        console.log(localStorage.getItem('user_id'));
+        console.log("added user");
+
+       
+
+      }
+
+      
+    )
+ 
+      
+  }
+
+  onNext(){
+
+    if(this.regiseterModel.userType=="JobSeeker"){
+      this.router.navigate(['seeker/profile']);
+    }
     if(this.regiseterModel.companyName=="others"){
-      this.comp=null;
+      console.log("hi");
+      this.PostCompany=null;
+      this.router.navigate(['company/details']);
     }
       else{
         console.log("hi");
@@ -69,36 +100,23 @@ export class RegisterComponent implements OnInit {
           console.log("true");
           this.comp=company;
          }
-          
         }
-
-    }
-    
-    console.log("company status");
+        console.log("company status");
     console.log(this.comp);
-    this._http.post(this.url2,this.PostCompany ).subscribe(
-      (Response) => {
-        console.log(Response);
-        console.log("added user");
-
-       
-
-      }
-
-      
-    )
-
-
-
-    this._http.post(this.url1, this.comp).subscribe(
+    console.log(localStorage.getItem('user_id'));
+    this.PostCompany={'companyId':this.comp.companyId,'userId':localStorage.getItem('user_id')};
+    this._http.post(this.url1, this.PostCompany).subscribe(
       (Response) => {
         console.log(Response);
         console.log("succees");
 
       }
     )
+    this.router.navigate(['company/jobpost']);
+    }
     
 
+    
   }
 
   getCompanies() {

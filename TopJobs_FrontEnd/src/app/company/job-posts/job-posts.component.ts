@@ -19,18 +19,21 @@ export class JobPostsComponent implements OnInit {
   constructor( private route:Router , private http: HttpClient) { }
 
   ngOnInit() {
+    console.log("hiii");
+    console.log(localStorage.getItem('user_id'));
     this.http.get(this.url).subscribe(
       (response) => {
 
         this.job_posts=response;
-        console.log(this.job_posts)
+        console.log(this.job_posts);
+      
 
       }
     )
   }
 
   toCreatePost(){
-    this.route.navigate(['company/create-post'])
+    this.route.navigate(['company/details'])
   }
 
   getCompanyDetails(){
