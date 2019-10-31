@@ -38,14 +38,15 @@ export class CompanyDetailsComponent implements OnInit {
 
   onSubmit() {
     this.compDetails = {
-      companyName:this.userModel.companyName,
-      companyDescription:this.userModel.companyDescription,
-      establishmentDate:this.userModel.establishmentDate,
-      websiteUrl:this.userModel.websiteUrl,
-      headquarter:this.userModel.headquarter,
-      specialiaties:this.userModel.specialities,
-      industry:this.userModel.industry,
-      type:this.userModel.type
+      'companyName':this.userModel.companyName,
+      'companyDescription':this.userModel.companyDescription,
+      'establishmentDate':this.userModel.establishmentDate,
+      'websiteUrl':this.userModel.websiteUrl,
+      'headquarter':this.userModel.headquarter,
+      'specialiaties':this.userModel.specialities,
+      'industry':this.userModel.industry,
+      'type':this.userModel.type,
+      'userId':localStorage.getItem('user_id')
     }
     console.log(this.compDetails);
     console.log("000000")

@@ -19,11 +19,13 @@ export class LoginComponent implements OnInit {
   url = environment.apiBaseUrl +"loginuser";
   status:boolean = false;
   cookieValue:string;
+  response: any;
 
 
   constructor(private router: Router,private _http: HttpClient,private cookieService: CookieService) { }
   
   ngOnInit() {
+    this.cookieValue = this.cookieService.get('firstName');
   }
 
   topics = ["JobSeeker","Employer","Admin"];
@@ -44,26 +46,37 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+    this.cookieValue = this.cookieService.get('firstName');
+    /*
     console.log("before")
 
     this.login={
-      email:this.userModel.emailID,
+      emailId:this.userModel.emailID,
       password:this.userModel.password
     }
 
-    this.cookieService.set("email",this.login.email);
+  /*  this.cookieService.set("email",this.login.email);
     this.cookieValue = this.cookieService.get('email');
     console.log("-->"+this.cookieValue)
-    this.router.navigate(['home'])
-    /*
+    this.router.navigate(['home'])*/
+    
     this._http.post(this.url,this.login).subscribe(
       (response)=>{
+        console.log(response);
         if(response!=null){
+          
+          this.response=response;
           console.log(response)
           this.status = true;
         }
           if(this.status==true){
             if(this.userModel.userType=="Employer"){
+             this.response.forEach((value:any, key: string) => {
+                console.log(key, value);
+                localStorage.setItem(key,value);
+                console.log(localStorage.getItem(key));
+            });
+
               this.router.navigate(['company/jobpost']);
             }else {
              console.log("logged in")
@@ -78,7 +91,7 @@ export class LoginComponent implements OnInit {
 
       
     )
-    */
+    
       
     }
 

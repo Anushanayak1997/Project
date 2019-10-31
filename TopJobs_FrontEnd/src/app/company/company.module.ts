@@ -9,6 +9,7 @@ import {FormsModule } from '@angular/forms'
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { EmployerDetailsComponent } from './employer-details/employer-details.component';
 import { JobDescriptionComponent } from './job-description/job-description.component';
+import { CompanyService } from './company.service';
 
 @NgModule({
   declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent, JobDescriptionComponent],
@@ -22,6 +23,8 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
     FormsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
-  ]
+  ],
+
+  providers:[CompanyService]
 })
 export class CompanyModule { }

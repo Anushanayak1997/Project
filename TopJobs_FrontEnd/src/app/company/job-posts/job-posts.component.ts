@@ -14,11 +14,30 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./job-posts.component.css']
 })
 export class JobPostsComponent implements OnInit {
+<<<<<<< HEAD
   url=environment.apiBaseUrl+"getjobpost";
   job_posts:any;
   constructor( private route:Router , private http: HttpClient) { }
+=======
+  url = environment.apiBaseUrl + "companydetails";
+   details:any;
+   company:any;
+   companyDesc:any;
+   Index:number;
+   Position:string;
+   Vaccancies:number;
+   Status:string;
+   Apllicants:number;
+   Date:number;
+   employes=[];
+   public companies = [];
+
+  constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
+
+>>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 
   ngOnInit() {
+<<<<<<< HEAD
     this.http.get(this.url).subscribe(
       (response) => {
 
@@ -27,15 +46,37 @@ export class JobPostsComponent implements OnInit {
 
       }
     )
+=======
+    
+   this.getAllcompany();
+   
+ 
+
+>>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
+  }
+
+  getAllcompany(){
+    console.log("klk2")
+    this.companyservice.getCompany()
+    .subscribe(
+      (Response)=>{
+        this.employes = Response;
+        console.log(this.employes)
+      }
+    )
+    
   }
 
   toCreatePost(){
-    this.route.navigate(['company/create-post'])
+    this.route.navigate(['company/details'])
   }
+  onEdit(employe){
+    this.route.navigate(['company/jobpost/',employe.id])
+  }
+  
 
-  getCompanyDetails(){
-   
-  }
+ 
+
 
 
 }

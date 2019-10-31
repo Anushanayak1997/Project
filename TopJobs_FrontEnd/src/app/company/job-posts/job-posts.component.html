@@ -3,6 +3,7 @@
         <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded" >
             <h4>{{company}}</h4>
             <h4>{{companyDesc}}</h4>
+            
         </div>
     </div>
 
@@ -29,6 +30,7 @@
                 </thead>
                 <tbody>
 
+<<<<<<< HEAD
                     <tr *ngFor="let data of job_posts; let i = index">
                         <th scope="row">{{i}}</th>
                         <td>{{data.jobTitle}}</td>
@@ -44,6 +46,31 @@
                         <td>@fat</td>
                         <td>10/9/19</td>
                     </tr>
+=======
+                            <th scope="col" class="col-xs-2">Index</th>
+                            <th scope="col" class="col-xs-2">Position</th>
+                            <th scope="col" class="col-xs-2">Vaccancies</th>
+                            <th scope="col" class="col-xs-2">Status</th>
+                            <th scope="col" class="col-xs-2">Apllicants</th>
+                            <th scope="col" class="col-xs-2">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor = "let employe of employes">
+                            <th scope="row" class="col-xs-2">{{employe.id}}</th>
+                            <td class="col-xs-2">{{employe.Position}}</td>
+                            <td class="col-xs-2">{{employe.Vaccancies}}</td>
+                            <td class="col-xs-2">{{employe.Status}}</td>
+                            <td class="col-xs-2">{{employe.Apllicants}}</td>
+                            <td class="col-xs-2">{{employe.Date}}</td>
+                           <div class="btn-group">
+                                <button (click)="onEdit(employe)" type="button" class="btn btn-link">Edit</button>
+                                <button type="button" class="btn btn-link" style="color: red;">Delete</button>
+                           </div>
+                        </tr>
+>>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 
 
                 </tbody>
