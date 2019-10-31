@@ -5,7 +5,7 @@ import javax.persistence.Column;
 public class EducationDTO {
 
 	private int jobSeekerEducationId;
-	private String startingDate;
+	private String startingDate; 
 	private String endingDate;
 	private double marksPercentages;
 	private int userId;

@@ -27,7 +27,7 @@ public class CompanyDTO implements Serializable {
 		this.companyId = companyId; 
 		this.companyName = companyName;
 		this.companyDescription = companyDescription;
-		this.establishmentDate = establishmentDate;
+		this.establishmentDate = establishmentDate; 
 		this.websiteUrl = websiteUrl;
 		this.headquarter = headquarter;
 		this.specialities = specialities;
