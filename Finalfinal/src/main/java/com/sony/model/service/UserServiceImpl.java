@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ import com.sony.model.entity.User;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+	 private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	@Autowired
 	UserDAO userdao;
 	
@@ -27,6 +29,9 @@ public class UserServiceImpl implements UserService {
 		Integer userId = userdao.addUser(userenity);
 		if(userId != null) {
 			httpsession.setAttribute("userid", userId);
+			logger.info("sessionidAddUser-"+httpsession.getId());
+			logger.info("userid-"+userId);
+			
 			return true;
 		}
 		return false;
@@ -45,6 +50,7 @@ public class UserServiceImpl implements UserService {
 			companyid = employercompanydao.getCompanyId(user.getUserID());
 			httpsession.setAttribute("userid", user.getUserID());
 			httpsession.setAttribute("companyid", companyid);
+			logger.info("sessionidAU-"+httpsession.getId());
 			status = true;
 		} else {
 			status = false;

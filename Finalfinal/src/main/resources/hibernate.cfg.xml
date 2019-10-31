@@ -9,6 +9,7 @@
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:XE</property>
 		<property name="hibernate.connection.username">monisha</property>
 		<property name="hibernate.connection.password">klms1234567</property>
+
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.defaut_schema">ANUSHA</property>
 		<property name="show_sql">true</property>
@@ -23,6 +24,9 @@
 		<mapping class="com.sony.model.entity.JobSeekerExperience" />
 		<mapping class="com.sony.model.entity.JobSeekerSkills" />
 		<mapping class="com.sony.model.entity.JobSeekerEducation" />
+
+   		<mapping class="com.sony.model.entity.Specialisation" />
+
 		<mapping class="com.sony.model.entity.JobSeekerCourse" />
 		<mapping class="com.sony.model.entity.JobSeekerEducationType" />
 		
