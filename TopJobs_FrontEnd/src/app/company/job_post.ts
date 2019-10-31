@@ -10,11 +10,11 @@ export class job_details {
       public   experience: String,
       public   Specalities: String,
 
-      public   StreetAddress: String,
-      public   City: String,
-      public   State: String,
-      public   Country: String,
-      public  Zipcode: String
+      public   StreetAddress: any,
+      public   City: any,
+      public   State: any,
+      public   Country: any,
+      public  Zipcode: any
     ) {
 
     }

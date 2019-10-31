@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
 	HttpSession httpsession;
 
 	public boolean addUser(User userenity) {
-	
 		Integer userId = userdao.addUser(userenity);
 		if(userId != null) {
 			httpsession.setAttribute("userid", userId);

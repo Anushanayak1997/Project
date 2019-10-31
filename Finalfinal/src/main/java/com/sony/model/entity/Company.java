@@ -1,7 +1,6 @@
 package com.sony.model.entity;
 
 import java.util.LinkedList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +42,7 @@ public class Company {
 	@Column(name="industry")
 	private String industry;
 	
-	@Column(name="type")
+	@Column(name="company_type")
 	private String type;
 
 	public Company() {
@@ -88,14 +87,6 @@ public class Company {
 	public void setWebsiteUrl(String websiteUrl) {
 		this.websiteUrl = websiteUrl;
 	}
-
-//	public LinkedList<JobPostEntity> getJobposts() {
-//		return jobposts;
-//	}
-//
-//	public void setJobposts(LinkedList<JobPostEntity> jobposts) {
-//		this.jobposts = jobposts;
-//	}
 
 	public String getHeadquarter() {
 		return headquarter;

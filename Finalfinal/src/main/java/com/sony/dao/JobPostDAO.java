@@ -11,4 +11,7 @@ public interface JobPostDAO {
 	public List<JobPost> getJobsByCompId(Company company);
 
 	public Integer addJobPost(JobPost jobpostentity);
+
+	public JobPost getJobById(Integer jobpostid);
+
 }

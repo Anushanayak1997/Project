@@ -14,7 +14,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   url1 = environment.apiBaseUrl + "setcompanyid";
   url2 = environment.apiBaseUrl + "adduser";
-  url3= environment.apiBaseUrl + "getallcompany";
+  url3 = environment.apiBaseUrl + "sendcompany"
   details: any;
   company: any;
   user:any;
@@ -120,7 +120,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getCompanies() {
-    let obs = this._http.get(this.url3)
+    let obs = this._http.get(this.url1)
     obs.subscribe(
       (Response) => {
         console.log(Response);

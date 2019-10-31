@@ -1,8 +1,5 @@
 package com.sony.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,15 +7,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.JobSeekerExperience;
-import com.sony.model.entity.JobSeekerProject;
+import com.sony.model.entity.JobPostSkill;
 
 @Repository
-public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
-
+public class JobPostSkillDAOImpl implements JobPostSkillDAO {
+	
 	private static SessionFactory factory;
 
-	public JobSeekerProjectDAOImpl() {
+	public JobPostSkillDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -26,14 +22,15 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
-	public Integer addJobSeekerProject(JobSeekerProject project) {
+
+	public Integer addJobSkill(JobPostSkill jobpostskill) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer jobseekerprojectid = null;
+		Integer jobpostskillId = null;
 
 		try {
 			tx = session.beginTransaction();
-			jobseekerprojectid = (Integer) session.save(project);
+			jobpostskillId = (Integer) session.save(jobpostskill);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -42,22 +39,7 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		} finally {
 			session.close();
 		}
-		return jobseekerprojectid;
+		return jobpostskillId;
 	}
-
-	public List<JobSeekerProject> getAllProject() {
-		Session session = factory.openSession();
-		List<JobSeekerProject> project = new ArrayList<JobSeekerProject>();
- 
-		try {
-			project= session.createQuery("FROM JobSeekerProject").list();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return project;
-	}
-	
 
 }
