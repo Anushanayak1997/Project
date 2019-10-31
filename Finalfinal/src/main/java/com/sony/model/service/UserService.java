@@ -2,13 +2,13 @@ package com.sony.model.service;
 
 import java.util.List;
 
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.User;
 
 public interface UserService {
 
-	public boolean addUser(UserEntity userenity);
+	public boolean addUser(User userenity);
 	
-	public List<UserEntity> getAllUsers();
+	public List<User> getAllUsers();
 	
-	public boolean authenticateuser(UserEntity userentity);
+	public boolean authenticateuser(User userentity);
 }

@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
-import com.sony.model.entity.UserEntity;
+import com.sony.model.entity.User;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -27,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
-	public Integer addUser(UserEntity userentity) {
+	public Integer addUser(User userentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer userId = null; 
@@ -48,12 +48,12 @@ public class UserDAOImpl implements UserDAO {
 		return userId;
 	}
 
-	public boolean isUserExists(UserEntity userentity) {
+	public boolean isUserExists(User userentity) {
 		Session session = factory.openSession();
 		boolean result = false;
 		try {
-			Query query = session.createQuery("from UserEntity where emailID='" + userentity.getEmailID() + "'");
-			UserEntity u = (UserEntity) query.uniqueResult();
+			Query query = session.createQuery("from User where emailID='" + userentity.getEmailID() + "'");
+			User u = (User) query.uniqueResult();
 			if (u != null)
 				result = true;
 		} catch (Exception ex) {
@@ -64,12 +64,12 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
-	public List<UserEntity> getAllUsers() {
+	public List<User> getAllUsers() {
 		Session session = factory.openSession();
-		List<UserEntity> users = new ArrayList<UserEntity>();
+		List<User> users = new ArrayList<User>();
 
 		try {
-			users = session.createQuery("FROM UserEntity").list();
+			users = session.createQuery("FROM User").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -78,9 +78,9 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 
-	public UserEntity authenticateuser(UserEntity userentity) {
+	public User authenticateuser(User userentity) {
 
-		UserEntity user = getUserByemailId(userentity.getEmailID());
+		User user = getUserByemailId(userentity.getEmailID());
 		if (user != null && user.getEmailID().equals(userentity.getEmailID()) && user.getPassword().equals(userentity.getPassword())) {
 			return user;
 		} else {
@@ -88,13 +88,13 @@ public class UserDAOImpl implements UserDAO {
 		} 
 	}
  
-	private UserEntity getUserByemailId(String emailID) {
+	private User getUserByemailId(String emailID) {
 		Session session = factory.openSession();
-		UserEntity user=null;
+		User user=null;
 
 		try {
-			Query query = session.createQuery("from UserEntity where emailID='" + emailID + "'");
-			user = (UserEntity) query.uniqueResult();
+			Query query = session.createQuery("from User where emailID='" + emailID + "'");
+			user = (User) query.uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {

@@ -4,7 +4,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.sony.model.entity.JobPostEntity" table="JOB_POST">
+	<class name="com.sony.model.entity.JobPost" table="JOB_POST">
 		<meta attribute="class-description">
 			This class contains the user detail.
 		</meta>
@@ -16,7 +16,7 @@
 		</id>
 
 		<many-to-one lazy="false" name="companyentity" column="company_id"
-			class="com.sony.model.entity.CompanyEntity" not-null="true" />
+			class="com.sony.model.entity.Company" not-null="true" />
 
 		<!--  <set name="skillSet" cascade="save-update" table="JOB_POST_SKILLS">
 			<key column="job_post_id" />
@@ -33,6 +33,9 @@
 			type="int" />
 		<property name="postDate" column="post_date" type="string" />
 		<property name="noOfVacancies" column="no_of_vacancies" type="int" />
+		<property name="streetAddress" column="street_address" type="string" />
+		<property name="city" column="city" type="string" />
+		<property name="state" column="state" type="string" />
 
 	</class>
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule} from '@angular/router';
+import{PDFExportModule} from '@progress/kendo-angular-pdf-export'; 
 import { CompanyModule } from './company/company.module';
 import { CompanyDetailsComponent } from './company/company-details/company-details.component';
 import { AppComponent } from './app.component';
@@ -63,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),PDFExportModule,CompanyModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

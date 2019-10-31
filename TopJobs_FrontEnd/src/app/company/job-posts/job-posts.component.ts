@@ -29,7 +29,6 @@ export class JobPostsComponent implements OnInit {
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
 
 
-
   ngOnInit() {
     
    this.getAllcompany();
@@ -51,7 +50,7 @@ export class JobPostsComponent implements OnInit {
   }
 
   toCreatePost(){
-    this.route.navigate(['company/create-post'])
+    this.route.navigate(['company/details'])
   }
   onEdit(employe){
     this.route.navigate(['company/jobpost/',employe.id])
