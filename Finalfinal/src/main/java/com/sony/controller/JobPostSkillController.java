@@ -17,7 +17,7 @@ public class JobPostSkillController {
 	JobPostSkillService jobpostskillservice;
 
 	@RequestMapping(value = "/addjobskill", method = RequestMethod.POST)
-	public boolean addJobSkill(@RequestBody SkillSet skillset) {
-		return jobpostskillservice.addJobSkill(skillset);
+	public boolean addJobSkill(@RequestBody JobPostSkill jobpost_skill) {
+		return jobpostskillservice.addJobSkill(jobpost_skill);
 	}
 }

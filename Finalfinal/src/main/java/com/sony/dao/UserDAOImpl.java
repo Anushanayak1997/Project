@@ -11,6 +11,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.entity.Company;
+import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
 @Repository
@@ -47,6 +49,22 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userId;
 	}
+	
+	public User getUserById(int userId) {
+		Session session = factory.openSession();
+		User result = null;
+		try {
+			Query query = session.createQuery("from User where userID= :userid");
+			query.setParameter("userid", userId);
+			User user = (User) query.uniqueResult();
+			if (user != null)
+				result = user;
+		} catch (Exception ex) {
+		} finally {
+			session.close();
+		}
+		return result;
+	}
 
 	public boolean isUserExists(User userentity) {
 		Session session = factory.openSession();
@@ -78,10 +96,10 @@ public class UserDAOImpl implements UserDAO {
 		return users;
 	}
 
-	public User authenticateuser(User userentity) {
+	public User authenticateuser(Login loginentity) {
 
-		User user = getUserByemailId(userentity.getEmailID());
-		if (user != null && user.getEmailID().equals(userentity.getEmailID()) && user.getPassword().equals(userentity.getPassword())) {
+		User user = getUserByemailId(loginentity.getEmailId());
+		if (user != null && user.getEmailID().equals(loginentity.getEmailId()) && user.getPassword().equals(loginentity.getPassword())) {
 			return user;
 		} else {
 			return null;

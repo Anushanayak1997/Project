@@ -16,6 +16,7 @@ public class JobSeekerEducationTypeServiceImpl implements JobSeekerEducationType
 	JobSeekerEducationTypeDAO jobseekereducationtypedao;
 
 	public boolean addJobSeekerEducationType(JobSeekerEducationType educationType) {
+		
 	if(jobseekereducationtypedao.addJobSeekerEducationType(educationType)!=null)
 	{
 		return true;

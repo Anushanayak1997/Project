@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,6 +33,25 @@ public class JobSeekerEducation {
 	
 	@Column(name="marks_percentages")
 	private double marksPercentages;
+
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	public JobSeekerEducation() {
+	}
+	
+	public JobSeekerEducation(int jobSeekerEducationId, String startingDate, String endingDate, double marksPercentages,
+			User user) {
+		super();
+		this.jobSeekerEducationId = jobSeekerEducationId;
+		this.startingDate = startingDate;
+		this.endingDate = endingDate;
+		this.marksPercentages = marksPercentages;
+		this.user = user;
+	}
+
+
 
 	public String getStartingDate() {
 		return startingDate;
@@ -56,4 +77,19 @@ public class JobSeekerEducation {
 		this.marksPercentages = marksPercentages;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public int getJobSeekerEducationId() {
+		return jobSeekerEducationId;
+	}
+
+	public void setJobSeekerEducationId(int jobSeekerEducationId) {
+		this.jobSeekerEducationId = jobSeekerEducationId;
+	}
 }
