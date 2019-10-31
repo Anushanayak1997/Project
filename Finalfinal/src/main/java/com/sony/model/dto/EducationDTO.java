@@ -1,8 +1,8 @@
 package com.sony.model.dto;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 
-public class EducationDTO {
+public class EducationDTO implements Serializable{
 
 	private int jobSeekerEducationId;
 	private String startingDate; 

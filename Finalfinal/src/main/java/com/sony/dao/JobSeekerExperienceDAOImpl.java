@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
+import com.sony.model.entity.User;
 
 @Repository
 public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
@@ -60,4 +62,23 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return experience;
 	}
 
-}
+	public JobSeekerExperience getExperienceById(int userId) {
+	
+			Session session = factory.openSession();
+			JobSeekerExperience result = null;
+			try {
+				Query query = session.createQuery("from JobSeekerExperience where user.userID= :userid");
+				query.setParameter("userid", userId);
+				JobSeekerExperience users = (JobSeekerExperience) query.uniqueResult();
+				if (users != null)
+					result = users;
+			} catch (Exception ex) {
+			} finally {
+				session.close();
+			}
+			return result;
+		}
+
+	}
+
+

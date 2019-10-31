@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.EducationDTO;
 import com.sony.model.entity.JobSeekerEducation;
-import com.sony.model.entity.JobSeekerExperience;
+
 import com.sony.model.service.JobSeekerEducationService;
 
 @RestController

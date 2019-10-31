@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobSeekerProjectDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.SeekerProjectDTO;
-import com.sony.model.entity.JobSeekerEducation;
+
 import com.sony.model.entity.JobSeekerProject;
 
 import com.sony.model.entity.User;

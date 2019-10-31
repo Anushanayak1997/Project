@@ -1,7 +1,8 @@
 package com.sony.model.dto;
 
+import java.io.Serializable;
 
-public class SeekerSkillDTO {
+public class SeekerSkillDTO implements Serializable{
 
 	private int jobSeekerSkillId;
 

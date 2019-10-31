@@ -41,4 +41,8 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 		return experiencedao.getAllSeekerExperience();
 	}
 
+	public JobSeekerExperience getExperienceById(int userId) {
+		return experiencedao.getExperienceById(userId);
+	}
+
 }

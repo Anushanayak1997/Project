@@ -9,8 +9,10 @@ import com.sony.model.entity.User;
 public interface UserService {
 
 	public Integer addUser(User userenity);
-	
+
 	public List<User> getAllUsers();
-	
+
+	public User getUserById(int userId);
+
 	public HashMap<String, Integer> authenticateuser(Login loginentity);
 }
