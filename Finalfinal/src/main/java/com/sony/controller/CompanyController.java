@@ -23,7 +23,7 @@ public class CompanyController {
 
 	@RequestMapping(value = "/getallcompany")
 	public List<Company> getAllCompany() {
-		return companyservice.getAllCompany();
+		return companyservice.getAllCompany(); 
 	}
 
 	@RequestMapping(value = "/addcompanydetails", method = RequestMethod.POST)
