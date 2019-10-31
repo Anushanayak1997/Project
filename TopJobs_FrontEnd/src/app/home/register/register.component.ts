@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
       (Response) => {
         console.log(Response);
         if (Response != null) {
-          this.Toaster.success("successfull Registration");
+          this.Toaster.success("successfull Registration")
           let user_id = 'user_id';
 
           localStorage.setItem('user_id', Response.toString());
@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
                   this.Toaster.error("unsecssfull regristation")
                  
                 },
-                1000);
+                2000);
                 this.Toaster.warning("emaild id already in use");
 
         }

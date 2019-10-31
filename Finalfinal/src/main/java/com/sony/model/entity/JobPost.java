@@ -1,5 +1,7 @@
 package com.sony.model.entity;
 
+import java.util.LinkedList;
+
 //import java.util.HashSet;
 //import java.util.LinkedList;
 //import java.util.Set;
@@ -130,10 +132,6 @@ package com.sony.model.entity;
 //	
 //
 //=======
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -187,6 +185,8 @@ public class JobPost {
 	
 	@Column(name="state")
 	private String state;
+	
+	private LinkedList<JobPostSkill> jobpostskill = new LinkedList<JobPostSkill>();
 	
 	public String getStreetAddress() {
 		return streetAddress;
@@ -282,6 +282,15 @@ public class JobPost {
 
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
+	}
+	
+	@OneToMany(mappedBy = "skillset")
+	public LinkedList<JobPostSkill> getJobpostskill() {
+		return jobpostskill;
+	}
+
+	public void setJobpostskill(LinkedList<JobPostSkill> jobpostskill) {
+		this.jobpostskill = jobpostskill;
 	}
 	
 }

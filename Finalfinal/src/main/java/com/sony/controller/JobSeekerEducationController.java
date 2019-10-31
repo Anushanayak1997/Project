@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sony.model.dto.EducationDTO;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.service.JobSeekerEducationService;
@@ -24,7 +25,7 @@ public class JobSeekerEducationController {
 	}
 	
 	@RequestMapping(value = "/addjobseekereducation", method = RequestMethod.POST)
-	public boolean addJobSeekerEducation(@RequestBody JobSeekerEducation education) {
+	public Integer addJobSeekerEducation(@RequestBody EducationDTO education) {
 		return jobseekereducationservice.addJobSeekerEducation(education);
 	}
 

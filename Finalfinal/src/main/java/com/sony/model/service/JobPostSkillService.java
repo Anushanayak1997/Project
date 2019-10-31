@@ -5,5 +5,5 @@ import com.sony.model.entity.SkillSet;
 
 public interface JobPostSkillService {
 
-	public boolean addJobSkill(SkillSet skillset);
+	public boolean addJobSkill(JobPostSkill jobpost_skill);
 }

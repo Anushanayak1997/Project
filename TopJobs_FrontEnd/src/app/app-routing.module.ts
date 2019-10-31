@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
+<<<<<<< HEAD
+=======
 import{PDFExportModule} from '@progress/kendo-angular-pdf-export'; 
+>>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 import { CompanyModule } from './company/company.module';
 import { CompanyDetailsComponent } from './company/company-details/company-details.component';
 import { AppComponent } from './app.component';

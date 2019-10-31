@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sony.model.dto.SeekerProjectDTO;
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.service.JobSeekerProjectService;
 
@@ -23,7 +24,7 @@ public class JobSeekerProjectController {
 	}
 	
 	@RequestMapping(value = "/addjobseekerproject", method = RequestMethod.POST)
-	public boolean addJobSeekerProject(@RequestBody JobSeekerProject projects) {
+	public Integer addJobSeekerProject(@RequestBody SeekerProjectDTO projects) {
 		return jobseekerprojectservice.addJobSeekerProject(projects);
 	}
 }

@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.entity.Company;
 import com.sony.model.entity.JobSeekerEducation;
 
 
@@ -59,5 +61,4 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		}
 		return education;
 	}
-
 }
