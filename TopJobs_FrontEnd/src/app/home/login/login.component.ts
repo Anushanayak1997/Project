@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,private _http: HttpClient,private cookieService: CookieService) { }
   
   ngOnInit() {
+    this.cookieValue = this.cookieService.get('firstName');
   }
 
   topics = ["JobSeeker","Employer","Admin"];
@@ -44,6 +45,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+    this.cookieValue = this.cookieService.get('firstName');
+    /*
     console.log("before")
 
     this.login={

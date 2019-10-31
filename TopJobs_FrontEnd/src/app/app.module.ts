@@ -4,13 +4,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CompanyModule } from './company/company.module';
 import { HomeModule } from './home/home.module';
 import { JobSeekerModule } from './job-seeker/job-seeker.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -25,6 +27,11 @@ import { JobSeekerModule } from './job-seeker/job-seeker.module';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-top-right'
+    }),
 
     CompanyModule,
     HomeModule,

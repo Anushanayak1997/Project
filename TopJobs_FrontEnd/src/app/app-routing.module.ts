@@ -25,7 +25,7 @@ const routes: Routes = [
     path: "company/jobpost", component: JobPostsComponent,
   },
   {
-    path: "company/edit-post/:id", component: EditPostComponent,
+    path: "company/jobpost/:Index", component: EditPostComponent,
   },
   {
     path: "company/create-post", component: EditPostComponent,

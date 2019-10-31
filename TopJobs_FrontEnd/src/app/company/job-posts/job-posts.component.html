@@ -33,15 +33,15 @@
                     </thead>
                     <tbody>
 
-                        <tr>
-                            <th scope="row" class="col-xs-2">1</th>
-                            <td class="col-xs-2">Mark</td>
-                            <td class="col-xs-2">Otto</td>
-                            <td class="col-xs-2">@mdo</td>
-                            <td class="col-xs-2">10/9/19</td>
-                            <td class="col-xs-2">@mdo</td>
+                        <tr *ngFor = "let employe of employes">
+                            <th scope="row" class="col-xs-2">{{employe.id}}</th>
+                            <td class="col-xs-2">{{employe.Position}}</td>
+                            <td class="col-xs-2">{{employe.Vaccancies}}</td>
+                            <td class="col-xs-2">{{employe.Status}}</td>
+                            <td class="col-xs-2">{{employe.Apllicants}}</td>
+                            <td class="col-xs-2">{{employe.Date}}</td>
                            <div class="btn-group">
-                                <button type="button" class="btn btn-link">Edit</button>
+                                <button (click)="onEdit(employe)" type="button" class="btn btn-link">Edit</button>
                                 <button type="button" class="btn btn-link" style="color: red;">Delete</button>
                            </div>
                         </tr>

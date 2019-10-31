@@ -4,6 +4,7 @@ import { RegiseterUser } from '../H_user';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -53,11 +54,22 @@ export class RegisterComponent implements OnInit {
       userType: this.regiseterModel.userType,
     }
 
-    this.PostCompanyid ={
-      companyID:this.regiseterModel.companyID
+    this.PostCompanyid = {
+      companyID: this.regiseterModel.companyID
     }
-      
-
+/*
+    this.service.regester(this.PostCompany).subscribe(
+      (Response) => {
+        this.router.navigate(['login'])
+        if (Response.status === 200) {
+           console.log("succes full registeration");
+              setTimeout(() => {
+                //navigate to login
+          }, 2000)
+        }
+      }
+    )
+    */
     this._http.post(this.url2, this.PostCompany).subscribe(
       (Response) => {
         console.log(Response);
@@ -65,6 +77,8 @@ export class RegisterComponent implements OnInit {
 
       }
     )
+
+    
     if (this.regiseterModel.userType == 'Employer') {
       if (this.regiseterModel.companyName == 'others') {
         this.router.navigate(['company/details']);
@@ -74,7 +88,6 @@ export class RegisterComponent implements OnInit {
     }else{
       console.log("nothing")
     }
-
   }
 
   getCompanies() {

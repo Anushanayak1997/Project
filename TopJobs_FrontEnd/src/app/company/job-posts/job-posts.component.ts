@@ -17,33 +17,49 @@ export class JobPostsComponent implements OnInit {
    details:any;
    company:any;
    companyDesc:any;
-  constructor( private route:Router,private http:CompanyService,private _http: HttpClient) { }
+   Index:number;
+   Position:string;
+   Vaccancies:number;
+   Status:string;
+   Apllicants:number;
+   Date:number;
+   employes=[];
+   public companies = [];
+
+  constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
 
 
 
   ngOnInit() {
-    let obs=this._http.get(this.url)
-    obs.subscribe(
-      (Response) =>{
-        this.details = Response;
-       
-        this.company = this.details[0].companyName;
-        this.companyDesc = this.details[0].companyDescription;
-       
-        
-      }
-    )
+    
+   this.getAllcompany();
+   
  
 
+  }
+
+  getAllcompany(){
+    console.log("klk2")
+    this.companyservice.getCompany()
+    .subscribe(
+      (Response)=>{
+        this.employes = Response;
+        console.log(this.employes)
+      }
+    )
+    
   }
 
   toCreatePost(){
     this.route.navigate(['company/create-post'])
   }
-
-  getCompanyDetails(){
-   
+  onEdit(employe){
+    this.route.navigate(['company/jobpost/',employe.id])
   }
+  
+
+ 
+
 
 
 }
