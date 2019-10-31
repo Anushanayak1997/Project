@@ -48,5 +48,4 @@ public class JobPostServiceImpl implements JobPostService {
 	public JobPost getJobById(Integer jobpostid) {
 		return jobpostdao.getJobById(jobpostid);
 	}
-
 }

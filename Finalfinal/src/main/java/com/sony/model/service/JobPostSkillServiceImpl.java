@@ -38,7 +38,8 @@ public class JobPostSkillServiceImpl implements JobPostSkillService{
 	public boolean addJobSkill(JobPostSkill jobpost_skill) {
 		boolean status = false;
 		JobPostSkill jobpostskill = new JobPostSkill();
-		Integer jobpostid = (Integer) httpsession.getAttribute("jobpostid");
+		// Integer jobpostid = (Integer) httpsession.getAttribute("jobpostid");
+		Integer jobpostid = jobpost_skill.getJobpost().getJobPostId();
 		JobPost jobpost = jobpostservice.getJobById(jobpostid);
 		jobpostskill.setJobpost(jobpost);
 		jobpostskill.setSkillset(jobpost_skill.getSkillset());
