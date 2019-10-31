@@ -62,7 +62,7 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return experience;
 	}
 
-	public JobSeekerExperience getExperienceById(int userId) {
+	public JobSeekerExperience getExperienceById(int userId) { 
 	
 			Session session = factory.openSession();
 			JobSeekerExperience result = null;
