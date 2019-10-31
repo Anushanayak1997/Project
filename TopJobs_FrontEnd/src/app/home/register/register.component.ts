@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RegiseterUser } from '../H_user';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -15,20 +16,20 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   url1 = environment.apiBaseUrl + "setcompanyid";
   url2 = environment.apiBaseUrl + "adduser";
-  url3 = environment.apiBaseUrl + "sendcompany"
+  url3 = environment.apiBaseUrl + "getallcompany"
   details: any;
   company: any;
-  user:any;
+  user: any;
   PostCompany: any;
   PostCompanyid: any;
   topicHasError = true;
-  comp:any;
-  headers={
+  comp: any;
+  headers = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+      'Content-Type': 'application/json'
     })
   }
-  constructor(private router: Router, private _http: HttpClient) { }
+  constructor(private router: Router, private _http: HttpClient,private Toaster:ToastrService) { }
 
   regiseterModel = new RegiseterUser(
     "Namrata",
@@ -52,76 +53,90 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log(this.regiseterModel);
-    this.user={'firstName': this.regiseterModel.firstName,
-    'lastName':this.regiseterModel.lastName,
-    'password':this.regiseterModel.password,
-    'emailID':this.regiseterModel.emailID,
-    'contactNumber':this.regiseterModel.contactNumber,
-    'userType':this.regiseterModel.userType}
-    
+    this.user = {
+      'firstName': this.regiseterModel.firstName,
+      'lastName': this.regiseterModel.lastName,
+      'password': this.regiseterModel.password,
+      'emailID': this.regiseterModel.emailID,
+      'contactNumber': this.regiseterModel.contactNumber,
+      'userType': this.regiseterModel.userType
+    }
+
 
     this.PostCompanyid = {
       companyID: this.regiseterModel.companyID
     }
 
-    this._http.post(this.url2,this.user).subscribe(
+    this._http.post(this.url2, this.user).subscribe(
       (Response) => {
         console.log(Response);
-        let user_id='user_id';
-      
-        localStorage.setItem('user_id',Response.toString());
-        console.log(localStorage.getItem('user_id'));
-        console.log("added user");
+        if (Response != null) {
+          this.Toaster.success("successfull Registration");
+          let user_id = 'user_id';
 
-       
+          localStorage.setItem('user_id', Response.toString());
+          console.log(localStorage.getItem('user_id'));
+          console.log("added user");
+        } else{
+              
+              setTimeout(() => 
+                {
+                  this.Toaster.error("unsecssfull regristation")
+                 
+                },
+                1000);
+                this.Toaster.warning("emaild id already in use");
+
+        }
+
 
       }
 
-      
+
     )
- 
-      
+
+
   }
 
-  onNext(){
+  onNext() {
 
-    if(this.regiseterModel.userType=="JobSeeker"){
+    if (this.regiseterModel.userType == "JobSeeker") {
       this.router.navigate(['seeker/profile']);
     }
-    if(this.regiseterModel.companyName=="others"){
+    if (this.regiseterModel.companyName == "others") {
       console.log("hi");
-      this.PostCompany=null;
+      this.PostCompany = null;
       this.router.navigate(['company/details']);
     }
-      else{
-        console.log("hi");
-        for (let company of this.details) {
-          console.log(company);
-         if(company.companyId==this.regiseterModel.companyName){
+    else {
+      console.log("hi");
+      for (let company of this.details) {
+        console.log(company);
+        if (company.companyName == this.regiseterModel.companyName) {
           console.log("true");
-          this.comp=company;
-         }
+          this.comp = company;
         }
-        console.log("company status");
-    console.log(this.comp);
-    console.log(localStorage.getItem('user_id'));
-    this.PostCompany={'companyId':this.comp.companyId,'userId':localStorage.getItem('user_id')};
-    this._http.post(this.url1, this.PostCompany).subscribe(
-      (Response) => {
-        console.log(Response);
-        console.log("succees");
-
       }
-    )
-    this.router.navigate(['company/jobpost']);
-    }
-    
+      console.log("company status");
+      console.log(this.comp);
+      console.log(localStorage.getItem('user_id'));
+      this.PostCompany = { 'companyId': this.comp.companyId, 'userId': localStorage.getItem('user_id') };
+      this._http.post(this.url1, this.PostCompany).subscribe(
+        (Response) => {
+          console.log(Response);
+          console.log("succees");
 
-    
+        }
+      )
+      this.router.navigate(['company/jobpost']);
+    }
+
+
+
   }
 
   getCompanies() {
-    let obs = this._http.get(this.url1)
+    let obs = this._http.get(this.url3)
     obs.subscribe(
       (Response) => {
         console.log(Response);

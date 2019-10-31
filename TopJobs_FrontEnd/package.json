@@ -28,6 +28,7 @@
     "jspdf": "^1.5.3",
     "moment": "^2.24.0",
     "ng-modals": "^1.0.4",
+    "ng-multiselect-dropdown": "^0.2.6",
     "ngx-cookie-service": "^2.2.0",
     "ngx-smart-modal": "^7.2.1",
     "ngx-toastr": "^11.1.2",
