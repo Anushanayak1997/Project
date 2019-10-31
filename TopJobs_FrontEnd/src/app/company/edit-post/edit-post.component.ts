@@ -17,8 +17,8 @@ export class EditPostComponent implements OnInit {
 
   id: number;
   job_post: any;
+ location:any;
 
-  location:any;
 
 
   url = environment.apiBaseUrl + "addjobpost";
@@ -30,6 +30,9 @@ export class EditPostComponent implements OnInit {
   }
 
   ngOnInit() {
+   
+
+
   }
 
  

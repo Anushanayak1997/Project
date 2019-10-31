@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { CompanyService } from '../company.service';
 import { User } from '../users';
-import { HttpClient } from '@angular/common/http';
+
 import { Company } from '../company';
 import { environment } from 'src/environments/environment';
 
@@ -13,28 +14,19 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./job-posts.component.css']
 })
 export class JobPostsComponent implements OnInit {
-  url = environment.apiBaseUrl + "companydetails";
-   details:any;
-   company:any;
-   companyDesc:any;
-  constructor( private route:Router,private http:CompanyService,private _http: HttpClient) { }
-
-
+  url=environment.apiBaseUrl+"getjobpost";
+  job_posts:any;
+  constructor( private route:Router , private http: HttpClient) { }
 
   ngOnInit() {
-    let obs=this._http.get(this.url)
-    obs.subscribe(
-      (Response) =>{
-        this.details = Response;
-       
-        this.company = this.details[0].companyName;
-        this.companyDesc = this.details[0].companyDescription;
-       
-        
+    this.http.get(this.url).subscribe(
+      (response) => {
+
+        this.job_posts=response;
+        console.log(this.job_posts)
+
       }
     )
- 
-
   }
 
   toCreatePost(){
