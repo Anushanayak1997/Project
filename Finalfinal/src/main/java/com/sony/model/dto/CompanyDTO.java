@@ -24,7 +24,7 @@ public class CompanyDTO implements Serializable {
 
 	public CompanyDTO(int companyId, String companyName, String companyDescription, String establishmentDate,
 			String websiteUrl, String headquarter, String specialities, String industry, String type, int userId) {
-		this.companyId = companyId;
+		this.companyId = companyId; 
 		this.companyName = companyName;
 		this.companyDescription = companyDescription;
 		this.establishmentDate = establishmentDate;
