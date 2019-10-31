@@ -6,7 +6,7 @@
 
 
 <div class="container" *ngIf="id;else elseBlock">
-    <form name="PostForm" #PostForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <form name="PostForm" #PostForm="ngForm" (ngSubmit)="onSubmitSecond()" novalidate>
         <div class="table">
             <table class="table">
                 <thead>
@@ -21,34 +21,33 @@
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <input type="text" #index="ngModel" required class="form-control"
-                                [class.is-invalid]="index.invalid && index.touched" name="index"
+                            <input type="text" #index="ngModel" required  disabled class="form-control"
+                               name="index" placeholder={{id}}
                                 [(ngModel)]="userModel.index">
-                            <small class="text-danger" [class.d-none]="index.valid || index.untouched">index is
-                                required</small>
+                           
                         </th>
 
                         <th scope="row">
-                            <input type="text" #JobTitle="ngModel" required class="form-control"
+                            <input type="text" #JobTitle="ngModel" disabled required class="form-control"
                                 [class.is-invalid]="JobTitle.invalid && JobTitle.touched" name="JobTitle"
-                                [(ngModel)]="userModel.JobTitle">
+                                [(ngModel)]="userModel.JobTitle" placeholder={{company.Position}}>
                             <small class="text-danger" [class.d-none]="JobTitle.valid || JobTitle.untouched">JobTitle is
                                 required</small>
                         </th>
 
                         <th scope="row">
                             <input type="text" #Status="ngModel" required class="form-control"
-                                [class.is-invalid]="Status.invalid && Status.touched" name="Applicants"
-                                [(ngModel)]="userModel.Status">
+                                [class.is-invalid]="Status.invalid && Status.touched" name="Status"
+                                [(ngModel)]="userModel.Status" placeholder={{company.Status}}>
                             <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
                                 required</small>
 
                         </th>
 
                         <th scope="row">
-                            <input type="text" #Applicants="ngModel" required class="form-control"
+                            <input type="text" #Applicants="ngModel" disabled required class="form-control"
                                 [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
-                                [(ngModel)]="userModel.Applicants">
+                                [(ngModel)]="userModel.Applicants"placeholder={{company.Apllicants}}> 
                             <small class="text-danger"
                                 [class.d-none]="Applicants.valid || Applicants.untouched">Applicants is
                                 required</small>
@@ -57,10 +56,10 @@
                         <th scope="row">
                             <input type="text" #PostDate="ngModel" required class="form-control"
                                 [class.is-invalid]="PostDate.invalid && PostDate.touched" name="Applicants"
-                                [(ngModel)]="userModel.PostDate">
+                                [(ngModel)]="userModel.PostDate" placeholder={{company.Date}} >
+                                
                             <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
                                 required</small>
-
                         </th>
 
 
@@ -88,7 +87,7 @@
                 </div>
             </div>
             <article class="card-body mx-auto " style="min-width: 70%;">
-                <form #userForm="ngForm" (ngSubmit)="onSubmitSecond()" novalidate>
+                <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id=""><strong>JobTitle</strong></span>

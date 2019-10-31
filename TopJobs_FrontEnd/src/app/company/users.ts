@@ -11,3 +11,12 @@ export class User{
 
      
 }
+
+export interface user{
+     Index:number,
+     Position:string,
+     Vaccancies:string,
+     Status:string,
+     Apllicants:number,
+     Date:Date,  
+}

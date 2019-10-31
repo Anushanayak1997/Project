@@ -98,7 +98,7 @@
                         </div>
                         <select class="form-control" id="" [(ngModel)]="regiseterModel.companyName" name="companyName"
                             required>
-                            <option *ngFor="let company of details ; let i=index" [value]="company.companyName">
+                            <option *ngFor="let company of details ; let i=index" [value]="company.companyId">
                                 {{company.companyName}}
                             </option>
                             <option value="others"> others</option>
@@ -115,6 +115,10 @@
                 <button class="btn btn-primary btn-space btnStyle" (click)="onSubmit()"
                     [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
                 </button>
+                &nbsp;
+                <button class="btn btn-primary btn-space btnStyle" (click)="onNext()"
+                [disabled]="userForm.form.invalid || topicHasError "><strong>next</strong>
+            </button>
             </article>
 
 

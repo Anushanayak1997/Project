@@ -22,17 +22,30 @@ public class JobPostSkillServiceImpl implements JobPostSkillService{
 	@Autowired
 	HttpSession httpsession;
 
-	public boolean addJobSkill(SkillSet skillset) {
+//	public boolean addJobSkill(SkillSet skillset) {
+//		boolean status = false;
+//		JobPostSkill jobpostskill = new JobPostSkill();
+//		Integer jobpostid = (Integer) httpsession.getAttribute("jobpostid");
+//		JobPost jobpost = jobpostservice.getJobById(jobpostid);
+//		jobpostskill.setJobpost(jobpost);
+//		jobpostskill.setSkillset(skillset);
+//		if(jobpostskilldao.addJobSkill(jobpostskill) != null ) {
+//			status = true;
+//		}
+//		return status;
+//	}
+
+	public boolean addJobSkill(JobPostSkill jobpost_skill) {
 		boolean status = false;
 		JobPostSkill jobpostskill = new JobPostSkill();
 		Integer jobpostid = (Integer) httpsession.getAttribute("jobpostid");
 		JobPost jobpost = jobpostservice.getJobById(jobpostid);
 		jobpostskill.setJobpost(jobpost);
-		jobpostskill.setSkillset(skillset);
+		jobpostskill.setSkillset(jobpost_skill.getSkillset());
+		jobpostskill.setSkilllevel(jobpost_skill.getSkilllevel());
 		if(jobpostskilldao.addJobSkill(jobpostskill) != null ) {
 			status = true;
 		}
 		return status;
 	}
-
 }

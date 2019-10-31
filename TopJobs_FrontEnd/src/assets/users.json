@@ -1,0 +1,95 @@
+{
+  "register": [
+    {
+      "id": 1,
+      "firstName": "Ak",
+      "lastName": "sa",
+      "emailID": "ak@gmail.com",
+      "password": "active",
+      "contactNumber": 8296731080,
+      "userType": "jobseeker"
+    },
+    {
+      "id": 2,
+      "firstName": "Akheel",
+      "lastName": "sajjan",
+      "emailID": "aksajjan@gmail.com",
+      "password": "inactive",
+      "contactNumber": 8296731080,
+      "userType": "jobseeker"
+    },
+    {
+      "id": 3,
+      "firstName": "Ak",
+      "lastName": "sa",
+      "emailID": "ak@gmail.com",
+      "password": "active",
+      "contactNumber": 8296731080,
+      "userType": "jobseeker"
+    },
+    {
+      "firstName": "Akheel",
+      "lastName": "Sajjan",
+      "emailID": "a1@gmail.com",
+      "password": "1234567",
+      "userType": "JobSeeker",
+      "id": 4
+    },
+    {
+      "firstName": "firstname",
+      "lastName": "surname",
+      "emailID": "a1",
+      "password": "----------",
+      "userType": "JobSeeker",
+      "id": 5
+    },
+    {
+      "firstName": "qwertyuio",
+      "lastName": "saasdfghj",
+      "emailID": "a1",
+      "password": "a1123456",
+      "userType": "JobSeeker",
+      "id": 6
+    },
+    {
+      "firstName": "Aksss",
+      "lastName": "sa",
+      "emailID": "a1xsxs",
+      "password": "a12345678",
+      "userType": "JobSeeker",
+      "id": 7
+    },
+    {
+      "firstName": "Akq2atfgyuhn",
+      "lastName": "sa",
+      "emailID": "jkl",
+      "password": "a14567",
+      "userType": "JobSeeker",
+      "id": 8
+    },
+    {
+      "firstName": "Akheel",
+      "lastName": "Sajjan",
+      "emailID": "a1",
+      "password": "a1wsqewrweqrwwerwrw`",
+      "userType": "JobSeeker",
+      "id": 9
+    },
+    {
+      "firstName": "Ake",
+      "lastName": "sa",
+      "emailID": "a1",
+      "password": "a1qwewrw",
+      "userType": "JobSeeker",
+      "id": 10
+    },
+    {
+      "firstName": "Akasas",
+      "lastName": "sa",
+      "emailID": "a1",
+      "password": "uiouiou",
+      "userType": "JobSeeker",
+      "id": 11
+    }
+  ]
+}

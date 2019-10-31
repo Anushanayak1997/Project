@@ -20,6 +20,7 @@
 		<mapping class="com.sony.model.entity.Company"/>
 		<mapping class="com.sony.model.entity.EmployerCompany"/>
 		<mapping class="com.sony.model.entity.SkillSet" />
+		<mapping class="com.sony.model.entity.JobPostSkill" />
 		<mapping class="com.sony.model.entity.JobSeekerProject" />
 		<mapping class="com.sony.model.entity.JobSeekerExperience" />
 		<mapping class="com.sony.model.entity.JobSeekerSkills" />
@@ -29,7 +30,8 @@
 
 		<mapping class="com.sony.model.entity.JobSeekerCourse" />
 		<mapping class="com.sony.model.entity.JobSeekerEducationType" />
-		
+
+
 	
    				
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { CompanyService } from '../company.service';
 import { User } from '../users';
-import { HttpClient } from '@angular/common/http';
+
 import { Company } from '../company';
 import { environment } from 'src/environments/environment';
 
@@ -13,37 +14,69 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./job-posts.component.css']
 })
 export class JobPostsComponent implements OnInit {
+<<<<<<< HEAD
+  url=environment.apiBaseUrl+"getjobpost";
+  job_posts:any;
+  constructor( private route:Router , private http: HttpClient) { }
+=======
   url = environment.apiBaseUrl + "companydetails";
    details:any;
    company:any;
    companyDesc:any;
-  constructor( private route:Router,private http:CompanyService,private _http: HttpClient) { }
+   Index:number;
+   Position:string;
+   Vaccancies:number;
+   Status:string;
+   Apllicants:number;
+   Date:number;
+   employes=[];
+   public companies = [];
 
+  constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
 
+>>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 
   ngOnInit() {
-    let obs=this._http.get(this.url)
-    obs.subscribe(
-      (Response) =>{
-        this.details = Response;
-       
-        this.company = this.details[0].companyName;
-        this.companyDesc = this.details[0].companyDescription;
-       
-        
+<<<<<<< HEAD
+    this.http.get(this.url).subscribe(
+      (response) => {
+
+        this.job_posts=response;
+        console.log(this.job_posts)
+
       }
     )
+=======
+    
+   this.getAllcompany();
+   
  
 
+>>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
+  }
+
+  getAllcompany(){
+    console.log("klk2")
+    this.companyservice.getCompany()
+    .subscribe(
+      (Response)=>{
+        this.employes = Response;
+        console.log(this.employes)
+      }
+    )
+    
   }
 
   toCreatePost(){
-    this.route.navigate(['company/create-post'])
+    this.route.navigate(['company/details'])
   }
+  onEdit(employe){
+    this.route.navigate(['company/jobpost/',employe.id])
+  }
+  
 
-  getCompanyDetails(){
-   
-  }
+ 
+
 
 
 }

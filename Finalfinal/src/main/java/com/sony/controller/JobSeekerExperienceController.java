@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sony.model.dto.SeekerExperienceDTO;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.service.JobSeekerExperienceService;
@@ -23,7 +24,7 @@ public class JobSeekerExperienceController {
 	}
 	
 	@RequestMapping(value = "/addjobseekerexperience", method = RequestMethod.POST)
-	public boolean addJobSeekerExperience(@RequestBody JobSeekerExperience experience) {
+	public Integer addJobSeekerExperience(@RequestBody SeekerExperienceDTO experience) {
 		return jobseekerexperienceservice.addJobSeekerExperience(experience);
 	}
 

@@ -21,23 +21,19 @@ public class JobPostSkill {
 	@Column(name = "jobpostskill_id")
 	private int jobpostSkillId;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "job_post_id") 
 	private JobPost jobpost;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "skill_id") 
 	private SkillSet skillset;
 	
 	@Column(name = "skill_level")
 	private int skilllevel;
 
-	public int getSkill_level() {
-		return skilllevel;
-	}
-
-	public void setSkill_level(int skill_level) {
-		this.skilllevel = skill_level;
-	}
-
-	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "job_post_id") 
+//	@ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "job_post_id") 
 	public JobPost getJobpost() {
 		return jobpost;
 	}
@@ -46,8 +42,8 @@ public class JobPostSkill {
 		this.jobpost = jobpost;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "skill_id") 
+//	@ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "skill_id") 
 	public SkillSet getSkillset() {
 		return skillset;
 	}
@@ -71,5 +67,4 @@ public class JobPostSkill {
 	public void setJobpostSkillId(int jobpostSkillId) {
 		this.jobpostSkillId = jobpostSkillId;
 	}
-
 }
