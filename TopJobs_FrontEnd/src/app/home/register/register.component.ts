@@ -63,9 +63,9 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    this.PostCompanyid = {
+   /* this.PostCompanyid = {
       companyID: this.regiseterModel.companyID
-    }
+    }*/
 
     this._http.post(this.url2, this.user).subscribe(
       (Response) => {
@@ -74,8 +74,8 @@ export class RegisterComponent implements OnInit {
           this.Toaster.success("successfull Registration")
           let user_id = 'user_id';
 
-          localStorage.setItem('user_id', Response.toString());
-          console.log(localStorage.getItem('user_id'));
+          sessionStorage.setItem('user_id', Response.toString());
+          console.log(sessionStorage.getItem('user_id'));
           console.log("added user");
         } else{
               
@@ -112,16 +112,16 @@ export class RegisterComponent implements OnInit {
         console.log("hi");
         for (let company of this.details) {
           console.log(company);
-         if(company.companyName==this.regiseterModel.companyName){
+         if(company.companyId==this.regiseterModel.companyName){
           console.log("true");
           this.comp = company;
         }
       }
-      
+
       console.log("company status");
       console.log(this.comp);
-      console.log(localStorage.getItem('user_id'));
-      this.PostCompany = { 'companyId': this.comp.companyId, 'userId': localStorage.getItem('user_id') };
+      console.log(sessionStorage.getItem('user_id'));
+      this.PostCompany = { 'companyId': this.comp.companyId, 'userId': sessionStorage.getItem('user_id') };
       this._http.post(this.url1, this.PostCompany).subscribe(
         (Response) => {
           console.log(Response);

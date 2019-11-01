@@ -12,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   topicHasError = true;
   submitted = false;
   errorMsg = '';
@@ -27,10 +26,6 @@ export class LoginComponent implements OnInit {
   
   ngOnInit() {
     this.cookieValue = this.cookieService.get('firstName');
-    
-    //console.log(sessionStorage.getItem('user_id'));
-             //console.log(localStorage.getItem('company_id'));
-          //   localStorage.clear();
   }
 
   topics = ["JobSeeker","Employer","Admin"];
@@ -74,40 +69,37 @@ export class LoginComponent implements OnInit {
 
           console.log(response)
           this.status = true;
-        }else if(response==null){
+        }
+        else{
           this.Toaster.error("error")
         }
 
           if(this.status==true){
             if(this.userModel.userType=="Employer"){
-             this.response.forEach((value:any, key: string) => {
-                console.log(key, value);
-                localStorage.setItem(key,value);
-                console.log(localStorage.getItem(key));
-                setTimeout(() => 
-                {
-                  this.router.navigate(['company/jobpost']);
-                },
-                2000);
-                this.Toaster.success("successfully logged In");
-            });
-           
+              
+             sessionStorage.setItem('user_id',this.response.userId);
+             sessionStorage.setItem('company_id',this.response.companyId);
+             setTimeout(() => 
+             {
+               
+               this.router.navigate(['company/jobpost']);
+             },
+             2000);
+             this.Toaster.success("successfully logged In");
+           }
 
-            }else {
+            else {
               setTimeout(() => 
               {
-               // this.router.navigate(['company/jobpost']);
+                sessionStorage.setItem('user_id',this.response.userId);
+                this.router.navigate(['seeker/home']);
               },
               2000);
               this.Toaster.success("successfully logged In");
             }
-          }  else
-            {
-              console.log("invalid user");
-              
-            }
+          }  
     
-        }
+      }
 
 
       
@@ -115,7 +107,4 @@ export class LoginComponent implements OnInit {
     
       
     }
-
-    
-
-  }
+    }

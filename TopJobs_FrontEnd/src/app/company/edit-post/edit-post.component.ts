@@ -61,10 +61,14 @@ date:any
       let Index = parseInt(params.get('Index'));
       console.log(Index)
       this.id = Index
-      this.getCompanyId(this.id);
+     
       this.http.get(this.getskills).subscribe(
         (Response)=>{
-          this.selectedItems=Response;
+          if(Response!=null){
+            console.log(Response);
+          this.dropdownList=Response;
+          console.log("Drop down list: " , this.dropdownList);
+          }
         }
       )
     })
@@ -76,8 +80,8 @@ date:any
     ];*/
     this.dropdownSettings= {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'skillId',
+      textField: 'skillName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
@@ -87,15 +91,16 @@ date:any
 
   onItemSelect(item: any) {
     this.selectedItems.push(item);
-    console.log(item);
-    console.log(this.selectedItems);
+    
+
+    console.log("Selected Items: ", this.selectedItems);
   }
 
   onItemDeSelect(item: any) {
     let index = this.selectedItems.indexOf(item);
-    this.selectedItems.splice(index, 1);
+    this.selectedItems.splice(index, 0);
     console.log(item);
-    console.log(this.selectedItems);
+    console.log("Deselect: ", this.selectedItems);
   }
   onSelectAll(items: any) {
     console.log(items);
@@ -104,20 +109,9 @@ date:any
     
   
 
-  getCompanyId(id: number) {
-    this.companyservice.getCompanyById(id).subscribe(
-      (Response) => {
-        console.log(Response);
-        this.company =  Response
-       
-      }
-    )
-  }
+ 
 
-  deleteCompany(){
-
-  }
-
+  
 
   
  
@@ -147,6 +141,7 @@ date:any
     console.log(this.selectedItems);
     this.location = { }
     this.job_post = {
+      'companyId':sessionStorage.getItem('company_id'),
       'jobTitle': this.userModel.JobTitle,
       'jobDescription': this.userModel.jobDescription,
       'isActive': this.userModel.Status,
