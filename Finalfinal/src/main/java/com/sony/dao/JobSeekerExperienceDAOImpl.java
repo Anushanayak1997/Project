@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -62,16 +63,17 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return experience;
 	}
 
-	public JobSeekerExperience getExperienceById(int userId) { 
+	public List<JobSeekerExperience> getExperienceById(int userId) { 
 	
 			Session session = factory.openSession();
-			JobSeekerExperience result = null;
+			List<JobSeekerExperience> result = null;
 			try {
 				Query query = session.createQuery("from JobSeekerExperience where user.userID= :userid");
 				query.setParameter("userid", userId);
-				JobSeekerExperience users = (JobSeekerExperience) query.uniqueResult();
-				if (users != null)
-					result = users;
+				List<JobSeekerExperience> seekerexperience = new ArrayList<JobSeekerExperience>();
+				seekerexperience = query.list();
+				if (seekerexperience != null)
+					result = seekerexperience;
 			} catch (Exception ex) {
 			} finally {
 				session.close();

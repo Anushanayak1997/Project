@@ -11,7 +11,7 @@ public interface JobSeekerExperienceDAO {
 
 	public List<JobSeekerExperience> getAllSeekerExperience();
 
-	public JobSeekerExperience getExperienceById(int userId);
+	public List<JobSeekerExperience> getExperienceById(int userId);
 
 	 
 

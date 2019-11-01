@@ -31,6 +31,7 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 				experience.getJobTitle(), experience.getStartDate(), experience.getEndDate(),
 				experience.getJobDescription(), experience.getStreetAddress(), experience.getCity(),
 				experience.getState(), user);
+		logger.info("SeekerExperience" + seekerexperience);
 		Integer seekerexperienceId = experiencedao.addJobSeekerExperience(seekerexperience);
 		if (seekerexperienceId != null)
 			return seekerexperienceId;
@@ -41,7 +42,7 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 		return experiencedao.getAllSeekerExperience();
 	}
 
-	public JobSeekerExperience getExperienceById(int userId) {
+	public List<JobSeekerExperience> getExperienceById(int userId) {
 		return experiencedao.getExperienceById(userId);
 	}
 

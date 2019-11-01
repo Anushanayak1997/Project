@@ -30,7 +30,7 @@ public class JobSeekerExperienceController {
 	}
 	
 	@RequestMapping(value = "/getexperiencebyid/{userId}")
-	public JobSeekerExperience getExperiencesById(@PathVariable int userId) {
+	public List<JobSeekerExperience> getExperiencesById(@PathVariable int userId) {
 		return jobseekerexperienceservice.getExperienceById(userId);
 	}
 

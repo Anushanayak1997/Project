@@ -11,4 +11,6 @@ public interface JobSeekerEducationService {
 
 	List<JobSeekerEducation> getAllSeekerEducation();
 
+	List<JobSeekerEducation> getSeekerEducationById(int userId);
+
 }
