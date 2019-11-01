@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
 		Integer userId = userdao.addUser(userenity);
 		if (userId != null) {
 			httpsession.setAttribute("userid", userId);
+		
 			return userId;
 		}
 		return null;
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService {
 	public HashMap<String, Integer> authenticateuser(Login loginentity) {
 		boolean status;
 		Integer companyid;
+		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		User user = userdao.authenticateuser(loginentity);
 		if (user != null) {
@@ -63,6 +65,7 @@ public class UserServiceImpl implements UserService {
 				map.put("userId", user.getUserID());
 			}
 			return map;
+
 		} else {
 			status = false;
 			return null;

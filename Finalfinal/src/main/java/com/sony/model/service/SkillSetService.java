@@ -9,4 +9,6 @@ public interface SkillSetService {
 	public boolean addSkillSet(SkillSet skillset);
 
 	public List<SkillSet> getAllSkills();
+	
+	public SkillSet getSkillById(int skillId);
 }

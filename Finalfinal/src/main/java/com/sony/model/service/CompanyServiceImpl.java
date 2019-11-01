@@ -17,9 +17,11 @@ import com.sony.model.entity.Company;
 import com.sony.model.entity.EmployerCompany;
 
 @Service
-public class CompanyServiceImpl implements CompanyService {
-	
-	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
+
+public class CompanyServiceImpl implements CompanyService{
+	 private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+
+
 
 	@Autowired
 	CompanyDAO companydao;
@@ -33,7 +35,6 @@ public class CompanyServiceImpl implements CompanyService {
 	public List<Company> getAllCompany() {
 		return companydao.getAllCompany();
 	}
-
 	public Integer addCompany(CompanyDTO companydto) {
 		Company company = new Company(companydto.getCompanyId(), companydto.getCompanyName(),
 				companydto.getCompanyDescription(), companydto.getEstablishmentDate(), companydto.getWebsiteUrl(),
@@ -49,7 +50,7 @@ public class CompanyServiceImpl implements CompanyService {
 			return companyId;
 		}
 		return null;
-	}
+	}	
 
 	public Integer setCompanyIdSession(CompanyDTO companydto) {
 		Integer companyid = companydto.getCompanyId();

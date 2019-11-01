@@ -2,11 +2,14 @@ package com.sony.model.service;
 
 import java.util.List;
 
+import com.sony.model.dto.SeekerProjectDTO;
 import com.sony.model.entity.JobSeekerProject;
 
 
 public interface JobSeekerProjectService {
-	public boolean addJobSeekerProject(JobSeekerProject jobseekerproject);
+	public Integer addJobSeekerProject(SeekerProjectDTO jobseekerproject);
 
 	public List<JobSeekerProject> getAllProject();
+
+	public List<JobSeekerProject> getProjectById(int userId);
 }

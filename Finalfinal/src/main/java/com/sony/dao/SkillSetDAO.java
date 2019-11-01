@@ -9,4 +9,6 @@ public interface SkillSetDAO {
 	public Integer addSkillSet(SkillSet skillset);
 
 	public List<SkillSet> getAllSkills();
+
+	public SkillSet getSkillById(int skillId);
 }

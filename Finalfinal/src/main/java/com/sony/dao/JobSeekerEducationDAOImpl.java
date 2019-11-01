@@ -9,16 +9,21 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.sony.controller.CompanyController;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.JobSeekerEducation;
+import com.sony.model.entity.User;
 
 
 @Repository
 public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
  
 	private static SessionFactory factory;
+	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
 	public JobSeekerEducationDAOImpl() {
 		try {
@@ -60,5 +65,23 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 			session.close();
 		}
 		return education;
+	}
+
+	public List<JobSeekerEducation> getSeekerEducationById(int userId) {
+		Session session = factory.openSession();
+		List<JobSeekerEducation> result = null;
+		try {
+			Query query = session.createQuery("from JobSeekerEducation where user.userID = :userId");
+			query.setParameter("userId", userId);
+			List<JobSeekerEducation> education = new ArrayList<JobSeekerEducation>();
+			logger.info("Education" + education);
+			education = query.list();
+			if (education != null)
+				result = education;
+		} catch (Exception ex) {
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 }

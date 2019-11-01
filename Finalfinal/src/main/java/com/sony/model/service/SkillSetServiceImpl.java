@@ -23,5 +23,9 @@ public class SkillSetServiceImpl implements SkillSetService{
 	public List<SkillSet> getAllSkills() {
 		return skillsetdao.getAllSkills();
 	}
+	
+	public SkillSet getSkillById(int skillId) {
+		return skillsetdao.getSkillById(skillId);
+	}
 
 }

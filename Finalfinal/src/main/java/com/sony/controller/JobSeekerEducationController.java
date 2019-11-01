@@ -3,6 +3,7 @@ package com.sony.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,5 +29,9 @@ public class JobSeekerEducationController {
 	public Integer addJobSeekerEducation(@RequestBody EducationDTO education) {
 		return jobseekereducationservice.addJobSeekerEducation(education);
 	}
-
+	
+	@RequestMapping(value = "/getseekereducationbyid/{userId}")
+	public List<JobSeekerEducation> getSeekerEducationById(@PathVariable int userId) {
+		return jobseekereducationservice.getSeekerEducationById(userId);
+	}
 }

@@ -77,6 +77,9 @@ public class JobSeekerEducation {
 		this.marksPercentages = marksPercentages;
 	}
 
+
+
+
 	public User getUser() {
 		return user;
 	}
