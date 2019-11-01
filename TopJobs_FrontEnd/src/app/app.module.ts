@@ -15,7 +15,7 @@ import { HomeModule } from './home/home.module';
 import { JobSeekerModule } from './job-seeker/job-seeker.module';
 import { ToastrModule } from 'ngx-toastr';
 
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 
 @NgModule({

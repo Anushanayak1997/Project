@@ -5,7 +5,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { JobPostInterface } from './job-posts/jobPostInterface';
-import { user } from './users';
+
 @Injectable({
   providedIn: 'root'
 })

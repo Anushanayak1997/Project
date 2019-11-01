@@ -14,11 +14,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./job-posts.component.css']
 })
 export class JobPostsComponent implements OnInit {
-<<<<<<< HEAD
-  url=environment.apiBaseUrl+"getjobpost";
-  job_posts:any;
-  constructor( private route:Router , private http: HttpClient) { }
-=======
   url = environment.apiBaseUrl + "companydetails";
    details:any;
    company:any;
@@ -34,25 +29,13 @@ export class JobPostsComponent implements OnInit {
 
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
 
->>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 
   ngOnInit() {
-<<<<<<< HEAD
-    this.http.get(this.url).subscribe(
-      (response) => {
-
-        this.job_posts=response;
-        console.log(this.job_posts)
-
-      }
-    )
-=======
     
    this.getAllcompany();
    
  
 
->>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
   }
 
   getAllcompany(){
