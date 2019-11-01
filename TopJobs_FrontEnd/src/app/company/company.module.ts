@@ -11,7 +11,7 @@ import { EmployerDetailsComponent } from './employer-details/employer-details.co
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { HeaderComponent } from '../header/header.component';
+
 
 
 
