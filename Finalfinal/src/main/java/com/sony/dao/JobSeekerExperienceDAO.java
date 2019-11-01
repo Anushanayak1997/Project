@@ -3,12 +3,15 @@ package com.sony.dao;
 import java.util.List;
 
 import com.sony.model.entity.JobSeekerExperience;
+import com.sony.model.entity.User;
 
 public interface JobSeekerExperienceDAO {
 	
-	Integer addJobSeekerExperience(JobSeekerExperience experience);
+	public Integer addJobSeekerExperience(JobSeekerExperience experience);
 
-	List<JobSeekerExperience> getAllSeekerExperience();
+	public List<JobSeekerExperience> getAllSeekerExperience();
+
+	public JobSeekerExperience getExperienceById(int userId);
 
 	 
 

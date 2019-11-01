@@ -1,63 +1,45 @@
-package com.sony.model.entity;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+package com.sony.model.dto;
 
-// import com.sony.model.entity.JobPostEntity;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "COMPANY")
-public class Company {
+import com.sony.model.entity.Company;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "company_sequence")
-	@SequenceGenerator(name = "company_sequence", sequenceName = "COMPANY_ID_SEQ")
-	@Column(name = "company_id")
+public class CompanyDTO implements Serializable {
+
 	private int companyId;
-
-	@Column(name = "company_name")
 	private String companyName;
-
-	@Column(name = "company_description")
 	private String companyDescription;
-
-	@Column(name = "establishment_date")
 	private String establishmentDate;
-
-	@Column(name = "website_url")
 	private String websiteUrl;
-
-	@Column(name = "headquarter")
 	private String headquarter;
-
-	@Column(name = "specialities")
 	private String specialities;
-
-	@Column(name = "industry")
 	private String industry;
-
-	@Column(name = "company_type")
 	private String type;
+	private int userId;
 
-	public Company() {
+	public CompanyDTO() {
 	}
 
-	public Company(int companyId, String companyName, String companyDescription, String establishmentDate,
-			String websiteUrl, String headquarter, String specialities, String industry, String type) {
-		super();
-		this.companyId = companyId;
+	public CompanyDTO(int companyId, String companyName, String companyDescription, String establishmentDate,
+			String websiteUrl, String headquarter, String specialities, String industry, String type, int userId) {
+		this.companyId = companyId; 
 		this.companyName = companyName;
 		this.companyDescription = companyDescription;
-		this.establishmentDate = establishmentDate;
+		this.establishmentDate = establishmentDate; 
 		this.websiteUrl = websiteUrl;
 		this.headquarter = headquarter;
 		this.specialities = specialities;
 		this.industry = industry;
 		this.type = type;
+		this.userId = userId;
+	}
+
+	public Company getCompany(CompanyDTO companydto) {
+		Company company = new Company(companydto.getCompanyId(), companydto.getCompanyName(),
+				companydto.getCompanyDescription(), companydto.getEstablishmentDate(), companydto.getWebsiteUrl(),
+				companydto.getHeadquarter(), companydto.getSpecialities(), companydto.getIndustry(),
+				companydto.getType());
+		return company;
 	}
 
 	public int getCompanyId() {
@@ -66,6 +48,14 @@ public class Company {
 
 	public void setCompanyId(int companyId) {
 		this.companyId = companyId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getCompanyName() {

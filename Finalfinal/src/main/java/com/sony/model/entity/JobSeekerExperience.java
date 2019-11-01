@@ -1,12 +1,11 @@
 package com.sony.model.entity;
-
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -43,6 +42,29 @@ public class JobSeekerExperience {
 	public String getStreetAddress() {
 		return streetAddress;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	public JobSeekerExperience() {
+	}
+	
+
+	public JobSeekerExperience(int jobSeekerExperienceId, String jobTitle, String startDate, String endDate,
+			String jobDescription, String streetAddress, String city, String state, User user) {
+		super();
+		this.jobSeekerExperienceId = jobSeekerExperienceId;
+		this.jobTitle = jobTitle;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.jobDescription = jobDescription;
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+		this.user = user;
+	}
+
 
 	public void setStreetAddress(String streetAddress) {
 		this.streetAddress = streetAddress;

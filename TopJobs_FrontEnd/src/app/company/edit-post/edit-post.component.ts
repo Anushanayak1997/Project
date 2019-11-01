@@ -25,7 +25,7 @@ export class EditPostComponent implements OnInit {
   location: any;
 
 dropdownList :any;
-  selectedItems :any=null;
+  selectedItems :any;
   dropdownSettings :IDropdownSettings ;
 
   
@@ -64,7 +64,7 @@ date:any
       this.getCompanyId(this.id);
       this.http.get(this.getskills).subscribe(
         (Response)=>{
-          this.dropdownList=Response;
+          this.selectedItems=Response;
         }
       )
     })
@@ -165,7 +165,7 @@ date:any
     }
 
 
-    console.log(this.job_post);
+    console.log(this.job_post)
     this.companyservice.addJobPost(this.job_post).subscribe(
       (Response)=>{
         console.log("success")

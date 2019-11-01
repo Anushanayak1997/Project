@@ -13,12 +13,11 @@ export class MainComponent implements OnInit {
   constructor(private router: Router,private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.cookieValue = this.cookieService.get('email');
-    console.log(this.cookieValue)
+   
   }
   gologin(){
-    this.router.navigate(['login']);
-this.cookieValue = this.cookieService.get('email');
+  this.router.navigate(['login']);
+      
   }
 
   goRegister(){

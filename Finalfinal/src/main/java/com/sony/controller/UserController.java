@@ -1,15 +1,18 @@
 package com.sony.controller;
  
-import java.util.LinkedList; 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.service.UserService;
+import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
 @RestController
@@ -23,13 +26,19 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 	
+	@RequestMapping(value = "/getuserbyid/{userId}")
+	public User getUsersById(@PathVariable int userId) {
+		return userService.getUserById(userId);
+	}
+	
+	
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public boolean addUser(@RequestBody User userentity) {
+	public Integer addUser(@RequestBody User userentity) {
 		return userService.addUser(userentity);
 	}
 
 	@RequestMapping(value = "/loginuser")
-	public boolean loginUser(@RequestBody User userentity) {
-		return userService.authenticateuser(userentity);
+	public HashMap<String, Integer> loginUser(@RequestBody Login loginentity) {
+		return userService.authenticateuser(loginentity);
 	}
 }
