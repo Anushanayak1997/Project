@@ -197,7 +197,7 @@ public class JobPost {
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
 			Company companyentity) {
 		this.jobPostId = jobPostId;
-		this.jobTitle = jobTitle;
+		this.jobTitle = jobTitle; 
 		this.jobDescription = jobDescription;
 		this.isActive = isActive;
 		this.experience = experience;
