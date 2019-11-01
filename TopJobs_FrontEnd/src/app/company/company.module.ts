@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,13 +12,16 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
 import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
+
 @NgModule({
   declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent, JobDescriptionComponent],
   exports: [
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    
   ],
   imports: [
     CommonModule,
+  
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -26,7 +29,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     DlDateTimePickerModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
-
+  
   providers:[CompanyService]
 })
 export class CompanyModule { }

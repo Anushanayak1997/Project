@@ -19,34 +19,13 @@ export class EditPostComponent implements OnInit {
   index: number;
   id: number;
   job_post: any;
-<<<<<<< HEAD
- location:any;
-
-=======
   job_edit:any;
   company =[];
   location: any;
->>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 
 
 
-<<<<<<< HEAD
-  constructor(private fb: FormBuilder, private route: Router, private router: ActivatedRoute, private http: HttpClient) {
-
-    this.id = router.snapshot.params.id
-
-  }
-
-  ngOnInit() {
-   
-
-
-  }
-
- 
-=======
   
->>>>>>> branch 'master' of https://github.com/Anushanayak1997/Project.git
 
   userModel = new job_details(
     "",

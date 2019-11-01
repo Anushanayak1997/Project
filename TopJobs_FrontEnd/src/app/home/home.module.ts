@@ -6,10 +6,12 @@ import { RegisterComponent } from './register/register.component';
 
 import {FormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [MainComponent, LoginComponent, RegisterComponent],
   exports: [
-    MainComponent
+    MainComponent,
+  
   ],
   imports: [
     CommonModule,
