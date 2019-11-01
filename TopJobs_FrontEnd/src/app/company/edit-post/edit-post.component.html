@@ -21,10 +21,9 @@
                 <tbody>
                     <tr>
                         <th scope="row">
-                            <input type="text" #index="ngModel" required  disabled class="form-control"
-                               name="index" placeholder={{id}}
-                                [(ngModel)]="userModel.index">
-                           
+                            <input type="text" #index="ngModel" required disabled class="form-control" name="index"
+                                placeholder={{id}} [(ngModel)]="userModel.index">
+
                         </th>
 
                         <th scope="row">
@@ -47,7 +46,7 @@
                         <th scope="row">
                             <input type="text" #Applicants="ngModel" disabled required class="form-control"
                                 [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
-                                [(ngModel)]="userModel.Applicants"placeholder={{company.Apllicants}}> 
+                                [(ngModel)]="userModel.Applicants" placeholder={{company.Apllicants}}>
                             <small class="text-danger"
                                 [class.d-none]="Applicants.valid || Applicants.untouched">Applicants is
                                 required</small>
@@ -56,8 +55,8 @@
                         <th scope="row">
                             <input type="text" #PostDate="ngModel" required class="form-control"
                                 [class.is-invalid]="PostDate.invalid && PostDate.touched" name="Applicants"
-                                [(ngModel)]="userModel.PostDate" placeholder={{company.Date}} >
-                                
+                                [(ngModel)]="userModel.PostDate" placeholder={{company.Date}}>
+
                             <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
                                 required</small>
                         </th>
@@ -97,163 +96,167 @@
                         <input type="text" #JobTitle="ngModel" minlength="5" required class="form-control"
                             [class.is-invalid]="JobTitle.invalid && JobTitle.touched" name="JobTitle"
                             [(ngModel)]="userModel.JobTitle">
-                          
+
                         <small class="text-danger" [class.d-none]="JobTitle.valid || JobTitle.untouched">JobTitle is
                             required</small>
 
                     </div>
 
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Status</strong></span>
-                                </div>
-                        
-                            
-                            <input type="text" #Status="ngModel" required class="form-control"
-                                [class.is-invalid]="Status.invalid && Status.touched" name="Status"
-                                [(ngModel)]="userModel.Status">
-                            <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
-                                required</small>
-                       
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Status</strong></span>
+                        </div>
+
+
+                        <input type="text" #Status="ngModel" required class="form-control"
+                            [class.is-invalid]="Status.invalid && Status.touched" name="Status"
+                            [(ngModel)]="userModel.Status">
+                        <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
+                            required</small>
+
+                    </div>
+
+                    <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
+                        [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemDeSelect($event)">
+                    </ng-multiselect-dropdown>
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Vacancy</strong></span>
+                        </div>
+
+                        <input type="number" #Vacancy="ngModel" required class="form-control"
+                            [class.is-invalid]="Vacancy.invalid && Vacancy.touched" name="Vacancy"
+                            [(ngModel)]="userModel.Vacancy">
+                        <small class="text-danger" [class.d-none]="Vacancy.valid || Vacancy.untouched">Vacancy is
+                            required</small>
+
                     </div>
 
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Vacancy</strong></span>
-                                </div>
-                            
-                            <input type="number" #Vacancy="ngModel" required class="form-control"
-                                [class.is-invalid]="Vacancy.invalid && Vacancy.touched" name="Vacancy"
-                                [(ngModel)]="userModel.Vacancy">
-                            <small class="text-danger" [class.d-none]="Vacancy.valid || Vacancy.untouched">Vacancy is
-                                required</small>
-                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>experience</strong></span>
+                        </div>
+
+                        <input type="text" #experience="ngModel" required class="form-control"
+                            [class.is-invalid]="experience.invalid && experience.touched" name="experience"
+                            [(ngModel)]="userModel.experience">
+                        <small class="text-danger" [class.d-none]="experience.valid || experience.untouched">experience
+                            is required</small>
+
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Specalities</strong></span>
+                        </div>
+
+                        <input type="text" #Specalities="ngModel" required class="form-control"
+                            [class.is-invalid]="Specalities.invalid && Specalities.touched" name="Specalities"
+                            [(ngModel)]="userModel.Specalities">
+                        <small class="text-danger"
+                            [class.d-none]="Specalities.valid || experience.untouched">Specalities
+                            is required</small>
+
                     </div>
 
-                    <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>experience</strong></span>
-                                </div>
-                            
-                            <input type="text" #experience="ngModel" required class="form-control"
-                                [class.is-invalid]="experience.invalid && experience.touched" name="experience"
-                                [(ngModel)]="userModel.experience">
-                            <small class="text-danger"
-                                [class.d-none]="experience.valid || experience.untouched">experience
-                                is required</small>
-                        
-                    </div>
-                    <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Specalities</strong></span>
-                                </div>
-                            
-                            <input type="text" #Specalities="ngModel" required class="form-control"
-                                [class.is-invalid]="Specalities.invalid && Specalities.touched" name="Specalities"
-                                [(ngModel)]="userModel.Specalities">
-                            <small class="text-danger"
-                                [class.d-none]="Specalities.valid || experience.untouched">Specalities
-                                is required</small>
-                        
-                    </div>
 
-                   
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>jobDescription</strong></span>
-                                </div>
-                            
-                            <textarea type="textarea" #jobDescription="ngModel" required class="form-control"
-                                [class.is-invalid]="jobDescription.invalid && jobDescription.touched"
-                                name="jobDescription" [(ngModel)]="userModel.jobDescription">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>jobDescription</strong></span>
+                        </div>
+
+                        <textarea type="textarea" #jobDescription="ngModel" required class="form-control"
+                            [class.is-invalid]="jobDescription.invalid && jobDescription.touched" name="jobDescription"
+                            [(ngModel)]="userModel.jobDescription">
                 <small class="text-danger" [class.d-none]="jobDescription.valid || jobDescription.untouched">jobDescription is
                     required</small>
                 </textarea>
-                        
+
                     </div>
                     <h4 class="address">Address</h4>
 
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Street</strong></span>
-                                </div>
-                            
-                            <input type="text" #StreetAddress="ngModel" required class="form-control"
-                                [class.is-invalid]="StreetAddress.invalid && StreetAddress.touched" name="StreetAddress"
-                                [(ngModel)]="userModel.StreetAddress">
-                            <small class="text-danger" [class.d-none]="StreetAddress.valid || StreetAddress.untouched">Street is
-                                required</small>
-                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Street</strong></span>
+                        </div>
+
+                        <input type="text" #StreetAddress="ngModel" required class="form-control"
+                            [class.is-invalid]="StreetAddress.invalid && StreetAddress.touched" name="StreetAddress"
+                            [(ngModel)]="userModel.StreetAddress">
+                        <small class="text-danger"
+                            [class.d-none]="StreetAddress.valid || StreetAddress.untouched">Street is
+                            required</small>
+
                     </div>
 
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>City</strong></span>
-                                </div>
-                            
-                            <input type="text" #City="ngModel" required class="form-control"
-                                [class.is-invalid]="City.invalid && City.touched" name="City"
-                                [(ngModel)]="userModel.City">
-                            <small class="text-danger" [class.d-none]="City.valid || City.untouched">city is
-                                required</small>
-                       
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>City</strong></span>
+                        </div>
+
+                        <input type="text" #City="ngModel" required class="form-control"
+                            [class.is-invalid]="City.invalid && City.touched" name="City" [(ngModel)]="userModel.City">
+                        <small class="text-danger" [class.d-none]="City.valid || City.untouched">city is
+                            required</small>
+
                     </div>
 
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>State</strong></span>
-                                </div>
-                            
-                            <input type="text" #State="ngModel" required class="form-control"
-                                [class.is-invalid]="State.invalid && State.touched" name="State"
-                                [(ngModel)]="userModel.State">
-                            <small class="text-danger" [class.d-none]="State.valid || State.untouched">City is
-                                required</small>
-                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>State</strong></span>
+                        </div>
+
+                        <input type="text" #State="ngModel" required class="form-control"
+                            [class.is-invalid]="State.invalid && State.touched" name="State"
+                            [(ngModel)]="userModel.State">
+                        <small class="text-danger" [class.d-none]="State.valid || State.untouched">City is
+                            required</small>
+
                     </div>
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Country</strong></span>
-                                </div>
-                            
-                            <input type="text" #Country="ngModel" required class="form-control"
-                                [class.is-invalid]="Country.invalid && Country.touched" name="Country"
-                                [(ngModel)]="userModel.Country">
-                            <small class="text-danger" [class.d-none]="Country.valid || Country.untouched">Country is
-                                required</small>
-                       
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Country</strong></span>
+                        </div>
+
+                        <input type="text" #Country="ngModel" required class="form-control"
+                            [class.is-invalid]="Country.invalid && Country.touched" name="Country"
+                            [(ngModel)]="userModel.Country">
+                        <small class="text-danger" [class.d-none]="Country.valid || Country.untouched">Country is
+                            required</small>
+
                     </div>
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>Zipcode</strong></span>
-                                </div>
-                            
-                            <input type="text" #Zipcode="ngModel" required class="form-control"
-                                [class.is-invalid]="Zipcode.invalid && Zipcode.touched" name="Zipcode"
-                                [(ngModel)]="userModel.Zipcode">
-                            <small class="text-danger" [class.d-none]="Zipcode.valid || Zipcode.untouched">Zipcode is
-                                required</small>
-                        
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Zipcode</strong></span>
+                        </div>
+
+                        <input type="text" #Zipcode="ngModel" required class="form-control"
+                            [class.is-invalid]="Zipcode.invalid && Zipcode.touched" name="Zipcode"
+                            [(ngModel)]="userModel.Zipcode">
+                        <small class="text-danger" [class.d-none]="Zipcode.valid || Zipcode.untouched">Zipcode is
+                            required</small>
+
                     </div>
                     <!--Address ends-->
                     <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><strong>PostDate</strong></span>
-                                </div>
-                            
-                            <input type="date" #PostDate="ngModel" required class="form-control"
-                                [class.is-invalid]="PostDate.invalid && PostDate.touched" name="PostDate"
-                                [(ngModel)]="userModel.PostDate">
-                            <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
-                                required</small>
-                       
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>PostDate</strong></span>
+                        </div>
+
+                        <input type="date" #PostDate="ngModel" required class="form-control"
+                            [class.is-invalid]="PostDate.invalid && PostDate.touched" name="PostDate"
+                            [(ngModel)]="userModel.PostDate">
+                        <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
+                            required</small>
+
                     </div>
 
-                   
+
 
                 </form>
                 <button class="btn btn-primary btnStyle" type="submit" (click)="onSubmit()"
-                    [disabled]="userForm.form.invalid " >Submit</button>
+                    [disabled]="userForm.form.invalid ">Submit</button>
             </article>
         </div>
 

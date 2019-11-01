@@ -38,7 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     CompanyModule,
     HomeModule,
     JobSeekerModule,
-    NgbModule
+    NgbModule,
+    NgMultiSelectDropDownModule.forRoot()
 
   ],
   providers: [CookieService],

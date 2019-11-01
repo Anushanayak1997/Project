@@ -108,15 +108,16 @@ export class RegisterComponent implements OnInit {
       this.PostCompany = null;
       this.router.navigate(['company/details']);
     }
-    else {
-      console.log("hi");
-      for (let company of this.details) {
-        console.log(company);
-        if (company.companyName == this.regiseterModel.companyName) {
+      else{
+        console.log("hi");
+        for (let company of this.details) {
+          console.log(company);
+         if(company.companyName==this.regiseterModel.companyName){
           console.log("true");
           this.comp = company;
         }
       }
+      
       console.log("company status");
       console.log(this.comp);
       console.log(localStorage.getItem('user_id'));

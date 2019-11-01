@@ -6,17 +6,10 @@ import {ToastrService} from 'ngx-toastr'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit{
+export class AppComponent {
   title = 'TopJobs';
-  constructor(
-    private toast: ToastrService,
-  ) { }
 
 
-  ngOnInit() {
-    //this.toast.success("I'm a toast!", "Success!");
-  }
-  test() {
-   
-  }
+
+ 
 }

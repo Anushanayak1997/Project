@@ -27,6 +27,10 @@ export class LoginComponent implements OnInit {
   
   ngOnInit() {
     this.cookieValue = this.cookieService.get('firstName');
+    
+    //console.log(sessionStorage.getItem('user_id'));
+             //console.log(localStorage.getItem('company_id'));
+          //   localStorage.clear();
   }
 
   topics = ["JobSeeker","Employer","Admin"];
