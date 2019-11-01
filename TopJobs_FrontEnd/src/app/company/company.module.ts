@@ -16,6 +16,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
+
 @NgModule({
   declarations: [
     CompanyDetailsComponent, 
@@ -23,7 +24,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
      EditPostComponent,
       EmployerDetailsComponent,
        JobDescriptionComponent,
-      
+     
 
       ],
   exports: [
