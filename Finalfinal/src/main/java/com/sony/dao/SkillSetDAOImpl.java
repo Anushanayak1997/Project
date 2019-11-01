@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.SkillSet;
+import com.sony.model.entity.User;
 
 @Repository
 public class SkillSetDAOImpl implements SkillSetDAO {
@@ -57,6 +59,22 @@ public class SkillSetDAOImpl implements SkillSetDAO {
 			session.close();
 		}
 		return skillset;
+	}
+
+	public SkillSet getSkillById(String skillname) {
+		Session session = factory.openSession();
+		SkillSet result = null;
+		try {
+			Query query = session.createQuery("from SkillSet where skillName= :skillid");
+			query.setParameter("skillid", skillname);
+			SkillSet skillset = (SkillSet) query.uniqueResult();
+			if (skillset != null)
+				result = skillset;
+		} catch (Exception ex) {
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 
 }

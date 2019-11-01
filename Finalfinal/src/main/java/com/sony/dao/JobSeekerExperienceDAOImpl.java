@@ -1,9 +1,11 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
+import com.sony.model.entity.User;
 
 @Repository
 public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
@@ -60,4 +63,24 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return experience;
 	}
 
-}
+	public List<JobSeekerExperience> getExperienceById(int userId) { 
+	
+			Session session = factory.openSession();
+			List<JobSeekerExperience> result = null;
+			try {
+				Query query = session.createQuery("from JobSeekerExperience where user.userID= :userid");
+				query.setParameter("userid", userId);
+				List<JobSeekerExperience> seekerexperience = new ArrayList<JobSeekerExperience>();
+				seekerexperience = query.list();
+				if (seekerexperience != null)
+					result = seekerexperience;
+			} catch (Exception ex) {
+			} finally {
+				session.close();
+			}
+			return result;
+		}
+
+	}
+
+

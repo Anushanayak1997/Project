@@ -12,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   topicHasError = true;
   submitted = false;
   errorMsg = '';
@@ -108,7 +107,4 @@ export class LoginComponent implements OnInit {
     
       
     }
-
-    
-
-  }
+    }

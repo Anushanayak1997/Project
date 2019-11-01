@@ -11,4 +11,6 @@ public interface JobSeekerEducationDAO {
 	Integer addJobSeekerEducation(JobSeekerEducation education);
 
 	List<JobSeekerEducation> getAllSeekerEducation();
+
+	List<JobSeekerEducation> getSeekerEducationById(int userId);
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.entity.JobPostSkill;
-import com.sony.model.entity.SkillSet;
+
 import com.sony.model.service.JobPostSkillService;
 
 @RestController

@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.sony.controller.CompanyController;
+import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
 
@@ -17,6 +22,8 @@ import com.sony.model.entity.JobSeekerProject;
 public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 
 	private static SessionFactory factory;
+	
+	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
 	public JobSeekerProjectDAOImpl() {
 		try {
@@ -57,6 +64,24 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			session.close();
 		}
 		return project;
+	}
+	
+	public List<JobSeekerProject> getProjectsById(int userId) {
+		Session session = factory.openSession();
+		List<JobSeekerProject> result = null;
+		try {
+			Query query = session.createQuery("from JobSeekerProject where user.userID = :userId");
+			query.setParameter("userId", userId);
+			List<JobSeekerProject> seekerprojects = new ArrayList<JobSeekerProject>();
+			seekerprojects = query.list();
+			logger.info("Projects");
+			if (seekerprojects != null)
+				result = seekerprojects;
+		} catch (Exception ex) {
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 	
 

@@ -14,6 +14,7 @@ import { CompanyModule } from './company/company.module';
 import { HomeModule } from './home/home.module';
 import { JobSeekerModule } from './job-seeker/job-seeker.module';
 import { ToastrModule } from 'ngx-toastr';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -21,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
 
   ],
   imports: [
@@ -39,13 +41,11 @@ import { ToastrModule } from 'ngx-toastr';
     HomeModule,
     JobSeekerModule,
     NgbModule,
-    
+    NgMultiSelectDropDownModule.forRoot()
 
   ],
   providers: [CookieService],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-],
+ exports:[HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,4 +10,6 @@ public interface JobSeekerProjectService {
 	public Integer addJobSeekerProject(SeekerProjectDTO jobseekerproject);
 
 	public List<JobSeekerProject> getAllProject();
+
+	public List<JobSeekerProject> getProjectById(int userId);
 }

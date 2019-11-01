@@ -1,6 +1,4 @@
 package com.sony.model.entity;
-
-import java.util.LinkedList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

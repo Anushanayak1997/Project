@@ -2,8 +2,6 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-
 import com.sony.model.entity.Company;
 
 public class CompanyDTO implements Serializable {

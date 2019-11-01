@@ -16,7 +16,9 @@ import { ApplicationStatusComponent } from './job-seeker/application-status/appl
 import { ManageAccountComponent } from './job-seeker/manage-account/manage-account.component';
 import { JobDescriptionComponent } from './company/job-description/job-description.component';
 
-
+import { JobSeekerModule } from './job-seeker/job-seeker.module';
+import { ToastrModule } from 'ngx-toastr';
+import { from } from 'rxjs';
 const routes: Routes = [
   // { path: "", component: AppComponent, pathMatch: 'full' },
   {

@@ -9,4 +9,6 @@ public interface JobSeekerProjectDAO {
 
 	List<JobSeekerProject> getAllProject();
 
+	List<JobSeekerProject> getProjectsById(int userId);
+
 }

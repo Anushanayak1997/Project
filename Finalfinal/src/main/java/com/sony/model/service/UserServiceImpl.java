@@ -72,4 +72,8 @@ public class UserServiceImpl implements UserService {
 		}
 //		return map;
 	}
+
+	public User getUserById(int userId) {
+		return userdao.getUserById(userId);
+	}
 }

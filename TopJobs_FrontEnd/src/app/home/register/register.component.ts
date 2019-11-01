@@ -63,9 +63,9 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    this.PostCompanyid = {
+   /* this.PostCompanyid = {
       companyID: this.regiseterModel.companyID
-    }
+    }*/
 
     this._http.post(this.url2, this.user).subscribe(//add company
       (Response) => {
@@ -108,16 +108,16 @@ export class RegisterComponent implements OnInit {
       this.PostCompany = null;
       this.router.navigate(['company/details']);
     }
-    else {
-     
-      for (let company of this.details) {
-        console.log(company);
-        console.log("->"+this.regiseterModel.companyName)
-        if (company.companyId == this.regiseterModel.companyName) {
+      else{
+        console.log("hi");
+        for (let company of this.details) {
+          console.log(company);
+         if(company.companyId==this.regiseterModel.companyName){
           console.log("true");
           this.comp = company;
         }
       }
+
       console.log("company status");
       console.log(this.comp);
       console.log(sessionStorage.getItem('user_id'));

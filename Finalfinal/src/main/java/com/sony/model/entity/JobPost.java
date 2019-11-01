@@ -1,6 +1,8 @@
 package com.sony.model.entity;
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 //import java.util.HashSet;
 //import java.util.LinkedList;
@@ -143,51 +145,71 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="job_post")
+@Table(name = "job_post")
 public class JobPost {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator = "job_post_sequence")
-    @SequenceGenerator(name = "job_post_sequence", sequenceName = "JOB_POST_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "job_post_sequence")
+	@SequenceGenerator(name = "job_post_sequence", sequenceName = "JOB_POST_ID_SEQ")
 	@Column(name = "job_post_id")
 	private int jobPostId;
-	
-	@Column(name="job_title")
+
+	@Column(name = "job_title")
 	private String jobTitle;
-	
-	@Column(name="job_description")
+
+	@Column(name = "job_description")
 	private String jobDescription;
-	
-	@Column(name="is_active")
+
+	@Column(name = "is_active")
 	private boolean isActive;
-	
-	@Column(name="experience")
+
+	@Column(name = "experience")
 	private String experience;
-	
-	@Column(name="no_of_applicants")
+
+	@Column(name = "no_of_applicants")
 	private int noOfApplicants;
-	
-	@Column(name="post_date")
+
+	@Column(name = "post_date")
 	private String postDate;
-	
-	@Column(name="no_of_vacancies")
+
+	@Column(name = "no_of_vacancies")
 	private int noOfVacancies;
-	
-	@Column(name="street_address")
+
+	@Column(name = "street_address")
 	private String streetAddress;
-	
-	@ManyToOne  
-	@JoinColumn(name="company_id")
+
+	@ManyToOne
+	@JoinColumn(name = "company_id")
 	private Company companyentity;
-	
-	@Column(name="city")
+
+	@Column(name = "city")
 	private String city;
-	
-	@Column(name="state")
+
+	@Column(name = "state")
 	private String state;
-	
-	private LinkedList<JobPostSkill> jobpostskill = new LinkedList<JobPostSkill>();
-	
+
+	private LinkedList<SkillSet> skillset = new LinkedList<SkillSet>();
+
+	public JobPost() {
+	}
+
+	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
+			Company companyentity) {
+		this.jobPostId = jobPostId;
+		this.jobTitle = jobTitle; 
+		this.jobDescription = jobDescription;
+		this.isActive = isActive;
+		this.experience = experience;
+		this.noOfApplicants = noOfApplicants;
+		this.postDate = postDate;
+		this.noOfVacancies = noOfVacancies;
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+		this.companyentity = companyentity;
+	}
+
 	public String getStreetAddress() {
 		return streetAddress;
 	}
@@ -283,14 +305,15 @@ public class JobPost {
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
-	
-	@OneToMany(mappedBy = "skillset")
-	public LinkedList<JobPostSkill> getJobpostskill() {
-		return jobpostskill;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "USERS_GROUPS", joinColumns = @JoinColumn(name = "job_post_id"), 
+				inverseJoinColumns = @JoinColumn(name = "skill_id"))
+	public LinkedList<SkillSet> getSkillset() {
+		return skillset;
 	}
 
-	public void setJobpostskill(LinkedList<JobPostSkill> jobpostskill) {
-		this.jobpostskill = jobpostskill;
+	public void setSkillset(LinkedList<SkillSet> skillset) {
+		this.skillset = skillset;
 	}
-	
 }

@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,15 +13,27 @@ import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
+
+
+
 @NgModule({
-  declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent, JobDescriptionComponent],
+  declarations: [
+    CompanyDetailsComponent, 
+    JobPostsComponent,
+     EditPostComponent,
+      EmployerDetailsComponent,
+       JobDescriptionComponent,
+      
+
+      ],
   exports: [
     CompanyDetailsComponent,
     
   ],
   imports: [
     CommonModule,
-  
+    
+
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -30,6 +42,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule.forRoot()
   ],
   
-  providers:[CompanyService]
+  providers:[CompanyService],
+
+ 
 })
 export class CompanyModule { }

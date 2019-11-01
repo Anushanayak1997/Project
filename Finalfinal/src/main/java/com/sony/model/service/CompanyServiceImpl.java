@@ -1,6 +1,6 @@
 package com.sony.model.service;
 
-import java.util.LinkedList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sony.controller.CompanyController;
 import com.sony.dao.CompanyDAO;
 import com.sony.model.dto.CompanyDTO;
 import com.sony.model.entity.Company;
