@@ -17,6 +17,8 @@ export class RegisterComponent implements OnInit {
   url1 = environment.apiBaseUrl + "setcompanyid";
   url2 = environment.apiBaseUrl + "adduser";
   url3 = environment.apiBaseUrl + "getallcompany"
+
+  user_id:any;
   details: any;
   company: any;
   user: any;
@@ -72,10 +74,9 @@ export class RegisterComponent implements OnInit {
         console.log(Response);
         if (Response != null) {
           this.Toaster.success("successfull Registration")
-          let user_id = 'user_id';
+           this.user_id = Response;
 
-          sessionStorage.setItem('user_id', Response.toString());
-          console.log(sessionStorage.getItem('user_id'));
+      
           console.log("added user");
         } else{
               
@@ -120,8 +121,8 @@ export class RegisterComponent implements OnInit {
 
       console.log("company status");
       console.log(this.comp);
-      console.log(sessionStorage.getItem('user_id'));
-      this.PostCompany = { 'companyId': this.comp.companyId, 'userId': sessionStorage.getItem('user_id') };
+    
+      this.PostCompany = { 'companyId': this.comp.companyId, 'userId':this.user_id };
       this._http.post(this.url1, this.PostCompany).subscribe(
         (Response) => {
           console.log(Response);

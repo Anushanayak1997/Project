@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
               
              sessionStorage.setItem('user_id',this.response.userId);
              sessionStorage.setItem('company_id',this.response.companyId);
+             
              setTimeout(() => 
              {
                
@@ -92,6 +93,8 @@ export class LoginComponent implements OnInit {
               setTimeout(() => 
               {
                 sessionStorage.setItem('user_id',this.response.userId);
+                console.log("user_id")
+                console.log(sessionStorage.getItem('user_id'))
                 this.router.navigate(['seeker/home']);
               },
               2000);

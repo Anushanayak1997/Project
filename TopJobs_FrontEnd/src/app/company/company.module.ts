@@ -11,6 +11,10 @@ import { EmployerDetailsComponent } from './employer-details/employer-details.co
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HeaderComponent } from '../header/header.component';
+
+
+
 
 
 
@@ -24,17 +28,20 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
      EditPostComponent,
       EmployerDetailsComponent,
        JobDescriptionComponent,
-     
+       
 
       ],
   exports: [
     CompanyDetailsComponent,
     
   ],
+
   imports: [
+    
     CommonModule,
     
-
+    
+    
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -42,6 +49,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     DlDateTimePickerModule,
     NgMultiSelectDropDownModule.forRoot()
   ],
+
+  
   
   providers:[CompanyService],
 

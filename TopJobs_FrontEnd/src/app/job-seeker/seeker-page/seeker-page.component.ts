@@ -19,8 +19,8 @@ export class SeekerPageComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-    this.getJobSeeker();
-    this.getJobs();
+  //  this.getJobSeeker();
+  //  this.getJobs();
   }
 
   getJobSeeker(){
