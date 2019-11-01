@@ -65,6 +65,7 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		}
 		return project;
 	}
+	
 	public List<JobSeekerProject> getProjectsById(int userId) {
 		Session session = factory.openSession();
 		List<JobSeekerProject> result = null;

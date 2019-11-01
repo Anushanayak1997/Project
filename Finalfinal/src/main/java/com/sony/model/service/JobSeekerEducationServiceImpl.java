@@ -40,8 +40,7 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 	}
 
 	public List<JobSeekerEducation> getSeekerEducationById(int userId) {
-		educationdao.getSeekerEducationById(userId);
-		return null;
+		return educationdao.getSeekerEducationById(userId);
 	}
 
 }

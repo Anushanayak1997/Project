@@ -24,8 +24,8 @@ public class SkillSetServiceImpl implements SkillSetService{
 		return skillsetdao.getAllSkills();
 	}
 	
-	public SkillSet getSkillById(int skillId) {
-		return skillsetdao.getSkillById(skillId);
+	public SkillSet getSkillById(String skillname) {
+		return skillsetdao.getSkillById(skillname);
 	}
 
 }

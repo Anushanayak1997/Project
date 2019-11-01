@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.JobPostDTO;
 import com.sony.model.entity.JobPost;
-import com.sony.model.entity.User;
+
 import com.sony.model.service.JobPostService;
 @RestController
 public class JobPostController {

@@ -61,12 +61,12 @@ public class SkillSetDAOImpl implements SkillSetDAO {
 		return skillset;
 	}
 
-	public SkillSet getSkillById(int skillId) {
+	public SkillSet getSkillById(String skillname) {
 		Session session = factory.openSession();
 		SkillSet result = null;
 		try {
-			Query query = session.createQuery("from SkillSet where skillId= :skillid");
-			query.setParameter("skillid", skillId);
+			Query query = session.createQuery("from SkillSet where skillName= :skillid");
+			query.setParameter("skillid", skillname);
 			SkillSet skillset = (SkillSet) query.uniqueResult();
 			if (skillset != null)
 				result = skillset;

@@ -10,8 +10,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
-
-import com.sony.model.entity.Company;
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 

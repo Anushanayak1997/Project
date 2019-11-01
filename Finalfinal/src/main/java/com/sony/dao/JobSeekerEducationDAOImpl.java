@@ -23,7 +23,7 @@ import com.sony.model.entity.User;
 public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
  
 	private static SessionFactory factory;
-	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
+	private static final Logger logger = LoggerFactory.getLogger(JobSeekerEducationDAOImpl.class);
 
 	public JobSeekerEducationDAOImpl() {
 		try {
@@ -71,13 +71,13 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		Session session = factory.openSession();
 		List<JobSeekerEducation> result = null;
 		try {
-			Query query = session.createQuery("from JobSeekerEducation where user.userID = :userId");
-			query.setParameter("userId", userId);
+			Query query = session.createQuery("from JobSeekerEducation where user.userID= :userid");
+			query.setParameter("userid", userId);
 			List<JobSeekerEducation> education = new ArrayList<JobSeekerEducation>();
-			logger.info("Education" + education);
 			education = query.list();
 			if (education != null)
 				result = education;
+			logger.info("SIZERRR" + result.size());
 		} catch (Exception ex) {
 		} finally {
 			session.close();

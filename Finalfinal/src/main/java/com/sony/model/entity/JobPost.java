@@ -188,17 +188,14 @@ public class JobPost {
 	@Column(name = "state")
 	private String state;
 
-	// private LinkedList<JobPostSkill> jobpostskill = new
-	// LinkedList<JobPostSkill>();
-
 	private LinkedList<SkillSet> skillset = new LinkedList<SkillSet>();
 
 	public JobPost() {
 	}
 
 	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
-			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress,
-			String city, String state, Company companyentity, LinkedList<SkillSet> skillset) {
+			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
+			Company companyentity) {
 		this.jobPostId = jobPostId;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
@@ -211,7 +208,6 @@ public class JobPost {
 		this.city = city;
 		this.state = state;
 		this.companyentity = companyentity;
-		this.skillset = skillset;
 	}
 
 	public String getStreetAddress() {
@@ -311,8 +307,8 @@ public class JobPost {
 	}
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "JOB_POST_SKILL", joinColumns = { @JoinColumn(name = "job_post_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "skill_id") })
+	@JoinTable(name = "USERS_GROUPS", joinColumns = @JoinColumn(name = "job_post_id"), 
+				inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	public LinkedList<SkillSet> getSkillset() {
 		return skillset;
 	}
@@ -320,25 +316,4 @@ public class JobPost {
 	public void setSkillset(LinkedList<SkillSet> skillset) {
 		this.skillset = skillset;
 	}
-	// @ManyToMany(cascade = CascadeType.ALL)
-	// @JoinTable(name = "JOB_POST_SKILL", joinColumns = { @JoinColumn(name =
-	// "job_post_id") }, inverseJoinColumns = {
-	// @JoinColumn(name = "skill_id") })
-	// public Set<SkillSet> getSkillset() {
-	// return skillset;
-	// }
-	//
-	// public void setSkillset(Set<SkillSet> skillset) {
-	// this.skillset = skillset;
-	// }
-
-	// @OneToMany(mappedBy = "skillset")
-	// public LinkedList<JobPostSkill> getJobpostskill() {
-	// return jobpostskill;
-	// }
-	//
-	// public void setJobpostskill(LinkedList<JobPostSkill> jobpostskill) {
-	// this.jobpostskill = jobpostskill;
-	// }
-
 }

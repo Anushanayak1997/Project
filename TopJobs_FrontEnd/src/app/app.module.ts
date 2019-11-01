@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,9 +30,10 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 2000,
       positionClass: 'toast-top-right'
     }),
+    NgMultiSelectDropDownModule.forRoot(),
 
     CompanyModule,
     HomeModule,

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobPostSkillDAO;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobPostSkill;
-import com.sony.model.entity.SkillSet;
+
 
 @Service
 public class JobPostSkillServiceImpl implements JobPostSkillService{

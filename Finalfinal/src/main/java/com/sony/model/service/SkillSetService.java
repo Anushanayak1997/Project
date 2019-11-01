@@ -10,5 +10,5 @@ public interface SkillSetService {
 
 	public List<SkillSet> getAllSkills();
 	
-	public SkillSet getSkillById(int skillId);
+	public SkillSet getSkillById(String skillname);
 }
