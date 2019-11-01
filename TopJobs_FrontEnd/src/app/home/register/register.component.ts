@@ -15,7 +15,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   url1 = environment.apiBaseUrl + "setcompanyid";
   url2 = environment.apiBaseUrl + "adduser";
-  url3 = environment.apiBaseUrl + "sendcompany"
+  url3 = environment.apiBaseUrl + "getallcompany"
   details: any;
   company: any;
   user:any;
@@ -69,8 +69,8 @@ export class RegisterComponent implements OnInit {
         console.log(Response);
         let user_id='user_id';
       
-        localStorage.setItem('user_id',Response.toString());
-        console.log(localStorage.getItem('user_id'));
+        sessionStorage.setItem('user_id',Response.toString());
+        console.log(sessionStorage.getItem('user_id'));
         console.log("added user");
 
        
@@ -97,15 +97,15 @@ export class RegisterComponent implements OnInit {
         console.log("hi");
         for (let company of this.details) {
           console.log(company);
-         if(company.companyId==this.regiseterModel.companyName){
+         if(company.companyName==this.regiseterModel.companyName){
           console.log("true");
           this.comp=company;
          }
         }
         console.log("company status");
     console.log(this.comp);
-    console.log(localStorage.getItem('user_id'));
-    this.PostCompany={'companyId':this.comp.companyId,'userId':localStorage.getItem('user_id')};
+    console.log(sessionStorage.getItem('user_id'));
+    this.PostCompany={'companyId':this.comp.companyId,'userId':sessionStorage.getItem('user_id')};
     this._http.post(this.url1, this.PostCompany).subscribe(
       (Response) => {
         console.log(Response);
@@ -121,7 +121,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getCompanies() {
-    let obs = this._http.get(this.url1)
+    let obs = this._http.get(this.url3)
     obs.subscribe(
       (Response) => {
         console.log(Response);

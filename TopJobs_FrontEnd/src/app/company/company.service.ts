@@ -13,6 +13,7 @@ export class CompanyService {
   constructor(private _http: HttpClient) { }
 
   url = environment.apiBaseUrl + "addcompanydetails";
+  url1=environment.apiBaseUrl+"addjobpost";
 
   private url2:string="http://localhost:3000/company"
 
@@ -37,7 +38,7 @@ export class CompanyService {
   }
 
   addJobPost(jobPost:JobPostInterface):Observable<JobPostInterface>{
-    return this._http.post<JobPostInterface>(this.url2,jobPost);
+    return this._http.post<JobPostInterface>(this.url1,jobPost);
   }
 
   EditCompany(company:JobPostInterface, id:number):Observable<JobPostInterface>{

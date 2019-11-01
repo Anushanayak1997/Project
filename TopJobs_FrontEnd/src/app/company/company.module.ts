@@ -10,6 +10,7 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import { EmployerDetailsComponent } from './employer-details/employer-details.component';
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { CompanyService } from './company.service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent, JobDescriptionComponent],
@@ -23,6 +24,7 @@ import { CompanyService } from './company.service';
     FormsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
 
   providers:[CompanyService]

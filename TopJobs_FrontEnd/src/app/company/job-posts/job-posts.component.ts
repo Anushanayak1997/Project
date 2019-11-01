@@ -23,7 +23,7 @@ export class JobPostsComponent implements OnInit {
    Status:string;
    Apllicants:number;
    Date:number;
-   employes=[];
+   employes:any;
    public companies = [];
 
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
@@ -50,7 +50,7 @@ export class JobPostsComponent implements OnInit {
   }
 
   toCreatePost(){
-    this.route.navigate(['company/details'])
+    this.route.navigate(['company/create-post'])
   }
   onEdit(employe){
     this.route.navigate(['company/jobpost/',employe.id])

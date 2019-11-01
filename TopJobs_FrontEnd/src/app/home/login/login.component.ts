@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
   
   ngOnInit() {
     this.cookieValue = this.cookieService.get('firstName');
+    
+    //console.log(sessionStorage.getItem('user_id'));
+             //console.log(localStorage.getItem('company_id'));
+          //   localStorage.clear();
   }
 
   topics = ["JobSeeker","Employer","Admin"];
@@ -47,7 +51,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.cookieValue = this.cookieService.get('firstName');
-    /*
+    
     console.log("before")
 
     this.login={
@@ -71,14 +75,14 @@ export class LoginComponent implements OnInit {
         }
           if(this.status==true){
             if(this.userModel.userType=="Employer"){
-             this.response.forEach((value:any, key: string) => {
-                console.log(key, value);
-                localStorage.setItem(key,value);
-                console.log(localStorage.getItem(key));
-            });
-
+             sessionStorage.setItem('user_id',this.response.userId);
+           sessionStorage.setItem('company_id',this.response.companyId);
+             console.log(sessionStorage.getItem('user_id'));
+             console.log(sessionStorage.getItem('company_id'));
               this.router.navigate(['company/jobpost']);
             }else {
+              sessionStorage.setItem('user_id',this.response.userId);
+              console.log(sessionStorage.getItem('user_id'));
              console.log("logged in")
             }
           }  else

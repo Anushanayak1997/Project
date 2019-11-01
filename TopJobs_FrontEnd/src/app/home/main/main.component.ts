@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
     console.log(this.cookieValue)
   }
   gologin(){
-//    this.router.navigate(['login']);
+    this.router.navigate(['login']);
 this.cookieValue = this.cookieService.get('email');
   }
 
