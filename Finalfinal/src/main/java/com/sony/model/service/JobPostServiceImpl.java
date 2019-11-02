@@ -74,4 +74,7 @@ public class JobPostServiceImpl implements JobPostService {
 		return jobpostdao.getAllJobs();
 	}
 
+	public void editJobPost(JobPost jobpost) {
+		jobpostdao.editJobPost(jobpost);
+	}
 }

@@ -24,6 +24,11 @@ public class JobPostController {
 		return jobpostservice.getJobsByCompId(companyId);
 	}
 	
+	@RequestMapping(value = "/getjobsbyid/{jobpostId}")
+	public JobPost getJobById(@PathVariable int jobpostId) {
+		return jobpostservice.getJobById(jobpostId);
+	}
+	
 	@RequestMapping(value = "/addjobpost", method = RequestMethod.POST)
 	public Integer addJobPost(@RequestBody JobPostDTO jobpostdto) {
 		return jobpostservice.addJobPost(jobpostdto);
@@ -32,5 +37,10 @@ public class JobPostController {
 	@RequestMapping(value = "/getalljobs")
 	public List<JobPost> getAllJobs() {
 		return jobpostservice.getAllJobs();
+	}
+	
+	@RequestMapping(value = "/editjobpost", method = RequestMethod.POST)
+	public void editJobPost(@RequestBody JobPost jobpost) {
+		jobpostservice.editJobPost(jobpost);
 	}
 }

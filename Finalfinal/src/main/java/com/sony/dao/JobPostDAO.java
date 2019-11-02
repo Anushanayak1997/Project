@@ -16,4 +16,6 @@ public interface JobPostDAO {
 
 	public List<JobPost> getAllJobs();
 
+	public void editJobPost(JobPost jobpost);
+
 }

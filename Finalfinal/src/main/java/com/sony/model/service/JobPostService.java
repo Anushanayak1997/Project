@@ -15,4 +15,6 @@ public interface JobPostService {
 
 	public List<JobPost> getAllJobs();
 
+	public void editJobPost(JobPost jobpost);
+
 }

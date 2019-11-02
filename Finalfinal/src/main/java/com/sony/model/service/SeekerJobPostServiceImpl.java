@@ -1,5 +1,7 @@
 package com.sony.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,9 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 	
 	public Integer updateSatus(SeekerJobPostDTO seekerjobpostdto) {
 		return seekerjobpostdao.updateStatus(seekerjobpostdto.getUserId(), seekerjobpostdto.getJobpostId());
+	}
+
+	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId) {
+		return seekerjobpostdao.getApplicantsById(jobpostId);
 	}
 }
