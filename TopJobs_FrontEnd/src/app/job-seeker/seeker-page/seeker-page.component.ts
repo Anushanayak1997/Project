@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { RouteConfigLoadEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-seeker-page',
@@ -15,10 +16,18 @@ export class SeekerPageComponent implements OnInit {
   userLastName:any;
   userEmail:any;
   jobDetails: any;
-  
-  constructor(private http:HttpClient) { }
+  userType:any;
+
+  constructor(private http:HttpClient,private router:Router) { }
 
   ngOnInit() {
+
+   this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'JobSeeker'){
+      console.log("correct user");
+    }else{
+      this.router.navigate(['home']);
+    }
   //  this.getJobSeeker();
   //  this.getJobs();
   }

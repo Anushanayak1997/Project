@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-description',
@@ -10,9 +11,19 @@ import { environment } from 'src/environments/environment';
 export class JobDescriptionComponent implements OnInit {
 
   url = environment.apiBaseUrl + "getalljobs";
-  constructor(private _http: HttpClient) { }
+  userType: string;
+
+  constructor(private _http: HttpClient, private route:Router) { }
+  
   jobDetails:any;
   ngOnInit() {
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
+    
     this.getJobDetails()
   }
 

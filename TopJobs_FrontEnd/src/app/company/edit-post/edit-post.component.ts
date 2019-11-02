@@ -48,6 +48,7 @@ dropdownList :any;
   )
  
     getskills=environment.apiBaseUrl+"getallskills";
+  userType: string;
   
   constructor(private companyservice: CompanyService, private route: Router, private router: ActivatedRoute, private http: HttpClient) {
 
@@ -57,6 +58,13 @@ dropdownList :any;
 date:any
   
   ngOnInit() {
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
+    
     this.router.paramMap.subscribe((params: ParamMap) => {
       let Index = parseInt(params.get('Index'));
       console.log(Index)
