@@ -180,7 +180,7 @@ public class JobPost {
 	@Column(name = "state")
 	private String state;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "JOB_POST_SKILL", joinColumns = @JoinColumn(name = "job_post_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private Set<SkillSet> skillset = new HashSet<SkillSet>();
 
@@ -192,7 +192,7 @@ public class JobPost {
 
 	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
-			Company companyentity) {
+			Company companyentity, Set<SkillSet> skillset) {
 		this.jobPostId = jobPostId;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
@@ -205,6 +205,7 @@ public class JobPost {
 		this.city = city;
 		this.state = state;
 		this.companyentity = companyentity;
+		this.skillset = skillset;
 	}
 
 	public String getStreetAddress() {
@@ -307,16 +308,16 @@ public class JobPost {
 		return skillset;
 	}
 
-	public void setSkillset(Set<SkillSet> skillset) {
-		this.skillset = skillset;
-	}
+//	public void setSkillset(Set<SkillSet> skillset) {
+//		this.skillset = skillset;
+//	}
 
 	public Set<SeekerJobPostStatus> getSeekerjobpost() {
 		return seekerjobpost;
 	}
 
-	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
-		this.seekerjobpost = seekerjobpost;
-	}
+//	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
+//		this.seekerjobpost = seekerjobpost;
+//	}
 
 }
