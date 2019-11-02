@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { CompanyService } from '../company.service';
 import { User } from '../users';
-
+import { HttpClient } from '@angular/common/http';
 import { Company } from '../company';
 import { environment } from 'src/environments/environment';
 

@@ -11,14 +11,38 @@ import { EmployerDetailsComponent } from './employer-details/employer-details.co
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HomeModule } from '../home/home.module';
+
+
+
+
+
+
+
+
+
 
 @NgModule({
-  declarations: [CompanyDetailsComponent, JobPostsComponent, EditPostComponent, EmployerDetailsComponent, JobDescriptionComponent],
+  declarations: [
+    CompanyDetailsComponent, 
+    JobPostsComponent,
+     EditPostComponent,
+      EmployerDetailsComponent,
+       JobDescriptionComponent,
+       
+
+      ],
   exports: [
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    
   ],
+
   imports: [
+    
     CommonModule,
+    HomeModule,
+    
+    
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -27,6 +51,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule.forRoot()
   ],
 
-  providers:[CompanyService]
+  
+  
+  providers:[CompanyService],
+
+ 
 })
 export class CompanyModule { }

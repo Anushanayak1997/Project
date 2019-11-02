@@ -6,15 +6,22 @@ import { RegisterComponent } from './register/register.component';
 
 import {FormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
+import { HeaderComponent } from './header/header.component';
+
+
 @NgModule({
-  declarations: [MainComponent, LoginComponent, RegisterComponent],
+  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent],
   exports: [
-    MainComponent
+   
+    MainComponent,
+    HeaderComponent,
   ],
   imports: [
+    
     CommonModule,
     FormsModule
   ],
   providers: [ CookieService],
+  
 })
 export class HomeModule { }

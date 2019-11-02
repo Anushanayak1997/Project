@@ -7,6 +7,8 @@ import { ApplicationStatusComponent } from './application-status/application-sta
 import { ManageAccountComponent } from './manage-account/manage-account.component';
 import { SeekerPageComponent } from './seeker-page/seeker-page.component';
 import { SeekerProfileComponent } from './seeker-profile/seeker-profile.component';
+import { HomeModule } from '../home/home.module';
+
 
 
 
@@ -19,6 +21,8 @@ import { SeekerProfileComponent } from './seeker-profile/seeker-profile.componen
     CommonModule,
     NgbModule,
     FormsModule,
+      HomeModule
+    
   ]
 })
 export class JobSeekerModule { }
