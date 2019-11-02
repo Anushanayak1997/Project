@@ -68,9 +68,6 @@ export class CompanyDetailsComponent implements OnInit {
   goEmployerDetails() {
     this.route.navigate(['company/jobpost']);
   }
-
- 
-
 }
 
 

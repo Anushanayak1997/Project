@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class SeekerPageComponent implements OnInit {
 
-  url1 = environment.apiBaseUrl + "getallusers";
+  userId = sessionStorage.getItem('user_id');
+  url1 = environment.apiBaseUrl + "getuserbyid/" + this.userId;
   url2 = environment.apiBaseUrl + "getalljobs";
   userName:any;
   userLastName:any;
@@ -19,7 +20,7 @@ export class SeekerPageComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
-  //  this.getJobSeeker();
+    this.getJobSeeker();
   //  this.getJobs();
   }
 
@@ -27,9 +28,9 @@ export class SeekerPageComponent implements OnInit {
     this.http.get(this.url1).subscribe(
       (Response)=>{
         console.log(Response);
-        this.userName = Response[0].firstName;
-        this.userLastName = Response[0].userLastName;
-        this.userEmail = Response[0].emailID
+        // this.userName = Response[0].firstName;
+        // this.userLastName = Response[0].userLastName;
+        // this.userEmail = Response[0].emailID;
       }
     )
   }
@@ -42,7 +43,4 @@ export class SeekerPageComponent implements OnInit {
       }
     )
   }
-
-
-
 }
