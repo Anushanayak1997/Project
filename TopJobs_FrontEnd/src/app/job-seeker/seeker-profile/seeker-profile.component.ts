@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RegiseterUser } from 'src/app/home/H_user';
 import { job_seeker_education, job_seeker_skills, job_seeker_project, job_seeker_experience } from '../Jobseeker';
+import { SeekerService } from '../seeker.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seeker-profile',
@@ -9,8 +11,14 @@ import { job_seeker_education, job_seeker_skills, job_seeker_project, job_seeker
   styleUrls: ['./seeker-profile.component.css']
 })
 export class SeekerProfileComponent implements OnInit {
-skills:any;
-  
+  skills: any;
+  id:any;
+  info:any;
+  Eduinfo:any;
+  certificate:any;
+  Experinceinfo:any;
+  Projectinfo:any;
+
   userInfo = new RegiseterUser(
     "",
     "",
@@ -46,12 +54,12 @@ skills:any;
     1,
     19,
   )
-  
+
   userSkills = new job_seeker_skills(
-   "",
-   "",
-   1,
-   2,
+    "",
+    "",
+    1,
+    2,
   )
 
   userProjects = new job_seeker_project(
@@ -65,15 +73,85 @@ skills:any;
     "",
     "",
     "",
+    "",
+    "",
     ""
   )
+  userType: string;
 
-  constructor() { }
+  constructor(private Seeker: SeekerService,private router:Router) { }
 
   ngOnInit() {
-
-    this.skills=[{id:1,name:"xyz"},{id:2,name:"abc"},{id:3,name:"fjkd"}];
-    console.log(this.skills);
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'JobSeeker'){
+      console.log("correct user");
+    }else{
+      this.router.navigate(['home']);
+    }
+   this.getSeekerInfo()
+   this.getEducationInfo()
+   this.getCertificationInfo()
+   this.getExperienceInfo()
+   this.getProjectInfo()
+  
   }
+  //Get Methods
+  getSeekerInfo() {
+    this.Seeker.getPersonalInfo().subscribe(
+      (Response) => {
+        console.log("info")
+        this.info = Response
+        console.log(this.info)
+      }
+    )
+  }
+
+  getEducationInfo() {
+    this.Seeker.getEducationIfo().subscribe(
+      (Response) => {
+        console.log("education")
+        console.log(Response)
+        this.Eduinfo = Response;
+        console.log(this.Eduinfo)
+      }
+    )
+  }
+
+  
+
+  getCertificationInfo() {
+    this.Seeker.getCertificationInfo().subscribe(
+      (Response) => {
+        console.log("certificate")
+        console.log(Response);
+        this.certificate = Response
+      }
+    )
+  }
+
+  getExperienceInfo() {
+    this.Seeker.getExperienceInfo().subscribe(
+      (Response) => {
+        console.log("experince")
+        console.log(Response);
+        this.Experinceinfo = Response
+      }
+    )
+  }
+
+  getProjectInfo() {
+    this.Seeker.getProjectInfo().subscribe(
+      (Response) => {
+        console.log("project")
+        console.log(Response);
+        this.Projectinfo = Response
+      }
+    )
+  }
+
+  //End of Get Methods
+
+
+
 
 }

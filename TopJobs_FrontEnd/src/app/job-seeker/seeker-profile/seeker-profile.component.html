@@ -1,8 +1,5 @@
-<nav class="navbar bg-dark navbar-dark">
-    <div class=" navbar navbar-inverse container-fluid" href="#"><a style="color: honeydew;">Navbar</a></div>
-</nav>
 
-
+<app-header></app-header>
 <div class="container">
     <div class="card bg-light  shadow-lg p-3 mb-5 bg-white rounded ">
         <div class="card-header " style="background-color: #00AA9E; ">
@@ -15,13 +12,17 @@
 
         <div class="card">
             <h5 class="card-header">Personal Info</h5>
-            <div class="card-body">
+            <div class="card-body" >
                 <h5 class="card-title"></h5>
-                <p class="card-text">UserName:</p>
-                <p class="card-text">UserEmail:</p>
-                <p class="card-text">ContactNo:</p>
-                <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Go somewhere</a>
-
+                <span class="card-text" >UserName:</span><b *ngIf = "info">{{info.emailID}}</b><br><br>
+                <span class="card-text">UserEmail:</span><b *ngIf = "info">{{info.emailID}}</b><br><br>
+                <span class="card-text">ContactNo:</span><b *ngIf = "info">{{info.emailID}}</b><br><br>
+                <div *ngIf="info">
+                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#exampleModal" class="btn btn-link">Edit</button>
+                </div>
+                <div *ngIf="!info">
+                        <button data-toggle="modal" style="color:#00AA9E;" data-target="#exampleModal" class="btn btn-link">Add</button>
+                </div>        
             </div>
 
 
@@ -93,25 +94,32 @@
 
             <!--10th-->
             <div class="card-body">
-                <h5 class="card-header">10th Board</h5>
-                <p class="card-text">start_date:</p>
-                <p class="card-text">end_date:</p>
-                <p class="card-text">marks_percentage:</p>
-                <a data-toggle="modal" data-target="#tenth" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-header">10th Board:</h5>
+                <span class="card-text">start_date:</span><b *ngIf = "Eduinfo">{{Eduinfo}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf = "Eduinfo">{{Eduinfo}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf = "Eduinfo">{{Eduinfo}}</b><br><br>
+                <div *ngIf="Eduinfo">
+                        <button  data-toggle="modal" data-target="#tenth" class="btn btn-link" style="color:#00AA9E;">Edit</button>
+                </div>
+                <div *ngIf="!Eduinfo">
+                        <button  data-toggle="modal" data-target="#tenth" class="btn btn-link" style="color:#00AA9E;">Add</button>
+                </div>
+
+                
 
                 <!--12th-->
                 <h5 class="card-header">12th Board</h5>
-                <p class="card-text">start_date:</p>
-                <p class="card-text">end_date:</p>
-                <p class="card-text">marks_percentage:</p>
-                <a data-toggle="modal" data-target="#twelth" class="btn btn-primary">Go somewhere</a>
+                <span class="card-text">start_date:</span>
+                <span class="card-text">end_date:</span>
+                <span class="card-text">marks_percentage:</span>
+                <button data-toggle="modal" data-target="#twelth" class="btn btn-link" style="color:#00AA9E;">Edit</button>
 
                 <!--UnderGraduate-->
                 <h5 class="card-header">UnderGraduate</h5>
-                <p class="card-text">start_date:</p>
-                <p class="card-text">end_date:</p>
-                <p class="card-text">marks_percentage:</p>
-                <a data-toggle="modal" data-target="#UG" class="btn btn-primary">Go somewhere</a>
+                <span class="card-text">start_date:</span>
+                <span class="card-text">end_date:</span>
+                <span class="card-text">marks_percentage:</span>
+                <button data-toggle="modal" data-target="#UG" class="btn btn-link"style="color:#00AA9E;">Edit</button>
             </div>
 
 
@@ -311,7 +319,7 @@
                 <h5 class="card-title"></h5>
                 <p class="card-text">Certificate Name:</p>
                 <p class="card-text">Certificate issue_date:</p>
-                <a data-toggle="modal" data-target="#certificate" class="btn btn-primary">Go somewhere</a>
+                <button data-toggle="modal" data-target="#certificate" style="color:#00AA9E;" class="btn btn-link">Edit</button>
 
             </div>
 
@@ -374,7 +382,7 @@
                 <p class="card-text">Project_Name:</p>
                 <p class="card-text">description: </p>
                 <p class="card-text">role: </p>
-                <a data-toggle="modal" data-target="#Projects" class="btn btn-primary">Go somewhere</a>
+                <button data-toggle="modal" data-target="#Projects" style="color:#00AA9E;" class="btn btn-link">Edit</button>
 
             </div>
 
@@ -407,7 +415,7 @@
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
                                     <input type="text" #description="ngModel"
-                                        [(ngModel)]="job_seeker_project.description" placeholder="description"
+                                        [(ngModel)]="userProjects.description" placeholder="description"
                                         name="description"><br>
                                 </div>
 
@@ -416,7 +424,7 @@
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
                                     <input type="text" #role="ngModel"
-                                        [(ngModel)]="job_seeker_project.role" placeholder="role"
+                                        [(ngModel)]="userProjects.role" placeholder="role"
                                         name="role"><br>
                                 </div>
 
@@ -445,8 +453,10 @@
                     <p class="card-text">start_date: </p>
                     <p class="card-text">end_date: </p>
                     <p class="card-text">job_description: </p>
-                    <p class="card-text">location: </p>
-                    <a data-toggle="modal" data-target="#Experienc" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text">streetaddress: </p>
+                    <p class="card-text">city: </p>
+                    <p class="card-text">state: </p>
+                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#Experienc" class="btn btn-link">Edit</button>
     
                 </div>
     
@@ -497,16 +507,32 @@
                                             </div>
                                             <input type="text" #job_description="ngModel"
                                                 [(ngModel)]="userExperience.job_description" placeholder="job_description"
-                                                name="role"><br>
+                                                name="job_description"><br>
                                         </div>
                                         <div class="form-group input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                                 </div>
-                                                <input type="text" #role="ngModel"
-                                                    [(ngModel)]="userExperience.location" placeholder="location"
-                                                    name="location"><br>
+                                                <input type="text" #streetaddress="ngModel"
+                                                    [(ngModel)]="userExperience.streetaddress" placeholder="streetaddress"
+                                                    name="streetaddress"><br>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                             </div>
+                                            <input type="text" #city="ngModel"
+                                                [(ngModel)]="userExperience.city" placeholder="city"
+                                                name="city"><br>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #state="ngModel"
+                                            [(ngModel)]="userExperience.state" placeholder="state"
+                                            name="state"><br>
+                                </div>
     
                                 </form>
     

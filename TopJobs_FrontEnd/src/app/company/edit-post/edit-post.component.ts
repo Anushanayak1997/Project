@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
-import { Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FormArray } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { job_details } from '../job_post';
@@ -23,8 +20,9 @@ export class EditPostComponent implements OnInit {
   job_edit:any;
   company =[];
   location: any;
+  skills:any;
 
-dropdownList :any;
+  dropdownList :any;
   selectedItems :any;
   dropdownSettings :IDropdownSettings ;
 
@@ -48,36 +46,44 @@ dropdownList :any;
   )
  
     getskills=environment.apiBaseUrl+"getallskills";
+  userType: string;
   
   constructor(private companyservice: CompanyService, private route: Router, private router: ActivatedRoute, private http: HttpClient) {
-
-
   }
 
 date:any
   
   ngOnInit() {
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
+    
     this.router.paramMap.subscribe((params: ParamMap) => {
       let Index = parseInt(params.get('Index'));
       console.log(Index)
       this.id = Index
-      this.getCompanyId(this.id);
+     
       this.http.get(this.getskills).subscribe(
         (Response)=>{
-          this.selectedItems=Response;
+          if(Response!=null){
+            console.log(Response);
+          this.dropdownList=Response;
+          console.log("Drop down list: " , this.dropdownList);
+          }
         }
       )
     })
-
-    
     /*this.selectedItems = [
       // { item_id: 3, item_text: 'Pune' },
       // { item_id: 4, item_text: 'Navsari' }
     ];*/
     this.dropdownSettings= {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'skillId',
+      textField: 'skillName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
@@ -86,42 +92,23 @@ date:any
   }
 
   onItemSelect(item: any) {
-    this.selectedItems.push(item);
-    console.log(item);
-    console.log(this.selectedItems);
+    console.log("Item: " , item);
+    console.log("Selected Items: ", this.selectedItems);
+    this.selectedItems.forEach(v => {
+      delete v.isDisabled;
+    });
   }
 
   onItemDeSelect(item: any) {
-    let index = this.selectedItems.indexOf(item);
-    this.selectedItems.splice(index, 1);
+    // let index = this.selectedItems.indexOf(item);
+    // this.selectedItems.splice(index, 0);
     console.log(item);
-    console.log(this.selectedItems);
+    console.log("Deselect: ", this.selectedItems);
   }
   onSelectAll(items: any) {
     console.log(items);
   }
   
-    
-  
-
-  getCompanyId(id: number) {
-    this.companyservice.getCompanyById(id).subscribe(
-      (Response) => {
-        console.log(Response);
-        this.company =  Response
-       
-      }
-    )
-  }
-
-  deleteCompany(){
-
-  }
-
-
-  
- 
-
   onSubmitSecond() {
     console.log("2nd submit")
     this.date = this.userModel.PostDate;
@@ -146,7 +133,10 @@ date:any
     console.log("hi");
     console.log(this.selectedItems);
     this.location = { }
+    console.log(sessionStorage.getItem('company_id'));
     this.job_post = {
+      
+      'companyId':sessionStorage.getItem('company_id'),
       'jobTitle': this.userModel.JobTitle,
       'jobDescription': this.userModel.jobDescription,
       'isActive': this.userModel.Status,
@@ -158,10 +148,7 @@ date:any
       'streetAdddress': this.userModel.StreetAddress,
        'city': this.userModel.City, 
        'state': this.userModel.State,
-      'skills':this.selectedItems
-
-
-
+      'skillset':this.selectedItems
     }
 
 
@@ -171,12 +158,5 @@ date:any
         console.log("success")
       }
     )
-    
-    
-
-
-  }
-
-
-
+    }
 }

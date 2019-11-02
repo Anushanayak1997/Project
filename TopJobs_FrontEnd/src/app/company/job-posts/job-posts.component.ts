@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { CompanyService } from '../company.service';
 import { User } from '../users';
-
+import { HttpClient } from '@angular/common/http';
 import { Company } from '../company';
 import { environment } from 'src/environments/environment';
 
@@ -26,12 +25,18 @@ export class JobPostsComponent implements OnInit {
    Date:number;
    employes:any;
    public companies = [];
+  userType: string;
 
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
 
 
   ngOnInit() {
-    
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
    this.getAllcompany();
    
  
