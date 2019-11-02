@@ -39,7 +39,7 @@ public class JobPostController {
 		return jobpostservice.getAllJobs();
 	}
 	
-	@RequestMapping(value = "/editjobpost", method = RequestMethod.POST)
+	@RequestMapping(value = "/editjobpost", method = RequestMethod.PUT)
 	public void editJobPost(@RequestBody JobPost jobpost) {
 		jobpostservice.editJobPost(jobpost);
 	}

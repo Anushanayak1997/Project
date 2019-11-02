@@ -55,9 +55,9 @@ public class JobPostServiceImpl implements JobPostService {
 		JobPost jobpost = new JobPost(jobpostdto.getJobPostId(), jobpostdto.getJobTitle(),
 				jobpostdto.getJobDescription(), jobpostdto.isActive(), jobpostdto.getExperience(),
 				jobpostdto.getNoOfApplicants(), jobpostdto.getPostDate(), jobpostdto.getNoOfVacancies(),
-				jobpostdto.getStreetAddress(), jobpostdto.getCity(), jobpostdto.getState(), company);
+				jobpostdto.getStreetAddress(), jobpostdto.getCity(), jobpostdto.getState(), company, skillset);
 		
-		jobpost.setSkillset(skillset);
+		//jobpost.setSkillset(skillset);
 		Integer jobpostid = jobpostdao.addJobPost(jobpost);
 		if (jobpostid != null)
 			return jobpostid;

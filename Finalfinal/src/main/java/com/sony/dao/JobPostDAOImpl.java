@@ -118,10 +118,11 @@ public class JobPostDAOImpl implements JobPostDAO {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-//			logger.info("jobpost beforeeeeeee" + jobpost.getJobTitle());
-//			jobpost = (JobPost) session.get(JobPost.class, jobpost.getJobPostId());
-			logger.info("jobpost afterrrrr" + jobpost.getJobTitle());
-			session.update(jobpost);
+			JobPost initjobpost = (JobPost) session.get(JobPost.class, jobpost.getJobPostId());
+			initjobpost.setIsActive(jobpost.getIsActive());
+			initjobpost.setNoOfVacancies(jobpost.getNoOfVacancies());
+			session.evict(jobpost);
+			session.update(initjobpost);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
