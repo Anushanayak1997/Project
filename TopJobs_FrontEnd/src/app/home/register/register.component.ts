@@ -120,6 +120,7 @@ export class RegisterComponent implements OnInit {
 
       console.log("company status");
       console.log(this.comp);
+      sessionStorage.setItem('company_id',this.comp.companyId);
       console.log(sessionStorage.getItem('user_id'));
       this.PostCompany = { 'companyId': this.comp.companyId, 'userId': sessionStorage.getItem('user_id') };
       this._http.post(this.url1, this.PostCompany).subscribe(
