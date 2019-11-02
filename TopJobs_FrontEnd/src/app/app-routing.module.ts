@@ -20,7 +20,7 @@ import { JobSeekerModule } from './job-seeker/job-seeker.module';
 import { ToastrModule } from 'ngx-toastr';
 import { from } from 'rxjs';
 const routes: Routes = [
-  // { path: "", component: AppComponent, pathMatch: 'full' },
+   { path: "", component: MainComponent, pathMatch: 'full' },
   {
     path: "company/details", component: CompanyDetailsComponent,
   },
