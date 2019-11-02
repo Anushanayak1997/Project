@@ -92,4 +92,22 @@ public class JobPostDAOImpl implements JobPostDAO {
 		return jobpost;
 	}
 
+	public List<JobPost> getAllJobs() {
+		Session session = factory.openSession();
+		List<JobPost> jobposts = new ArrayList<JobPost>();
+		try {
+			String hql = "FROM JobPost";
+			Query query = session.createQuery(hql);
+			List<JobPost> result = query.list();
+			if (!result.isEmpty()) {
+				jobposts.addAll(result);
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return jobposts;
+	}
+
 }

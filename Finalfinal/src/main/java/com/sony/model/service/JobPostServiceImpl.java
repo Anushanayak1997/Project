@@ -1,8 +1,10 @@
 package com.sony.model.service;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -37,25 +39,19 @@ public class JobPostServiceImpl implements JobPostService {
 	@Autowired
 	HttpSession httpsession;
 
-	public List<JobPost> getJobsByCompId() {
-		Integer companyid = (Integer) httpsession.getAttribute("companyid");
+	public List<JobPost> getJobsByCompId(int companyid) {
 		Company company = companydao.getCompanyById(companyid);
 		return jobpostdao.getJobsByCompId(company);
 	}
 
 	public Integer addJobPost(JobPostDTO jobpostdto) {
-		// Integer companyid = (Integer) httpsession.getAttribute("companyid");
 		Company company = companydao.getCompanyById(jobpostdto.getCompanyId());
-		// logger.info("Skill set yyyyy" + jobpostdto.getSkillset().get(0).getSkillId() + jobpostdto.getSkillset().get(0).getSkillName() );
-		
-		LinkedList<SkillSet> skillset = new LinkedList<SkillSet>();
+		Set<SkillSet> skillset = new HashSet<SkillSet>();
 		Iterator<SkillSet> iterator = jobpostdto.getSkillset().iterator();
 		while(iterator.hasNext()) {
 			SkillSet skill = iterator.next();
 			skillset.add(skilldao.getSkillById(skill.getSkillName()));
 		}
-		
-		logger.info("Skill set yyyyy" + skillset.get(0).getSkillId() + skillset.get(0).getSkillName() );
 		JobPost jobpost = new JobPost(jobpostdto.getJobPostId(), jobpostdto.getJobTitle(),
 				jobpostdto.getJobDescription(), jobpostdto.isActive(), jobpostdto.getExperience(),
 				jobpostdto.getNoOfApplicants(), jobpostdto.getPostDate(), jobpostdto.getNoOfVacancies(),
@@ -72,6 +68,10 @@ public class JobPostServiceImpl implements JobPostService {
 
 	public JobPost getJobById(Integer jobpostid) {
 		return jobpostdao.getJobById(jobpostid);
+	}
+
+	public List<JobPost> getAllJobs() {
+		return jobpostdao.getAllJobs();
 	}
 
 }

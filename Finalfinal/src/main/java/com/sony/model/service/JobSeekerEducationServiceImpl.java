@@ -28,7 +28,8 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 		User user = userdao.getUserById(education.getUserId());
 		logger.info("User" + user.getUserID());
 		JobSeekerEducation seekereducation = new JobSeekerEducation(education.getJobSeekerEducationId(),
-				education.getStartingDate(), education.getEndingDate(), education.getMarksPercentages(), user);
+				education.getStartingDate(), education.getEndingDate(), education.getMarksPercentages(),
+				education.getEducationType(), education.getSpecialization(), user);
 		Integer seekereducationId = educationdao.addJobSeekerEducation(seekereducation);
 		if (seekereducationId != null)
 			return seekereducationId;

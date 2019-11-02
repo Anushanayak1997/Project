@@ -1,8 +1,8 @@
 package com.sony.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -32,6 +32,9 @@ public class User {
 	
 	@Column(name = "user_type")
 	private String userType;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
 	public String getUserType() {
 		return userType;
@@ -87,6 +90,14 @@ public class User {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
+	}
+
+	public Set<SeekerJobPostStatus> getSeekerjobpost() {
+		return seekerjobpost;
+	}
+
+	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
+		this.seekerjobpost = seekerjobpost;
 	}
 	
 }

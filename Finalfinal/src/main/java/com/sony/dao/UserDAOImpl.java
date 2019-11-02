@@ -9,7 +9,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
+import com.sony.controller.CompanyController;
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -17,6 +21,8 @@ import com.sony.model.entity.User;
 public class UserDAOImpl implements UserDAO {
 
 	private static SessionFactory factory;
+	
+	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
 	public UserDAOImpl() {
 		try {
