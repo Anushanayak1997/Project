@@ -12,16 +12,6 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
 import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HomeModule } from '../home/home.module';
-import { ApplicantsDetailsComponent } from './applicants-details/applicants-details.component';
-
-
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -30,9 +20,6 @@ import { ApplicantsDetailsComponent } from './applicants-details/applicants-deta
      EditPostComponent,
       EmployerDetailsComponent,
        JobDescriptionComponent,
-       ApplicantsDetailsComponent,
-       
-
       ],
   exports: [
     CompanyDetailsComponent,

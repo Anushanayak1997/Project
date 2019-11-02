@@ -75,9 +75,12 @@ export class LoginComponent implements OnInit {
         }
 
           if(this.status==true){
+            sessionStorage.setItem('user_type',this.userModel.userType);
+            
             if(this.userModel.userType=="Employer"){
               
              sessionStorage.setItem('user_id',this.response.userId);
+            
              sessionStorage.setItem('company_id',this.response.companyId);
              
              setTimeout(() => 

@@ -25,12 +25,19 @@ export class JobPostsComponent implements OnInit {
    Date:number;
    employes:any;
    public companies = [];
+  userType: string;
 
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient) { }
 
 
   ngOnInit() {
-    this.getAllcompany();
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
+   this.getAllcompany();
   }
 
   getAllcompany(){

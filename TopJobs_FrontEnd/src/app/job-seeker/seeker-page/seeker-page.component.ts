@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { RouteConfigLoadEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-seeker-page',
@@ -14,14 +15,22 @@ export class SeekerPageComponent implements OnInit {
   url2 = environment.apiBaseUrl + "getalljobs";
   url3 = environment.apiBaseUrl + "applyjobpost";
   User:any;
-  jobDetails: any;
   seekerjobpost: any;
+  jobDetails: any;
+  userType:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
 
   ngOnInit() {
-    this.getJobSeeker();
-    this.getJobs();
+
+   this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'JobSeeker'){
+      console.log("correct user");
+      this.getJobSeeker();
+      this.getJobs();
+    }else{
+      this.router.navigate(['home']);
+    }
   }
 
   getJobSeeker(){
@@ -29,11 +38,7 @@ export class SeekerPageComponent implements OnInit {
       (Response)=>{
         console.log("User details", Response);
         this.User = Response;
-        // this.userName = this.User.firstName;
-        // this.userLastName = this.User.LastName;
-        // this.userEmail = this.User.emailID;
-      }
-    )
+      })
   }
 
   getJobs(){

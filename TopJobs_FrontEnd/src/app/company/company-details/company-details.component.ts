@@ -19,8 +19,15 @@ import { catchError } from 'rxjs/operators';
 export class CompanyDetailsComponent implements OnInit {
   compDetails:any;
   url = environment.apiBaseUrl + "addcompanydetails";
+  userType: string;
 
   ngOnInit() {
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
   }
 
   title = 'app';

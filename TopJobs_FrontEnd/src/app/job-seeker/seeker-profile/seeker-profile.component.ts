@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RegiseterUser } from 'src/app/home/H_user';
 import { job_seeker_education, job_seeker_skills, job_seeker_project, job_seeker_experience } from '../Jobseeker';
 import { SeekerService } from '../seeker.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seeker-profile',
@@ -76,11 +77,17 @@ export class SeekerProfileComponent implements OnInit {
     "",
     ""
   )
+  userType: string;
 
-  constructor(private Seeker: SeekerService) { }
+  constructor(private Seeker: SeekerService,private router:Router) { }
 
   ngOnInit() {
-   
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'JobSeeker'){
+      console.log("correct user");
+    }else{
+      this.router.navigate(['home']);
+    }
    this.getSeekerInfo()
    this.getEducationInfo()
    this.getCertificationInfo()
