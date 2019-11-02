@@ -35,7 +35,7 @@ public class JobPostServiceImpl implements JobPostService {
 	
 	@Autowired
 	private SkillSetDAO skilldao;
-
+ 
 	@Autowired
 	HttpSession httpsession;
 
