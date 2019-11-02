@@ -23,9 +23,6 @@ export class CompanyDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
-
   title = 'app';
 
   userModel = new Company('a1', 'a1', 'a1', "a1", 'a1', 'a1', "a1", "a1");

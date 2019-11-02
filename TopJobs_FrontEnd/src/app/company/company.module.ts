@@ -11,6 +11,8 @@ import { EmployerDetailsComponent } from './employer-details/employer-details.co
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HomeModule } from '../home/home.module';
+import { ApplicantsDetailsComponent } from './applicants-details/applicants-details.component';
 
 
 
@@ -28,6 +30,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
      EditPostComponent,
       EmployerDetailsComponent,
        JobDescriptionComponent,
+       ApplicantsDetailsComponent,
        
 
       ],
@@ -39,7 +42,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
   imports: [
     
     CommonModule,
-    
+    HomeModule,
     
     
     ReactiveFormsModule,
