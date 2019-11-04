@@ -40,7 +40,7 @@ public class SeekerJobPostController {
 	public List<SeekerJobPostDTO> getApplicantsByUserId(@PathVariable int userId) {
 		return seekerjobpostservice.getApplicantsByUserId(userId);
 	}
-	
+	 
 	@RequestMapping(value = "/updatestatus", method = RequestMethod.POST)
 	public void UpdateStatus(@RequestBody SeekerJobPostDTO seekerjobpostdto) {
 		seekerjobpostservice.updateSatus(seekerjobpostdto);
