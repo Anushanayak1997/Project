@@ -1,46 +1,52 @@
-<nav class="navbar" style="background-color: #00AA9E;">
-    <a class="navbar-brand" href="#">
-        <h4 class="display-6" style="color: wheat;">TopJobs</h4>
+<div class="navbar-fixed-top">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <h4 class="display-6" style="color: wheat;">TopJobs</h4>
 
-    </a>
-    <div class="btn-group">
-        <div *ngIf="!loggedIn">
-            <button (click)="gologin()" type="button" class="btn btn-primary  btn-outline mr-1 ">Login</button>
-            <button (click)="goRegister()" type="button" class="btn btn-primary  btn-outline mr-1">Register</button>
+        </a>
+        <div class="btn-group">
+            <div *ngIf="!loggedIn">
+                <button (click)="gologin()" type="button"
+                    class="btn btn-primary btn btn-info btn-outline mr-1 ">Login</button>
+                <button (click)="goRegister()" type="button"
+                    class="btn btn-primary btn btn-info btn-outline mr-1">Register</button>
 
-        </div>
-        <div *ngIf="loggedIn" class="btn-group">
+            </div>
+            <div *ngIf="loggedIn" class="btn-group">
 
-            <div *ngIf="userType == 'JobSeeker'">
+                <div *ngIf="userType == 'JobSeeker'">
 
-                <div class="dropdown">
+                    <div class="dropdown">
 
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <button type="button" class=" dropdown-toggle btn btn-info" data-toggle="dropdown">
+
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" [routerLink]="['/home']">Home</a>
+                            <a class="dropdown-item" routerLink="/seeker/profile">profile </a>
+                            <a class="dropdown-item" routerLink="/seeker/status">status</a>
+                            <a class="dropdown-item" routerLink="/seeker/account">account</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="userType == 'Employer'">
+                    <button type="button" class="dropdown-toggle btn btn-info" data-toggle="dropdown">
 
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" [routerLink]="['/home']">Home</a>
+                        <a class="dropdown-item" routerLink="/seeker/home">Home</a>
                         <a class="dropdown-item" routerLink="/seeker/profile">profile </a>
                         <a class="dropdown-item" routerLink="/seeker/status">status</a>
                         <a class="dropdown-item" routerLink="/seeker/account">account</a>
                     </div>
                 </div>
+
+                <button (click)="goLogOut()" type="button"
+                    class="btn btn-primary btn btn-info btn-outline mr-1 ">logOut</button>
             </div>
 
-            <div *ngIf="userType == 'Employer'">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" [routerLink]="['/company/jobpost']">jobpost</a>
-                    <a class="dropdown-item" routerLink="/company/employee-details">YourDetails </a>
-                    <a class="dropdown-item" routerLink="/home">home</a>
-  
-                </div>
-            </div>
-
-            <button (click)="goLogOut()" type="button" class="btn btn-primary  btn-outline mr-1 ">logOut</button>
         </div>
+    </nav>
 
-    </div>
-</nav>
+</div>

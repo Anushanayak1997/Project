@@ -1,3 +1,11 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <h4 class="display-6" style="color: wheat;">TopJobs</h4>
+    </a>
+</nav>
+
+
+
 <div class="container mainCard">
 
     <form #userForm="ngForm" *ngIf="!submitted" novalidate>
@@ -13,19 +21,15 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id=""><strong>I am </strong></span>
                     </div>
-                    <select class="form-control" id="" [(ngModel)]="regiseterModel.userType" name="userType"
+                    <select class="form-control custom-select" required id="" [(ngModel)]="regiseterModel.userType" name="userType"
                         (blur)="validateTopic(userType.value)" (change)="validateTopic(userType.value)"
-                        #userType="ngModel" [class.is-invalid]="topicHasError && userType.touched" required>
-
-                        <option value="JobSeeker">JobSeeker</option>
-                        <option value="Employer">Employer</option>
-
+                        #userType="ngModel" [class.is-invalid]="topicHasError && userType.touched && !(userType.dirty)" >
+                        <option *ngFor="let topic of topics">{{ topic }}</option>
                     </select>
-                    <small class="text-danger" [class.d-none]="!topicHasError || userType.untouched">Please choose a
-                        topic</small>
-
+                    <small class="text-danger" [class.d-none]="!topicHasError || userType.touched && !(userType.dirty)">Please choose a
+                        userType</small>
+                       
                 </div>
-
 
 
 
@@ -37,9 +41,18 @@
                     <input input-smtype="text" #firstName="ngModel" required class="form-control" minlength="3"
                         [class.is-invalid]="firstName.invalid && firstName.touched" name="firstName"
                         [(ngModel)]="regiseterModel.firstName" placeholder="firstName">
-                    <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">lastName
-                        is
-                        required</small>
+
+                    <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" style="color: red;">
+                        <small *ngIf="firstName.errors.required">
+                            firstName is required.
+                          </small>
+                          <small *ngIf="firstName.errors.minlength">
+                            firstName must be at least 3 characters long.
+                          </small>
+                          <small *ngIf="name.errors.forbiddenName">
+                            Name cannot be Bob.
+                          </small>
+                    </div>
                 </div>
 
                 <div class="form-group input-group">
@@ -62,10 +75,19 @@
 
                     <input type="email" #emailID="ngModel" required class="form-control"
                         [class.is-invalid]="emailID.invalid && emailID.touched" name="emailID"
-                        [(ngModel)]="regiseterModel.emailID" placeholder="emailID">
-                    <small class="text-danger" [class.d-none]="emailID.valid || emailID.untouched">emailID
-                        is
-                        required</small>
+                        [(ngModel)]="regiseterModel.emailID" placeholder="emailID"  >
+                          <div *ngIf="emailID.invalid && (emailID.dirty || emailID.touched)"
+                            style="color: red;">
+                             <div *ngIf="emailID.errors.required">
+                                Email is required.
+                              </div>
+                              <div *ngIf="emailID.errors.pattern">
+                                Enter a valid Email
+                              </div>
+                          </div>
+
+
+
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -74,8 +96,9 @@
 
                     <input type="password" #password="ngModel" required class="form-control"
                         [class.is-invalid]="password.invalid && password.touched" name="password"
-                        [(ngModel)]="regiseterModel.password" placeholder=""  required minlength="6" >
-                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
+                        [(ngModel)]="regiseterModel.password" placeholder="" required minlength="3">
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is
+                        required</small>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -112,13 +135,13 @@
 
 
 
-                <button class="btn btn-primary btn-space btnStyle" (click)="onSubmit()"
+                <button class="btn btn-info btn-space btnStyle" (click)="onSubmit()"
                     [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
                 </button>
                 &nbsp;
-                <button class="btn btn-primary btn-space btnStyle" (click)="onNext()"
-                [disabled]="userForm.form.invalid || topicHasError "><strong>next</strong>
-            </button>
+                <button class="btn btn-info btn-space btnStyle" (click)="onNext()"
+                    [disabled]="userForm.form.invalid || topicHasError  "><strong>login</strong>
+                </button>
             </article>
 
 

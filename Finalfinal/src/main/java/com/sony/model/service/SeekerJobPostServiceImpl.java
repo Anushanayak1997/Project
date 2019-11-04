@@ -34,7 +34,11 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 		JobPost jobpost = jobpostdao.getJobById(seekerjobpostdto.getJobpostId());
 		SeekerJobPostStatus seekerjobpost = new SeekerJobPostStatus(seekerjobpostdto.getStatus(), user, jobpost,
 				seekerjobpostdto.getNotificationStatus());
-		return seekerjobpostdao.addSeekerJobPost(seekerjobpost);
+		Integer status = seekerjobpostdao.addSeekerJobPost(seekerjobpost);
+		if(status != null) {
+			jobpostdao.updateNoApplicants(jobpost.getJobPostId());
+		}
+		return status;
 	}
 	
 	public void updateSatus(SeekerJobPostDTO seekerjobpostdto) {

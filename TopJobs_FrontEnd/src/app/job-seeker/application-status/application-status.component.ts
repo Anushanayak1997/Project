@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { CompanyService } from 'src/app/company/company.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { JobpostService } from 'src/app/company/jobpost.service';
 
 @Component({
   selector: 'app-application-status',
@@ -8,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ApplicationStatusComponent implements OnInit {
   userType: string;
-
-  constructor(private router:Router) { }
+  statusurl=environment.apiBaseUrl+"getapplicantsbyuserid/"+sessionStorage.getItem('user_id');
+  appliedjob_posts: any;
+  constructor(private router:Router,private http:HttpClient) { }
 
   ngOnInit() {
     this.userType=sessionStorage.getItem('user_type');
@@ -18,6 +23,12 @@ export class ApplicationStatusComponent implements OnInit {
     }else{
       this.router.navigate(['home']);
     }
+    this.http.get(this.statusurl).subscribe((Response)=>
+    {
+      console.log(Response);
+      this.appliedjob_posts=Response;
+    })
+
   }
 
 }

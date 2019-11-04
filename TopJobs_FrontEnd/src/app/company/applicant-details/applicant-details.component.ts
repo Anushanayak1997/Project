@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -10,18 +10,25 @@ import { environment } from 'src/environments/environment';
 })
 export class ApplicantDetailsComponent implements OnInit {
 
-  constructor(private router:ActivatedRoute, private http:HttpClient) { }
+  constructor(private router:ActivatedRoute, private http:HttpClient, private route: Router) { }
 
   jobpostId: any;
   Applicants: any;
+  userType: any;
   URL1: any;
   URL2 = environment.apiBaseUrl + "updatestatus/";
 
   ngOnInit() {
-    this.jobpostId = this.router.snapshot.paramMap.get('Index');
-    console.log(this.jobpostId);
-    this.URL1 = environment.apiBaseUrl + "getapplicantsbyid/" + this.jobpostId;
-    this.getAllApplicants();
+    this.userType =sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+      this.jobpostId = this.router.snapshot.paramMap.get('Index');
+      console.log(this.jobpostId);
+      this.URL1 = environment.apiBaseUrl + "getapplicantsbyid/" + this.jobpostId;
+      this.getAllApplicants();
+    }else{
+      this.route.navigate(['home']);
+    }
   }
 
   getAllApplicants() {
@@ -35,10 +42,16 @@ export class ApplicantDetailsComponent implements OnInit {
 
   onSelect(applicant) {
     console.log('Selected Applicant', applicant);
-    applicant.status = 'Select';
+    applicant.status = 'Selected';
     this.http.post(this.URL2,applicant).subscribe(
       (response) => {
         console.log('Success!', response);
       });
+  }
+
+  selected(){
+    let id=sessionStorage.getItem('company_id');
+ this.route.navigate(['/company/selected/'+id])
+
   }
 }

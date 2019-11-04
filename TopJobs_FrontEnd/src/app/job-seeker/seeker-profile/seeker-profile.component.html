@@ -40,14 +40,14 @@
                         </div>
                         <div class="modal-body">
 
-                            <form #userInfo="ngForm">
+                            <form #PersonalInformation="ngForm">
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
                                     <input type="text" #firstName="ngModel" [(ngModel)]="userInfo.firstName"
-                                        placeholder="firstName" name="firstName"><br>
+                                       name="firstName"><br>
 
                                 </div>
                                 <div class="form-group input-group">
@@ -55,14 +55,15 @@
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
                                     <input type="text" #lastName="ngModel" [(ngModel)]="userInfo.lastName"
-                                        placeholder="lastName" name="lastName"><br>
+                                     name="lastName"><br>
                                 </div>
+
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-at'></i></span>
                                     </div>
                                     <input type="text" #emailID="ngModel" [(ngModel)]="userInfo.emailID"
-                                        placeholder="emailID" name="emailID"><br>
+                                         name="emailID"><br>
 
                                 </div>
                                 <div class="form-group input-group">
@@ -80,7 +81,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="link" class="btn btn-primary">Save changes</button>
+                            <button type="link" class="btn btn-primary"data-dismiss="modal"  (click)=personalInfo()>Save</button>
                         </div>
                     </div>
                 </div>
@@ -157,13 +158,13 @@
                         </div>
                         <div class="modal-body">
 
-                            <form #userEducation10="ngForm">
+                            <form #Education10="ngForm">
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
-                                    <input type="date" #start_date="ngModel" [(ngModel)]="userEducation10.start_date"
+                                    <input type="text" #start_date="ngModel" [(ngModel)]="userEducation10.start_date"
                                         placeholder="start_date" name="start_date"><br>
 
                                 </div>
@@ -171,7 +172,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
-                                    <input type="date" #end_date="ngModel" [(ngModel)]="userEducation10.end_date"
+                                    <input type="text" #end_date="ngModel" [(ngModel)]="userEducation10.end_date"
                                         placeholder="end_date" name="end_date"><br>
                                 </div>
                                 <div class="form-group input-group">
@@ -183,22 +184,13 @@
                                         name="marks_percentage"><br>
 
                                 </div>
-                                <div class="form-group input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-mobile'></i></span>
-                                    </div>
-                                    <input type="text" #course_id="ngModel" [(ngModel)]="userEducation10.course_id"
-                                        placeholder="course_id" name="course_id"><br>
-                                </div>
-
-
-
+                               
                             </form>
 
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addEducation10()">Save</button>
                         </div>
                     </div>
                 </div>
@@ -219,7 +211,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <form #userEducation12="ngForm">
+                            <form #Education12="ngForm">
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
@@ -245,13 +237,7 @@
                                         name="marks_percentage"><br>
 
                                 </div>
-                                <div class="form-group input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-mobile'></i></span>
-                                    </div>
-                                    <input type="text" #course_id="ngModel" [(ngModel)]="userEducation12.course_id"
-                                        placeholder="course_id" name="course_id"><br>
-                                </div>
+                                
 
 
 
@@ -260,7 +246,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="link" class="btn btn-primary">Save changes</button>
+                            <button type="link" class="btn btn-primary" data-dismiss="modal" (click)="addEducation12()">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -281,39 +267,33 @@
                     </div>
                     <div class="modal-body">
 
-                        <form #userEducationUG="ngForm">
+                        <form #EducationUG="ngForm">
 
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                 </div>
-                                <input type="date" #start_date="ngModel" [(ngModel)]="userEducationUG.start_date"
-                                    placeholder="start_date" name="start_date"><br>
+                                <input type="text" #start_date="ngModel" [(ngModel)]="userEducationUG.start_date"
+                                   name="start_date"><br>
 
                             </div>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                 </div>
-                                <input type="date" #end_date="ngModel" [(ngModel)]="userEducationUG.end_date"
-                                    placeholder="end_date" name="end_date"><br>
+                                <input type="text" #end_date="ngModel" [(ngModel)]="userEducationUG.end_date"
+                                     name="end_date"><br>
                             </div>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id=""><i class='fas fa-at'></i></span>
                                 </div>
                                 <input type="number" #marks_percentage="ngModel"
-                                    [(ngModel)]="userEducationUG.marks_percentage" placeholder="marks_percentage"
+                                    [(ngModel)]="userEducationUG.marks_percentage" 
                                     name="marks_percentage"><br>
 
                             </div>
-                            <div class="form-group input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><i class='fas fa-mobile'></i></span>
-                                </div>
-                                <input type="text" #course_id="ngModel" [(ngModel)]="userEducationUG.course_id"
-                                    placeholder="course_id" name="course_id"><br>
-                            </div>
+                          
 
 
 
@@ -322,7 +302,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addEducationUG()">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -337,8 +317,8 @@
             <h5 class="card-header">Certifications</h5>
             <div class="card-body">
                 <h5 class="card-title"></h5>
-                <p class="card-text">Certificate Name:</p>
-                <p class="card-text">Certificate issue_date:</p>
+                <span class="card-text">Certificate Name:</span><b *ngIf="certificate">{{startug}}</b><br><br>
+                <span class="card-text">Certificate issue_date:</span><b *ngIf="certificate">{{startug}}</b><br><br>
                 <button data-toggle="modal" data-target="#certificate" style="color:#00AA9E;"
                     class="btn btn-link">Edit</button>
 
@@ -387,7 +367,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="link" class="btn btn-primary">Save changes</button>
+                            <button type="link" class="btn btn-primary" data-dismiss="modal" (click)="certificateUpdate()">Save</button>
                         </div>
                     </div>
                 </div>
@@ -412,8 +392,8 @@
                     <span class="card-text">Project_Name:</span><b *ngIf="project.title">{{project.title}}</b><br><br>
                     <span class="card-text">description: </span><b *ngIf="project.role">{{project.role}}</b><br><br>
                     <span class="card-text">role: </span><b *ngIf="project.description">{{project.description}}</b><br><br>
-                    <button data-toggle="modal" data-target="#Projects" style="color:#00AA9E;"
-                        class="btn btn-link">Edit</button>
+                    <button data-toggle="modal"  style="color:#00AA9E;"
+                        class="btn btn-link"(click)="onDeleteProject(project.jobSeekerProjectId)">Delete</button>
 
                 </div>
 
@@ -431,16 +411,16 @@
                             </div>
                             <div class="modal-body">
 
-                                <form #Projects="ngForm">
+                                <form #ProjectInformation="ngForm">
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                         </div>
                                         <input type="text" #title="ngModel" [(ngModel)]="userProjects.title"
-                                            placeholder="title" name="title"><br>
+                                           name="title"><br>
                                     </div>
-
+                              
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
@@ -462,7 +442,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="link" class="btn btn-primary">Save changes</button>
+                                <button type="link" class="btn btn-primary" (click)="updatedProject(project.jobSeekerProjectId)">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -482,14 +462,14 @@
                             </div>
                             <div class="modal-body">
 
-                                <form #userProject="ngForm">
+                                <form #Project="ngForm">
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                         </div>
                                         <input type="text" #title="ngModel" [(ngModel)]="userProjectsAdd.title"
-                                            placeholder="title" name="title"><br>
+                                            name="title"><br>
                                     </div>
 
                                     <div class="form-group input-group">
@@ -497,7 +477,7 @@
                                             <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                         </div>
                                         <input type="text" #description="ngModel" [(ngModel)]="userProjectsAdd.description"
-                                            placeholder="description" name="description"><br>
+                                           name="description"><br>
                                     </div>
 
                                     <div class="form-group input-group">
@@ -513,7 +493,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="link" class="btn btn-primary" (click)="addProject()">Add Project</button>
+                                <button type="link" class="btn btn-primary" (click)="addProject()" data-dismiss="modal">Add Projects</button>
                             </div>
                         </div>
                     </div>
@@ -546,8 +526,8 @@
                 <span class="card-text">state: </span><b *ngIf="experience.state">{{experience.state}}</b><br><br>
 
                 <div *ngIf="Experinceinfo!=''">
-                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#Experienc"
-                        class="btn btn-link">Edit</button>
+                    <button data-toggle="modal" style="color:#00AA9E;" 
+                        class="btn btn-link" (click)="deleteExperience(experience.jobSeekerExperienceId)">delete</button>
                 </div>
                 <div *ngIf="Experinceinfo==''">
                     <button data-toggle="modal" style="color:#00AA9E;" data-target="#Experienc"
@@ -630,7 +610,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="link" class="btn btn-primary">Save changes</button>
+                            <button type="link" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -713,7 +693,7 @@ aria-hidden="true">
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="link" class="btn btn-primary" (click)="addExperience()">Add Experience</button>
+            <button type="link" class="btn btn-primary" data-dismiss="modal" (click)="addExperience()">Add Experience</button>
         </div>
     </div>
 </div>

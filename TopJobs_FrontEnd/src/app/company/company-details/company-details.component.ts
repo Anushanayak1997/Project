@@ -20,19 +20,22 @@ export class CompanyDetailsComponent implements OnInit {
   compDetails:any;
   url = environment.apiBaseUrl + "addcompanydetails";
   userType: string;
+  company: any;
 
   ngOnInit() {
     this.userType=sessionStorage.getItem('user_type');
+    
     if(this.userType == 'Employer'){
       console.log("correct user");
     }else{
       this.route.navigate(['home']);
     }
+    
   }
 
   title = 'app';
 
-  userModel = new Company('a1', 'a1', 'a1', "a1", 'a1', 'a1', "a1", "a1");
+  userModel = new Company('', '', '', "", '', '', "", "");
   
   errorMsg = '';
 
@@ -50,14 +53,16 @@ export class CompanyDetailsComponent implements OnInit {
       'specialiaties':this.userModel.specialities,
       'industry':this.userModel.industry,
       'type':this.userModel.type,
-      'userId':localStorage.getItem('user_id')
+      'userId':sessionStorage.getItem('user_id')
     }
     console.log(this.compDetails);
     console.log("000000")
 
     this._http.post(this.url,this.compDetails).subscribe(
       (response) => {
-        console.log('Success!', response),
+        console.log('Success!', response);
+        this.company=response;
+        sessionStorage.setItem('company_id',this.company);
           console.log(this.userModel)
       }
     ) || pipe(catchError(this.errorHandler) )

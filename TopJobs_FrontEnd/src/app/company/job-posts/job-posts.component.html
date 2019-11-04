@@ -3,9 +3,10 @@
 <div class="container">
     <div class="companyProfile mainCard ">
         <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded" >
-            <h4>{{company}}</h4>
-            <h4>{{companyDesc}}</h4>
-            
+            <div *ngIf="company">
+            <h4>{{company.companyName}}</h4>
+            <h4>{{company.companyDescription}}</h4>
+        </div>
         </div>
     </div>
 
@@ -25,21 +26,27 @@
                    
                         <tr style="background-color: #00AA9E; color: wheat;">
 
-                    <tr *ngFor="let data of job_posts; let i = index">
-                        <th scope="row">{{i}}</th>
+                                <tr>
+                                        <th>sl no</th>
+                                        <th>jobTitle</th>
+                                        <th>status</th>
+                                        <th>noOfApplicants</th>
+                                        <th>postDate</th>
+                                        
+                                    </tr>
+
+                    <tr *ngFor="let data of jobposts; let i=index">
+                        <th scope="row">{{i+1}}</th>
+                   
                         <td>{{data.jobTitle}}</td>
                         <td>{{data.isActive}}</td>
-                        <td>{{data.noOfApplicants}}</td>
+                        <td><button type="button" class="btn btn-link" (click)="applicants(data.jobPostId)">{{data.noOfApplicants}}</button></td>
                         <td>{{data.postDate}}</td>
+                        <button class="btn btn-primary" type="submit" (click)="onEdit(data.jobPostId)">Edit</button>
+                        <button class="btn btn-primary" type="submit" (click)="onDelete(data.jobPostId)">Delete</button>
                         
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>10/9/19</td>
-                    </tr>
+                   
 
 
                     

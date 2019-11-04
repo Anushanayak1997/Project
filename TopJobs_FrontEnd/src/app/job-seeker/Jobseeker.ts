@@ -10,8 +10,8 @@ export class job_seeker_skills {
     constructor(
         public certificate_name: string,
         public certificate_issue_date: string,
-        public skill_id: number,
-        public skil_level: number
+        public skill_id: string,
+        public skil_level: string
     ) { }
 }
 
@@ -33,10 +33,10 @@ export class job_seeker_education {
 
         public start_date: string,
         public end_date: string,
-        public marks_percentage: number,
-        public course_id: number,
-        public specialization_id: number = null,
-        public education_type_id: number = null
+        public marks_percentage: string,
+        public course_id: string,
+        public specialization_id: string = null,
+        public education_type_id: string = null
     ) { }
 
 
@@ -47,7 +47,7 @@ export interface seeker_Profile {
     firstName: string,
     lastName: string,
     emailID: string,
-    contactNumber: string
+    contactstring: string
 }
 
 export interface Education {
