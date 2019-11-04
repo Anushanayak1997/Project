@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobSeekerSkillDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.SeekerSkillDTO;
-
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobSeekerSkills;
 
 import com.sony.model.entity.User;
@@ -26,7 +26,8 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 	UserDAO userdao;
 
 	public Integer addJobSeekerSkill(SeekerSkillDTO skill) {
-		User user = userdao.getUserById(skill.getUserId());
+		UserDTO userdto = userdao.getUserById(skill.getUserId());
+		User user = new User(userdto);
 		logger.info("User" + user.getUserID());
 		JobSeekerSkills seekerskill = new JobSeekerSkills(skill.getJobSeekerSkillId(), skill.getCertificateName(),
 				skill.getIssuedDate(),skill.getSkillLevel(), user);

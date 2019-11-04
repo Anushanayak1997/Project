@@ -13,7 +13,7 @@ public interface UserService {
 
 	public List<UserDTO> getAllUsers();
 
-	public User getUserById(int userId);
+	public UserDTO getUserById(int userId);
 
 	public HashMap<String, Integer> authenticateuser(Login loginentity);
 }

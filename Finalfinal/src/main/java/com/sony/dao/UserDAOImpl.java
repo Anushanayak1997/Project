@@ -59,15 +59,16 @@ public class UserDAOImpl implements UserDAO {
 		return userId;
 	}
 
-	public User getUserById(int userId) {
+	public UserDTO getUserById(int userId) {
 		Session session = factory.openSession();
-		User result = null;
+		UserDTO result = null;
 		try {
 			Query query = session.createQuery("from User where userID= :userid");
 			query.setParameter("userid", userId);
 			User user = (User) query.uniqueResult();
-			if (user != null)
-				result = user;
+			if (user != null) {
+				result = new UserDTO(user.getUserID(),user.getPassword(), user.getFirstName(), user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+			}
 		} catch (Exception ex) {
 		} finally {
 			session.close();

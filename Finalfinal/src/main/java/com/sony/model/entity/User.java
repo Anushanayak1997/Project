@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.sony.model.dto.UserDTO;
+
 @Entity
 @Table(name = "USER_REGISTER")
 public class User {
@@ -37,6 +39,15 @@ public class User {
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 	
 	public User() {
+	}
+	
+	public User(UserDTO userdto) {
+		this.userID = userdto.getUserID();
+		this.firstName = userdto.getFirstName();
+		this.lastName = userdto.getLastName();
+		this.emailID = userdto.getEmailID();
+		this.contactNumber = userdto.getContactNumber();
+		this.userType = userdto.getContactNumber();
 	}
 
 	public String getUserType() {

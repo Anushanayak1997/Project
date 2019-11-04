@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobSeekerProjectDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.SeekerProjectDTO;
-
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobSeekerProject;
 
 import com.sony.model.entity.User;
@@ -27,7 +27,8 @@ public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 	UserDAO userdao;
 
 	public Integer addJobSeekerProject(SeekerProjectDTO jobseekerproject) {
-		User user = userdao.getUserById(jobseekerproject.getUserId());
+		UserDTO userdto = userdao.getUserById(jobseekerproject.getUserId());
+		User user = new User(userdto);
 		logger.info("User" + user.getUserID());
 
 		JobSeekerProject seekerproject = new JobSeekerProject(jobseekerproject.getJobSeekerProjectId(),

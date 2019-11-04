@@ -28,7 +28,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/getuserbyid/{userId}")
-	public User getUsersById(@PathVariable int userId) {
+	public UserDTO getUsersById(@PathVariable int userId) {
 		return userService.getUserById(userId);
 	}
 	

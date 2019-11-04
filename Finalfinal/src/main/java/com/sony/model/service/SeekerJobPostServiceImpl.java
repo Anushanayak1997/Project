@@ -11,6 +11,7 @@ import com.sony.dao.JobPostDAO;
 import com.sony.dao.SeekerJobPostDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.SeekerJobPostDTO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.SeekerJobPostStatus;
 import com.sony.model.entity.User;
@@ -30,7 +31,8 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 	private static final Logger logger = LoggerFactory.getLogger(SeekerJobPostServiceImpl.class);
 
 	public Integer addSeekerJobPost(SeekerJobPostDTO seekerjobpostdto) {
-		User user = userdao.getUserById(seekerjobpostdto.getUserId());
+		UserDTO userdto = userdao.getUserById(seekerjobpostdto.getUserId());
+		User user = new User(userdto);
 		JobPost jobpost = jobpostdao.getJobById(seekerjobpostdto.getJobpostId());
 		SeekerJobPostStatus seekerjobpost = new SeekerJobPostStatus(seekerjobpostdto.getStatus(), user, jobpost,
 				seekerjobpostdto.getNotificationStatus());
@@ -52,5 +54,9 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 
 	public List<SeekerJobPostDTO> getApplicantsByUserId(int userId) {
 		return seekerjobpostdao.getApplicantsByUserId(userId);
+	}
+	
+	public List<SeekerJobPostDTO> getSelectedUsers(int jobpostId) {
+		return seekerjobpostdao.getSelectedUsers(jobpostId);
 	}
 }

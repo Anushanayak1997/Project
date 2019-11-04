@@ -141,5 +141,40 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 		}
 		return applicants;
 	}
+	
+	public List<SeekerJobPostDTO> getSelectedUsers(int jobpostId) {
+		Session session = factory.openSession();
+		List<SeekerJobPostDTO> applicants = new ArrayList<SeekerJobPostDTO>();
+		try {
+			String hql = "FROM SeekerJobPostStatus where jobpost.jobPostId = :jobpostid and status = :statusvalue";
+			Query query = session.createQuery(hql);
+			query.setParameter("jobpostid", jobpostId);
+			query.setParameter("statusvalue", "Selected");
+
+			List<SeekerJobPostStatus> result = query.list();
+			if (!result.isEmpty()) {
+				Iterator<SeekerJobPostStatus> iterator = result.iterator();
+				while (iterator.hasNext()) {
+					SeekerJobPostStatus seekerjobpost = iterator.next();
+					User user = seekerjobpost.getUser();
+					JobPost jobpost = seekerjobpost.getJobpost();
+					UserDTO userdto = new UserDTO(user.getUserID(), user.getPassword(), user.getFirstName(),
+							user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
+							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
+							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
+					SeekerJobPostDTO seekerjobpostdto = new SeekerJobPostDTO(seekerjobpost.getId(),seekerjobpost.getStatus(),
+							seekerjobpost.getNotificationStatus(), userdto, jobpostdto);
+					applicants.add(seekerjobpostdto);
+				}
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return applicants;
+	}
 
 }

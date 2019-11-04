@@ -45,4 +45,9 @@ public class SeekerJobPostController {
 	public void UpdateStatus(@RequestBody SeekerJobPostDTO seekerjobpostdto) {
 		seekerjobpostservice.updateSatus(seekerjobpostdto);
 	}
+	
+	@RequestMapping(value = "/getselectedusers/{jobpostId}")
+	public List<SeekerJobPostDTO> getSelectedUsers(@PathVariable int jobpostId) {
+		return seekerjobpostservice.getSelectedUsers(jobpostId);
+	}
 }
