@@ -19,6 +19,7 @@ import { JobDescriptionComponent } from './company/job-description/job-descripti
 import { JobSeekerModule } from './job-seeker/job-seeker.module';
 import { ToastrModule } from 'ngx-toastr';
 import { from } from 'rxjs';
+import { ApplicantDetailsComponent } from './company/applicant-details/applicant-details.component';
 const routes: Routes = [
    { path: "", component: MainComponent, pathMatch: 'full' },
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: "company/jobpost/:Index", component: EditPostComponent,
+  },
+  {
+    path: "company/Applicantdetails/:Index", component: ApplicantDetailsComponent,
   },
   {
     path: "company/create-post", component: EditPostComponent,

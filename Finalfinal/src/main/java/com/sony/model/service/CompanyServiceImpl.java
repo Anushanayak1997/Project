@@ -20,8 +20,6 @@ import com.sony.model.entity.EmployerCompany;
 public class CompanyServiceImpl implements CompanyService{
 	 private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
 
-
-
 	@Autowired
 	CompanyDAO companydao;
 
@@ -41,9 +39,6 @@ public class CompanyServiceImpl implements CompanyService{
 				companydto.getType());
 		Integer companyId = companydao.addCompany(company);
 		if (companyId != null) {
-//			httpsession.setAttribute("companyid", companyId);
-//			Integer userid = (Integer) httpsession.getAttribute("userid");
-//			Integer companyid = (Integer) httpsession.getAttribute("companyid");
 			EmployerCompany employercompanyentity = new EmployerCompany(companydto.getUserId(), companyId);
 			employerservice.addEmployerCompany(employercompanyentity);
 			return companyId;
@@ -54,12 +49,14 @@ public class CompanyServiceImpl implements CompanyService{
 	public Integer setCompanyIdSession(CompanyDTO companydto) {
 		Integer companyid = companydto.getCompanyId();
 		if (companyid != null) {
-//			Integer userid = (Integer) httpsession.getAttribute("userid");
-//			httpsession.setAttribute("companyid", companyid);
 			logger.info("User id" + companydto.getUserId());
 			EmployerCompany employercompanyentity = new EmployerCompany(companydto.getUserId(), companydto.getCompanyId());
 			employerservice.addEmployerCompany(employercompanyentity);
 		}
 		return companyid;
+	}
+	
+	public Company getCompanyById(int companyId) {
+		return companydao.getCompanyById(companyId);
 	}
 }
