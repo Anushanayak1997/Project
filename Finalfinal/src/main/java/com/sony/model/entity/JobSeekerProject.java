@@ -49,6 +49,30 @@ public class JobSeekerProject {
 
 
 
+	public int getJobSeekerProjectId() {
+		return jobSeekerProjectId;
+	}
+
+
+
+	public void setJobSeekerProjectId(int jobSeekerProjectId) {
+		this.jobSeekerProjectId = jobSeekerProjectId;
+	}
+
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
 	public String getTitle() {
 		return title;
 	}

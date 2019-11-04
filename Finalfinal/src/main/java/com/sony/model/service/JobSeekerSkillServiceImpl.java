@@ -40,4 +40,8 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 		return jobseekerskilldao.getAllSkills();
 	}
 
+	public List<JobSeekerSkills> getSeekerSkillById(int userId) {
+		return jobseekerskilldao.getSeekerSkillById(userId);
+	}
+
 }

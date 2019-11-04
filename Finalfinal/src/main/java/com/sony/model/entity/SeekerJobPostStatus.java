@@ -84,5 +84,11 @@ public class SeekerJobPostStatus {
 	public void setNotificationStatus(int notificationStatus) {
 		this.notificationStatus = notificationStatus;
 	}
+	
+	@Override
+	public String toString() {
+		return this.status + " " + this.user.getEmailID() + " " + this.user.getPassword() + this.user.getFirstName() + this.user.getLastName() + this.jobpost.getJobDescription()
+		+ this.jobpost.getJobTitle() + this.jobpost.getCity() + this.jobpost.getExperience() + this.jobpost.getNoOfApplicants() + this.jobpost.getNoOfVacancies() + this.jobpost.getStreetAddress();
+	}
 
 }

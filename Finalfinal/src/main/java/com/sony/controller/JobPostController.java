@@ -35,7 +35,7 @@ public class JobPostController {
 	}
 	
 	@RequestMapping(value = "/getalljobs")
-	public List<JobPost> getAllJobs() {
+	public List<JobPostDTO> getAllJobs() {
 		return jobpostservice.getAllJobs();
 	}
 	

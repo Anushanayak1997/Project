@@ -13,4 +13,6 @@ public interface JobSeekerEducationDAO {
 	List<JobSeekerEducation> getAllSeekerEducation();
 
 	List<JobSeekerEducation> getSeekerEducationById(int userId);
+
+	void editSeekerEducation(JobSeekerEducation jobSeekerEducation);
 }

@@ -13,7 +13,7 @@ public interface JobPostService {
 	
 	public JobPost getJobById(Integer jobpostid);
 
-	public List<JobPost> getAllJobs();
+	public List<JobPostDTO> getAllJobs();
 
 	public void editJobPost(JobPost jobpost);
 
