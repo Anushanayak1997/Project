@@ -20,22 +20,22 @@
             </div>
         </div> -->
 
-        <div class="" style="background:  #00AA9E;;" *ngFor="let jobpost of jobDetails; let i = index">
+        <div class="" style="background:  #00AA9E;;" *ngFor="let applicant of Applicants; let i = index">
             <div class="card" >
                 <div class="card-header">
-                       <h5>{{Applicants}}</h5>
+                       <h5>{{applicant.user.firstName}} {{applicant.user.lastName}}</h5>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{jobpost.jobTitle}}</h5>
-                    <p class="card-text"> {{ jobpost.jobDescription }} </p>
-                    <p class="card-text"> Experience: {{ jobpost.experience }} years</p>
+                    <h5 class="card-title">{{applicant.user.emailID}}</h5>
+                    <p class="card-text"> {{ applicant.user.contactNumber }} </p>
+                    <!-- <p class="card-text"> Experience: {{ jobpost.experience }} years</p>
                     <p class="card-text"> Skills Required: 
                         <span *ngFor="let skills of jobpost.skillset; let isLast=last;">
                                     {{ skills.skillName}}{{isLast ? '' : ', '}}
-                        </span>
+                        </span> -->
                 </div>
                 <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-info" style="float: right;" (click)="onApply(jobpost.jobPostId)">Apply</button>
+                    <button type="button" class="btn btn-info" style="float: right;" (click)="onSelect(applicant)">ShortList</button>
                 </div>
             </div>
             <br>
