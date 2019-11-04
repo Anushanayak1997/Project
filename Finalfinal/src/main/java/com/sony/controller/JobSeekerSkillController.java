@@ -22,7 +22,7 @@ public class JobSeekerSkillController {
 	
 	
 	@RequestMapping(value = "/getallseekerskills")
-	public List<JobSeekerSkills> getAllSkill() {
+	public List<SeekerSkillDTO> getAllSkill() {
 		return jobseekerskillservice.getAllSkills();
 	}
 	

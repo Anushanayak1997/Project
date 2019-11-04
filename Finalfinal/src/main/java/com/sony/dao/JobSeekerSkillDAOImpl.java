@@ -60,12 +60,30 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 		return jobseekerskillid;
 	}
 
-	public List<JobSeekerSkills> getAllSkills() {
+	public List<SeekerSkillDTO> getAllSkills() {
 		Session session = factory.openSession();
-		List<JobSeekerSkills> skills = new ArrayList<JobSeekerSkills>();
+		List<SeekerSkillDTO> skills = new ArrayList<SeekerSkillDTO>();
 
 		try {
-			skills = session.createQuery("FROM JobSeekerSkills").list();
+			Query query = session.createQuery("FROM JobSeekerSkills");
+			List<JobSeekerSkills> seekerskill=query.list();
+			if(skills!=null)
+			{
+				Iterator<JobSeekerSkills> iterator = seekerskill.iterator();
+				while(iterator.hasNext())
+				{
+					JobSeekerSkills jobseekerskill=iterator.next();
+					User user = jobseekerskill.getUser();
+					SkillSet skillset = jobseekerskill.getSkillset();
+					UserDTO userdto = new UserDTO(user.getUserID(), user.getFirstName(), user.getLastName(),
+							user.getEmailID(), user.getPassword(), user.getContactNumber(), user.getUserType());
+					SkillSetDTO skilldto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+					SeekerSkillDTO seekerskilldto = new SeekerSkillDTO(jobseekerskill.getJobSeekerSkillId(),
+							jobseekerskill.getCertificateName(), jobseekerskill.getIssuedDate(),
+							userdto,skilldto);
+					skills.add(seekerskilldto);
+				}
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {

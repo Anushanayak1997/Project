@@ -9,7 +9,7 @@ import com.sony.model.entity.JobSeekerSkills;
 public interface JobSeekerSkillService {
 	public Integer addJobSeekerSkill(SeekerSkillDTO skills);
 
-	public List<JobSeekerSkills> getAllSkills();
+	public List<SeekerSkillDTO> getAllSkills();
 
 	public List<SeekerSkillDTO> getSeekerSkillById(int userId);
 

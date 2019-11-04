@@ -9,7 +9,7 @@ public interface JobSeekerSkillDAO {
 
 	public Integer addJobSeekerSkill(JobSeekerSkills skill);
 
-	public List<JobSeekerSkills> getAllSkills();
+	public List<SeekerSkillDTO> getAllSkills();
 
 	public List<SeekerSkillDTO> getSeekerSkillById(int userId);
 

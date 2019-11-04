@@ -40,7 +40,7 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 		return null;
 	}
 
-	public List<JobSeekerSkills> getAllSkills() {
+	public List<SeekerSkillDTO> getAllSkills() {
 		return jobseekerskilldao.getAllSkills();
 	}
 
