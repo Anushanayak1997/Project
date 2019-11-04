@@ -13,6 +13,8 @@ public interface JobSeekerExperienceDAO {
 
 	public List<JobSeekerExperience> getExperienceById(int userId);
 
+	public void editSeekerExperience(JobSeekerExperience jobseekerexperience);
+
 	 
 
 }

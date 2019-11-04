@@ -308,6 +308,7 @@ public class JobPost {
 		return skillset;
 	}
 
+
 //	public void setSkillset(Set<SkillSet> skillset) {
 //		this.skillset = skillset;
 //	}

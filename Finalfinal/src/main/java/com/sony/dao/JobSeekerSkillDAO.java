@@ -10,4 +10,6 @@ public interface JobSeekerSkillDAO {
 
 	public List<JobSeekerSkills> getAllSkills();
 
+	public List<JobSeekerSkills> getSeekerSkillById(int userId);
+
 }
