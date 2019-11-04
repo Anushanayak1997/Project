@@ -25,7 +25,7 @@ public class JobPostController {
 	}
 	
 	@RequestMapping(value = "/getjobsbyid/{jobpostId}")
-	public JobPost getJobById(@PathVariable int jobpostId) {
+	public JobPostDTO getJobById(@PathVariable int jobpostId) {
 		return jobpostservice.getJobById(jobpostId);
 	}
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sony.dao.JobPostSkillDAO;
+import com.sony.model.dto.JobPostDTO;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobPostSkill;
 
@@ -40,7 +41,8 @@ public class JobPostSkillServiceImpl implements JobPostSkillService{
 		JobPostSkill jobpostskill = new JobPostSkill();
 		// Integer jobpostid = (Integer) httpsession.getAttribute("jobpostid");
 		Integer jobpostid = jobpost_skill.getJobpost().getJobPostId();
-		JobPost jobpost = jobpostservice.getJobById(jobpostid);
+		JobPostDTO jobpostdto = jobpostservice.getJobById(jobpostid);
+		JobPost jobpost = new JobPost(jobpostdto);
 		jobpostskill.setJobpost(jobpost);
 		jobpostskill.setSkillset(jobpost_skill.getSkillset());
 	//	jobpostskill.setSkilllevel(jobpost_skill.getSkilllevel());

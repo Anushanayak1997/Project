@@ -29,7 +29,7 @@ public class SkillSet implements Serializable {
 	@Column(name = "skill_id")
 	private int skillId;
 
-	@ManyToMany(mappedBy="skillset")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="skillset")
 	private Set<JobSeekerSkills> user = new HashSet<JobSeekerSkills>();
 
 	public Set<JobSeekerSkills> getUser() {

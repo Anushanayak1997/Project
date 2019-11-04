@@ -136,6 +136,8 @@ import java.util.Set;
 //=======
 import javax.persistence.*;
 
+import com.sony.model.dto.JobPostDTO;
+
 @Entity
 @Table(name = "job_post")
 public class JobPost {
@@ -188,6 +190,22 @@ public class JobPost {
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
 	public JobPost() {
+	}
+	
+	public JobPost(JobPostDTO jpdto) {
+		this.jobPostId = jpdto.getJobPostId();
+		this.jobTitle = jpdto.getJobTitle();
+		this.jobDescription = jpdto.getJobDescription();
+		this.isActive = jpdto.isActive();
+		this.experience = jpdto.getExperience();
+		this.noOfApplicants = jpdto.getNoOfApplicants();
+		this.postDate = jpdto.getPostDate();
+		this.noOfVacancies = jpdto.getNoOfVacancies();
+		this.streetAddress = jpdto.getStreetAddress();
+		this.city = jpdto.getCity();
+		this.state = jpdto.getState();
+		this.companyentity = jpdto.getCompany();
+		this.skillset = jpdto.getSkillset();
 	}
 
 	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,

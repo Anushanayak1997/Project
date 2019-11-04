@@ -13,7 +13,7 @@ public interface JobPostDAO {
 
 	public Integer addJobPost(JobPost jobpostentity);
 
-	public JobPost getJobById(Integer jobpostid);
+	public JobPostDTO getJobById(Integer jobpostid);
 
 	public List<JobPostDTO> getAllJobs();
 

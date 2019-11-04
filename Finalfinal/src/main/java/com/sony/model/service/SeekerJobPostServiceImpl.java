@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobPostDAO;
 import com.sony.dao.SeekerJobPostDAO;
 import com.sony.dao.UserDAO;
+import com.sony.model.dto.JobPostDTO;
 import com.sony.model.dto.SeekerJobPostDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobPost;
@@ -33,7 +34,8 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 	public Integer addSeekerJobPost(SeekerJobPostDTO seekerjobpostdto) {
 		UserDTO userdto = userdao.getUserById(seekerjobpostdto.getUserId());
 		User user = new User(userdto);
-		JobPost jobpost = jobpostdao.getJobById(seekerjobpostdto.getJobpostId());
+		JobPostDTO jobpostdto = jobpostdao.getJobById(seekerjobpostdto.getJobpostId());
+		JobPost jobpost = new JobPost(jobpostdto);
 		SeekerJobPostStatus seekerjobpost = new SeekerJobPostStatus(seekerjobpostdto.getStatus(), user, jobpost,
 				seekerjobpostdto.getNotificationStatus());
 		Integer status = seekerjobpostdao.addSeekerJobPost(seekerjobpost);

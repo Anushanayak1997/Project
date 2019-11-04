@@ -91,24 +91,26 @@ public class JobPostDAOImpl implements JobPostDAO {
 		return jobposts;
 	}
 
-	public JobPost getJobById(Integer jobpostid) {
+	public JobPostDTO getJobById(Integer jobpostid) {
 		Session session = factory.openSession();
-		JobPost jobpost = new JobPost();
-
+		JobPostDTO jobpostdto = null;
 		try {
 			String hql = "FROM JobPost where jobPostId = :jobpostid";
 			Query query = session.createQuery(hql);
 			query.setParameter("jobpostid", jobpostid);
 			JobPost job = (JobPost) query.uniqueResult();
 			if (job != null) {
-				jobpost = job;
+				jobpostdto = new JobPostDTO(job.getJobPostId(), job.getJobTitle(), job.getJobDescription(),
+						job.getIsActive(), job.getExperience(), job.getNoOfApplicants(), job.getPostDate(),
+						job.getNoOfVacancies(), job.getStreetAddress(), job.getCity(), job.getState(),
+						job.getSkillset(), job.getCompanyentity());
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return jobpost;
+		return jobpostdto;
 	}
 
 	public List<JobPostDTO> getAllJobs() {
@@ -160,14 +162,13 @@ public class JobPostDAOImpl implements JobPostDAO {
 		}
 	}
 
-
 	public void deleteJobPost(int jobpostid) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			JobPost jobpost = (JobPost)session.get(JobPost.class, jobpostid); 
+			JobPost jobpost = (JobPost) session.get(JobPost.class, jobpostid);
 			session.delete(jobpost);
 			tx.commit();
 		} catch (HibernateException e) {
@@ -178,7 +179,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 			session.close();
 		}
 
-	} 	
+	}
 
 	public Integer updateNoApplicants(int jobpostId) {
 		Session session = factory.openSession();
@@ -187,7 +188,8 @@ public class JobPostDAOImpl implements JobPostDAO {
 		try {
 			tx = session.beginTransaction();
 			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;
-			Query query = session.createQuery("update JobPost set noOfApplicants = noOfApplicants + 1 where jobPostId = :jobpostid");
+			Query query = session
+					.createQuery("update JobPost set noOfApplicants = noOfApplicants + 1 where jobPostId = :jobpostid");
 			query.setParameter("jobpostid", jobpostId);
 			result = query.executeUpdate();
 			tx.commit();
