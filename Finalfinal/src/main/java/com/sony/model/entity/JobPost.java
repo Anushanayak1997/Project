@@ -134,15 +134,7 @@ import java.util.Set;
 //	
 //
 //=======
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
-
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "job_post")
@@ -188,16 +180,21 @@ public class JobPost {
 	@Column(name = "state")
 	private String state;
 
-	private LinkedList<SkillSet> skillset = new LinkedList<SkillSet>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "JOB_POST_SKILL", joinColumns = @JoinColumn(name = "job_post_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
+	private Set<SkillSet> skillset = new HashSet<SkillSet>();
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "jobpost")
+	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
 	public JobPost() {
 	}
 
 	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
-			Company companyentity) {
+			Company companyentity, Set<SkillSet> skillset) {
 		this.jobPostId = jobPostId;
-		this.jobTitle = jobTitle; 
+		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
 		this.isActive = isActive;
 		this.experience = experience;
@@ -208,6 +205,7 @@ public class JobPost {
 		this.city = city;
 		this.state = state;
 		this.companyentity = companyentity;
+		this.skillset = skillset;
 	}
 
 	public String getStreetAddress() {
@@ -306,14 +304,20 @@ public class JobPost {
 		this.noOfVacancies = noOfVacancies;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "USERS_GROUPS", joinColumns = @JoinColumn(name = "job_post_id"), 
-				inverseJoinColumns = @JoinColumn(name = "skill_id"))
-	public LinkedList<SkillSet> getSkillset() {
+	public Set<SkillSet> getSkillset() {
 		return skillset;
 	}
 
-	public void setSkillset(LinkedList<SkillSet> skillset) {
-		this.skillset = skillset;
+//	public void setSkillset(Set<SkillSet> skillset) {
+//		this.skillset = skillset;
+//	}
+
+	public Set<SeekerJobPostStatus> getSeekerjobpost() {
+		return seekerjobpost;
 	}
+
+//	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
+//		this.seekerjobpost = seekerjobpost;
+//	}
+
 }

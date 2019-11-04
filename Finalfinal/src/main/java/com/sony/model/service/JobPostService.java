@@ -9,8 +9,12 @@ public interface JobPostService {
 
 	public Integer addJobPost(JobPostDTO jobpostdto);
 
-	public List<JobPost> getJobsByCompId();
+	public List<JobPost> getJobsByCompId(int companyId);
 	
 	public JobPost getJobById(Integer jobpostid);
+
+	public List<JobPost> getAllJobs();
+
+	public void editJobPost(JobPost jobpost);
 
 }

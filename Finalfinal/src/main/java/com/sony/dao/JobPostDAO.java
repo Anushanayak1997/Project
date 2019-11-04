@@ -14,4 +14,8 @@ public interface JobPostDAO {
 
 	public JobPost getJobById(Integer jobpostid);
 
+	public List<JobPost> getAllJobs();
+
+	public void editJobPost(JobPost jobpost);
+
 }

@@ -2,6 +2,7 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
@@ -24,7 +25,7 @@ public class JobPostDTO implements Serializable{
 	private String streetAddress;
 	private String city;
 	private String state;
-	private LinkedList<SkillSet> skillset;
+	private Set<SkillSet> skillset;
 
 	public int getCompanyId() {
 		return companyId;
@@ -122,12 +123,21 @@ public class JobPostDTO implements Serializable{
 		this.state = state;
 	}
 
-	public LinkedList<SkillSet> getSkillset() {
+	public Set<SkillSet> getSkillset() {
 		return skillset;
 	}
 
-	public void setSkillset(LinkedList<SkillSet> skillset) {
+	public void setSkillset(Set<SkillSet> skillset) {
 		this.skillset = skillset;
 	}
 
+//	public LinkedList<SkillSet> getSkillset() {
+//		return skillset;
+//	}
+//
+//	public void setSkillset(LinkedList<SkillSet> skillset) {
+//		this.skillset = skillset;
+//	}
+
+	
 }

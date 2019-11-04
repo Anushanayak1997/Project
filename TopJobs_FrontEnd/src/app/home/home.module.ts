@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [ CookieService],
   

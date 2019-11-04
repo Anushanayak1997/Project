@@ -7,29 +7,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  userType: string;
+  url: any;
+  loggedIn: any;
 
-  constructor(private route:Router) { }
-  url:any;
-  loggedIn:any;
-  
+  constructor(private route: Router) { }
+
+
   ngOnInit() {
     this.loggedIn = sessionStorage.getItem('user_id');
-    console.log("in header" +this.loggedIn);
-   this.url =console.log(window.location.href)
+    this.userType = sessionStorage.getItem('user_type');
+
+    if (this.userType == 'JobSeeker') {
+
+    } else {
+
+    }
   }
 
-  gologin(){
-   this.route.navigate(['login'])
+  gologin() {
+    this.route.navigate(['login'])
   }
 
-  goRegister(){
+  goRegister() {
     this.route.navigate(['register'])
   }
 
-goLogOut(){
-  console.log("logut called")
-  sessionStorage.clear();
-  this.route.navigate(['login'])
-}
+  goLogOut() {
+    console.log("logut called")
+    sessionStorage.clear();
+    this.route.navigate(['login'])
+  }
 
 }

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormsModule } from '@angular/forms';
-import { Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FormArray } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { job_details } from '../job_post';
@@ -50,6 +47,7 @@ export class EditPostComponent implements OnInit {
  
     getskills=environment.apiBaseUrl+"getallskills";
   beforejobpost: any;
+  userType: string;
     
   constructor(private companyservice: CompanyService, private route: Router, private router: ActivatedRoute, private http: HttpClient,private jobservice:JobpostService) {
   }
@@ -57,6 +55,13 @@ export class EditPostComponent implements OnInit {
 date:any
   
   ngOnInit() {
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
+    
     this.router.paramMap.subscribe((params: ParamMap) => {
       let Index = parseInt(params.get('Index'));
       console.log(Index)

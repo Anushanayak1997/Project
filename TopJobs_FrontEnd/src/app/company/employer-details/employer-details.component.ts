@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employer-details',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employer-details.component.css']
 })
 export class EmployerDetailsComponent implements OnInit {
+  userType: string;
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit() {
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
   }
 
 }

@@ -1,4 +1,3 @@
-
 <app-header></app-header>
 <div class="container">
     <div class="card bg-light  shadow-lg p-3 mb-5 bg-white rounded ">
@@ -12,17 +11,19 @@
 
         <div class="card">
             <h5 class="card-header">Personal Info</h5>
-            <div class="card-body" >
+            <div class="card-body">
                 <h5 class="card-title"></h5>
-                <span class="card-text" >UserName:</span><b *ngIf = "info">{{info.emailID}}</b><br><br>
-                <span class="card-text">UserEmail:</span><b *ngIf = "info">{{info.emailID}}</b><br><br>
-                <span class="card-text">ContactNo:</span><b *ngIf = "info">{{info.emailID}}</b><br><br>
+                <span class="card-text">UserName:</span><b *ngIf="info">{{info.firstName}}</b><br><br>
+                <span class="card-text">UserEmail:</span><b *ngIf="info">{{info.emailID}}</b><br><br>
+                <span class="card-text">ContactNo:</span><b *ngIf="info">{{info.contactNumber}}</b><br><br>
                 <div *ngIf="info">
-                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#exampleModal" class="btn btn-link">Edit</button>
+                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#exampleModal"
+                        class="btn btn-link">Edit</button>
                 </div>
                 <div *ngIf="!info">
-                        <button data-toggle="modal" style="color:#00AA9E;" data-target="#exampleModal" class="btn btn-link">Add</button>
-                </div>        
+                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#exampleModal"
+                        class="btn btn-link">Add</button>
+                </div>
             </div>
 
 
@@ -95,31 +96,50 @@
             <!--10th-->
             <div class="card-body">
                 <h5 class="card-header">10th Board:</h5>
-                <span class="card-text">start_date:</span><b *ngIf = "Eduinfo">{{Eduinfo}}</b><br><br>
-                <span class="card-text">end_date:</span><b *ngIf = "Eduinfo">{{Eduinfo}}</b><br><br>
-                <span class="card-text">marks_percentage:</span><b *ngIf = "Eduinfo">{{Eduinfo}}</b><br><br>
-                <div *ngIf="Eduinfo">
-                        <button  data-toggle="modal" data-target="#tenth" class="btn btn-link" style="color:#00AA9E;">Edit</button>
-                </div>
-                <div *ngIf="!Eduinfo">
-                        <button  data-toggle="modal" data-target="#tenth" class="btn btn-link" style="color:#00AA9E;">Add</button>
+                <span class="card-text">start_date:</span><b *ngIf="start10">{{start10}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf="end10">{{end10}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf="marks10">{{marks10}}</b><br><br>
+
+                <div *ngIf="tenth_type">
+                    <button data-toggle="modal" data-target="#tenth" class="btn btn-link"
+                        style="color:#00AA9E;">Edit</button>
                 </div>
 
-                
+                <div *ngIf="!tenth_type">
+                    <button data-toggle="modal" data-target="#tenth" class="btn btn-link"
+                        style="color:#00AA9E;">Add</button>
+                </div>
+
+
 
                 <!--12th-->
                 <h5 class="card-header">12th Board</h5>
-                <span class="card-text">start_date:</span>
-                <span class="card-text">end_date:</span>
-                <span class="card-text">marks_percentage:</span>
-                <button data-toggle="modal" data-target="#twelth" class="btn btn-link" style="color:#00AA9E;">Edit</button>
+                <span class="card-text">start_date:</span><b *ngIf="start12">{{start12}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf="end12">{{end12}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf="marks12">{{marks12}}</b><br><br>
+
+                <div *ngIf="tweleth">
+                    <button data-toggle="modal" data-target="#twelth" class="btn btn-link"
+                        style="color:#00AA9E;">Edit</button>
+                </div>
+                <div *ngIf="!tweleth">
+                        <button data-toggle="modal" data-target="#twelth" class="btn btn-link"
+                            style="color:#00AA9E;">Add</button>
+                </div>
 
                 <!--UnderGraduate-->
                 <h5 class="card-header">UnderGraduate</h5>
-                <span class="card-text">start_date:</span>
-                <span class="card-text">end_date:</span>
-                <span class="card-text">marks_percentage:</span>
-                <button data-toggle="modal" data-target="#UG" class="btn btn-link"style="color:#00AA9E;">Edit</button>
+                <span class="card-text">start_date:</span><b *ngIf="startug">{{startug}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf="endug">{{endug}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf="marksug">{{marksug}}</b><br><br>
+
+                <div *ngIf="Ug_type">
+                        <button data-toggle="modal" data-target="#UG" class="btn btn-link" style="color:#00AA9E;">Edit</button>
+                </div>
+                <div *ngIf="!Ug_type">
+                        <button data-toggle="modal" data-target="#UG" class="btn btn-link" style="color:#00AA9E;">Add</button>
+                </div>
+             
             </div>
 
 
@@ -319,7 +339,8 @@
                 <h5 class="card-title"></h5>
                 <p class="card-text">Certificate Name:</p>
                 <p class="card-text">Certificate issue_date:</p>
-                <button data-toggle="modal" data-target="#certificate" style="color:#00AA9E;" class="btn btn-link">Edit</button>
+                <button data-toggle="modal" data-target="#certificate" style="color:#00AA9E;"
+                    class="btn btn-link">Edit</button>
 
             </div>
 
@@ -375,57 +396,233 @@
         <!--End of Skill-certificate Info-->
 
         <!--Start of Project-->
+        <div class="card"> 
+
+        <h5 class="card-header">Project</h5>
+        <button data-toggle="modal" data-target="#ProjectsAdd" style="color:#00AA9E;"
+        class="btn btn-link">Add Project</button>
+
+             <div *ngFor="let project of Projectinfo">
+                
+               
+             
+
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <span class="card-text">Project_Name:</span><b *ngIf="project.title">{{project.title}}</b><br><br>
+                    <span class="card-text">description: </span><b *ngIf="project.role">{{project.role}}</b><br><br>
+                    <span class="card-text">role: </span><b *ngIf="project.description">{{project.description}}</b><br><br>
+                    <button data-toggle="modal" data-target="#Projects" style="color:#00AA9E;"
+                        class="btn btn-link">Edit</button>
+
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="Projects" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Project_Name</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form #Projects="ngForm">
+
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #title="ngModel" [(ngModel)]="userProjects.title"
+                                            placeholder="title" name="title"><br>
+                                    </div>
+
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #description="ngModel" [(ngModel)]="userProjects.description"
+                                            placeholder="description" name="description"><br>
+                                    </div>
+
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #role="ngModel" [(ngModel)]="userProjects.role"
+                                            placeholder="role" name="role"><br>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="link" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="modal fade" id="ProjectsAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Project_Name</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form #userProject="ngForm">
+
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #title="ngModel" [(ngModel)]="userProjectsAdd.title"
+                                            placeholder="title" name="title"><br>
+                                    </div>
+
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #description="ngModel" [(ngModel)]="userProjectsAdd.description"
+                                            placeholder="description" name="description"><br>
+                                    </div>
+
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        </div>
+                                        <input type="text" #role="ngModel" [(ngModel)]="userProjectsAdd.role"
+                                            placeholder="role" name="role"><br>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="link" class="btn btn-primary" (click)="addProject()">Add Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        
+    </div>
+
+
+
+        <!--End of Project skills-->
+
+        <!--Start of Experience -->
         <div class="card">
-            <h5 class="card-header">Project</h5>
+                <h5 class="card-header">Experience</h5>
+                <button data-toggle="modal" style="color:#00AA9E;" data-target="#ADDExperienc"
+                class="btn btn-link">Add experience</button>
+       
+        <div *ngFor = "let experience of Experinceinfo">
+        <div class="card">
+           
             <div class="card-body">
                 <h5 class="card-title"></h5>
-                <p class="card-text">Project_Name:</p>
-                <p class="card-text">description: </p>
-                <p class="card-text">role: </p>
-                <button data-toggle="modal" data-target="#Projects" style="color:#00AA9E;" class="btn btn-link">Edit</button>
+                <span class="card-text">job_title:</span><b *ngIf="experience.jobTitle">{{experience.jobTitle}}</b><br><br>
+                <span class="card-text">start_date: </span><b *ngIf="experience.startDate">{{experience.startDate}}</b><br><br>
+                <span class="card-text">end_date: </span><b *ngIf="experience.endDate">{{experience.endDate}}</b><br><br>
+                <span class="card-text">job_descrispantion: </span><b *ngIf="experience.jobDescription">{{experience.jobDescription}}</b><br><br>
+                <span class="card-text">streetaddress: </span><b *ngIf="experience.streetAddress">{{experience.streetAddress}}</b><br><br>
+                <span class="card-text">city: </span><b *ngIf="experience.city">{{experience.city}}</b><br><br>
+                <span class="card-text">state: </span><b *ngIf="experience.state">{{experience.state}}</b><br><br>
 
+                <div *ngIf="Experinceinfo!=''">
+                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#Experienc"
+                        class="btn btn-link">Edit</button>
+                </div>
+                <div *ngIf="Experinceinfo==''">
+                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#Experienc"
+                        class="btn btn-link">Add</button>
+                </div>
             </div>
 
 
             <!-- Modal -->
-            <div class="modal fade" id="Projects" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="Experienc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Project_Name</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Experience</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
 
-                            <form #userProjects="ngForm">
+                            <form #userExperience="ngForm">
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
-                                    <input type="text" #title="ngModel" [(ngModel)]="userProjects.title"
-                                        placeholder="title" name="title"><br>
+                                    <input type="text" #job_title="ngModel" [(ngModel)]="userExperience.job_title"
+                                        placeholder="job_title" name="job_title"><br>
                                 </div>
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
-                                    <input type="text" #description="ngModel"
-                                        [(ngModel)]="userProjects.description" placeholder="description"
-                                        name="description"><br>
+                                    <input type="text" #start_date="ngModel" [(ngModel)]="userExperience.start_date"
+                                        placeholder="start_date" name="start_date"><br>
                                 </div>
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                                     </div>
-                                    <input type="text" #role="ngModel"
-                                        [(ngModel)]="userProjects.role" placeholder="role"
-                                        name="role"><br>
+                                    <input type="text" #end_date="ngModel" [(ngModel)]="userExperience.end_date"
+                                        placeholder="end_date" name="end_date"><br>
+                                </div>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                    </div>
+                                    <input type="text" #job_description="ngModel"
+                                        [(ngModel)]="userExperience.job_description" placeholder="job_description"
+                                        name="job_description"><br>
+                                </div>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                    </div>
+                                    <input type="text" #streetaddress="ngModel"
+                                        [(ngModel)]="userExperience.streetaddress" placeholder="streetaddress"
+                                        name="streetaddress"><br>
+                                </div>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                    </div>
+                                    <input type="text" #city="ngModel" [(ngModel)]="userExperience.city"
+                                        placeholder="city" name="city"><br>
+                                </div>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                    </div>
+                                    <input type="text" #state="ngModel" [(ngModel)]="userExperience.state"
+                                        placeholder="state" name="state"><br>
                                 </div>
 
                             </form>
@@ -438,113 +635,90 @@
                     </div>
                 </div>
             </div>
+
+            
         </div>
+    </div><!--for loop end-->
+<!-- Modal -->
+<div class="modal fade" id="ADDExperienc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Experience</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
 
+            <form #AddExperience="ngForm">
 
-
-        <!--End of Project skills-->
-
-         <!--Start of Experience -->
-         <div class="card">
-                <h5 class="card-header">Experience</h5>
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text">job_title:</p>
-                    <p class="card-text">start_date: </p>
-                    <p class="card-text">end_date: </p>
-                    <p class="card-text">job_description: </p>
-                    <p class="card-text">streetaddress: </p>
-                    <p class="card-text">city: </p>
-                    <p class="card-text">state: </p>
-                    <button data-toggle="modal" style="color:#00AA9E;" data-target="#Experienc" class="btn btn-link">Edit</button>
-    
-                </div>
-    
-    
-                <!-- Modal -->
-                <div class="modal fade" id="Experienc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Experience</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-    
-                                <form #userExperience="ngForm">
-    
-                                    <div class="form-group input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                        </div>
-                                        <input type="text" #job_title="ngModel" [(ngModel)]="userExperience.job_title"
-                                            placeholder="job_title" name="job_title"><br>
-                                    </div>
-    
-                                    <div class="form-group input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                        </div>
-                                        <input type="text" #start_date="ngModel"
-                                            [(ngModel)]="userExperience.start_date" placeholder="start_date"
-                                            name="start_date"><br>
-                                    </div>
-    
-                                    <div class="form-group input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                        </div>
-                                        <input type="text" #end_date="ngModel"
-                                            [(ngModel)]="userExperience.end_date" placeholder="end_date"
-                                            name="end_date"><br>
-                                    </div>
-                                    <div class="form-group input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                            </div>
-                                            <input type="text" #job_description="ngModel"
-                                                [(ngModel)]="userExperience.job_description" placeholder="job_description"
-                                                name="job_description"><br>
-                                        </div>
-                                        <div class="form-group input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                                </div>
-                                                <input type="text" #streetaddress="ngModel"
-                                                    [(ngModel)]="userExperience.streetaddress" placeholder="streetaddress"
-                                                    name="streetaddress"><br>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                            </div>
-                                            <input type="text" #city="ngModel"
-                                                [(ngModel)]="userExperience.city" placeholder="city"
-                                                name="city"><br>
-                                    </div>
-                                    <div class="form-group input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
-                                        </div>
-                                        <input type="text" #state="ngModel"
-                                            [(ngModel)]="userExperience.state" placeholder="state"
-                                            name="state"><br>
-                                </div>
-    
-                                </form>
-    
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="link" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
                     </div>
+                    <input type="text" #job_title="ngModel" [(ngModel)]="AdduserExperience.job_title"
+                        placeholder="job_title" name="job_title"><br>
                 </div>
-            </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                    </div>
+                    <input type="text" #start_date="ngModel" [(ngModel)]="AdduserExperience.start_date"
+                        placeholder="start_date" name="start_date"><br>
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                    </div>
+                    <input type="text" #end_date="ngModel" [(ngModel)]="AdduserExperience.end_date"
+                        placeholder="end_date" name="end_date"><br>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                    </div>
+                    <input type="text" #job_description="ngModel"
+                        [(ngModel)]="AdduserExperience.job_description" placeholder="job_description"
+                        name="job_description"><br>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                    </div>
+                    <input type="text" #streetaddress="ngModel"
+                        [(ngModel)]="AdduserExperience.streetaddress" placeholder="streetaddress"
+                        name="streetaddress"><br>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                    </div>
+                    <input type="text" #city="ngModel" [(ngModel)]="AdduserExperience.city"
+                        placeholder="city" name="city"><br>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                    </div>
+                    <input type="text" #state="ngModel" [(ngModel)]="AdduserExperience.state"
+                        placeholder="state" name="state"><br>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="link" class="btn btn-primary" (click)="addExperience()">Add Experience</button>
+        </div>
+    </div>
+</div>
+</div>
+    </div>
     </div>
 
 </div>

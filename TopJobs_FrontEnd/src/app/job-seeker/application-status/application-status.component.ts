@@ -11,18 +11,22 @@ import { JobpostService } from 'src/app/company/jobpost.service';
   styleUrls: ['./application-status.component.css']
 })
 export class ApplicationStatusComponent implements OnInit {
-
-  applicationurl=environment.apiBaseUrl+"getapplicantsbyuserid/"+sessionStorage.getItem('user_id');
-  constructor(private companyservice: CompanyService, private route: Router, private router: ActivatedRoute, private http: HttpClient,private jobservice:JobpostService) { }
-
+  userType: string;
+  statusurl=environment.apiBaseUrl+"getapplicationbyuserid/"+sessionStorage.getItem('user_id');
+  appliedjob_posts: any;
+  constructor(private router:Router,private http:HttpClient) { }
 
   ngOnInit() {
-
-
-    this.http.get(this.applicationurl).subscribe((Response)=>
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'JobSeeker'){
+      console.log("correct user");
+    }else{
+      this.router.navigate(['home']);
+    }
+    this.http.get(this.statusurl).subscribe((Response)=>
     {
       console.log(Response);
-
+      this.appliedjob_posts=Response;
     })
 
   }
