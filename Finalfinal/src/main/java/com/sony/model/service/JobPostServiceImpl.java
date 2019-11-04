@@ -39,7 +39,7 @@ public class JobPostServiceImpl implements JobPostService {
 	@Autowired
 	HttpSession httpsession;
 
-	public List<JobPost> getJobsByCompId(int companyid) {
+	public List<JobPostDTO> getJobsByCompId(int companyid) {
 		Company company = companydao.getCompanyById(companyid);
 		return jobpostdao.getJobsByCompId(company);
 	}

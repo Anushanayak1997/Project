@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.service.UserService;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -22,7 +23,7 @@ public class UserController {
 	public UserService userService;
 	
 	@RequestMapping(value = "/getallusers")
-	public List<User> getAllUsers() {
+	public List<UserDTO> getAllUsers() {
 		return userService.getAllUsers();
 	}
 	

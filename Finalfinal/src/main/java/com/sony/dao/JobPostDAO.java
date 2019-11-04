@@ -9,7 +9,7 @@ import com.sony.model.entity.JobPost;
 public interface JobPostDAO {
 
 	
-	public List<JobPost> getJobsByCompId(Company company);
+	public List<JobPostDTO> getJobsByCompId(Company company);
 
 	public Integer addJobPost(JobPost jobpostentity);
 
@@ -18,5 +18,7 @@ public interface JobPostDAO {
 	public List<JobPostDTO> getAllJobs();
 
 	public void editJobPost(JobPost jobpost);
+	
+	public Integer updateNoApplicants(int jobpostId);
 
 }

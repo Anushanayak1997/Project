@@ -1,5 +1,3 @@
-
-<app-header></app-header>
 <div class="container">
     <div class="companyProfile">
         <h4>Company name</h4>
@@ -17,21 +15,22 @@
                         <th scope="col">Position</th>
                         <th scope="col">Status</th>
                         <th scope="col">Apllicants</th>
+                        <th scope="col">Vacancies</th>
                         <th scope="col">Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngIf="beforejobpost"> 
                         <th scope="row">
                             <input type="text" #index="ngModel" required disabled class="form-control" name="index"
-                                placeholder={{id}} [(ngModel)]="userModel.index">
+                                placeholder={{beforejobpost.jobPostId}} [(ngModel)]="userModel.index" value={{beforejobpost.jobPostId}}>
 
                         </th>
 
                         <th scope="row">
                             <input type="text" #JobTitle="ngModel" disabled required class="form-control"
                                 [class.is-invalid]="JobTitle.invalid && JobTitle.touched" name="JobTitle"
-                                [(ngModel)]="userModel.JobTitle" placeholder={{company.Position}}>
+                                [(ngModel)]="userModel.JobTitle" placeholder={{beforejobpost.jobTitle}}>
                             <small class="text-danger" [class.d-none]="JobTitle.valid || JobTitle.untouched">JobTitle is
                                 required</small>
                         </th>
@@ -39,7 +38,7 @@
                         <th scope="row">
                             <input type="text" #Status="ngModel" required class="form-control"
                                 [class.is-invalid]="Status.invalid && Status.touched" name="Status"
-                                [(ngModel)]="userModel.Status" placeholder={{company.Status}}>
+                                [(ngModel)]="userModel.Status" placeholder={{beforejobpost.status}}>
                             <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
                                 required</small>
 
@@ -48,21 +47,29 @@
                         <th scope="row">
                             <input type="text" #Applicants="ngModel" disabled required class="form-control"
                                 [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
-                                [(ngModel)]="userModel.Applicants" placeholder={{company.Apllicants}}>
+                                [(ngModel)]="userModel.Applicants" placeholder={{beforejobpost.noOfApplicants}}>
                             <small class="text-danger"
                                 [class.d-none]="Applicants.valid || Applicants.untouched">Applicants is
                                 required</small>
                         </th>
 
                         <th scope="row">
-                            <input type="text" #PostDate="ngModel" required class="form-control"
-                                [class.is-invalid]="PostDate.invalid && PostDate.touched" name="Applicants"
-                                [(ngModel)]="userModel.PostDate" placeholder={{company.Date}}>
+                            <input type="text" #Vacancies="ngModel" required class="form-control"
+                                [class.is-invalid]="Vacancies.invalid && Vacancies.touched" name="Vacancies"
+                                [(ngModel)]="userModel.Vacancy" placeholder={{beforejobpost.noOfVacancies}}>
 
-                            <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
+                            <small class="text-danger" [class.d-none]="Vacancies.valid || Vacancies.untouched"> vacancies is
                                 required</small>
                         </th>
                         
+                        <th scope="row">
+                                <input type="text" #PostDate="ngModel" required class="form-control"
+                                    [class.is-invalid]="PostDate.invalid && PostDate.touched" name="PostDate"
+                                    [(ngModel)]="userModel.PostDate" placeholder={{beforejobpost.postDate}}>
+    
+                                <small class="text-danger" [class.d-none]="PostDate.valid || PostDate.untouched">PostDate is
+                                    required</small>
+                            </th>
 
 
 

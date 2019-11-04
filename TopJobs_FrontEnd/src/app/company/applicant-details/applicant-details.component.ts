@@ -48,4 +48,10 @@ export class ApplicantDetailsComponent implements OnInit {
         console.log('Success!', response);
       });
   }
+
+  selected(){
+    let id=sessionStorage.getItem('company_id');
+ this.route.navigate(['/company/selected/'+id])
+
+  }
 }

@@ -20,7 +20,7 @@ public class JobPostController {
 	JobPostService jobpostservice;
 
 	@RequestMapping(value = "/getjobsbycompid/{companyId}")
-	public List<JobPost> getJobsByCompId(@PathVariable int companyId) {
+	public List<JobPostDTO> getJobsByCompId(@PathVariable int companyId) {
 		return jobpostservice.getJobsByCompId(companyId);
 	}
 	

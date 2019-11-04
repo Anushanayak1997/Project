@@ -94,7 +94,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState());
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
 					SeekerJobPostDTO seekerjobpostdto = new SeekerJobPostDTO(seekerjobpost.getId(),seekerjobpost.getStatus(),
 							seekerjobpost.getNotificationStatus(), userdto, jobpostdto);
 					applicants.add(seekerjobpostdto);
@@ -117,8 +117,8 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 			query.setParameter("userid", userId);
 
 			List<SeekerJobPostStatus> result = query.list();
-			if (!result.isEmpty()) {
-				Iterator<SeekerJobPostStatus> iterator = result.iterator();
+			if (!result.isEmpty()) { 
+				Iterator<SeekerJobPostStatus> iterator = result.iterator(); 
 				while (iterator.hasNext()) {
 					SeekerJobPostStatus seekerjobpost = iterator.next();
 					User user = seekerjobpost.getUser();
@@ -128,7 +128,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState());
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
 					SeekerJobPostDTO seekerjobpostdto = new SeekerJobPostDTO(seekerjobpost.getId(),seekerjobpost.getStatus(),
 							seekerjobpost.getNotificationStatus(), userdto, jobpostdto);
 					applicants.add(seekerjobpostdto);

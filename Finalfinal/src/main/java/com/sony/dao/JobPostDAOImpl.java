@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.dto.JobPostDTO;
+import com.sony.model.dto.SeekerJobPostDTO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.EmployerCompany;
 import com.sony.model.entity.JobPost;
@@ -57,9 +59,9 @@ public class JobPostDAOImpl implements JobPostDAO {
 
 	}
 
-	public List<JobPost> getJobsByCompId(Company company) {
+	public List<JobPostDTO> getJobsByCompId(Company company) {
 		Session session = factory.openSession();
-		List<JobPost> jobposts = new ArrayList<JobPost>();
+		List<JobPostDTO> jobposts = new ArrayList<JobPostDTO>();
 		Integer companyId = company.getCompanyId();
 
 		try {
@@ -68,7 +70,17 @@ public class JobPostDAOImpl implements JobPostDAO {
 			query.setParameter("companyid", companyId);
 			List<JobPost> result = query.list();
 			if (!result.isEmpty()) {
-				jobposts.addAll(result);
+				Iterator<JobPost> iterator = result.iterator();
+				while (iterator.hasNext()) {
+					JobPost jobpost = iterator.next();
+					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
+							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
+							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getCompanyentity());
+					jobposts.add(jobpostdto);
+				}
+				// jobposts.addAll(result);
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -113,7 +125,8 @@ public class JobPostDAOImpl implements JobPostDAO {
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
 			}
@@ -144,5 +157,26 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	public Integer updateNoApplicants(int jobpostId) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Integer result = null;
+		try {
+			tx = session.beginTransaction();
+			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;
+			Query query = session.createQuery("update JobPost set noOfApplicants = noOfApplicants + 1 where jobPostId = :jobpostid");
+			query.setParameter("jobpostid", jobpostId);
+			result = query.executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 }

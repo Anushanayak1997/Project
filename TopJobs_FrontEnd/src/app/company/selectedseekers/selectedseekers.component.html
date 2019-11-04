@@ -1,0 +1,23 @@
+<h1>hello</h1>
+<div *ngIf="seekers" class="container seekercss">
+    <div class="" style="padding:1%">
+        
+
+        <div class="" style="background:  #00AA9E;;" *ngFor="let applicant of Applicants; let i = index">
+            <div class="card" >
+                <div class="card-header">
+                       <h5></h5>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{applicant.user.emailID}}</h5>
+                    <p class="card-text"> {{ applicant.user.contactNumber }} </p>
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="button" class="btn btn-info" style="float: right;" (click)="onSelect(applicant)">ShortList</button>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
