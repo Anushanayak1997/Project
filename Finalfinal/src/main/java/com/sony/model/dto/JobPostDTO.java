@@ -159,7 +159,7 @@ public class JobPostDTO implements Serializable {
 
 	public void setState(String state) {
 		this.state = state;
-	}
+	} 
 
 	public Set<SkillSet> getSkillset() {
 		return skillset;
