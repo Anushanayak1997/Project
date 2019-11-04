@@ -118,7 +118,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 
 			List<SeekerJobPostStatus> result = query.list();
 			if (!result.isEmpty()) { 
-				Iterator<SeekerJobPostStatus> iterator = result.iterator();
+				Iterator<SeekerJobPostStatus> iterator = result.iterator(); 
 				while (iterator.hasNext()) {
 					SeekerJobPostStatus seekerjobpost = iterator.next();
 					User user = seekerjobpost.getUser();
