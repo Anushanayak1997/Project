@@ -10,11 +10,12 @@ import { RouteConfigLoadEnd, Router } from '@angular/router';
 })
 export class SeekerPageComponent implements OnInit {
 
-  url1 = environment.apiBaseUrl + "getallusers";
+  userId = sessionStorage.getItem('user_id');
+  url1 = environment.apiBaseUrl + "getuserbyid"+sessionStorage.getItem('user_id');
   url2 = environment.apiBaseUrl + "getalljobs";
-  userName:any;
-  userLastName:any;
-  userEmail:any;
+  url3 = environment.apiBaseUrl + "applyjobpost";
+  User:any;
+  seekerjobpost: any;
   jobDetails: any;
   userType:any;
 
@@ -25,33 +26,41 @@ export class SeekerPageComponent implements OnInit {
    this.userType=sessionStorage.getItem('user_type');
     if(this.userType == 'JobSeeker'){
       console.log("correct user");
+      this.getJobSeeker();
+      this.getJobs();
     }else{
       this.router.navigate(['home']);
     }
-  //  this.getJobSeeker();
-  //  this.getJobs();
   }
 
   getJobSeeker(){
     this.http.get(this.url1).subscribe(
       (Response)=>{
-        console.log(Response);
-        this.userName = Response[0].firstName;
-        this.userLastName = Response[0].userLastName;
-        this.userEmail = Response[0].emailID
-      }
-    )
+        console.log("User details", Response);
+        this.User = Response;
+      })
   }
 
   getJobs(){
     this.http.get(this.url2).subscribe(
       (Response)=>{
         this.jobDetails = Response;
-        console.log(this.jobDetails)
+        console.log("Job POsts", this.jobDetails)
       }
     )
   }
 
-
-
+  onApply(jobpostid) {
+    console.log("Index ", jobpostid);
+    this.seekerjobpost = {
+      'userId':sessionStorage.getItem('user_id'),
+      'jobpostId': jobpostid,
+      'status': 'Apply'
+    }
+    console.log(this.seekerjobpost);
+    this.http.post(this.url3,this.seekerjobpost).subscribe(
+      (response) => {
+        console.log('Success!', response);
+      });
+  }
 }

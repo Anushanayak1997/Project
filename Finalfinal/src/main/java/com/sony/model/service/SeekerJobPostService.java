@@ -13,4 +13,6 @@ public interface SeekerJobPostService {
 	public Integer updateSatus(SeekerJobPostDTO seekerJobPostDTO);
 
 	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId);
+
+	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId);
 }

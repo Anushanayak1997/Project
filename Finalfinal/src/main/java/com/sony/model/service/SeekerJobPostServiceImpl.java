@@ -40,4 +40,8 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId) {
 		return seekerjobpostdao.getApplicantsById(jobpostId);
 	}
+
+	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId) {
+		return seekerjobpostdao.getApplicantsByUserId(userId);
+	}
 }

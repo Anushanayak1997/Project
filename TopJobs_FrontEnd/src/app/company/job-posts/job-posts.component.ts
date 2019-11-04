@@ -28,6 +28,7 @@ export class JobPostsComponent implements OnInit {
    employes:any;
    public companies = [];
   jobposts:any;
+  userType: string;
 
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient,private jobservice:JobpostService) { }
 
@@ -41,6 +42,13 @@ export class JobPostsComponent implements OnInit {
    
  
 
+    this.userType=sessionStorage.getItem('user_type');
+    if(this.userType == 'Employer'){
+      console.log("correct user");
+    }else{
+      this.route.navigate(['home']);
+    }
+   //this.getAllcompany();
   }
 
   getCompanyById(){
@@ -51,8 +59,7 @@ export class JobPostsComponent implements OnInit {
         this.company = Response;
         console.log(this.company);
       }
-    )
-    
+    ) 
   }
 
   getJobsById(){
@@ -79,7 +86,10 @@ this.jobservice.getJobPostbyCompId()
   onDelete(id:any){
     
   }
+  applicants(id:any){
 
+    this.route.navigate(['company/Applicantdetails/'+id]);
+  }
  
 
 

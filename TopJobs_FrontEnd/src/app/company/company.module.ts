@@ -13,15 +13,7 @@ import { CompanyService } from './company.service';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HomeModule } from '../home/home.module';
 import { ApplicantDetailsComponent } from './applicant-details/applicant-details.component';
-
-
-
-
-
-
-
-
-
+import { SelectedseekersComponent } from './selectedseekers/selectedseekers.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +23,7 @@ import { ApplicantDetailsComponent } from './applicant-details/applicant-details
       EmployerDetailsComponent,
        JobDescriptionComponent,
        ApplicantDetailsComponent,
-       
-
+       SelectedseekersComponent,
       ],
   exports: [
     CompanyDetailsComponent,

@@ -12,7 +12,7 @@ import { JobpostService } from 'src/app/company/jobpost.service';
 })
 export class ApplicationStatusComponent implements OnInit {
   userType: string;
-  statusurl=environment.apiBaseUrl+"getapplicationbyuserid/"+sessionStorage.getItem('user_id');
+  statusurl=environment.apiBaseUrl+"getapplicantsbyuserid/"+sessionStorage.getItem('user_id');
   appliedjob_posts: any;
   constructor(private router:Router,private http:HttpClient) { }
 
