@@ -38,9 +38,6 @@ export class JobPostsComponent implements OnInit {
       this.route.navigate(['home']);
     }
    this.getAllcompany();
-   
- 
-
   }
 
   getAllcompany(){
@@ -51,8 +48,7 @@ export class JobPostsComponent implements OnInit {
         this.employes = Response;
         console.log(this.employes)
       }
-    )
-    
+    ) 
   }
 
   toCreatePost(){
@@ -61,10 +57,4 @@ export class JobPostsComponent implements OnInit {
   onEdit(employe){
     this.route.navigate(['company/jobpost/',employe.id])
   }
-  
-
- 
-
-
-
 }

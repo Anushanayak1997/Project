@@ -17,8 +17,7 @@ import { RouterModule } from '@angular/router';
     MainComponent,
     HeaderComponent,
   ],
-  imports: [
-    
+  imports: [  
     CommonModule,
     FormsModule,
     RouterModule

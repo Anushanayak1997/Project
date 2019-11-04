@@ -1,9 +1,9 @@
 
 <app-header></app-header>
 
-<div *ngIf="User" class="container seekercss">
+<div *ngIf="Applicants" class="container seekercss">
     <div class="" style="padding:1%">
-        <div class="card mb-3">
+        <!-- <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
                     <img src="..." class="card-img" alt="...">
@@ -18,12 +18,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="" style="background:  #00AA9E;;" *ngFor="let jobpost of jobDetails; let i = index">
             <div class="card" >
                 <div class="card-header">
-                       <h5>{{jobpost.companyentity.companyName}}</h5>
+                       <h5>{{Applicants}}</h5>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{jobpost.jobTitle}}</h5>
