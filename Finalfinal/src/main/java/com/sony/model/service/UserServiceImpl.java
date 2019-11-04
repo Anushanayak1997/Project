@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.sony.controller.CompanyController;
 import com.sony.dao.EmployerCompanyDAO;
 import com.sony.dao.UserDAO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	public List<User> getAllUsers() {
+	public List<UserDTO> getAllUsers() {
 		return userdao.getAllUsers();
 	}
 
