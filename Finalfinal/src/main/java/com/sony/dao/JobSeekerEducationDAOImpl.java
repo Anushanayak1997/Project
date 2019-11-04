@@ -21,10 +21,9 @@ import com.sony.model.entity.User;
 
 import oracle.net.aso.l;
 
-
 @Repository
 public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
- 
+
 	private static SessionFactory factory;
 	private static final Logger logger = LoggerFactory.getLogger(JobSeekerEducationDAOImpl.class);
 
@@ -61,7 +60,7 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		List<JobSeekerEducation> education = new ArrayList<JobSeekerEducation>();
 
 		try {
-			education= session.createQuery("FROM JobSeekerEducation").list();
+			education = session.createQuery("FROM JobSeekerEducation").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -93,13 +92,14 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			JobSeekerEducation initseekereducation = (JobSeekerEducation) session.get(JobSeekerEducation.class, jobSeekerEducation.getJobSeekerEducationId());
-		//	initseekereducation.setStartingDate(jobSeekerEducation.getStartingDate());
+			JobSeekerEducation initseekereducation = (JobSeekerEducation) session.get(JobSeekerEducation.class,
+					jobSeekerEducation.getJobSeekerEducationId());
+			// initseekereducation.setStartingDate(jobSeekerEducation.getStartingDate());
 			logger.info("education");
-			//initseekereducation.setEndingDate(jobSeekerEducation.getEndingDate());
-			//initseekereducation.setEducationType(jobSeekerEducation.getEducationType());
+			// initseekereducation.setEndingDate(jobSeekerEducation.getEndingDate());
+			// initseekereducation.setEducationType(jobSeekerEducation.getEducationType());
 			initseekereducation.setMarksPercentages(jobSeekerEducation.getMarksPercentages());
-			//initseekereducation.setSpecialization(jobSeekerEducation.getSpecialization());
+			// initseekereducation.setSpecialization(jobSeekerEducation.getSpecialization());
 			session.evict(jobSeekerEducation);
 			session.update(initseekereducation);
 			tx.commit();
@@ -110,6 +110,25 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		} finally {
 			session.close();
 		}
-		
+
+	}
+
+	public void deleteSeekerEducation(int educationId) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			JobSeekerEducation education = (JobSeekerEducation)session.get(JobSeekerEducation.class, educationId); 
+			session.delete(education);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
 	}
 }

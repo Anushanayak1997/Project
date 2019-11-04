@@ -46,14 +46,24 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.getCompanies();
   }
-  topics = ["JobSeeker", "Employer", "Admin"]
+  topics = ["JobSeeker", "Employer"]
 
   gologin() {
     this.router.navigate(['login']);
   }
 
+  validateTopic(value) {
+    if (value === '1') {
+      this.topicHasError = true;
+    } else {
+      this.topicHasError = false;
+    }
+  }
+
 
   onSubmit() {
+    console.log("----->")
+    console.log(this.regiseterModel.userType)
     console.log(this.regiseterModel);
     this.user = {
       'firstName': this.regiseterModel.firstName,
@@ -78,6 +88,7 @@ export class RegisterComponent implements OnInit {
 
       
           console.log("added user");
+          sessionStorage.setItem('user_type',this.user.userType);
         } else{
               
               setTimeout(() => 
@@ -95,7 +106,7 @@ export class RegisterComponent implements OnInit {
 
 
     )
-
+     
 
   }
 
@@ -105,9 +116,9 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }
     if (this.regiseterModel.companyName == "others") {
-      console.log("hi");
+      console.log("hi others");
       this.PostCompany = null;
-      this.router.navigate(['company/details']);
+      this.router.navigate(['login']);
     }
       else{
         console.log("hi");
@@ -123,6 +134,7 @@ export class RegisterComponent implements OnInit {
       console.log(this.comp);
     
       this.PostCompany = { 'companyId': this.comp.companyId, 'userId':this.user_id };
+      sessionStorage.setItem('company_id',this.comp.companyId);
       this._http.post(this.url1, this.PostCompany).subscribe(
         (Response) => {
           console.log(Response);
@@ -143,12 +155,6 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
-  validateTopic(value) {
-    if (value === '') {
-      this.topicHasError = true;
-    } else {
-      this.topicHasError = false;
-    }
-  }
+
 
 }

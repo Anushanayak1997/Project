@@ -20,6 +20,8 @@ import { JobSeekerModule } from './job-seeker/job-seeker.module';
 import { ToastrModule } from 'ngx-toastr';
 import { from } from 'rxjs';
 import { ApplicantDetailsComponent } from './company/applicant-details/applicant-details.component';
+import { FileUploadComponent } from './job-seeker/file-upload/file-upload.component';
+import { SelectedseekersComponent } from './company/selectedseekers/selectedseekers.component';
 const routes: Routes = [
    { path: "", component: MainComponent, pathMatch: 'full' },
   {
@@ -27,6 +29,9 @@ const routes: Routes = [
   },
   {
     path: "company/jobpost", component: JobPostsComponent,
+  },
+  {
+    path: "company/selected/:Index", component: SelectedseekersComponent,
   },
   {
     path: "company/jobpost/:Index", component: EditPostComponent,
@@ -45,6 +50,9 @@ const routes: Routes = [
   },
   {
     path: "home", component: MainComponent,
+  },
+  {
+    path: "file/upload", component: FileUploadComponent,
   },
   {
     path: "login", component: LoginComponent,

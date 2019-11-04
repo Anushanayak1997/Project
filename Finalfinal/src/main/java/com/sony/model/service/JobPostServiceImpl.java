@@ -48,8 +48,8 @@ public class JobPostServiceImpl implements JobPostService {
 		Company company = companydao.getCompanyById(jobpostdto.getCompanyId());
 		Set<SkillSet> skillset = new HashSet<SkillSet>();
 
-		// Iterator<SkillSet> iterator= skillset.iterator();
-		Iterator<SkillSet> iterator = jobpostdto.getSkillset().iterator();
+	 Iterator<SkillSet> iterator= skillset.iterator();
+	//	Iterator<SkillSet> iterator = jobpostdto.getSkillset().iterator();
 		while (iterator.hasNext()) {
 			SkillSet skill = iterator.next();
 			skillset.add(skilldao.getSkillById(skill.getSkillName()));
@@ -75,8 +75,12 @@ public class JobPostServiceImpl implements JobPostService {
 	public List<JobPostDTO> getAllJobs() {
 		return jobpostdao.getAllJobs();
 	}
-
-	public void editJobPost(JobPost jobpost) {
+public void editJobPost(JobPost jobpost) {
 		jobpostdao.editJobPost(jobpost);
 	}
+
+public void deleteJobPost(int jobpostid) {
+	 jobpostdao.deleteJobPost(jobpostid);
+	
+}
 }

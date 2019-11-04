@@ -35,7 +35,7 @@
                         </span>
                 </div>
                 <div class="card-footer text-muted">
-                    <button type="button" class="btn btn-info" style="float: right;" (click)="onApply(jobpost.jobPostId)">Apply</button>
+                    <button type="button" class="btn btn-info" style="float: right;" (click)="onApply(jobpost.jobPostId)" [disabled]="jobpost.status == 1">Apply</button>
                 </div>
             </div>
             <br>

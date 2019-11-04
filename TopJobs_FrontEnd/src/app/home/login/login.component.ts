@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.cookieValue = this.cookieService.get('firstName');
   }
 
-  topics = ["JobSeeker","Employer","Admin"];
+  topics = ["JobSeeker","Admin"];
 
   userModel = new loginUser('', '',"");
   
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   validateTopic(value) {
-    if (value === 'default') {
+    if (value === '') {
       this.topicHasError = true;
     } else {
       this.topicHasError = false;
@@ -78,29 +78,35 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('user_type',this.userModel.userType);
             
             if(this.userModel.userType=="Employer"){
-              
+              console.log("employer enetered"); 
              sessionStorage.setItem('user_id',this.response.userId);
             
-             sessionStorage.setItem('company_id',this.response.companyId);
-             
-             setTimeout(() => 
-             {
-               
-               this.router.navigate(['company/jobpost']);
-             },
-             2000);
+              console.log("hi employeer");
+              console.log(sessionStorage.getItem('company_id'));
+
+             if( !this.response.companyId){
+              console.log("plss go");
+            
+             this.router.navigate(['company/details']);
+
+             }
+            else{
+            sessionStorage.setItem('company_id',this.response.companyId);
+            this.router.navigate(['company/jobpost'])
+            }
              this.Toaster.success("successfully logged In");
            }
 
             else {
-              setTimeout(() => 
-              {
+              
+             
+                console.log("jobseeker");
                 sessionStorage.setItem('user_id',this.response.userId);
                 console.log("user_id")
-                console.log(sessionStorage.getItem('user_id'))
+                console.log(sessionStorage.getItem('user_id'));
                 this.router.navigate(['seeker/home']);
-              },
-              2000);
+              
+              
               this.Toaster.success("successfully logged In");
             }
           }  

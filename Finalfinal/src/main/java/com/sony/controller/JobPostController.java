@@ -43,4 +43,9 @@ public class JobPostController {
 	public void editJobPost(@RequestBody JobPost jobpost) {
 		jobpostservice.editJobPost(jobpost);
 	}
+	
+	@RequestMapping(value = "/deletejobpost/{jobpostid}", method = RequestMethod.DELETE)
+	public void deleteJobPost(@PathVariable int jobpostid ) {
+		jobpostservice.deleteJobPost(jobpostid);
+	}
 }

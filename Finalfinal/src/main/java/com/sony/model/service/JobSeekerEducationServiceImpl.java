@@ -53,4 +53,11 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 
 	}
 
+	
+
+	public void deleteSeekerEducation(int educationId) {
+		educationdao.deleteSeekerEducation(educationId);
+		
+	}
+
 }

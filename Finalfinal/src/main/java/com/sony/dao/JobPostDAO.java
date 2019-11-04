@@ -18,6 +18,9 @@ public interface JobPostDAO {
 	public List<JobPostDTO> getAllJobs();
 
 	public void editJobPost(JobPost jobpost);
+
+
+	public void deleteJobPost(int jobpostid);
 	
 	public Integer updateNoApplicants(int jobpostId);
 

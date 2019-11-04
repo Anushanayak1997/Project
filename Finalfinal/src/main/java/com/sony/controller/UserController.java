@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.service.UserService;
+
+import com.sony.model.entity.JobSeekerProject;
+
 import com.sony.model.dto.UserDTO;
+
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -36,6 +40,11 @@ public class UserController {
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
 	public Integer addUser(@RequestBody User userentity) {
 		return userService.addUser(userentity);
+	}
+
+	@RequestMapping(value = "/edituser", method = RequestMethod.PUT)
+	public void editUser(@RequestBody User user) {
+		userService.editUser(user);
 	}
 
 	@RequestMapping(value = "/loginuser")

@@ -15,6 +15,8 @@ import com.sony.model.entity.JobSeekerProject;
 
 import com.sony.model.entity.User;
 
+import oracle.net.aso.p;
+
 @Service
 public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 
@@ -49,6 +51,11 @@ public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 
 	public void editSeekerProject(JobSeekerProject jobSeekerproject) {
 	jobseekerprojectdao.editSeekerProject(jobSeekerproject);
+		
+	}
+
+	public void deleteSeekerProject(int projectId) {
+		jobseekerprojectdao.deleteSeekerProject(projectId);
 		
 	}
 

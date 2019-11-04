@@ -15,9 +15,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
+
+import com.sony.model.entity.JobSeekerProject;
+
 import com.sony.model.dto.JobPostDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobPost;
+
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -140,6 +144,31 @@ public class UserDAOImpl implements UserDAO {
 			session.close();
 		}
 		return user;
+	}
+
+	public void editUser(User user) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			User inituser = (User) session.get(User.class, user.getUserID());
+		//	logger.info("userid"+user.getUserID());
+			
+			inituser.setFirstName(user.getFirstName());
+			inituser.setLastName(user.getLastName());
+			inituser.setEmailID(user.getEmailID());
+			inituser.setContactNumber(user.getContactNumber());
+			session.evict(user);
+			session.update(inituser);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
 	}
 
 }
