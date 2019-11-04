@@ -12,4 +12,6 @@ public interface SeekerJobPostDAO {
 	public Integer updateStatus(int userId, int jobpostId);
 
 	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId);
+
+	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId);
 }
