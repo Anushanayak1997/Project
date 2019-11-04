@@ -11,4 +11,6 @@ public interface JobSeekerProjectDAO {
 
 	List<JobSeekerProject> getProjectsById(int userId);
 
+	void editSeekerProject(JobSeekerProject jobSeekerproject);
+
 }

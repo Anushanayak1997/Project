@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
+import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
@@ -82,6 +83,28 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			session.close();
 		}
 		return result;
+	}
+	public void editSeekerProject(JobSeekerProject jobSeekerproject) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			JobSeekerProject initproject = (JobSeekerProject) session.get(JobSeekerProject.class, jobSeekerproject.getJobSeekerProjectId());
+			initproject.setDescription(jobSeekerproject.getDescription());
+			initproject.setRole(jobSeekerproject.getRole());
+			initproject.setTitle(jobSeekerproject.getTitle());
+			session.evict(jobSeekerproject);
+			session.update(initproject);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	
+		
 	}
 	
 

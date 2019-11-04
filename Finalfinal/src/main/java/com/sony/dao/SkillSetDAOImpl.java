@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -11,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.SkillSet;
 import com.sony.model.entity.User;
 
@@ -18,7 +20,7 @@ import com.sony.model.entity.User;
 public class SkillSetDAOImpl implements SkillSetDAO {
 
 	private static SessionFactory factory;
-	
+
 	public SkillSetDAOImpl() {
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
@@ -53,6 +55,16 @@ public class SkillSetDAOImpl implements SkillSetDAO {
 
 		try {
 			skillset = session.createQuery("FROM SkillSet").list();
+//			if (!users.isEmpty()) {
+//				Iterator<User> iterator = result.iterator();
+//				while (iterator.hasNext()) {
+//					User user = iterator.next();
+//					UserDTO userdto = new UserDTO(user.getUserID(), user.getPassword(), user.getFirstName(),
+//							user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+//					users.add(userdto);
+//				}
+//				// jobposts.addAll(result);
+//			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {

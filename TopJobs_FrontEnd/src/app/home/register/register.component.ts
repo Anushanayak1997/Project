@@ -137,14 +137,10 @@ export class RegisterComponent implements OnInit {
         (Response) => {
           console.log(Response);
           console.log("succees");
-
         }
       )
       this.router.navigate(['login']);
     }
-
-
-
   }
 
   getCompanies() {

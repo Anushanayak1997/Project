@@ -15,8 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
 import com.sony.model.entity.Company;
+import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.User;
+
+import oracle.net.aso.l;
 
 
 @Repository
@@ -83,5 +86,30 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 			session.close();
 		}
 		return result;
+	}
+
+	public void editSeekerEducation(JobSeekerEducation jobSeekerEducation) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			JobSeekerEducation initseekereducation = (JobSeekerEducation) session.get(JobSeekerEducation.class, jobSeekerEducation.getJobSeekerEducationId());
+		//	initseekereducation.setStartingDate(jobSeekerEducation.getStartingDate());
+			logger.info("education");
+			//initseekereducation.setEndingDate(jobSeekerEducation.getEndingDate());
+			//initseekereducation.setEducationType(jobSeekerEducation.getEducationType());
+			initseekereducation.setMarksPercentages(jobSeekerEducation.getMarksPercentages());
+			//initseekereducation.setSpecialization(jobSeekerEducation.getSpecialization());
+			session.evict(jobSeekerEducation);
+			session.update(initseekereducation);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
 	}
 }

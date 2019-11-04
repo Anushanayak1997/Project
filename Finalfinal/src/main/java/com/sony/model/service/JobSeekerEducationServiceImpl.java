@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobSeekerEducationDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.EducationDTO;
+import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.User;
 
@@ -42,6 +43,12 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 
 	public List<JobSeekerEducation> getSeekerEducationById(int userId) {
 		return educationdao.getSeekerEducationById(userId);
+	}
+
+	public void editseekereducation(JobSeekerEducation jobSeekerEducation) {
+
+		educationdao.editSeekerEducation(jobSeekerEducation);
+
 	}
 
 }

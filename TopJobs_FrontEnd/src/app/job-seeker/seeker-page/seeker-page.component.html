@@ -1,7 +1,7 @@
 
 <app-header></app-header>
 
-<div class="container seekercss">
+<div *ngIf="User" class="container seekercss">
     <div class="" style="padding:1%">
         <div class="card mb-3">
             <div class="row no-gutters">
@@ -10,8 +10,8 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{userName}} {{userLastName}}</h5>
-                        <h6>{{userEmail}}</h6>
+                        <h5 class="card-title">{{User.firstName}} {{User.lastName}}</h5>
+                        <h6>{{User.emailID}}</h6>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -20,43 +20,25 @@
             </div>
         </div>
 
-        <div class="" style="background:  #00AA9E;;">
-            <div class="card">
-                <div class="card-header" *ngIf = "jobDetails">
-                        {{jobDetails[0].jobTitle}}
+        <div class="" style="background:  #00AA9E;;" *ngFor="let jobpost of jobDetails; let i = index">
+            <div class="card" >
+                <div class="card-header">
+                       <h5>{{jobpost.company.companyName}}</h5>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Web Devloper</h5>
-                    <p class="card-text"> Job discription in shorter format With supporting text below as a natural
-                        lead-in to additional content.</p>
-                    <button type="button" class="btn btn-link">Read More</button>
+                    <h5 class="card-title">{{jobpost.jobTitle}}</h5>
+                    <p class="card-text"> {{ jobpost.jobDescription }} </p>
+                    <p class="card-text"> Experience: {{ jobpost.experience }} years</p>
+                    <p class="card-text"> Skills Required: 
+                        <span *ngFor="let skills of jobpost.skillset; let isLast=last;">
+                                    {{ skills.skillName}}{{isLast ? '' : ', '}}
+                        </span>
                 </div>
                 <div class="card-footer text-muted">
-                    2 days ago
+                    <button type="button" class="btn btn-info" style="float: right;" (click)="onApply(jobpost.jobPostId)">Apply</button>
                 </div>
             </div>
             <br>
-
-            <div class="card">
-                <div class="card-header">
-                    Company Name
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Web Devloper</h5>
-                    <p class="card-text"> Job discription in shorter format With supporting text below as a natural
-                        lead-in to additional content.</p>
-                    <button type="button" class="btn btn-link">Read More</button>
-                </div>
-                <div class="card-footer text-muted">
-                    2 days ago
-                </div>
-            </div>
-
-
-
         </div>
-
-
     </div>
-
 </div>

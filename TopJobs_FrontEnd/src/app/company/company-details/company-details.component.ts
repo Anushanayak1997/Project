@@ -32,9 +32,6 @@ export class CompanyDetailsComponent implements OnInit {
     
   }
 
-
-
-
   title = 'app';
 
   userModel = new Company('', '', '', "", '', '', "", "");
@@ -77,9 +74,6 @@ export class CompanyDetailsComponent implements OnInit {
   goEmployerDetails() {
     this.route.navigate(['company/jobpost']);
   }
-
- 
-
 }
 
 

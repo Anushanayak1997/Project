@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.EducationDTO;
+import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 
 import com.sony.model.service.JobSeekerEducationService;
@@ -43,5 +44,10 @@ public class JobSeekerEducationController {
 		else {
 			return null;
 		}
+	}
+	
+	@RequestMapping(value = "/editseekereducation", method = RequestMethod.PUT)
+	public void editSeekerEducation(@RequestBody JobSeekerEducation jobSeekerEducation) {
+		jobseekereducationservice.editseekereducation(jobSeekerEducation);
 	}
 }

@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
  
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.sony.controller.CompanyController;
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.entity.JobSeekerSkills;
 import com.sony.model.entity.SkillSet;
@@ -18,8 +22,9 @@ import com.sony.model.entity.SkillSet;
 public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 
 	private static SessionFactory factory;
-
+	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 	public JobSeekerSkillDAOImpl() {
+		
 		try {
 			factory = new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
@@ -59,6 +64,24 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 			session.close();
 		}
 		return skills;
+	}
+
+	public List<JobSeekerSkills> getSeekerSkillById(int userId) {
+		Session session = factory.openSession();
+		List<JobSeekerSkills> result = null;
+		try {
+			Query query = session.createQuery("from JobSeekerSkills where user.userID = :userId");
+			query.setParameter("userId", userId);
+			List<JobSeekerSkills> seekerprojects = new ArrayList<JobSeekerSkills>();
+			seekerprojects = query.list();
+			logger.info("Projects");
+			if (seekerprojects != null)
+				result = seekerprojects;
+		} catch (Exception ex) {
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 	}
 
