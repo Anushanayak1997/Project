@@ -128,7 +128,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState());
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
 					SeekerJobPostDTO seekerjobpostdto = new SeekerJobPostDTO(seekerjobpost.getId(),seekerjobpost.getStatus(),
 							seekerjobpost.getNotificationStatus(), userdto, jobpostdto);
 					applicants.add(seekerjobpostdto);
