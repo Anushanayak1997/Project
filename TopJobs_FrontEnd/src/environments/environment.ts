@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:"http://43.88.106.203/"
+  apiBaseUrl:"http://localhost:80/"
 };
 
 

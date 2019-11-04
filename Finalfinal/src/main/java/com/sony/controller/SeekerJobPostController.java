@@ -30,4 +30,9 @@ public class SeekerJobPostController {
 	public List<SeekerJobPostStatus> getApplicantsById(@PathVariable int jobpostId) {
 		return seekerjobpostservice.getApplicantsById(jobpostId);
 	}
+	
+	@RequestMapping(value = "/getapplicantsbyuserid/{userId}")
+	public List<SeekerJobPostStatus> getApplicantsByUserId(@PathVariable int userId) {
+		return seekerjobpostservice.getApplicantsByUserId(userId);
+	}
 }

@@ -14,15 +14,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HomeModule } from '../home/home.module';
 import { ApplicantDetailsComponent } from './applicant-details/applicant-details.component';
 
-
-
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     CompanyDetailsComponent, 
@@ -31,8 +22,6 @@ import { ApplicantDetailsComponent } from './applicant-details/applicant-details
       EmployerDetailsComponent,
        JobDescriptionComponent,
        ApplicantDetailsComponent,
-       
-
       ],
   exports: [
     CompanyDetailsComponent,

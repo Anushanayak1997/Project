@@ -50,14 +50,34 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 	public Integer updateStatus(int userId, int jobpostId) {
 		return null;
 	}
-
+ 
 	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId) {
 		Session session = factory.openSession();
 		List<SeekerJobPostStatus> applicants = new ArrayList<SeekerJobPostStatus>();
 		try {
-			String hql = "FROM seeker_jobpost_status where jobpost.jobpostId = :jobpostid";
+			String hql = "FROM SeekerJobPostStatus where jobpost.jobPostId = :jobpostid";
 			Query query = session.createQuery(hql);
 			query.setParameter("jobpostid", jobpostId);
+
+			List<SeekerJobPostStatus> result = query.list();
+			if (!result.isEmpty()) {
+				applicants = result;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return applicants;
+	}
+
+	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId) {
+		Session session = factory.openSession();
+		List<SeekerJobPostStatus> applicants = new ArrayList<SeekerJobPostStatus>();
+		try {
+			String hql = "FROM SeekerJobPostStatus where user.userID = :userid";
+			Query query = session.createQuery(hql);
+			query.setParameter("userid", userId);
 
 			List<SeekerJobPostStatus> result = query.list();
 			if (!result.isEmpty()) {
