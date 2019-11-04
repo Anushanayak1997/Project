@@ -178,7 +178,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 			session.close();
 		}
 
-	}	
+	} 	
 
 	public Integer updateNoApplicants(int jobpostId) {
 		Session session = factory.openSession();
