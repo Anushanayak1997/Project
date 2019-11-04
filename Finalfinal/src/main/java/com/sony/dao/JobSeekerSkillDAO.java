@@ -2,6 +2,7 @@ package com.sony.dao;
 
 import java.util.List;
 
+import com.sony.model.dto.SeekerSkillDTO;
 import com.sony.model.entity.JobSeekerSkills;
  
 public interface JobSeekerSkillDAO {
@@ -10,6 +11,8 @@ public interface JobSeekerSkillDAO {
 
 	public List<JobSeekerSkills> getAllSkills();
 
-	public List<JobSeekerSkills> getSeekerSkillById(int userId);
+	public List<SeekerSkillDTO> getSeekerSkillById(int userId);
+
+	public void editSeekerSkill(JobSeekerSkills skills);
 
 }

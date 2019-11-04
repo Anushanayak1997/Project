@@ -51,4 +51,9 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 		
 	}
 
+	public void deleteSeekerExperience(int experienceId) {
+		experiencedao.deleteSeekerExperience(experienceId);
+		
+	}
+
 }

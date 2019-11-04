@@ -19,4 +19,6 @@ public interface JobPostDAO {
 
 	public void editJobPost(JobPost jobpost);
 
+	public void deleteJobPost(int jobpostid);
+
 }

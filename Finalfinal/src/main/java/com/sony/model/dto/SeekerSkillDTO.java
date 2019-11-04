@@ -2,29 +2,35 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-public class SeekerSkillDTO implements Serializable{
+import com.sony.model.entity.SkillSet;
+import com.sony.model.entity.User;
+
+public class SeekerSkillDTO implements Serializable {
 
 	private int jobSeekerSkillId;
 
 	private String certificateName;
 
 	private String issuedDate;
-	
 	private int userID;
-	
 	private String skillName;
-	
-	private int skillLevel;
+
+	private UserDTO user;
+
+	private SkillSetDTO skillset;
 
 	public SeekerSkillDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public int getSkillLevel() {
-		return skillLevel;
-	}
 
-	public void setSkillLevel(int skillLevel) {
-		this.skillLevel = skillLevel;
+	public SeekerSkillDTO(int jobSeekerSkillId, String certificateName, String issuedDate, UserDTO user,
+			SkillSetDTO skillset) {
+		super();
+		this.jobSeekerSkillId = jobSeekerSkillId;
+		this.certificateName = certificateName;
+		this.issuedDate = issuedDate;
+		this.user = user;
+		this.skillset = skillset;
 	}
 
 	public int getJobSeekerSkillId() {
@@ -51,6 +57,24 @@ public class SeekerSkillDTO implements Serializable{
 		this.issuedDate = issuedDate;
 	}
 
+	
+
+	public UserDTO getUser() {
+		return user;
+	}
+
+	public void setUser(UserDTO user) {
+		this.user = user;
+	}
+
+	public SkillSetDTO getSkillset() {
+		return skillset;
+	}
+
+	public void setSkillset(SkillSetDTO skillset) {
+		this.skillset = skillset;
+	}
+
 	public int getUserID() {
 		return userID;
 	}
@@ -59,24 +83,14 @@ public class SeekerSkillDTO implements Serializable{
 		this.userID = userID;
 	}
 
-	
-
 	public String getSkillName() {
 		return skillName;
 	}
+
 	public void setSkillName(String skillName) {
 		this.skillName = skillName;
 	}
-	public SeekerSkillDTO(int jobSeekerSkillId, String certificateName, String issuedDate, int userID, String skillName,
-			int skillLevel) {
-		super();
-		this.jobSeekerSkillId = jobSeekerSkillId;
-		this.certificateName = certificateName;
-		this.issuedDate = issuedDate;
-		this.userID = userID;
-		this.skillName=skillName;
-		this.skillLevel = skillLevel;
-	}
-
+	
+	
 	
 }

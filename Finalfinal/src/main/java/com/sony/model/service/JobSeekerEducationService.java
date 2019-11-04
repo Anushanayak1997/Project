@@ -15,4 +15,8 @@ public interface JobSeekerEducationService {
 
 	void editseekereducation(JobSeekerEducation jobSeekerEducation);
 
+	
+
+	public void deleteSeekerEducation(int educationId);
+
 }

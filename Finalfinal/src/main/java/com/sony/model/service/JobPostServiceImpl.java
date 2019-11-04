@@ -78,4 +78,9 @@ public class JobPostServiceImpl implements JobPostService {
 public void editJobPost(JobPost jobpost) {
 		jobpostdao.editJobPost(jobpost);
 	}
+
+public void deleteJobPost(int jobpostid) {
+	 jobpostdao.deleteJobPost(jobpostid);
+	
+}
 }

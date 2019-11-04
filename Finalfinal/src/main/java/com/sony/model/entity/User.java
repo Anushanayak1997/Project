@@ -33,7 +33,7 @@ public class User {
 	@Column(name = "user_type")
 	private String userType;
 	
-	@ManyToMany(mappedBy="user")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="user")
 	private Set<JobSeekerSkills> skillset = new HashSet<JobSeekerSkills>();
 
 	public Set<JobSeekerSkills> getSkillset() {

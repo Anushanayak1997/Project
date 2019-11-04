@@ -11,6 +11,8 @@ public interface JobSeekerSkillService {
 
 	public List<JobSeekerSkills> getAllSkills();
 
-	public List<JobSeekerSkills> getSeekerSkillById(int userId);
+	public List<SeekerSkillDTO> getSeekerSkillById(int userId);
+
+	public void editSeekerSkill(JobSeekerSkills skills);
 
 }

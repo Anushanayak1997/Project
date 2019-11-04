@@ -27,7 +27,7 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 
 	public Integer addJobSeekerEducation(EducationDTO education) {
 		User user = userdao.getUserById(education.getUserId());
-		logger.info("User" + user.getUserID());
+	
 		JobSeekerEducation seekereducation = new JobSeekerEducation(education.getJobSeekerEducationId(),
 				education.getStartingDate(), education.getEndingDate(), education.getMarksPercentages(),
 				education.getEducationType(), education.getSpecialization(), user);
@@ -49,6 +49,13 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 
 		educationdao.editSeekerEducation(jobSeekerEducation);
 
+	}
+
+	
+
+	public void deleteSeekerEducation(int educationId) {
+		educationdao.deleteSeekerEducation(educationId);
+		
 	}
 
 }

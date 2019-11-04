@@ -39,4 +39,9 @@ public class JobSeekerProjectController {
 	public void editSeekerProject(@RequestBody JobSeekerProject jobSeekerproject) {
 		jobseekerprojectservice.editSeekerProject(jobSeekerproject);
 	}
+	
+	@RequestMapping(value = "/deleteseekerproject/{projectId}", method = RequestMethod.DELETE)
+	public void deleteSeekerProject(@PathVariable int projectId ) {
+		jobseekerprojectservice.deleteSeekerProject(projectId);
+	}
 }

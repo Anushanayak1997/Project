@@ -18,6 +18,7 @@ import com.sony.model.dto.JobPostDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.EmployerCompany;
 import com.sony.model.entity.JobPost;
+import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.SeekerJobPostStatus;
 import com.sony.model.entity.User;
 
@@ -144,5 +145,25 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	public void deleteJobPost(int jobpostid) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			JobPost jobpost = (JobPost)session.get(JobPost.class, jobpostid); 
+			session.delete(jobpost);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sony.model.dto.SeekerSkillDTO;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerSkills;
+import com.sony.model.entity.User;
 import com.sony.model.service.JobSeekerSkillService;
 
 @RestController 
@@ -31,7 +32,7 @@ public class JobSeekerSkillController {
 	}
 	
 	@RequestMapping(value = "/getseekerskillbyid/{userId}")
-	public List<JobSeekerSkills> getSeekerSkillById(@PathVariable int userId) {
+	public List<SeekerSkillDTO> getSeekerSkillById(@PathVariable int userId) {
 		if(jobseekerskillservice.getSeekerSkillById(userId) != null) {
 			return jobseekerskillservice.getSeekerSkillById(userId);
 		}
@@ -39,4 +40,9 @@ public class JobSeekerSkillController {
 			return null;
 		}
 	}
+	@RequestMapping(value = "/editseekerskill", method = RequestMethod.PUT)
+	public void editSeekerSkill(@RequestBody JobSeekerSkills skills) {
+		jobseekerskillservice.editSeekerSkill(skills);
+	}
+
 }

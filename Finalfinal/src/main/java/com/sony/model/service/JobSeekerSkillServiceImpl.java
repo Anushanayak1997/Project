@@ -33,7 +33,7 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 		User user = userdao.getUserById(skill.getUserID());
 		SkillSet skillset = skillsetdao.getSkillById(skill.getSkillName());
 		JobSeekerSkills seekerskill = new JobSeekerSkills(skill.getJobSeekerSkillId(), skill.getCertificateName(),
-				skill.getIssuedDate(), skill.getSkillLevel(), user, skillset);
+				skill.getIssuedDate(), user, skillset);
 		Integer seekerskillId = jobseekerskilldao.addJobSeekerSkill(seekerskill);
 		if (seekerskillId != null)
 			return seekerskillId;
@@ -44,8 +44,13 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 		return jobseekerskilldao.getAllSkills();
 	}
 
-	public List<JobSeekerSkills> getSeekerSkillById(int userId) {
+	public List<SeekerSkillDTO> getSeekerSkillById(int userId) {
 		return jobseekerskilldao.getSeekerSkillById(userId);
+	}
+
+	public void editSeekerSkill(JobSeekerSkills skills) {
+		jobseekerskilldao.editSeekerSkill(skills);
+		
 	}
 
 }

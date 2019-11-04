@@ -14,4 +14,6 @@ public interface UserDAO {
 	public User getUserById(int userId);
 	
 	public User authenticateuser(Login loginentity);
+
+	public void editUser(User user);
 }

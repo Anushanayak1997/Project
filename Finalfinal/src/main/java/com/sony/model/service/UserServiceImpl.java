@@ -76,4 +76,9 @@ public class UserServiceImpl implements UserService {
 	public User getUserById(int userId) {
 		return userdao.getUserById(userId);
 	}
+
+	public void editUser(User user) {
+		userdao.editUser(user);
+		
+	}
 }

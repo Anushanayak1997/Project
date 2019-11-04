@@ -15,4 +15,6 @@ public interface UserService {
 	public User getUserById(int userId);
 
 	public HashMap<String, Integer> authenticateuser(Login loginentity);
+
+	public void editUser(User user);
 }

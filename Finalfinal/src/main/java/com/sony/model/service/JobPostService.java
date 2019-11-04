@@ -17,4 +17,6 @@ public interface JobPostService {
 
 	public void editJobPost(JobPost jobpost);
 
+	public void deleteJobPost(int jobpostid);
+
 }
