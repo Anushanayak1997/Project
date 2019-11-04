@@ -9,8 +9,8 @@
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@127.0.0.1:1521:XE</property>
 
 
-		<property name="hibernate.connection.username">monisha</property>
-		<property name="hibernate.connection.password">klms1234567</property>
+		<property name="hibernate.connection.username">anusha</property>
+		<property name="hibernate.connection.password">butterfly</property>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.defaut_schema">ANUSHA</property>
