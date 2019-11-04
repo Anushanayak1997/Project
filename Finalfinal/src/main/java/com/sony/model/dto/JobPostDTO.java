@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.SkillSet;
 
-public class JobPostDTO implements Serializable{
+public class JobPostDTO implements Serializable {
 
 	private int companyId;
 	private int jobPostId;
@@ -26,6 +26,44 @@ public class JobPostDTO implements Serializable{
 	private String city;
 	private String state;
 	private Set<SkillSet> skillset;
+	private Company company;
+
+	public JobPostDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state) {
+		this.jobPostId = jobPostId;
+		this.jobTitle = jobTitle;
+		this.jobDescription = jobDescription;
+		this.isActive = isActive;
+		this.experience = experience;
+		this.noOfApplicants = noOfApplicants;
+		this.postDate = postDate;
+		this.noOfVacancies = noOfVacancies;
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+	}
+
+	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
+			Set<SkillSet> skillset, Company company) {
+		this.jobPostId = jobPostId;
+		this.jobTitle = jobTitle;
+		this.jobDescription = jobDescription;
+		this.isActive = isActive;
+		this.experience = experience;
+		this.noOfApplicants = noOfApplicants;
+		this.postDate = postDate;
+		this.noOfVacancies = noOfVacancies;
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+		this.skillset = skillset;
+		this.company = company;
+	}
 
 	public int getCompanyId() {
 		return companyId;
@@ -121,7 +159,7 @@ public class JobPostDTO implements Serializable{
 
 	public void setState(String state) {
 		this.state = state;
-	}
+	} 
 
 	public Set<SkillSet> getSkillset() {
 		return skillset;
@@ -131,13 +169,12 @@ public class JobPostDTO implements Serializable{
 		this.skillset = skillset;
 	}
 
-//	public LinkedList<SkillSet> getSkillset() {
-//		return skillset;
-//	}
-//
-//	public void setSkillset(LinkedList<SkillSet> skillset) {
-//		this.skillset = skillset;
-//	}
+	public Company getCompany() {
+		return company;
+	}
 
-	
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 }

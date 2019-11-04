@@ -46,6 +46,9 @@ public class User {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
+	
+	public User() {
+	}
 
 	public String getUserType() {
 		return userType;

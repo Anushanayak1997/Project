@@ -180,7 +180,7 @@ public class JobPost {
 	@Column(name = "state")
 	private String state;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "JOB_POST_SKILL", joinColumns = @JoinColumn(name = "job_post_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private Set<SkillSet> skillset = new HashSet<SkillSet>();
 

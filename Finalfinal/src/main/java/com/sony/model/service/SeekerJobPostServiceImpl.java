@@ -2,6 +2,8 @@ package com.sony.model.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,8 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 
 	@Autowired
 	SeekerJobPostDAO seekerjobpostdao;
+	
+	private static final Logger logger = LoggerFactory.getLogger(SeekerJobPostServiceImpl.class);
 
 	public Integer addSeekerJobPost(SeekerJobPostDTO seekerjobpostdto) {
 		User user = userdao.getUserById(seekerjobpostdto.getUserId());
@@ -33,15 +37,16 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 		return seekerjobpostdao.addSeekerJobPost(seekerjobpost);
 	}
 	
-	public Integer updateSatus(SeekerJobPostDTO seekerjobpostdto) {
-		return seekerjobpostdao.updateStatus(seekerjobpostdto.getUserId(), seekerjobpostdto.getJobpostId());
+	public void updateSatus(SeekerJobPostDTO seekerjobpostdto) {
+		seekerjobpostdao.updateStatus(seekerjobpostdto);
 	}
 
-	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId) {
+	public List<SeekerJobPostDTO> getApplicantsById(int jobpostId) {
+		// logger.info("applicants in serviceeeee" + seekerjobpostdao.getApplicantsById(jobpostId));
 		return seekerjobpostdao.getApplicantsById(jobpostId);
 	}
 
-	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId) {
+	public List<SeekerJobPostDTO> getApplicantsByUserId(int userId) {
 		return seekerjobpostdao.getApplicantsByUserId(userId);
 	}
 }
