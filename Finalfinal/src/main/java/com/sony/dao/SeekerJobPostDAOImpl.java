@@ -50,7 +50,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 	public Integer updateStatus(int userId, int jobpostId) {
 		return null;
 	}
-
+ 
 	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId) {
 		Session session = factory.openSession();
 		List<SeekerJobPostStatus> applicants = new ArrayList<SeekerJobPostStatus>();
