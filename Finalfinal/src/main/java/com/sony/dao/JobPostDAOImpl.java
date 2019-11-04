@@ -76,7 +76,8 @@ public class JobPostDAOImpl implements JobPostDAO {
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
 				// jobposts.addAll(result);
@@ -124,7 +125,8 @@ public class JobPostDAOImpl implements JobPostDAO {
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(), jobpost.getCompanyentity());
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
 			}
@@ -155,5 +157,26 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
+	}
+
+	public Integer updateNoApplicants(int jobpostId) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Integer result = null;
+		try {
+			tx = session.beginTransaction();
+			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;
+			Query query = session.createQuery("update JobPost set noOfApplicants = noOfApplicants + 1 where jobPostId = :jobpostid");
+			query.setParameter("jobpostid", jobpostId);
+			result = query.executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 }
