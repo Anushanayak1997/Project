@@ -23,11 +23,13 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.userType=sessionStorage.getItem('user_type');
+    
     if(this.userType == 'Employer'){
       console.log("correct user");
     }else{
       this.route.navigate(['home']);
     }
+    
   }
 
 
@@ -35,7 +37,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   title = 'app';
 
-  userModel = new Company('a1', 'a1', 'a1', "a1", 'a1', 'a1', "a1", "a1");
+  userModel = new Company('', '', '', "", '', '', "", "");
   
   errorMsg = '';
 

@@ -3,9 +3,11 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RegiseterUser } from 'src/app/home/H_user';
 import { job_seeker_education, job_seeker_skills, job_seeker_project, job_seeker_experience } from '../Jobseeker';
 import { SeekerService } from '../seeker.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Response } from 'selenium-webdriver/http';
+
 
 @Component({
   selector: 'app-seeker-profile',
@@ -25,9 +27,11 @@ export class SeekerProfileComponent implements OnInit {
   Ug_type: any = "";
   postProject: any;
   url = environment.apiBaseUrl + "addjobseekerproject";
+  url_update_info = environment.apiBaseUrl + "edituser";
   url_experience = environment.apiBaseUrl + "addjobseekerexperience";
-
-
+  url_delete_project = environment.apiBaseUrl + "deleteseekerproject";
+  url_add_edu = environment.apiBaseUrl + "addjobseekereducation";
+  url_delete_experience = environment.apiBaseUrl + "deleteseekerexperience";
 
   userInfo = new RegiseterUser(
     "",
@@ -42,34 +46,34 @@ export class SeekerProfileComponent implements OnInit {
   userEducation10 = new job_seeker_education(
     "",
     "",
-    77,
-    11,
-    1,
-    19,
+    "",
+    "",
+    "",
+    "",
   )
   userEducation12 = new job_seeker_education(
     "",
     "",
-    77,
-    11,
-    1,
-    19,
+    "",
+    "",
+    "",
+    "",
   )
 
   userEducationUG = new job_seeker_education(
     "",
     "",
-    77,
-    11,
-    1,
-    19,
+    "",
+    "",
+    "",
+    "",
   )
 
   userSkills = new job_seeker_skills(
     "",
     "",
-    1,
-    2,
+    "",
+    "",
   )
 
   userProjects = new job_seeker_project(
@@ -78,7 +82,7 @@ export class SeekerProfileComponent implements OnInit {
     ""
   )
 
-  
+
   userProjectsAdd = new job_seeker_project(
     "",
     "",
@@ -116,10 +120,31 @@ export class SeekerProfileComponent implements OnInit {
   marksug: any;
   userID: string;
   postExperience: any;
+  updateInfo: any;
+  idstored: any;
+  mySubscription: any;
+  post10: {};
+  post12:any;
+  postUG: any;
+  currenturl:any;
+  constructor(private Seeker: SeekerService, private router: Router, private http: HttpClient) {
+     this.currenturl= this.router.url
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
+      this.mySubscription = this.router.events.subscribe((event) => {
+        if (event instanceof this.currenturl) {
+          // Trick the Router into believing it's last link wasn't previously loaded
+          this.router.navigated = false;
+        }
+      });
 
-  constructor(private Seeker: SeekerService, private router: Router, private http: HttpClient) { }
+      console.log("route")
+      
+  }
 
   ngOnInit() {
+
     this.userType = sessionStorage.getItem('user_type');
     this.userID = sessionStorage.getItem('user_id');
     console.log(this.userID)
@@ -138,9 +163,16 @@ export class SeekerProfileComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
+  }
+
   addProject() {
+
     this.postProject = {
-      'userId':this.userID,
+      'userId': this.userID,
       'title': this.userProjectsAdd.title,
       'role': this.userProjectsAdd.role,
       'description': this.userProjectsAdd.description
@@ -153,25 +185,83 @@ export class SeekerProfileComponent implements OnInit {
         console.log("project succesfully added")
       }
     )
+
+    this.ngOnInit();
+
+
   }
 
+  addEducation10() {
+    this.post10 = {
+      'userId': this.userID,
+      'educationType' :'10th',
+      'startingDate':this.userEducation10.start_date,
+      'endingDate':this.userEducation10.end_date,
+      'marksPercentages':this.userEducation10.marks_percentage
+    }
+    console.log(this.post10);
+    this.http.post(this.url_add_edu,this.post10).subscribe(
+      (Response)=>{
+        console.log(Response)
+        console.log("10th added")
+      }
+    )
+  }
 
-  addExperience(){
-    this.postExperience ={
-      'userId':this.userID,
-      'jobTitle':this.AdduserExperience.job_title,
-      'startDate':this.AdduserExperience.start_date,
-      'endtDate':this.AdduserExperience.end_date,
-      'jobDescription':this.AdduserExperience.job_description,
-      'streetAddress':this.AdduserExperience.streetaddress,
-      'city':this.AdduserExperience.city,
-      'state':this.AdduserExperience.state
+  addEducation12() {
+    this.post12 = {
+      'userId': this.userID,
+      'educationType' :'12th',
+      'startingDate':this.userEducation12.start_date,
+      'endingDate':this.userEducation12.end_date,
+      'marksPercentages':this.userEducation12.marks_percentage,
+    
+    }
+    this.http.post(this.url_add_edu,this.post12).subscribe(
+      (Response)=>{
+        console.log(Response);
+        console.log("12th added");
+      }
+    )
+    
+ 
+   }
+
+   addEducationUG() {
+    this.postUG = {
+      'userId': this.userID,
+      'educationType' :'ug',
+      'startingDate':this.userEducation12.start_date,
+      'endingDate':this.userEducation12.end_date,
+      'marksPercentages':this.userEducation12.marks_percentage
+    }
+    this.http.post(this.url_add_edu,this.postUG).subscribe(
+      (Response)=>{
+        console.log(Response);
+        console.log("UG added")
+      }
+    )
+ 
+   }
+
+
+  addExperience() {
+    this.postExperience = {
+      'userId': this.userID,
+      'jobTitle': this.AdduserExperience.job_title,
+      'startDate': this.AdduserExperience.start_date,
+      'endDate': this.AdduserExperience.end_date,
+      'jobDescription': this.AdduserExperience.job_description,
+      'streetAddress': this.AdduserExperience.streetaddress,
+      'city': this.AdduserExperience.city,
+      'state': this.AdduserExperience.state
     }
 
+    console.log("post exp")
     console.log(this.postExperience);
 
-    this.http.post(this.url_experience,this.postExperience).subscribe(
-      (Response) =>{
+    this.http.post(this.url_experience, this.postExperience).subscribe(
+      (Response) => {
         console.log(Response);
       }
     )
@@ -185,6 +275,10 @@ export class SeekerProfileComponent implements OnInit {
       (Response) => {
         console.log("info")
         this.info = Response
+        this.userInfo.firstName = this.info.firstName;
+        this.userInfo.lastName = this.info.lastName;
+        this.userInfo.emailID = this.info.emailID;
+        this.userInfo.contactNumber = this.info.contactNumber;
         console.log(this.info)
       }
     )
@@ -196,23 +290,43 @@ export class SeekerProfileComponent implements OnInit {
         console.log("education")
         console.log(Response)
         this.Eduinfo = Response;
+     
         for (let edu of this.Eduinfo) {
           console.log(edu.educationType);
           if (edu.educationType == '10th') {
             this.tenth_type = edu.educationType;
+            console.log(this.tenth_type)
             this.start10 = edu.startingDate;
             this.end10 = edu.endingDate;
             this.marks10 = edu.marksPercentages;
+
+           // this.userEducation10.education_type_id=edu.educationType
+            this.userEducation10.start_date = edu.startingDate;
+            this.userEducation10.end_date = edu.endingDate;
+            this.userEducation10.marks_percentage = edu.marksPercentages;
+
+
           } if (edu.educationType == '12th') {
             this.tweleth = edu.educationType;
+            console.log("12")
+            console.log(this.tweleth)
             this.start12 = edu.startingDate;
             this.end12 = edu.endingDate;
-            this.marks12 = edu.marksPercentages
+            this.marks12 = edu.marksPercentages;
+
+            this.userEducation12.start_date = edu.startingDate;
+            this.userEducation12.end_date = edu.endingDate;
+            this.userEducation12.marks_percentage = edu.marksPercentages;
+
           } if (edu.educationType == 'ug') {
             this.Ug_type = edu.educationType;
             this.startug = edu.startingDate;
             this.endug = edu.endingDate;
-            this.marksug = edu.marksPercentages
+            this.marksug = edu.marksPercentages;
+
+            this.userEducationUG.start_date = edu.startingDate;
+            this.userEducationUG.end_date = edu.endingDate;
+            this.userEducationUG.marks_percentage = edu.marksPercentages;
           }
         }
       }
@@ -222,11 +336,13 @@ export class SeekerProfileComponent implements OnInit {
 
 
   getCertificationInfo() {
+    console.log("seeker certifiva")
     this.Seeker.getCertificationInfo().subscribe(
       (Response) => {
         console.log("certificate")
         console.log(Response);
         this.certificate = Response
+        console.log(this.certificate)
       }
     )
   }
@@ -236,7 +352,8 @@ export class SeekerProfileComponent implements OnInit {
       (Response) => {
         console.log("experince")
         console.log(Response);
-        this.Experinceinfo = Response
+        this.Experinceinfo = Response;
+
 
       }
     )
@@ -247,7 +364,7 @@ export class SeekerProfileComponent implements OnInit {
       (Response) => {
         console.log("project")
         console.log(Response);
-        this.Projectinfo = Response
+        this.Projectinfo = Response;
       }
     )
   }
@@ -255,8 +372,64 @@ export class SeekerProfileComponent implements OnInit {
 
 
   //End of Get Methods
+  personalInfo() {
+    this.updateInfo = {
+      'userID': this.userID,
+      'firstName':this.userInfo.firstName,
+      'lastName':this.userInfo.lastName,
+      'emailID':this.userInfo.emailID,
+      'contactNumber':this.userInfo.contactNumber
+      
+    }
+    console.log(this.updateInfo);
+    this.http.put(this.url_update_info,this.updateInfo).subscribe(
+      ()=>{
+        console.log();
+        console.log("User info Updated");
+      }
+    )
+   
+  }
+
+  user10Info() {
+    console.log("10th info called");
+    console.log(this.userEducation10.start_date)
+
+  }
+
+  onDeleteProject(id: any) {
+   
+    console.log(id);
+    for (let project of this.Projectinfo) {
+      if (project.jobSeekerProjectId == id) {
+
+        this.http.delete(this.url_delete_project + "/"+id).subscribe(
+          (Response) =>{
+            console.log(Response);
+
+            console.log("project deleted")
+          }
+        )
+      }
+    }
+
+  }
 
 
 
+  deleteExperience(id: any) {
+    console.log(id)
+    console.log("Experince Deleted");
+    for (let experince of this.Experinceinfo) {
+      if(experince.jobSeekerExperienceId==id){
+        this.http.delete(this.url_delete_experience+"/"+id).subscribe(
+          (Response)=>{
+            console.log(Response);
+            console.log("deleted experince")
+          }
+        )
+      }
+    }
+  }
 
 }

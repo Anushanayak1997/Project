@@ -46,14 +46,24 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.getCompanies();
   }
-  topics = ["JobSeeker", "Employer", "Admin"]
+  topics = ["JobSeeker", "Employer"]
 
   gologin() {
     this.router.navigate(['login']);
   }
 
+  validateTopic(value) {
+    if (value === '1') {
+      this.topicHasError = true;
+    } else {
+      this.topicHasError = false;
+    }
+  }
+
 
   onSubmit() {
+    console.log("----->")
+    console.log(this.regiseterModel.userType)
     console.log(this.regiseterModel);
     this.user = {
       'firstName': this.regiseterModel.firstName,
@@ -147,12 +157,6 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
-  validateTopic(value) {
-    if (value === '') {
-      this.topicHasError = true;
-    } else {
-      this.topicHasError = false;
-    }
-  }
+
 
 }
