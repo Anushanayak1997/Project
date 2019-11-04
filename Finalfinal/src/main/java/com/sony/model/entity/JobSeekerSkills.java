@@ -1,6 +1,5 @@
 package com.sony.model.entity;
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,17 +10,61 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "job_seeker_skills")
+//@AssociationOverrides({@AssociationOverride(name = "primaryKey.user",
+//joinColumns = @JoinColumn(name = "user_id")),
+//@AssociationOverride(name = "primaryKey.group",
+//joinColumns = @JoinColumn(name = "skill_id")) })
 public class JobSeekerSkills {
 
+	//JobSeekerSkills jobSeeker=new JobSeekerSkills();
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "job_seeker_skill_sequence")
 	@SequenceGenerator(name = "job_seeker_skill_sequence", sequenceName = "JOB_SEEKER_SKILL_ID_SEQ")
 	@Column(name = "job_seeker_skill_id")
 	private int jobSeekerSkillId;
+	
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id") 
+	private User user;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "skill_id") 
+	private SkillSet skillset;
 
 	@Column(name = "certificate_name")
+	public int getJobSeekerSkillId() {
+		return jobSeekerSkillId;
+	}
+
+
+	public void setJobSeekerSkillId(int jobSeekerSkillId) {
+		this.jobSeekerSkillId = jobSeekerSkillId;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public SkillSet getSkillset() {
+		return skillset;
+	}
+
+
+	public void setSkillset(SkillSet skillset) {
+		this.skillset = skillset;
+	}
+
 	private String certificateName;
 
 	@Column(name = "issued_date")
@@ -30,23 +73,25 @@ public class JobSeekerSkills {
 	@Column(name="skill_level")
 	private int skillLevel;
 
-	@ManyToOne
-	@JoinColumn
-	private User user;
-
-	public JobSeekerSkills() {
-	}
+//	@ManyToOne
+//	@JoinColumn
+//	private User user;
 
 	
-	public JobSeekerSkills(int jobSeekerSkillId, String certificateName, String issuedDate, int skillLevel,User user ) {
+	public JobSeekerSkills(int jobSeekerSkillId, String certificateName, String issuedDate, int skillLevel,User user,SkillSet skillset ) {
 		super();
 		this.jobSeekerSkillId = jobSeekerSkillId;
 		this.certificateName = certificateName;
 		this.issuedDate = issuedDate;
 		this.skillLevel = skillLevel;
 		this.user = user;
+		this.skillset=skillset;
 		
 	}
+
+	public JobSeekerSkills() {
+	// TODO Auto-generated constructor stub
+}
 
 
 	public String getCertificateName() {

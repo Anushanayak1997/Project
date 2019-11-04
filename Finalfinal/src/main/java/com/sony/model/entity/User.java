@@ -33,6 +33,17 @@ public class User {
 	@Column(name = "user_type")
 	private String userType;
 	
+	@ManyToMany(mappedBy="user")
+	private Set<JobSeekerSkills> skillset = new HashSet<JobSeekerSkills>();
+
+	public Set<JobSeekerSkills> getSkillset() {
+		return skillset;
+	}
+
+	public void setSkillset(Set<JobSeekerSkills> skillset) {
+		this.skillset = skillset;
+	}
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 

@@ -43,7 +43,7 @@ public class JobPostSkillServiceImpl implements JobPostSkillService{
 		JobPost jobpost = jobpostservice.getJobById(jobpostid);
 		jobpostskill.setJobpost(jobpost);
 		jobpostskill.setSkillset(jobpost_skill.getSkillset());
-		jobpostskill.setSkilllevel(jobpost_skill.getSkilllevel());
+	//	jobpostskill.setSkilllevel(jobpost_skill.getSkilllevel());
 		if(jobpostskilldao.addJobSkill(jobpostskill) != null ) {
 			status = true;
 		}
