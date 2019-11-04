@@ -36,6 +36,7 @@ export class JobPostsComponent implements OnInit {
     
    this.getCompanyById();
     this.getJobsById();
+    console.log("called");
 
    
  

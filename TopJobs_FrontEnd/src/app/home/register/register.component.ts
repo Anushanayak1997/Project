@@ -78,6 +78,7 @@ export class RegisterComponent implements OnInit {
 
       
           console.log("added user");
+          sessionStorage.setItem('user_type',this.user.userType);
         } else{
               
               setTimeout(() => 
@@ -105,9 +106,9 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }
     if (this.regiseterModel.companyName == "others") {
-      console.log("hi");
+      console.log("hi others");
       this.PostCompany = null;
-      this.router.navigate(['company/details']);
+      this.router.navigate(['login']);
     }
       else{
         console.log("hi");
@@ -123,6 +124,7 @@ export class RegisterComponent implements OnInit {
       console.log(this.comp);
     
       this.PostCompany = { 'companyId': this.comp.companyId, 'userId':this.user_id };
+      sessionStorage.setItem('company_id',this.comp.companyId);
       this._http.post(this.url1, this.PostCompany).subscribe(
         (Response) => {
           console.log(Response);

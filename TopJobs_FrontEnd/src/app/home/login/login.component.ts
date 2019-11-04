@@ -75,20 +75,22 @@ export class LoginComponent implements OnInit {
         }
 
           if(this.status==true){
-            sessionStorage.setItem('user_type',this.userModel.userType);
+            //sessionStorage.setItem('user_type',this.userModel.userType);
             
             if(this.userModel.userType=="Employer"){
-              
+              console.log("employer enetered"); 
              sessionStorage.setItem('user_id',this.response.userId);
+              console.log("hi employeer");
+              console.log(sessionStorage.getItem('company_id'));
+             if(sessionStorage.getItem('company_id')==undefined){
+              console.log("checked session");
             
-             sessionStorage.setItem('company_id',this.response.companyId);
-             
-             setTimeout(() => 
-             {
-               
-               this.router.navigate(['company/jobpost']);
-             },
-             2000);
+             this.router.navigate(['company/details']);
+
+             }
+            else
+            this.router.navigate(['company/jobpost'])
+            
              this.Toaster.success("successfully logged In");
            }
 
