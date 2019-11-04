@@ -24,6 +24,7 @@ export class ApplicantDetailsComponent implements OnInit {
   }
 
   getAllApplicants() {
+    console.log(this.URL1);
     this.http.get(this.URL1).subscribe(
       (Response)=>{
         console.log("User details", Response);
