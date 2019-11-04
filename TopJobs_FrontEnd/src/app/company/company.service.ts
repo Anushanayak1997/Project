@@ -10,17 +10,20 @@ import { JobPostInterface } from './job-posts/jobPostInterface';
   providedIn: 'root'
 })
 export class CompanyService {
+  editcompany: string;
+  deletecomp: string;
   constructor(private _http: HttpClient) { }
 
-  url = environment.apiBaseUrl + "addcompanydetails";
-  url1=environment.apiBaseUrl+"addjobpost";
+  addcompany = environment.apiBaseUrl + "addcompanydetails";
+  getallcompany=environment.apiBaseUrl+"getallcompany";
+  getcompany=environment.apiBaseUrl+"getcompbyid";
 
-  private url2:string="http://localhost:3000/company"
+  //private url2:string="http://localhost:3000/company"
 
 
 
   enroll (company: Company) {
-    return this._http.post<any>(this.url, company)
+    return this._http.post<any>(this.addcompany, company)
       .pipe(catchError(this.errorHandler))
   }
 
@@ -29,24 +32,26 @@ export class CompanyService {
   }
 
 
-  getCompany():Observable<JobPostInterface[]>{
-    return this._http.get<JobPostInterface[]>(this.url2)    
+  getAllComp(){
+    return this._http.get(this.getallcompany)    
   }
 
-  getCompanyById(id:any):Observable<JobPostInterface[]>{
-    return this._http.get<JobPostInterface[]>(this.url2 +"/"+ id)
+  getCompbyId(){
+    return this._http.get(this.getcompany+"/"+ sessionStorage.getItem('company_id'));
   }
 
-  addJobPost(jobPost:JobPostInterface):Observable<JobPostInterface>{
-    return this._http.post<JobPostInterface>(this.url1,jobPost);
+  addCompany(company:Company){
+    return this._http.post(this.addcompany,company);
   }
 
-  EditCompany(company:JobPostInterface, id:number):Observable<JobPostInterface>{
-    return this._http.put<JobPostInterface>(this.url2+"/"+id,company)
+  
+
+  editCompany(id:number,company:Company){
+    return this._http.put<JobPostInterface>(this.editcompany+"/"+id,company);
   }
 
-  deleteCompany(id:number):Observable<JobPostInterface>{
-    return this._http.delete<JobPostInterface>(this.url2+"/"+id);
+  deleteJobPost(id:number){
+    return this._http.delete<JobPostInterface>(this.deletecomp+"/"+id);
   }
 
 }

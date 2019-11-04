@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { job_details } from '../job_post';
 import { CompanyService } from '../company.service';
 import { IDropdownSettings} from 'ng-multiselect-dropdown';
-
+import{JobpostService}from '../jobpost.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -49,8 +49,9 @@ export class EditPostComponent implements OnInit {
   )
  
     getskills=environment.apiBaseUrl+"getallskills";
-  
-  constructor(private companyservice: CompanyService, private route: Router, private router: ActivatedRoute, private http: HttpClient) {
+  beforejobpost: any;
+    
+  constructor(private companyservice: CompanyService, private route: Router, private router: ActivatedRoute, private http: HttpClient,private jobservice:JobpostService) {
   }
 
 date:any
@@ -60,7 +61,10 @@ date:any
       let Index = parseInt(params.get('Index'));
       console.log(Index)
       this.id = Index
+
      
+     
+      if(!this.id){
       this.http.get(this.getskills).subscribe(
         (Response)=>{
           if(Response!=null){
@@ -70,7 +74,20 @@ date:any
           }
         }
       )
+      }
+      else{
+        this.jobservice.getJobPostbyId(this.id).subscribe(
+          (Response)=>{
+            console.log(Response);
+           this.beforejobpost=Response;
+  
+          }
+        )
+
+      }
+
     })
+  
     /*this.selectedItems = [
       // { item_id: 3, item_text: 'Pune' },
       // { item_id: 4, item_text: 'Navsari' }
@@ -106,7 +123,7 @@ date:any
   
   onSubmitSecond() {
     console.log("2nd submit")
-    this.date = this.userModel.PostDate;
+    /*this.date = this.userModel.PostDate;
     console.log(this.date)
     if(this.userModel.PostDate == null ){
       this.job_edit ={
@@ -114,9 +131,26 @@ date:any
         Status:this.userModel.Status,
       //  PostDate: this.company.
       }
+    }*/
+    this.job_edit=
+    {
+    'jobTitle' : this.beforejobpost.jobTitle,
+		'jobDescription' :this.beforejobpost.jobDescription,
+		'isActive' : true,
+		'experience' : this.beforejobpost.experience,
+		'noOfApplicants' : this.beforejobpost.noOfApplicants,
+		'postDate' :this.beforejobpost.postDate,
+		'noOfVacancies':  this.userModel.Vacancy,
+	'streetAddress' :this.beforejobpost.streetAddress,
+		'city ': this.beforejobpost.city,
+		'state' :this.beforejobpost.state,
+		
+    'skillset' :this.beforejobpost.skillset,
+    'jobPostId':this.beforejobpost.jobPostId
+
     }
-    
-   this.companyservice.EditCompany(this.job_edit,this.id).subscribe(
+    console.log(this.job_edit);
+   this.jobservice.EditJobPost(this.job_edit).subscribe(
      (Response) =>{
        console.log(Response);
        console.log("edited")
@@ -143,15 +177,20 @@ date:any
       'streetAdddress': this.userModel.StreetAddress,
        'city': this.userModel.City, 
        'state': this.userModel.State,
-      'skillset':this.selectedItems
+      'skillset':this.selectedItems,
+      
     }
 
 
     console.log(this.job_post)
-    this.companyservice.addJobPost(this.job_post).subscribe(
+    this.jobservice.addJobPost(this.job_post).subscribe(
       (Response)=>{
-        console.log("success")
+        if(Response!=null){
+        console.log("success");
+        this.route.navigate(['company/jobpost']);
       }
+    }
     )
     }
+
 }
