@@ -121,4 +121,24 @@ public class JobSeekerExperience {
 		this.jobDescription = jobDescription;
 	}
 
+
+	public int getJobSeekerExperienceId() {
+		return jobSeekerExperienceId;
+	}
+
+
+	public void setJobSeekerExperienceId(int jobSeekerExperienceId) {
+		this.jobSeekerExperienceId = jobSeekerExperienceId;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 }

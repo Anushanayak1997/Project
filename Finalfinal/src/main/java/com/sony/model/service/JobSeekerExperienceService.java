@@ -14,4 +14,6 @@ public interface JobSeekerExperienceService {
 
 	public List<JobSeekerExperience> getExperienceById(int userId);
 
+	public void editSeekerExperience(JobSeekerExperience jobseekerexperience);
+
 }

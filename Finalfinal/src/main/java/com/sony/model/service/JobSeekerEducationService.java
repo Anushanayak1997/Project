@@ -7,10 +7,12 @@ import com.sony.model.entity.JobSeekerEducation;
 
 public interface JobSeekerEducationService {
 
-	Integer addJobSeekerEducation(EducationDTO education);
+	public Integer addJobSeekerEducation(EducationDTO education);
 
 	List<JobSeekerEducation> getAllSeekerEducation();
 
 	List<JobSeekerEducation> getSeekerEducationById(int userId);
+
+	void editseekereducation(JobSeekerEducation jobSeekerEducation);
 
 }

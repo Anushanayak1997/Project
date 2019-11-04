@@ -24,7 +24,7 @@ import com.sony.model.entity.SkillSet;
 
 @Service
 public class JobPostServiceImpl implements JobPostService {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(JobSeekerEducationDAOImpl.class);
 
 	@Autowired
@@ -32,10 +32,10 @@ public class JobPostServiceImpl implements JobPostService {
 
 	@Autowired
 	private CompanyDAO companydao;
-	
+
 	@Autowired
 	private SkillSetDAO skilldao;
- 
+
 	@Autowired
 	HttpSession httpsession;
 
@@ -47,8 +47,10 @@ public class JobPostServiceImpl implements JobPostService {
 	public Integer addJobPost(JobPostDTO jobpostdto) {
 		Company company = companydao.getCompanyById(jobpostdto.getCompanyId());
 		Set<SkillSet> skillset = new HashSet<SkillSet>();
+
+		// Iterator<SkillSet> iterator= skillset.iterator();
 		Iterator<SkillSet> iterator = jobpostdto.getSkillset().iterator();
-		while(iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			SkillSet skill = iterator.next();
 			skillset.add(skilldao.getSkillById(skill.getSkillName()));
 		}
@@ -56,8 +58,8 @@ public class JobPostServiceImpl implements JobPostService {
 				jobpostdto.getJobDescription(), jobpostdto.isActive(), jobpostdto.getExperience(),
 				jobpostdto.getNoOfApplicants(), jobpostdto.getPostDate(), jobpostdto.getNoOfVacancies(),
 				jobpostdto.getStreetAddress(), jobpostdto.getCity(), jobpostdto.getState(), company, skillset);
-		
-		//jobpost.setSkillset(skillset);
+
+		// jobpost.setSkillset(skillset);
 		Integer jobpostid = jobpostdao.addJobPost(jobpost);
 		if (jobpostid != null)
 			return jobpostid;
