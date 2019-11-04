@@ -70,7 +70,7 @@ public class JobPostServiceImpl implements JobPostService {
 		return jobpostdao.getJobById(jobpostid);
 	}
 
-	public List<JobPost> getAllJobs() {
+	public List<JobPostDTO> getAllJobs() {
 		return jobpostdao.getAllJobs();
 	}
 

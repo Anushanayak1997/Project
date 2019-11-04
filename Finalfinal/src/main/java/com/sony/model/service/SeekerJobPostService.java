@@ -10,9 +10,9 @@ public interface SeekerJobPostService {
 	
 	public Integer addSeekerJobPost(SeekerJobPostDTO seekerjobpostdto);
 
-	public Integer updateSatus(SeekerJobPostDTO seekerJobPostDTO);
+	public void updateSatus(SeekerJobPostDTO seekerJobPostDTO);
 
-	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId);
+	public List<SeekerJobPostDTO> getApplicantsById(int jobpostId);
 
-	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId);
+	public List<SeekerJobPostDTO> getApplicantsByUserId(int userId);
 }

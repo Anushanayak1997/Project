@@ -1,51 +1,35 @@
-package com.sony.model.entity;
+package com.sony.model.dto;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 
-@Entity
-@Table(name = "USER_REGISTER")
-public class User {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_sequence")
-    @SequenceGenerator(name = "user_sequence", sequenceName = "USER_ID_SEQ")
-	@Column(name = "user_id")
+public class UserDTO implements Serializable {
+
 	private int userID;
-	
-	@Column(name = "password")
 	private String password;
-	
-	@Column(name = "firstname")
 	private String firstName;
-	
-	@Column(name = "lastname")
 	private String lastName;
-	
-	@Column(name = "email_id")
 	private String emailID;
-	
-	@Column(name = "contact_no")
 	private String contactNumber;
-	
-	@Column(name = "user_type")
 	private String userType;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
+	public UserDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	
-	public User() {
-	}
-
-	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
+	public UserDTO(int userID, String password, String firstName, String lastName, String emailID, String contactNumber,
+			String userType) {
+		super();
+		this.userID = userID;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailID = emailID;
+		this.contactNumber = contactNumber;
 		this.userType = userType;
 	}
+
 
 	public int getUserID() {
 		return userID;
@@ -95,12 +79,12 @@ public class User {
 		this.contactNumber = contactNumber;
 	}
 
-	public Set<SeekerJobPostStatus> getSeekerjobpost() {
-		return seekerjobpost;
+	public String getUserType() {
+		return userType;
 	}
 
-	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
-		this.seekerjobpost = seekerjobpost;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
-	
+
 }
