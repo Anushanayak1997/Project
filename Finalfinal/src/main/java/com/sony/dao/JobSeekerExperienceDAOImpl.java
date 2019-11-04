@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.entity.User;
@@ -80,6 +81,31 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 			}
 			return result;
 		}
+
+	public void editSeekerExperience(JobSeekerExperience jobseekerexperience) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			JobSeekerExperience initexperience = (JobSeekerExperience) session.get(JobSeekerExperience.class, jobseekerexperience.getJobSeekerExperienceId());
+			initexperience.setJobTitle(jobseekerexperience.getJobTitle());
+			
+//			initjobpost.setIsActive(jobpost.getIsActive());
+//			initjobpost.setNoOfVacancies(jobpost.getNoOfVacancies());
+//			
+			session.evict(jobseekerexperience);
+			session.update(initexperience);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		
+	}
 
 	}
 

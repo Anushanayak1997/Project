@@ -11,4 +11,6 @@ public interface JobSeekerSkillService {
 
 	public List<JobSeekerSkills> getAllSkills();
 
+	public List<JobSeekerSkills> getSeekerSkillById(int userId);
+
 }

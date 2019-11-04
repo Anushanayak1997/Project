@@ -46,4 +46,9 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 		return experiencedao.getExperienceById(userId);
 	}
 
+	public void editSeekerExperience(JobSeekerExperience jobseekerexperience) {
+		experiencedao.editSeekerExperience(jobseekerexperience);
+		
+	}
+
 }

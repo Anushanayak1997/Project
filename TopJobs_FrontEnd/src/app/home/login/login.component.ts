@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.cookieValue = this.cookieService.get('firstName');
   }
 
-  topics = ["JobSeeker","Employer","Admin"];
+  topics = ["JobSeeker","Admin"];
 
   userModel = new loginUser('', '',"");
   
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   validateTopic(value) {
-    if (value === 'default') {
+    if (value === '') {
       this.topicHasError = true;
     } else {
       this.topicHasError = false;

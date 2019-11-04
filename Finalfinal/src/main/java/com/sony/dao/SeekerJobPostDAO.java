@@ -9,9 +9,9 @@ public interface SeekerJobPostDAO {
 
 	public Integer addSeekerJobPost(SeekerJobPostStatus seekerjobpost);
 	
-	public Integer updateStatus(int userId, int jobpostId);
+	public void updateStatus(SeekerJobPostDTO seekerjobpostdto);
 
-	public List<SeekerJobPostStatus> getApplicantsById(int jobpostId);
+	public List<SeekerJobPostDTO> getApplicantsById(int jobpostId);
 
-	public List<SeekerJobPostStatus> getApplicantsByUserId(int userId);
+	public List<SeekerJobPostDTO> getApplicantsByUserId(int userId);
 }

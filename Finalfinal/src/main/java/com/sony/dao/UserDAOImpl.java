@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -14,6 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
+import com.sony.model.dto.JobPostDTO;
+import com.sony.model.dto.UserDTO;
+import com.sony.model.entity.JobPost;
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -21,7 +25,7 @@ import com.sony.model.entity.User;
 public class UserDAOImpl implements UserDAO {
 
 	private static SessionFactory factory;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
 	public UserDAOImpl() {
@@ -36,9 +40,10 @@ public class UserDAOImpl implements UserDAO {
 	public Integer addUser(User userentity) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer userId = null; 
-		
-		if(isUserExists(userentity)) return userId;
+		Integer userId = null;
+
+		if (isUserExists(userentity))
+			return userId;
 
 		try {
 			tx = session.beginTransaction();
@@ -53,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userId;
 	}
-	
+
 	public User getUserById(int userId) {
 		Session session = factory.openSession();
 		User result = null;
@@ -86,12 +91,22 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
-	public List<User> getAllUsers() {
+	public List<UserDTO> getAllUsers() {
 		Session session = factory.openSession();
-		List<User> users = new ArrayList<User>();
+		List<UserDTO> users = new ArrayList<UserDTO>();
 
 		try {
-			users = session.createQuery("FROM User").list();
+			List<User> result = session.createQuery("FROM User").list();
+			if (!users.isEmpty()) {
+				Iterator<User> iterator = result.iterator();
+				while (iterator.hasNext()) {
+					User user = iterator.next();
+					UserDTO userdto = new UserDTO(user.getUserID(), user.getPassword(), user.getFirstName(),
+							user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+					users.add(userdto);
+				}
+				// jobposts.addAll(result);
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
@@ -103,16 +118,17 @@ public class UserDAOImpl implements UserDAO {
 	public User authenticateuser(Login loginentity) {
 
 		User user = getUserByemailId(loginentity.getEmailId());
-		if (user != null && user.getEmailID().equals(loginentity.getEmailId()) && user.getPassword().equals(loginentity.getPassword())) {
+		if (user != null && user.getEmailID().equals(loginentity.getEmailId())
+				&& user.getPassword().equals(loginentity.getPassword())) {
 			return user;
 		} else {
 			return null;
-		} 
+		}
 	}
- 
+
 	private User getUserByemailId(String emailID) {
 		Session session = factory.openSession();
-		User user=null;
+		User user = null;
 
 		try {
 			Query query = session.createQuery("from User where emailID='" + emailID + "'");

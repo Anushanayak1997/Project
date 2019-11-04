@@ -46,4 +46,9 @@ public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 		return jobseekerprojectdao.getProjectsById(userId);
 	}
 
+	public void editSeekerProject(JobSeekerProject jobSeekerproject) {
+	jobseekerprojectdao.editSeekerProject(jobSeekerproject);
+		
+	}
+
 }
