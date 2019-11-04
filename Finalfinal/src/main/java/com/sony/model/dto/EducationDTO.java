@@ -2,12 +2,14 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-public class EducationDTO implements Serializable{
+public class EducationDTO implements Serializable {
 
 	private int jobSeekerEducationId;
-	private String startingDate; 
+	private String startingDate;
 	private String endingDate;
 	private double marksPercentages;
+	private String educationType;
+	private String Specialization;
 	private int userId;
 
 	public EducationDTO() {
@@ -51,6 +53,22 @@ public class EducationDTO implements Serializable{
 
 	public void setMarksPercentages(double marksPercentages) {
 		this.marksPercentages = marksPercentages;
+	}
+
+	public String getEducationType() {
+		return educationType;
+	}
+
+	public void setEducationType(String educationType) {
+		this.educationType = educationType;
+	}
+
+	public String getSpecialization() {
+		return Specialization;
+	}
+
+	public void setSpecialization(String specialization) {
+		Specialization = specialization;
 	}
 
 }

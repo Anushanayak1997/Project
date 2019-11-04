@@ -12,14 +12,14 @@ export class SeekerService {
 
   constructor(private http:HttpClient) { }
 
-  url_user = environment.apiBaseUrl + "getuserbyid/"  + 1;
-  url_edu = environment.apiBaseUrl + "getseekereducationbyid/"  + 1;
-  url_skills = environment.apiBaseUrl + "getseekerskillsbyid/" + 1;
-  url_experience = environment.apiBaseUrl + "getexperiencebyid/" + 1;
-  url_projects = environment.apiBaseUrl + "getallseekerprojects/" + 1;
+  url_user = environment.apiBaseUrl + "getuserbyid/"  +  sessionStorage.getItem('user_id');;
+  url_edu = environment.apiBaseUrl + "getseekereducationbyid/"  + sessionStorage.getItem('user_id');
+  url_skills = environment.apiBaseUrl + "getseekerskillsbyid/" + sessionStorage.getItem('user_id');;
+  url_experience = environment.apiBaseUrl + "getexperiencebyid/" +  sessionStorage.getItem('user_id');;
+  url_projects = environment.apiBaseUrl + "getallseekerprojects/" + sessionStorage.getItem('user_id');;
 
 getPersonalInfo():Observable<seeker_Profile>{
-  let id=1;
+
   return this.http.get<seeker_Profile>(this.url_user);
 }
 

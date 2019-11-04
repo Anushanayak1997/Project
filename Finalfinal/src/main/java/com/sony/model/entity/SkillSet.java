@@ -29,7 +29,8 @@ public class SkillSet implements Serializable {
 	@Column(name = "skill_id")
 	private int skillId;
 
-	private LinkedList<JobPost> jobpost = new LinkedList<JobPost>();
+//	@ManyToMany(mappedBy = "skillset")
+//	private Set<JobPost> jobpost = new HashSet<JobPost>();
 	
 	@Column(name = "skill_name")
 	private String skillName;
@@ -50,14 +51,11 @@ public class SkillSet implements Serializable {
 		this.skillName = skillName;
 	}
 
-	@ManyToMany(mappedBy = "skillset")
-	public LinkedList<JobPost> getJobpost() {
-		return jobpost;
-	}
-
-	public void setJobpost(LinkedList<JobPost> jobpost) {
-		this.jobpost = jobpost;
-	}
-	
-	
+//	public Set<JobPost> getJobpost() {
+//		return jobpost;
+//	}
+//
+//	public void setJobpost(Set<JobPost> jobpost) {
+//		this.jobpost = jobpost;
+//	}
 }

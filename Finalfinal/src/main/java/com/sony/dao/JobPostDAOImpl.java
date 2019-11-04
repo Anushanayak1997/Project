@@ -9,6 +9,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.Company;
@@ -20,6 +22,8 @@ import com.sony.model.entity.User;
 public class JobPostDAOImpl implements JobPostDAO {
 
 	private static SessionFactory factory;
+	
+	private static final Logger logger = LoggerFactory.getLogger(JobPostDAOImpl.class);
 
 	public JobPostDAOImpl() {
 		try {
@@ -59,7 +63,6 @@ public class JobPostDAOImpl implements JobPostDAO {
 			String hql = "FROM JobPost where companyentity.companyId = :companyid";
 			Query query = session.createQuery(hql);
 			query.setParameter("companyid", companyId);
-
 			List<JobPost> result = query.list();
 			if (!result.isEmpty()) {
 				jobposts.addAll(result);
@@ -81,7 +84,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 			Query query = session.createQuery(hql);
 			query.setParameter("jobpostid", jobpostid);
 			JobPost job = (JobPost) query.uniqueResult();
-			if(job != null) {
+			if (job != null) {
 				jobpost = job;
 			}
 		} catch (HibernateException e) {
@@ -92,4 +95,41 @@ public class JobPostDAOImpl implements JobPostDAO {
 		return jobpost;
 	}
 
+	public List<JobPost> getAllJobs() {
+		Session session = factory.openSession();
+		List<JobPost> jobposts = new ArrayList<JobPost>();
+		try {
+			String hql = "FROM JobPost";
+			Query query = session.createQuery(hql);
+			List<JobPost> result = query.list();
+			if (!result.isEmpty()) {
+				jobposts.addAll(result);
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return jobposts;
+	}
+
+	public void editJobPost(JobPost jobpost) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			JobPost initjobpost = (JobPost) session.get(JobPost.class, jobpost.getJobPostId());
+			initjobpost.setIsActive(jobpost.getIsActive());
+			initjobpost.setNoOfVacancies(jobpost.getNoOfVacancies());
+			session.evict(jobpost);
+			session.update(initjobpost);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
 }
