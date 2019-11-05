@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sony.model.dto.CompanyDTO;
@@ -21,6 +22,6 @@ public interface CompanyService {
 
 	public Company getCompanyById(int companyId);
 	
-	public int store(MultipartFile file, int companyId , HttpSession session);  
+	public int store(MultipartFile file, int companyId , HttpSession session); 
 
 }

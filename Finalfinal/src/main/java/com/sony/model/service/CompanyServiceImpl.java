@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -73,7 +74,6 @@ public class CompanyServiceImpl implements CompanyService {
 		Path rootLocation = Paths.get("D:/");
 		System.out.println("rootLocation  ==  " + rootLocation);
 //		UserDetail user = companydao.getUserById(userId);
-//		logger.info("LALALALALALLALALA" + user.getUserId());
 		String nameExtension[] = file.getContentType().split("/");
 		String profileImage = userId + "." + nameExtension[1];
 		System.out.println("ProfileImage  :: " + profileImage);

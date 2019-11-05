@@ -2,11 +2,14 @@ package com.sony.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,4 +61,15 @@ public class CompanyController {
 		logger.info("Fileeee" + file.getName() + "Useriddddd" + companyId);
         return companyservice.store(file, companyId, session);          
     }  
+	
+	@RequestMapping(value = "/download")
+	public Resource getFileFromFileSystem(HttpServletResponse response) {
+		response.setContentType("application/pdf");
+		response.setHeader("Content-Disposition", "attachment; filename=1.pdf");
+		response.setHeader("filename", "1.pdf");
+		Resource resource = null;
+		resource = new FileSystemResource("D:/1.pdf");
+		logger.info("Resource" + resource.getFilename());
+		return resource;
+	}
 }
