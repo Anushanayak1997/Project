@@ -7,7 +7,7 @@ export class job_details {
       public    Vacancy: any,
       public   PostDate: String,
       public   jobDescription: String,
-      public   experience: String,
+      public   experience: any,
       public   Specalities: String,
 
       public   StreetAddress: String,

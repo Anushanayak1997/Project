@@ -27,14 +27,6 @@ public class SkillSet {
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "skillset")
 	private Set<JobSeekerSkills> user = new HashSet<JobSeekerSkills>();
 
-	public Set<JobSeekerSkills> getUser() {
-		return user;
-	}
-
-	public void setUser(Set<JobSeekerSkills> user) {
-		this.user = user;
-	}
-
 	public int getSkillId() {
 		return skillId;
 	}
@@ -49,5 +41,13 @@ public class SkillSet {
 
 	public void setSkillName(String skillName) {
 		this.skillName = skillName;
+	}
+
+	public Set<JobSeekerSkills> getUser() {
+		return user;
+	}
+
+	public void setUser(Set<JobSeekerSkills> user) {
+		this.user = user;
 	}
 }

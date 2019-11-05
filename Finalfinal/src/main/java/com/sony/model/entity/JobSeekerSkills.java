@@ -40,7 +40,6 @@ public class JobSeekerSkills {
 //	private int skillLevel;
 
 	public JobSeekerSkills() {
-
 	}
 
 	public JobSeekerSkills(int jobSeekerSkillId, String certificateName, String issuedDate, User user,

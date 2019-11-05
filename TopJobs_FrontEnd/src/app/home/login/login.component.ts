@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.cookieValue = this.cookieService.get('firstName');
   }
 
-  topics = ["JobSeeker","Admin"];
+  topics = ["JobSeeker","Employer"];
 
   userModel = new loginUser('', '',"");
   
@@ -118,5 +118,9 @@ export class LoginComponent implements OnInit {
     )
     
       
+    }
+
+    register(){
+      this.router.navigate(['register']);
     }
     }

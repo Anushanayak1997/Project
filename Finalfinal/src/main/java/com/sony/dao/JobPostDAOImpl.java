@@ -1,8 +1,12 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,8 +15,17 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 import com.sony.model.dto.JobPostDTO;
+
+import com.sony.model.dto.SeekerJobPostDTO;
+import com.sony.model.dto.SkillSetDTO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.JobPost;
+import com.sony.model.entity.JobSeekerEducation;
+import com.sony.model.entity.SeekerJobPostStatus;
+import com.sony.model.entity.SkillSet;
+import com.sony.model.entity.User;
+
 
 @Repository
 public class JobPostDAOImpl implements JobPostDAO {
@@ -63,11 +76,21 @@ public class JobPostDAOImpl implements JobPostDAO {
 			if (!result.isEmpty()) {
 				Iterator<JobPost> iterator = result.iterator();
 				while (iterator.hasNext()) {
+					
 					JobPost jobpost = iterator.next();
+					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
+					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
+					
+					while (iterators.hasNext()) {
+						SkillSet skillset = iterators.next();
+						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+						skillsets.add(skillsetdto);
+					}
+					
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), skillsets,
 							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
@@ -90,10 +113,19 @@ public class JobPostDAOImpl implements JobPostDAO {
 			query.setParameter("jobpostid", jobpostid);
 			JobPost job = (JobPost) query.uniqueResult();
 			if (job != null) {
+				
+				Iterator<SkillSet> iterators = job.getSkillset().iterator();
+				Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
+				
+				while (iterators.hasNext()) {
+					SkillSet skillset = iterators.next();
+					SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+					skillsets.add(skillsetdto);
+				}
 				jobpostdto = new JobPostDTO(job.getJobPostId(), job.getJobTitle(), job.getJobDescription(),
 						job.getIsActive(), job.getExperience(), job.getNoOfApplicants(), job.getPostDate(),
 						job.getNoOfVacancies(), job.getStreetAddress(), job.getCity(), job.getState(),
-						job.getSkillset(), job.getCompanyentity());
+						skillsets, job.getCompanyentity());
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -115,10 +147,18 @@ public class JobPostDAOImpl implements JobPostDAO {
 				Iterator<JobPost> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					JobPost jobpost = iterator.next();
+					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
+					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
+					
+					while (iterator.hasNext()) {
+						SkillSet skillset = iterators.next();
+						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+						skillsets.add(skillsetdto);
+					}
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), skillsets,
 							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
@@ -128,7 +168,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		//logger.info("JOb postssss" + jobposts.get(0).getJobPostId());
+
 		return jobposts;
 	}
 

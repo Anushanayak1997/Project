@@ -50,8 +50,8 @@ export class ApplicantDetailsComponent implements OnInit {
   }
 
   selected(){
-    let id=sessionStorage.getItem('company_id');
- this.route.navigate(['/company/selected/'+id])
+  
+ this.route.navigate(['/company/selected/'+this.jobpostId])
 
   }
 }

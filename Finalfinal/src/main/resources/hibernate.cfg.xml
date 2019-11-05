@@ -16,6 +16,7 @@
 		<property name="hibernate.defaut_schema">ANUSHA</property>
 		<property name="show_sql">true</property>
 		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<mapping class="com.sony.model.entity.User" />
 		<mapping class="com.sony.model.entity.JobPost"/>
@@ -31,6 +32,9 @@
 		<mapping class="com.sony.model.entity.JobSeekerCourse" />
 		<mapping class="com.sony.model.entity.JobSeekerEducationType" />
 		<mapping class="com.sony.model.entity.SeekerJobPostStatus" />
+		
+		
+		<mapping class="com.sony.model.entity.UserDetail" />
 	
 	
    				

@@ -2,6 +2,8 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
+
+
 public class SkillSetDTO implements Serializable{
 	
 	private int skillId;
@@ -13,7 +15,9 @@ public class SkillSetDTO implements Serializable{
 		this.skillId = skillId;
 		this.skillName = skillName;
 	}
-
+public SkillSetDTO() {
+	// TODO Auto-generated constructor stub
+}
 	public int getSkillId() {
 		return skillId;
 	}
@@ -29,5 +33,9 @@ public class SkillSetDTO implements Serializable{
 	public void setSkillName(String skillName) {
 		this.skillName = skillName;
 	}
+
+	
+	
+	
 
 }

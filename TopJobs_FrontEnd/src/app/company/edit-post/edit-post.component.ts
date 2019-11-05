@@ -21,7 +21,7 @@ export class EditPostComponent implements OnInit {
   company =[];
   location: any;
   skills:any;
-
+  status:boolean=false;
   dropdownList :any;
   selectedItems :any;
   dropdownSettings :IDropdownSettings ;
@@ -35,7 +35,7 @@ export class EditPostComponent implements OnInit {
     ""
     , "",
     "",
-    "",
+    0,
     "",
     "",
     "",
@@ -128,20 +128,18 @@ date:any
   
   onSubmitSecond() {
     console.log("2nd submit")
-    /*this.date = this.userModel.PostDate;
-    console.log(this.date)
-    if(this.userModel.PostDate == null ){
-      this.job_edit ={
-        id: this.id,
-        Status:this.userModel.Status,
-      //  PostDate: this.company.
-      }
-    }*/
+    console.log(this.userModel.Status);
+    if(this.userModel.Status=="true"){
+
+  
+      this.status=true;
+    }
+   
     this.job_edit=
     {
     'jobTitle' : this.beforejobpost.jobTitle,
 		'jobDescription' :this.beforejobpost.jobDescription,
-		'isActive' : true,
+		'isActive' : this.userModel.Status,
 		'experience' : this.beforejobpost.experience,
 		'noOfApplicants' : this.beforejobpost.noOfApplicants,
 		'postDate' :this.beforejobpost.postDate,
@@ -158,7 +156,8 @@ date:any
    this.jobservice.EditJobPost(this.job_edit).subscribe(
      (Response) =>{
        console.log(Response);
-       console.log("edited")
+       console.log("edited");
+       this.route.navigate(['company/jobpost']);
      }
    )
   }
@@ -167,6 +166,16 @@ date:any
     console.log("hi");
     console.log(this.selectedItems);
     this.location = { }
+    
+   console.log(this.userModel.Status);
+    if(this.userModel.Status=="true"){
+
+  
+      this.status=true;
+    }
+   
+   
+    
     console.log(sessionStorage.getItem('company_id'));
     this.job_post = {
       
@@ -198,4 +207,5 @@ date:any
     )
     }
 
+    
 }
