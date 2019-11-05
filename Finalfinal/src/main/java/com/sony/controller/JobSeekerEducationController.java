@@ -50,4 +50,9 @@ public class JobSeekerEducationController {
 	public void editSeekerEducation(@RequestBody JobSeekerEducation jobSeekerEducation) {
 		jobseekereducationservice.editseekereducation(jobSeekerEducation);
 	}
+	
+	@RequestMapping(value = "/deleteseekereducation/{educationId}", method = RequestMethod.DELETE)
+	public void deleteSeekerEducation(@PathVariable int educationId ) {
+		jobseekereducationservice.deleteSeekerEducation(educationId);
+	}
 }

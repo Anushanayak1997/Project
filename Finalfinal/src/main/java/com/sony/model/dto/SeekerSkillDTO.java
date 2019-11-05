@@ -2,7 +2,10 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-public class SeekerSkillDTO implements Serializable{
+import com.sony.model.entity.SkillSet;
+import com.sony.model.entity.User;
+
+public class SeekerSkillDTO implements Serializable {
 
 	private int jobSeekerSkillId;
 
@@ -10,16 +13,24 @@ public class SeekerSkillDTO implements Serializable{
 
 	private String issuedDate;
 	
-	private int userId;
+	private int userID;
 	
-	private int skillLevel;
+	private String skillName;
+	private UserDTO user;
+	private SkillSetDTO skillset;
 
-	public int getSkillLevel() {
-		return skillLevel;
+	public SeekerSkillDTO() {
+		
 	}
 
-	public void setSkillLevel(int skillLevel) {
-		this.skillLevel = skillLevel;
+	public SeekerSkillDTO(int jobSeekerSkillId, String certificateName, String issuedDate, UserDTO user,
+			SkillSetDTO skillset) {
+		super();
+		this.jobSeekerSkillId = jobSeekerSkillId;
+		this.certificateName = certificateName;
+		this.issuedDate = issuedDate;
+		this.user = user;
+		this.skillset = skillset;
 	}
 
 	public int getJobSeekerSkillId() {
@@ -46,12 +57,36 @@ public class SeekerSkillDTO implements Serializable{
 		this.issuedDate = issuedDate;
 	}
 
-	public int getUserId() {
-		return userId;
+	public UserDTO getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
-	
+
+	public SkillSetDTO getSkillset() {
+		return skillset;
+	}
+
+	public void setSkillset(SkillSetDTO skillset) {
+		this.skillset = skillset;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public String getSkillName() {
+		return skillName;
+	}
+
+	public void setSkillName(String skillName) {
+		this.skillName = skillName;
+	}
+
 }

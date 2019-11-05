@@ -15,6 +15,8 @@ public interface JobSeekerExperienceDAO {
 
 	public void editSeekerExperience(JobSeekerExperience jobseekerexperience);
 
+	public void deleteSeekerExperience(int experienceId);
+
 	 
 
 }

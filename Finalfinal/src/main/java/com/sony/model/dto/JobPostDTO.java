@@ -17,22 +17,22 @@ public class JobPostDTO implements Serializable {
 	private int jobPostId;
 	private String jobTitle;
 	private String jobDescription;
-	private boolean isActive;
-	private String experience;
+	private String isActive;
+	private int experience;
 	private int noOfApplicants;
 	private String postDate;
 	private int noOfVacancies;
 	private String streetAddress;
 	private String city;
 	private String state;
-	private Set<SkillSet> skillset;
+	private Set<SkillSetDTO> skillset;
 	private Company company;
 
 	public JobPostDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, String isActive, int experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state) {
 		this.jobPostId = jobPostId;
 		this.jobTitle = jobTitle;
@@ -47,9 +47,9 @@ public class JobPostDTO implements Serializable {
 		this.state = state;
 	}
 
-	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, String isActive, int experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
-			Set<SkillSet> skillset, Company company) {
+			Set<SkillSetDTO> skillset, Company company) {
 		this.jobPostId = jobPostId;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
@@ -97,19 +97,11 @@ public class JobPostDTO implements Serializable {
 		this.jobDescription = jobDescription;
 	}
 
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public String getExperience() {
+	public int getExperience() {
 		return experience;
 	}
 
-	public void setExperience(String experience) {
+	public void setExperience(int experience) {
 		this.experience = experience;
 	}
 
@@ -159,13 +151,13 @@ public class JobPostDTO implements Serializable {
 
 	public void setState(String state) {
 		this.state = state;
-	} 
+	}
 
-	public Set<SkillSet> getSkillset() {
+	public Set<SkillSetDTO> getSkillset() {
 		return skillset;
 	}
 
-	public void setSkillset(Set<SkillSet> skillset) {
+	public void setSkillset(Set<SkillSetDTO> skillset) {
 		this.skillset = skillset;
 	}
 
@@ -175,6 +167,14 @@ public class JobPostDTO implements Serializable {
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
 	}
 
 }

@@ -25,7 +25,7 @@ public class JobPostController {
 	}
 	
 	@RequestMapping(value = "/getjobsbyid/{jobpostId}")
-	public JobPost getJobById(@PathVariable int jobpostId) {
+	public JobPostDTO getJobById(@PathVariable int jobpostId) {
 		return jobpostservice.getJobById(jobpostId);
 	}
 	
@@ -42,5 +42,10 @@ public class JobPostController {
 	@RequestMapping(value = "/editjobpost", method = RequestMethod.PUT)
 	public void editJobPost(@RequestBody JobPost jobpost) {
 		jobpostservice.editJobPost(jobpost);
+	}
+	
+	@RequestMapping(value = "/deletejobpost/{jobpostid}", method = RequestMethod.DELETE)
+	public void deleteJobPost(@PathVariable int jobpostid ) {
+		jobpostservice.deleteJobPost(jobpostid);
 	}
 }

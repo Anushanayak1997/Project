@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobSeekerExperienceDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.SeekerExperienceDTO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.User;
 
@@ -25,7 +26,8 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 	UserDAO userdao;
 
 	public Integer addJobSeekerExperience(SeekerExperienceDTO experience) {
-		User user = userdao.getUserById(experience.getUserId());
+		UserDTO userdto = userdao.getUserById(experience.getUserId());
+		User user = new User(userdto);
 		logger.info("User" + user.getUserID());
 		JobSeekerExperience seekerexperience = new JobSeekerExperience(experience.getJobSeekerExperienceId(),
 				experience.getJobTitle(), experience.getStartDate(), experience.getEndDate(),
@@ -48,6 +50,11 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 
 	public void editSeekerExperience(JobSeekerExperience jobseekerexperience) {
 		experiencedao.editSeekerExperience(jobseekerexperience);
+		
+	}
+
+	public void deleteSeekerExperience(int experienceId) {
+		experiencedao.deleteSeekerExperience(experienceId);
 		
 	}
 

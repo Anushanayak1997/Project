@@ -13,6 +13,7 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.entity.JobPost;
+import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerExperience;
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.entity.User;
@@ -95,6 +96,26 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 //			
 			session.evict(jobseekerexperience);
 			session.update(initexperience);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+		
+	}
+
+	public void deleteSeekerExperience(int experienceId) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			JobSeekerExperience experience = (JobSeekerExperience)session.get(JobSeekerExperience.class, experienceId); 
+			session.delete(experience);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)

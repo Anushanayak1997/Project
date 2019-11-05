@@ -15,4 +15,6 @@ public interface SeekerJobPostService {
 	public List<SeekerJobPostDTO> getApplicantsById(int jobpostId);
 
 	public List<SeekerJobPostDTO> getApplicantsByUserId(int userId);
+	
+	public List<SeekerJobPostDTO> getSelectedUsers(int jobpostId);
 }

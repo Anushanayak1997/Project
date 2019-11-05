@@ -136,6 +136,8 @@ import java.util.Set;
 //=======
 import javax.persistence.*;
 
+import com.sony.model.dto.JobPostDTO;
+
 @Entity
 @Table(name = "job_post")
 public class JobPost {
@@ -153,10 +155,10 @@ public class JobPost {
 	private String jobDescription;
 
 	@Column(name = "is_active")
-	private boolean isActive;
+	private String isActive;
 
 	@Column(name = "experience")
-	private String experience;
+	private int experience;
 
 	@Column(name = "no_of_applicants")
 	private int noOfApplicants;
@@ -184,13 +186,17 @@ public class JobPost {
 	@JoinTable(name = "JOB_POST_SKILL", joinColumns = @JoinColumn(name = "job_post_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private Set<SkillSet> skillset = new HashSet<SkillSet>();
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "jobpost")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "jobpost")
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
-	public JobPost() {
+	public JobPost(JobPostDTO jobpostdto) {
 	}
 
-	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+	public JobPost() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public JobPost(int jobPostId, String jobTitle, String jobDescription, String isActive, int experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
 			Company companyentity, Set<SkillSet> skillset) {
 		this.jobPostId = jobPostId;
@@ -264,19 +270,11 @@ public class JobPost {
 		this.jobDescription = jobDescription;
 	}
 
-	public boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public String getExperience() {
+	public int getExperience() {
 		return experience;
 	}
 
-	public void setExperience(String experience) {
+	public void setExperience(int experience) {
 		this.experience = experience;
 	}
 
@@ -300,6 +298,14 @@ public class JobPost {
 		return noOfVacancies;
 	}
 
+	public void setSkillset(Set<SkillSet> skillset) {
+		this.skillset = skillset;
+	}
+
+	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
+		this.seekerjobpost = seekerjobpost;
+	}
+
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
@@ -308,17 +314,16 @@ public class JobPost {
 		return skillset;
 	}
 
-
-//	public void setSkillset(Set<SkillSet> skillset) {
-//		this.skillset = skillset;
-//	}
-
 	public Set<SeekerJobPostStatus> getSeekerjobpost() {
 		return seekerjobpost;
 	}
 
-//	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
-//		this.seekerjobpost = seekerjobpost;
-//	}
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
 
 }

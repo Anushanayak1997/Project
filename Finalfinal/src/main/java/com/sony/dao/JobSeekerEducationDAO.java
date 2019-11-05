@@ -15,4 +15,8 @@ public interface JobSeekerEducationDAO {
 	List<JobSeekerEducation> getSeekerEducationById(int userId);
 
 	void editSeekerEducation(JobSeekerEducation jobSeekerEducation);
+
+	
+
+	void deleteSeekerEducation(int educationId);
 }
