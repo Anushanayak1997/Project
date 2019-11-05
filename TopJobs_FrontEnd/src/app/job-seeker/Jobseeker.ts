@@ -10,8 +10,8 @@ export class job_seeker_skills {
     constructor(
         public certificate_name: string,
         public certificate_issue_date: string,
-        public skill_id: string,
-        public skil_level: string
+        public skill_name: any,
+       
     ) { }
 }
 
@@ -27,6 +27,7 @@ export class job_seeker_experience {
         
     ) { }
 }
+
 
 export class job_seeker_education {
     constructor(
@@ -59,6 +60,11 @@ export interface Education {
 export interface Certification {
      certificate_name: string,
      certificate_issue_date: string,
+     skill_name:string,
+     
+
+
+
 }
 
 

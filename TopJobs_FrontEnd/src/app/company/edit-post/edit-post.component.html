@@ -36,10 +36,10 @@
                         </th>
 
                         <th scope="row">
-                            <input type="text" #Status="ngModel" required class="form-control"
-                                [class.is-invalid]="Status.invalid && Status.touched" name="Status"
-                                [(ngModel)]="userModel.Status" placeholder={{beforejobpost.status}}>
-                            <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
+                            <input type="radio" value="true" name="status" [(ngModel)]="userModel.Status" > Active
+                            <input type="radio" value="false" name="status" [(ngModel)]="userModel.Status" > InActive
+    
+                            <small class="text-danger" [class.d-none]="status.valid || status.untouched">Status is
                                 required</small>
 
                         </th>
@@ -63,7 +63,7 @@
                         </th>
                         
                         <th scope="row">
-                                <input type="text" #PostDate="ngModel" required class="form-control"
+                                <input type="text" #PostDate="ngModel" disabled required class="form-control"
                                     [class.is-invalid]="PostDate.invalid && PostDate.touched" name="PostDate"
                                     [(ngModel)]="userModel.PostDate" placeholder={{beforejobpost.postDate}}>
     
@@ -115,21 +115,29 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id=""><strong>Status</strong></span>
                         </div>
+                        
+                        
+                        <input type="radio" value="true" name="status" [(ngModel)]="userModel.Status" > Active
+                        <input type="radio" value="false" name="status" [(ngModel)]="userModel.Status" > InActive
 
-
-                        <input type="text" #Status="ngModel" required class="form-control"
+                      <!--  <input type="text" #Status="ngModel" required class="form-control"
                             [class.is-invalid]="Status.invalid && Status.touched" name="Status"
                             [(ngModel)]="userModel.Status">
                         <small class="text-danger" [class.d-none]="Status.valid || Status.untouched">Status is
-                            required</small>
+                            required</small>-->
 
                     </div>
 
-                    <ng-multiselect-dropdown [placeholder]="'custom placeholder'" [data]="dropdownList"
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><strong>Skills</strong></span>
+                        </div>
+
+                    <ng-multiselect-dropdown [placeholder]="'select skills'" [data]="dropdownList"
                         [(ngModel)]="selectedItems" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
                         (onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemDeSelect($event)" name="skills">
                     </ng-multiselect-dropdown>
-
+                    </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id=""><strong>Vacancy</strong></span>
@@ -148,7 +156,7 @@
                             <span class="input-group-text" id=""><strong>experience</strong></span>
                         </div>
 
-                        <input type="text" #experience="ngModel" required class="form-control"
+                        <input type="number" #experience="ngModel" required class="form-control"
                             [class.is-invalid]="experience.invalid && experience.touched" name="experience"
                             [(ngModel)]="userModel.experience">
                         <small class="text-danger" [class.d-none]="experience.valid || experience.untouched">experience
@@ -164,7 +172,7 @@
                             [class.is-invalid]="Specalities.invalid && Specalities.touched" name="Specalities"
                             [(ngModel)]="userModel.Specalities">
                         <small class="text-danger"
-                            [class.d-none]="Specalities.valid || experience.untouched">Specalities
+                            [class.d-none]="Specalities.valid ||Specalities.untouched">Specalities
                             is required</small>
 
                     </div>
