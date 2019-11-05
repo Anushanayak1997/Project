@@ -107,7 +107,7 @@
 
                     <input type="number" #contactNumber="ngModel" required class="form-control"
                         [class.is-invalid]="contactNumber.invalid && contactNumber.touched" name="contactNumber"
-                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber">
+                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" pattern="[789][0-9]{9}">
                     <small class="text-danger"
                         [class.d-none]="contactNumber.valid || contactNumber.untouched">contactNumber
                         is
@@ -142,6 +142,9 @@
                 <button class="btn btn-info btn-space btnStyle" (click)="onNext()"
                     [disabled]="userForm.form.invalid || topicHasError  "><strong>login</strong>
                 </button>
+            <br>
+                <button type="button" class="btn btn-link" (click)="login()">Already registered?login here</button>
+                
             </article>
 
 

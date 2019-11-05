@@ -2,8 +2,7 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-import com.sony.model.entity.SkillSet;
-import com.sony.model.entity.User;
+
 
 public class SeekerSkillDTO implements Serializable {
 

@@ -6,34 +6,33 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-
 import com.sony.model.dto.JobPostDTO;
+
 import com.sony.model.dto.SeekerJobPostDTO;
 import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
-import com.sony.model.entity.EmployerCompany;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.SeekerJobPostStatus;
 import com.sony.model.entity.SkillSet;
 import com.sony.model.entity.User;
 
+
 @Repository
 public class JobPostDAOImpl implements JobPostDAO {
 
 	private static SessionFactory factory;
 
-	private static final Logger logger = LoggerFactory.getLogger(JobPostDAOImpl.class);
+//	private static final Logger logger = LoggerFactory.getLogger(JobPostDAOImpl.class);
 
 	public JobPostDAOImpl() {
 		try {
@@ -169,6 +168,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
+
 		return jobposts;
 	}
 

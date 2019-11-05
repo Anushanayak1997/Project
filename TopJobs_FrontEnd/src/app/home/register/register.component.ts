@@ -4,6 +4,8 @@ import { RegiseterUser } from '../H_user';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { LoginComponent } from '../login/login.component';
+
 
 
 
@@ -44,6 +46,7 @@ export class RegisterComponent implements OnInit {
   )
 
   ngOnInit() {
+    
     this.getCompanies();
   }
   topics = ["JobSeeker", "Employer"]
@@ -73,7 +76,7 @@ export class RegisterComponent implements OnInit {
       'contactNumber': this.regiseterModel.contactNumber,
       'userType': this.regiseterModel.userType
     }
-
+console.log(this.user);
 
    /* this.PostCompanyid = {
       companyID: this.regiseterModel.companyID
@@ -155,6 +158,9 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
+login(){
+  this.router.navigate(['login']);
+}
 
 
 }

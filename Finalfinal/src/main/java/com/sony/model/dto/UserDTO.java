@@ -2,7 +2,7 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+
 
 public class UserDTO implements Serializable {
 
@@ -15,7 +15,7 @@ public class UserDTO implements Serializable {
 	private String userType;
 	
 	public UserDTO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public UserDTO(int userID, String password, String firstName, String lastName, String emailID, String contactNumber,

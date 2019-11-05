@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sony.model.dto.CompanyDTO;
 import com.sony.model.entity.Company;
-import com.sony.model.entity.User;
+
 
 public interface CompanyService {
 

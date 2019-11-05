@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.SeekerJobPostDTO;
-import com.sony.model.entity.SeekerJobPostStatus;
-import com.sony.model.entity.User;
 import com.sony.model.service.SeekerJobPostService;
 
 

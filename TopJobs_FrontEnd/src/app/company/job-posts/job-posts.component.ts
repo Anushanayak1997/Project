@@ -16,6 +16,7 @@ import { from } from 'rxjs';
 })
 export class JobPostsComponent implements OnInit {
   url = environment.apiBaseUrl + "companydetails";
+  url1=environment.apiBaseUrl+"deletejobpost";
    details:any;
    company:any;
    companyDesc:any;
@@ -84,7 +85,9 @@ this.jobservice.getJobPostbyCompId()
   }
   
   onDelete(id:any){
-    
+    console.log("delete");
+    this._http.delete(this.url1+"/"+id).subscribe(()=>
+    console.log("deleted"))
   }
   applicants(id:any){
 

@@ -34,10 +34,10 @@ public class SeekerJobPostServiceImpl implements SeekerJobPostService {
 	@Autowired
 	SeekerJobPostDAO seekerjobpostdao;
 	
-	private static final Logger logger = LoggerFactory.getLogger(SeekerJobPostServiceImpl.class);
+//	private static final Logger logger = LoggerFactory.getLogger(SeekerJobPostServiceImpl.class);
 
 	public Integer addSeekerJobPost(SeekerJobPostDTO seekerjobpostdto) {
-		logger.info("Full seekerjobpost" + seekerjobpostdto.getJobpostId());
+		// logger.info("Full seekerjobpost" + seekerjobpostdto.getJobpostId());
 		UserDTO userdto = userdao.getUserById(seekerjobpostdto.getUserId());
 		User user = new User(userdto);
 

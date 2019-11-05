@@ -2,5 +2,11 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body {
-    background-color: gainsboro;
+ /*   background-color: rgb(186, 243, 212);
+    background-image: url("./assets/img/banner1.jpg");*/
+    height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: repeat-y; /* Do not repeat the image */
+  background-size: cover;
   }
+

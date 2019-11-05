@@ -1,6 +1,6 @@
 <div class="navbar-fixed-top">
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand"  [routerLink]="['/home']">
             <h4 class="display-6" style="color: wheat;">TopJobs</h4>
 
         </a>
@@ -22,10 +22,10 @@
 
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" [routerLink]="['/home']">Home</a>
+                            <a class="dropdown-item" routerLink="/seeker/home">Home</a>
                             <a class="dropdown-item" routerLink="/seeker/profile">profile </a>
                             <a class="dropdown-item" routerLink="/seeker/status">status</a>
-                            <a class="dropdown-item" routerLink="/seeker/account">account</a>
+                            <a class="dropdown-item" routerLink="/manage/account">account</a>
                         </div>
                     </div>
                 </div>
@@ -36,9 +36,9 @@
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" routerLink="/seeker/home">Home</a>
-                        <a class="dropdown-item" routerLink="/seeker/profile">profile </a>
-                        <a class="dropdown-item" routerLink="/seeker/status">status</a>
-                        <a class="dropdown-item" routerLink="/seeker/account">account</a>
+                        <a class="dropdown-item" routerLink="/company/jobpost">Job posts</a>
+                        
+                        <a class="dropdown-item" routerLink="/manage/account">account</a>
                     </div>
                 </div>
 

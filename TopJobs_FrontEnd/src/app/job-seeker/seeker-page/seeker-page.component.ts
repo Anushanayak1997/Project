@@ -11,7 +11,7 @@ import { RouteConfigLoadEnd, Router } from '@angular/router';
 export class SeekerPageComponent implements OnInit {
 
   userId = sessionStorage.getItem('user_id');
-  url1 = environment.apiBaseUrl + "getuserbyid/" + this.userId;
+  url1 = environment.apiBaseUrl + "getuserbyid/"+sessionStorage.getItem('user_id');
   url2 = environment.apiBaseUrl + "getalljobs";
   url3 = environment.apiBaseUrl + "applyjobpost";
   url4 = environment.apiBaseUrl + "getapplicantsbyuserid/" + this.userId;
@@ -36,6 +36,7 @@ export class SeekerPageComponent implements OnInit {
   }
 
   getJobSeeker(){
+    console.log(sessionStorage.getItem('user_id'));
     this.http.get(this.url1).subscribe(
       (Response)=>{
         console.log("User details", Response);

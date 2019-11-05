@@ -22,6 +22,9 @@ import { from } from 'rxjs';
 import { ApplicantDetailsComponent } from './company/applicant-details/applicant-details.component';
 import { FileUploadComponent } from './job-seeker/file-upload/file-upload.component';
 import { SelectedseekersComponent } from './company/selectedseekers/selectedseekers.component';
+import { FindCandidatesComponent } from './home/find-candidates/find-candidates.component';
+import { SeekerViewComponent } from './job-seeker/seeker-view/seeker-view.component';
+import { LoadingComponent } from './home/loading/loading.component';
 const routes: Routes = [
    { path: "", component: MainComponent, pathMatch: 'full' },
   {
@@ -61,16 +64,25 @@ const routes: Routes = [
     path: "register", component: RegisterComponent,
   },
   {
+    path: "seekers", component: FindCandidatesComponent,
+  },
+  {
+    path: "loading...", component: LoadingComponent,
+  },
+  {
     path: "seeker/home", component: SeekerPageComponent,
   },
   {
     path: "seeker/profile", component:SeekerProfileComponent
   },
   {
+    path: "seeker/:id", component:SeekerViewComponent
+  },
+  {
     path: "seeker/status", component: ApplicationStatusComponent,
   },
   {
-    path: "seeker/account", component: ManageAccountComponent,
+    path: "manage/account", component: ManageAccountComponent,
   },
 
 

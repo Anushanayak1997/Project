@@ -27,8 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sony.model.dto.CompanyDTO;
 import com.sony.model.entity.Company;
-import com.sony.model.entity.JobPost;
-import com.sony.model.entity.User;
 import com.sony.model.service.CompanyService;
 
 @RestController

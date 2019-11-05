@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.SeekerProjectDTO;
-import com.sony.model.entity.JobSeekerEducation;
+
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.service.JobSeekerProjectService;
 
@@ -21,7 +21,7 @@ public class JobSeekerProjectController {
 	public JobSeekerProjectService jobseekerprojectservice;
 	
 	@RequestMapping(value = "/getallseekerprojects")
-	public List<JobSeekerProject> getAllProjects() {
+	public List<SeekerProjectDTO> getAllProjects() {
 		return jobseekerprojectservice.getAllProject();
 	}
 	
@@ -31,7 +31,7 @@ public class JobSeekerProjectController {
 	}
 	
 	@RequestMapping(value = "/getallseekerprojects/{userId}")
-	public List<JobSeekerProject> getProjectsById(@PathVariable int userId) {
+	public List<SeekerProjectDTO> getProjectsById(@PathVariable int userId) {
 		return jobseekerprojectservice.getProjectById(userId);
 	}
 	

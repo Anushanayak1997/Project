@@ -11,7 +11,6 @@ import com.sony.dao.JobSeekerEducationDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.EducationDTO;
 import com.sony.model.dto.UserDTO;
-import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.User;
 

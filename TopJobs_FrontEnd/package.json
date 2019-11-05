@@ -27,6 +27,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "moment": "^2.24.0",
+    "ng-image-slider": "^2.2.0",
     "ng-modals": "^1.0.4",
     "ng-multiselect-dropdown": "^0.2.6",
     "ngx-cookie-service": "^2.2.0",

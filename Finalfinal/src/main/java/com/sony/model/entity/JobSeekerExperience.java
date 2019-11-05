@@ -1,4 +1,5 @@
 package com.sony.model.entity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,46 +11,46 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="job_seeker_experience")
+@Table(name = "job_seeker_experience")
 public class JobSeekerExperience {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator = "job_seeker_experience_sequence")
-    @SequenceGenerator(name = "job_seeker_experience_sequence", sequenceName = "JOB_SEEKER_EXPERIENCE_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "job_seeker_experience_sequence")
+	@SequenceGenerator(name = "job_seeker_experience_sequence", sequenceName = "JOB_SEEKER_EXPERIENCE_ID_SEQ")
 	@Column(name = "job_seeker_experience_id")
 	private int jobSeekerExperienceId;
 
-	@Column(name="job_title")
+	@Column(name = "job_title")
 	private String jobTitle;
 
-	@Column(name="start_date")
+	@Column(name = "start_date")
 	private String startDate;
-	
-	@Column(name="end_date")
+
+	@Column(name = "end_date")
 	private String endDate;
 
-	@Column(name="job_description")
+	@Column(name = "job_description")
 	private String jobDescription;
-	
-	@Column(name="street_address")
+
+	@Column(name = "street_address")
 	private String streetAddress;
-	
-	@Column(name="city")
+
+	@Column(name = "city")
 	private String city;
-	
-	@Column(name="state")
+
+	@Column(name = "state")
 	private String state;
+
 	public String getStreetAddress() {
 		return streetAddress;
 	}
-	
+
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	public JobSeekerExperience() {
 	}
-	
 
 	public JobSeekerExperience(int jobSeekerExperienceId, String jobTitle, String startDate, String endDate,
 			String jobDescription, String streetAddress, String city, String state, User user) {
@@ -64,7 +65,6 @@ public class JobSeekerExperience {
 		this.state = state;
 		this.user = user;
 	}
-
 
 	public void setStreetAddress(String streetAddress) {
 		this.streetAddress = streetAddress;
@@ -86,8 +86,6 @@ public class JobSeekerExperience {
 		this.state = state;
 	}
 
-	
-
 	public String getJobTitle() {
 		return jobTitle;
 	}
@@ -96,9 +94,8 @@ public class JobSeekerExperience {
 		this.jobTitle = jobTitle;
 	}
 
-	
 	public String getStartDate() {
-		return startDate; 
+		return startDate;
 	}
 
 	public void setStartDate(String startDate) {
@@ -121,21 +118,17 @@ public class JobSeekerExperience {
 		this.jobDescription = jobDescription;
 	}
 
-
 	public int getJobSeekerExperienceId() {
 		return jobSeekerExperienceId;
 	}
-
 
 	public void setJobSeekerExperienceId(int jobSeekerExperienceId) {
 		this.jobSeekerExperienceId = jobSeekerExperienceId;
 	}
 
-
 	public User getUser() {
 		return user;
 	}
-
 
 	public void setUser(User user) {
 		this.user = user;

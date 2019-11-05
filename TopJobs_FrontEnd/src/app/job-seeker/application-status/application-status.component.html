@@ -32,7 +32,7 @@
                 <tbody>
 
                     <tr *ngFor="let job_post of appliedjob_posts; let i = index">
-                        <th scope="row">{{i}}</th>
+                        <th scope="row">{{i +1}}</th>
                         <td>{{job_post.jobpost.jobTitle}}</td>
                         <td>{{job_post.jobpost.company.companyName}}</td>
                         <td>{{job_post.status}}</td>

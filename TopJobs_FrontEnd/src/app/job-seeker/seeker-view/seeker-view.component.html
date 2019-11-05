@@ -1,0 +1,93 @@
+<app-header></app-header>
+<div class="container">
+    <div class="card bg-light  shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="card-header " style="background-color: #00AA9E; ">
+            <div class="">
+                <h2> User Profile</h2>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h5 class="card-header">Personal Info</h5>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <span class="card-text">UserName:</span><b *ngIf="info">{{info.firstName}}</b><br><br>
+                <span class="card-text">UserEmail:</span><b *ngIf="info">{{info.emailID}}</b><br><br>
+                <span class="card-text">ContactNo:</span><b *ngIf="info">{{info.contactNumber}}</b><br><br>
+
+            </div>
+        </div>
+        <!--end of card-->
+        <div class="card">
+            <h5 class="card-header">Education Info</h5>
+
+            <!--10th-->
+            <div class="card-body">
+                <h5 class="card-header">10th Board:</h5>
+                <span class="card-text">start_date:</span><b *ngIf="start10">{{start10}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf="end10">{{end10}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf="marks10">{{marks10}}</b><br><br>
+
+
+
+
+                <!--12th-->
+                <h5 class="card-header">12th Board</h5>
+                <span class="card-text">start_date:</span><b *ngIf="start12">{{start12}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf="end12">{{end12}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf="marks12">{{marks12}}</b><br><br>
+
+
+
+                <!--UnderGraduate-->
+                <h5 class="card-header">UnderGraduate</h5>
+                <span class="card-text">start_date:</span><b *ngIf="startug">{{startug}}</b><br><br>
+                <span class="card-text">end_date:</span><b *ngIf="endug">{{endug}}</b><br><br>
+                <span class="card-text">marks_percentage:</span><b *ngIf="marksug">{{marksug}}</b><br><br>
+            </div>
+
+
+
+        </div>
+        <!--End of Education-->
+
+        <!--Start of project-->
+        <div class="card">
+            <h5 class="card-header">Project</h5>
+            <div *ngFor="let project of Projectinfo">
+
+
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <span class="card-text">Project_Name:</span><b *ngIf="project.title">{{project.title}}</b><br><br>
+                    <span class="card-text">description: </span><b *ngIf="project.role">{{project.role}}</b><br><br>
+                    <span class="card-text">role: </span><b *ngIf="project.description">{{project.description}}</b><br><br>
+                </div>
+            </div>
+            <!--End of for loop-->
+        </div>
+        <!--End of start project-->
+
+
+        <div class="card">
+                <h5 class="card-header">Experience</h5>
+                <div *ngFor = "let experience of Experinceinfo">
+                     
+            <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <span class="card-text">job_title:</span><b *ngIf="experience.jobTitle">{{experience.jobTitle}}</b><br><br>
+                    <span class="card-text">start_date: </span><b *ngIf="experience.startDate">{{experience.startDate}}</b><br><br>
+                    <span class="card-text">end_date: </span><b *ngIf="experience.endDate">{{experience.endDate}}</b><br><br>
+                    <span class="card-text">job_descrispantion: </span><b *ngIf="experience.jobDescription">{{experience.jobDescription}}</b><br><br>
+                    <span class="card-text">streetaddress: </span><b *ngIf="experience.streetAddress">{{experience.streetAddress}}</b><br><br>
+                    <span class="card-text">city: </span><b *ngIf="experience.city">{{experience.city}}</b><br><br>
+                    <span class="card-text">state: </span><b *ngIf="experience.state">{{experience.state}}</b><br><br>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+    <!--end of main card-->
+</div>

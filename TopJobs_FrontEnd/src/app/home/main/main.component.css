@@ -7,3 +7,10 @@
      border-color:#00AA9E ; 
      color: wheat;
 }
+
+
+img {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+  }

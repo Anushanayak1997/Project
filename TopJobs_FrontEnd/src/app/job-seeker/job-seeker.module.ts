@@ -9,12 +9,14 @@ import { SeekerPageComponent } from './seeker-page/seeker-page.component';
 import { SeekerProfileComponent } from './seeker-profile/seeker-profile.component';
 import { HomeModule } from '../home/home.module';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { SeekerViewComponent } from './seeker-view/seeker-view.component';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
 @NgModule({
-  declarations: [SeekerProfileComponent, ApplicationStatusComponent, ManageAccountComponent, SeekerPageComponent, FileUploadComponent],
+  declarations: [SeekerProfileComponent, ApplicationStatusComponent, ManageAccountComponent, SeekerPageComponent, FileUploadComponent, SeekerViewComponent],
   exports: [
     SeekerPageComponent
   ],
@@ -22,7 +24,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     CommonModule,
     NgbModule,
     FormsModule,
-      HomeModule
+      HomeModule, 
+      NgMultiSelectDropDownModule.forRoot()
     
   ]
 })

@@ -8,21 +8,26 @@ import {FormsModule } from '@angular/forms'
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-
+import { CompaniesComponent } from './companies/companies.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { FindCandidatesComponent } from './find-candidates/find-candidates.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
-  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent],
+  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent],
   exports: [
    
     MainComponent,
     HeaderComponent,
+
   ],
   imports: [  
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgImageSliderModule,
   ],
-  providers: [ CookieService],
+  providers: [CookieService],
   
 })
 export class HomeModule { }
