@@ -30,6 +30,7 @@ public class JobSeekerSkillServiceImpl implements JobSeekerSkillService {
 	SkillSetDAO skillsetdao;
 
 	public Integer addJobSeekerSkill(SeekerSkillDTO skill) {
+		logger.info("Userid in skill" + skill.getUserID());
 		UserDTO userdto = userdao.getUserById(skill.getUserID());
 		User user = new User(userdto);
 		logger.info("User" + user.getUserID());

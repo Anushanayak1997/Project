@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.sony.model.dto.CompanyDTO;
 import com.sony.model.entity.Company;
-import com.sony.model.entity.User;
+
 
 public interface CompanyService {
 

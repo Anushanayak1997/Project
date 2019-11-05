@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.SeekerProjectDTO;
-import com.sony.model.entity.JobSeekerEducation;
+
 import com.sony.model.entity.JobSeekerProject;
 import com.sony.model.service.JobSeekerProjectService;
 

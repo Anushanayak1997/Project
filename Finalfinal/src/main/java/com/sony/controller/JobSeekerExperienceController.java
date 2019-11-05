@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.SeekerExperienceDTO;
-import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerExperience;
-import com.sony.model.entity.User;
 import com.sony.model.service.JobSeekerExperienceService;
 
 @RestController

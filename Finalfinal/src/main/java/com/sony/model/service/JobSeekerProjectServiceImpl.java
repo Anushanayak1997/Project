@@ -15,8 +15,6 @@ import com.sony.model.entity.JobSeekerProject;
 
 import com.sony.model.entity.User;
 
-import oracle.net.aso.p;
-
 @Service
 public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 

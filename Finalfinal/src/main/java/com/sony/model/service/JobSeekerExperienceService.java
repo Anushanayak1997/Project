@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.sony.model.dto.SeekerExperienceDTO;
 import com.sony.model.entity.JobSeekerExperience;
-import com.sony.model.entity.User;
 
 public interface JobSeekerExperienceService {
 
