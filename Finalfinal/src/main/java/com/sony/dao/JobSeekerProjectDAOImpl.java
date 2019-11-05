@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -14,6 +15,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
+import com.sony.model.dto.CompanyDTO;
+import com.sony.model.dto.SeekerProjectDTO;
+import com.sony.model.entity.Company;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerExperience;
@@ -53,13 +57,23 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		return jobseekerprojectid;
 	}
 
-	public List<JobSeekerProject> getAllProject() {
+	public List<SeekerProjectDTO> getAllProject() {
 		Session session = factory.openSession();
-		List<JobSeekerProject> project = new ArrayList<JobSeekerProject>();
- 
+		List<SeekerProjectDTO> project = new ArrayList<SeekerProjectDTO>();
+
 		try {
-			project= session.createQuery("FROM JobSeekerProject").list();
-		} catch (HibernateException e) {
+			List<JobSeekerProject> result = session.createQuery("FROM JobSeekerProject").list();
+			if (!result.isEmpty()) {
+				Iterator<JobSeekerProject> iterator= result.iterator();
+				while (iterator.hasNext()) {
+					JobSeekerProject seekerproject = iterator.next();
+					SeekerProjectDTO projectdto=new SeekerProjectDTO(seekerproject.getJobSeekerProjectId(),seekerproject.getTitle(),seekerproject.getDescription(),seekerproject.getRole(),seekerproject.getUser());
+					
+					project.add(projectdto);
+			
+				}
+			}}
+	 catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -67,13 +81,13 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		return project;
 	}
 	
-	public List<JobSeekerProject> getProjectsById(int userId) {
+	public List<SeekerProjectDTO> getProjectsById(int userId) {
 		Session session = factory.openSession();
-		List<JobSeekerProject> result = null;
+		List<SeekerProjectDTO> result = null;
 		try {
 			Query query = session.createQuery("from JobSeekerProject where user.userID = :userId");
 			query.setParameter("userId", userId);
-			List<JobSeekerProject> seekerprojects = new ArrayList<JobSeekerProject>();
+			List<SeekerProjectDTO> seekerprojects = new ArrayList<SeekerProjectDTO>();
 			seekerprojects = query.list();
 			logger.info("Projects");
 			if (seekerprojects != null)

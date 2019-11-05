@@ -9,9 +9,9 @@ public interface JobSeekerExperienceService {
 
 	public Integer addJobSeekerExperience(SeekerExperienceDTO experience);
 
-	public List<JobSeekerExperience> getAllSeekerExperience();
+	public List<SeekerExperienceDTO> getAllSeekerExperience();
 
-	public List<JobSeekerExperience> getExperienceById(int userId);
+	public List<SeekerExperienceDTO> getExperienceById(int userId);
 
 	public void editSeekerExperience(JobSeekerExperience jobseekerexperience);
 

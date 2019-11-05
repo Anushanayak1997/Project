@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.dto.SeekerExperienceDTO;
+import com.sony.model.dto.SeekerProjectDTO;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.JobSeekerExperience;
@@ -51,13 +54,23 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return jobseekerexperienceid;
 	}
 
-	public List<JobSeekerExperience> getAllSeekerExperience() {
+	public List<SeekerExperienceDTO> getAllSeekerExperience() {
 		Session session = factory.openSession();
-		List<JobSeekerExperience> experience = new ArrayList<JobSeekerExperience>();
- 
+		List<SeekerExperienceDTO> experience = new ArrayList<SeekerExperienceDTO>();
+
 		try {
-			experience= session.createQuery("FROM JobSeekerExperience").list();
-		} catch (HibernateException e) {
+			List<JobSeekerExperience> result = session.createQuery("FROM JobSeekerExperience").list();
+			if (!result.isEmpty()) {
+				Iterator<JobSeekerExperience> iterator= result.iterator();
+				while (iterator.hasNext()) {
+					JobSeekerExperience seekerexperience = iterator.next();
+					SeekerExperienceDTO experiencedto=new SeekerExperienceDTO(seekerexperience.getJobSeekerExperienceId(),seekerexperience.getJobTitle(),seekerexperience.getStartDate(),seekerexperience.getEndDate(),seekerexperience.getJobDescription(),seekerexperience.getStreetAddress(),seekerexperience.getCity(),seekerexperience.getState(),seekerexperience.getUser());
+					
+					experience.add(experiencedto);
+			
+				}
+			}}
+	 catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -65,14 +78,14 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return experience;
 	}
 
-	public List<JobSeekerExperience> getExperienceById(int userId) { 
+	public List<SeekerExperienceDTO> getExperienceById(int userId) { 
 	
 			Session session = factory.openSession();
-			List<JobSeekerExperience> result = null;
+			List<SeekerExperienceDTO> result = null;
 			try {
 				Query query = session.createQuery("from JobSeekerExperience where user.userID= :userid");
 				query.setParameter("userid", userId);
-				List<JobSeekerExperience> seekerexperience = new ArrayList<JobSeekerExperience>();
+				List<SeekerExperienceDTO> seekerexperience = new ArrayList<SeekerExperienceDTO>();
 				seekerexperience = query.list();
 				if (seekerexperience != null)
 					result = seekerexperience;

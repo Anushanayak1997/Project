@@ -2,6 +2,8 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
+import com.sony.model.entity.User;
+
 public class SeekerProjectDTO implements Serializable{
 
 	private int jobSeekerProjectId;
@@ -10,9 +12,29 @@ public class SeekerProjectDTO implements Serializable{
 	private String role;
 	private int userId;
 	
+	private User user;
+	
 	public SeekerProjectDTO() {
-		
+		// TODO Auto-generated constructor stub
 	}
+	
+	public SeekerProjectDTO(int jobSeekerProjectId, String title, String description, String role, User user) {
+
+		this.jobSeekerProjectId = jobSeekerProjectId;
+		this.title = title;
+		this.description = description;
+		this.role = role;
+		this.user = user;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public int getJobSeekerProjectId() {
 		return jobSeekerProjectId;
 	}

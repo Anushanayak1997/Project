@@ -61,7 +61,7 @@ public class JobPost {
 	}
 
 	public JobPost() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public JobPost(int jobPostId, String jobTitle, String jobDescription, String isActive, int experience,

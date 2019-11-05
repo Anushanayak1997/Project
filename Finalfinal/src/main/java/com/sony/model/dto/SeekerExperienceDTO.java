@@ -2,6 +2,8 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
+import com.sony.model.entity.User;
+
 public class SeekerExperienceDTO implements Serializable{
 
 	private int JobSeekerExperienceId;
@@ -20,9 +22,38 @@ public class SeekerExperienceDTO implements Serializable{
 	private String state;
 	private int userId;
 	
+	private User user;
+	
 	public SeekerExperienceDTO() {
 	
 	}
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public SeekerExperienceDTO(int jobSeekerExperienceId, String jobTitle, String startDate, String endDate,
+			String jobDescription, String streetAddress, String city, String state, User user) {
+		super();
+		JobSeekerExperienceId = jobSeekerExperienceId;
+		this.jobTitle = jobTitle;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.jobDescription = jobDescription;
+		this.streetAddress = streetAddress;
+		this.city = city;
+		this.state = state;
+		this.user = user;
+	}
+
+
 	public int getJobSeekerExperienceId() {
 		return JobSeekerExperienceId;
 	}

@@ -19,7 +19,7 @@ public class JobSeekerExperienceController {
 	JobSeekerExperienceService jobseekerexperienceservice;
 	
 	@RequestMapping(value = "/getallseekerexperience")
-	public List<JobSeekerExperience> getAllSeekerExperience() {
+	public List<SeekerExperienceDTO> getAllSeekerExperience() {
 		return jobseekerexperienceservice.getAllSeekerExperience();
 	}
 	
@@ -29,7 +29,7 @@ public class JobSeekerExperienceController {
 	}
 	
 	@RequestMapping(value = "/getexperiencebyid/{userId}")
-	public List<JobSeekerExperience> getExperiencesById(@PathVariable int userId) {
+	public List<SeekerExperienceDTO> getExperiencesById(@PathVariable int userId) {
 		return jobseekerexperienceservice.getExperienceById(userId);
 	}
 	
