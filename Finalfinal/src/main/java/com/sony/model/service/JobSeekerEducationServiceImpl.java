@@ -39,7 +39,7 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 		return null;
 	}
 
-	public List<JobSeekerEducation> getAllSeekerEducation() {
+	public List<EducationDTO> getAllSeekerEducation() {
 		return educationdao.getAllSeekerEducation();
 	}
 

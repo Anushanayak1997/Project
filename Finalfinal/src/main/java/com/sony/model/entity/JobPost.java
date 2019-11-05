@@ -190,6 +190,19 @@ public class JobPost {
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
 	public JobPost(JobPostDTO jobpostdto) {
+		this.jobPostId = jobpostdto.getJobPostId();
+		this.jobTitle = jobpostdto.getJobTitle();
+		this.jobDescription = jobpostdto.getJobDescription();
+		this.isActive = jobpostdto.getIsActive();
+		this.experience = jobpostdto.getExperience();
+		this.noOfApplicants = jobpostdto.getNoOfApplicants();
+		this.postDate = jobpostdto.getPostDate();
+		this.noOfVacancies = jobpostdto.getNoOfVacancies();
+		this.streetAddress = jobpostdto.getStreetAddress();
+		this.city = jobpostdto.getCity();
+		this.state = jobpostdto.getState();
+		this.companyentity = jobpostdto.getCompany();
+//		this.skillset = jobpostdto.getSkillset();
 	}
 
 	public JobPost() {

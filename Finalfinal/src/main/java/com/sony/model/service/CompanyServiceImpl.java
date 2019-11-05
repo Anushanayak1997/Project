@@ -39,6 +39,7 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	public Integer addCompany(CompanyDTO companydto) {
+		logger.info("Userid in emp_cmp" + companydto.getUserId());
 		Company company = new Company(companydto.getCompanyId(), companydto.getCompanyName(),
 				companydto.getCompanyDescription(), companydto.getEstablishmentDate(), companydto.getWebsiteUrl(),
 				companydto.getHeadquarter(), companydto.getSpecialities(), companydto.getIndustry(),

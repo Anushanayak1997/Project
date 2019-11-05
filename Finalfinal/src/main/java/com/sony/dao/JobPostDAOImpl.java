@@ -151,7 +151,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
 					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
 					
-					while (iterator.hasNext()) {
+					while (iterators.hasNext()) {
 						SkillSet skillset = iterators.next();
 						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
 						skillsets.add(skillsetdto);
@@ -215,6 +215,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer result = null;
+		logger.info("IDDDDD AAAAAAA" + jobpostId);
 		try {
 			tx = session.beginTransaction();
 			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;

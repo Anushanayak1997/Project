@@ -27,7 +27,7 @@ public class JobSeekerEducationController {
 	JobSeekerEducationService jobseekereducationservice;
 	
 	@RequestMapping(value = "/getallseekereducation")
-	public List<JobSeekerEducation> getAllSeekerEducation() {
+	public List<EducationDTO> getAllSeekerEducation() {
 		return jobseekereducationservice.getAllSeekerEducation();
 	}
 	

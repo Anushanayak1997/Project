@@ -2,6 +2,9 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
+import com.sony.model.entity.JobSeekerEducation;
+import com.sony.model.entity.User;
+
 public class EducationDTO implements Serializable {
 
 	private int jobSeekerEducationId;
@@ -11,8 +14,19 @@ public class EducationDTO implements Serializable {
 	private String educationType;
 	private String Specialization;
 	private int userId;
+	private User user;
 
 	public EducationDTO() {
+	}
+	
+	public EducationDTO(JobSeekerEducation education) {
+		this.jobSeekerEducationId = education.getJobSeekerEducationId();
+		this.startingDate = education.getStartingDate();
+		this.endingDate = education.getEndingDate();
+		this.marksPercentages = education.getMarksPercentages();
+		this.educationType = education.getEducationType();
+		this.Specialization = education.getSpecialization();
+		this.user = education.getUser();
 	}
 
 	public int getJobSeekerEducationId() {
@@ -71,4 +85,13 @@ public class EducationDTO implements Serializable {
 		Specialization = specialization;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
 }
