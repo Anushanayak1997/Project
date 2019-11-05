@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
 		Integer userId = userdao.addUser(userenity);
 		if (userId != null) {
 			httpsession.setAttribute("userid", userId);
-		
 			return userId;
 		}
 		return null;
@@ -74,7 +73,12 @@ public class UserServiceImpl implements UserService {
 //		return map;
 	}
 
-	public User getUserById(int userId) {
+	public UserDTO getUserById(int userId) {
 		return userdao.getUserById(userId);
+	}
+
+	public void editUser(User user) {
+		userdao.editUser(user);
+		
 	}
 }

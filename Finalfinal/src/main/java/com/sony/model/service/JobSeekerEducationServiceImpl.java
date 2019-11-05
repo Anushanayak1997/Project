@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sony.dao.JobSeekerEducationDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.EducationDTO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.User;
@@ -26,7 +27,8 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 	UserDAO userdao;
 
 	public Integer addJobSeekerEducation(EducationDTO education) {
-		User user = userdao.getUserById(education.getUserId());
+		UserDTO userdto = userdao.getUserById(education.getUserId());
+		User user = new User(userdto);
 		logger.info("User" + user.getUserID());
 		JobSeekerEducation seekereducation = new JobSeekerEducation(education.getJobSeekerEducationId(),
 				education.getStartingDate(), education.getEndingDate(), education.getMarksPercentages(),
@@ -49,6 +51,13 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 
 		educationdao.editSeekerEducation(jobSeekerEducation);
 
+	}
+
+	
+
+	public void deleteSeekerEducation(int educationId) {
+		educationdao.deleteSeekerEducation(educationId);
+		
 	}
 
 }

@@ -15,9 +15,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
+
+import com.sony.model.entity.JobSeekerProject;
+
 import com.sony.model.dto.JobPostDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.JobPost;
+
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -59,15 +63,16 @@ public class UserDAOImpl implements UserDAO {
 		return userId;
 	}
 
-	public User getUserById(int userId) {
+	public UserDTO getUserById(int userId) {
 		Session session = factory.openSession();
-		User result = null;
+		UserDTO result = null;
 		try {
 			Query query = session.createQuery("from User where userID= :userid");
 			query.setParameter("userid", userId);
 			User user = (User) query.uniqueResult();
-			if (user != null)
-				result = user;
+			if (user != null) {
+				result = new UserDTO(user.getUserID(),user.getPassword(), user.getFirstName(), user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+			}
 		} catch (Exception ex) {
 		} finally {
 			session.close();
@@ -97,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			List<User> result = session.createQuery("FROM User").list();
-			if (!users.isEmpty()) {
+			if (!result.isEmpty()) {
 				Iterator<User> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					User user = iterator.next();
@@ -139,6 +144,31 @@ public class UserDAOImpl implements UserDAO {
 			session.close();
 		}
 		return user;
+	}
+
+	public void editUser(User user) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			User inituser = (User) session.get(User.class, user.getUserID());
+		//	logger.info("userid"+user.getUserID());
+			
+			inituser.setFirstName(user.getFirstName());
+			inituser.setLastName(user.getLastName());
+			inituser.setEmailID(user.getEmailID());
+			inituser.setContactNumber(user.getContactNumber());
+			session.evict(user);
+			session.update(inituser);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
 	}
 
 }

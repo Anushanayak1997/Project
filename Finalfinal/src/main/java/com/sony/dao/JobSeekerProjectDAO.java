@@ -13,4 +13,6 @@ public interface JobSeekerProjectDAO {
 
 	void editSeekerProject(JobSeekerProject jobSeekerproject);
 
+	void deleteSeekerProject(int projectId);
+
 }

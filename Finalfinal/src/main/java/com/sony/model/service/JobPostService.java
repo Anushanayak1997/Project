@@ -11,10 +11,12 @@ public interface JobPostService {
 
 	public List<JobPostDTO> getJobsByCompId(int companyId);
 	
-	public JobPost getJobById(Integer jobpostid);
+	public JobPostDTO getJobById(Integer jobpostid);
 
 	public List<JobPostDTO> getAllJobs();
 
 	public void editJobPost(JobPost jobpost);
+
+	public void deleteJobPost(int jobpostid);
 
 }

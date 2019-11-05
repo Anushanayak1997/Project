@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
       'contactNumber': this.regiseterModel.contactNumber,
       'userType': this.regiseterModel.userType
     }
-
+console.log(this.user);
 
    /* this.PostCompanyid = {
       companyID: this.regiseterModel.companyID
@@ -158,7 +158,9 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
-
+login(){
+  this.router.navigate(['login']);
+}
 
 
 }

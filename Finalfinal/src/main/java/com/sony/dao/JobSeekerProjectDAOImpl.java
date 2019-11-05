@@ -106,6 +106,24 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 	
 		
 	}
-	
+	public void deleteSeekerProject(int projectId) {
+		Session session = factory.openSession();
+		Transaction tx = null;
 
-}
+		try {
+			tx = session.beginTransaction();
+			JobSeekerProject project = (JobSeekerProject)session.get(JobSeekerProject.class, projectId); 
+			session.delete(project);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		
+		
+	}
+	
+	}
+	}

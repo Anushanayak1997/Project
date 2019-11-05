@@ -34,6 +34,20 @@ public class CompanyDTO implements Serializable {
 		this.userId = userId;
 	}
 
+	public CompanyDTO(int companyId, String companyName, String companyDescription, String establishmentDate,
+			String websiteUrl, String headquarter, String specialities, String industry, String type) {
+		super();
+		this.companyId = companyId;
+		this.companyName = companyName;
+		this.companyDescription = companyDescription;
+		this.establishmentDate = establishmentDate;
+		this.websiteUrl = websiteUrl;
+		this.headquarter = headquarter;
+		this.specialities = specialities;
+		this.industry = industry;
+		this.type = type;
+	}
+
 	public Company getCompany(CompanyDTO companydto) {
 		Company company = new Company(companydto.getCompanyId(), companydto.getCompanyName(),
 				companydto.getCompanyDescription(), companydto.getEstablishmentDate(), companydto.getWebsiteUrl(),

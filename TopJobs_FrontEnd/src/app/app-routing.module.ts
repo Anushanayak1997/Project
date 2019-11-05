@@ -82,7 +82,7 @@ const routes: Routes = [
     path: "seeker/status", component: ApplicationStatusComponent,
   },
   {
-    path: "seeker/account", component: ManageAccountComponent,
+    path: "manage/account", component: ManageAccountComponent,
   },
 
 

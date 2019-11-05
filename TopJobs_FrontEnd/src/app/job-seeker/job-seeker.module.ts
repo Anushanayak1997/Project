@@ -11,6 +11,7 @@ import { HomeModule } from '../home/home.module';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { SeekerViewComponent } from './seeker-view/seeker-view.component';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 
@@ -23,7 +24,8 @@ import { SeekerViewComponent } from './seeker-view/seeker-view.component';
     CommonModule,
     NgbModule,
     FormsModule,
-      HomeModule
+      HomeModule, 
+      NgMultiSelectDropDownModule.forRoot()
     
   ]
 })

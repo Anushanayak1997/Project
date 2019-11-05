@@ -12,7 +12,9 @@ public interface UserDAO {
 	
 	public List<UserDTO> getAllUsers();
 	
-	public User getUserById(int userId);
+	public UserDTO getUserById(int userId);
 	
 	public User authenticateuser(Login loginentity);
+
+	public void editUser(User user);
 }

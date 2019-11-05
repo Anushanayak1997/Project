@@ -14,4 +14,6 @@ public interface JobSeekerProjectService {
 	public List<JobSeekerProject> getProjectById(int userId);
 
 	public void editSeekerProject(JobSeekerProject jobSeekerproject);
+
+	public void deleteSeekerProject(int projectId);
 }

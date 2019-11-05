@@ -40,4 +40,9 @@ public class JobSeekerExperienceController {
 		jobseekerexperienceservice.editSeekerExperience(jobseekerexperience);
 	}
 
+
+	@RequestMapping(value = "/deleteseekerexperience/{experienceId}", method = RequestMethod.DELETE)
+	public void deleteSeekerExperience(@PathVariable int experienceId ) {
+		jobseekerexperienceservice.deleteSeekerExperience(experienceId);
+	}
 }

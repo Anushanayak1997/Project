@@ -7,6 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Response } from 'selenium-webdriver/http';
+import { IDropdownSettings} from 'ng-multiselect-dropdown';
 
 
 @Component({
@@ -26,11 +27,17 @@ export class SeekerProfileComponent implements OnInit {
   tweleth: any = "";
   Ug_type: any = "";
   postProject: any;
+  dropdownList :any;
+  selectedItems :any;
+  dropdownSettings :IDropdownSettings ;
+  skill:any;
+  getskills=environment.apiBaseUrl+"getallskills";
   url = environment.apiBaseUrl + "addjobseekerproject";
   url_update_info = environment.apiBaseUrl + "edituser";
   url_experience = environment.apiBaseUrl + "addjobseekerexperience";
   url_delete_project = environment.apiBaseUrl + "deleteseekerproject";
   url_add_edu = environment.apiBaseUrl + "addjobseekereducation";
+  url_add_skill=environment.apiBaseUrl+"addjobseekerskill";
   url_delete_experience = environment.apiBaseUrl + "deleteseekerexperience";
 
   userInfo = new RegiseterUser(
@@ -72,8 +79,8 @@ export class SeekerProfileComponent implements OnInit {
   userSkills = new job_seeker_skills(
     "",
     "",
-    "",
-    "",
+    ""
+   
   )
 
   userProjects = new job_seeker_project(
@@ -81,6 +88,7 @@ export class SeekerProfileComponent implements OnInit {
     "",
     ""
   )
+  
 
 
   userProjectsAdd = new job_seeker_project(
@@ -118,7 +126,7 @@ export class SeekerProfileComponent implements OnInit {
   startug: any;
   endug: any;
   marksug: any;
-  userID: string;
+  userID: any;
   postExperience: any;
   updateInfo: any;
   idstored: any;
@@ -127,7 +135,9 @@ export class SeekerProfileComponent implements OnInit {
   post12:any;
   postUG: any;
   currenturl:any;
-
+  SKILLS: any;
+  seekerskills:any;
+  getseekskills=environment.apiBaseUrl+"getseekerskillbyid";
   constructor(private Seeker: SeekerService, private router: Router, private http: HttpClient) {
     /* this.currenturl= this.router.url
       this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -142,6 +152,17 @@ export class SeekerProfileComponent implements OnInit {
 
       console.log("route")
       */
+
+      this.dropdownSettings= {
+        singleSelection: false,
+        idField: 'skillId',
+        textField: 'skillName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 3,
+        allowSearchFilter: true
+      };
+      
   }
 
   ngOnInit() {
@@ -154,8 +175,8 @@ export class SeekerProfileComponent implements OnInit {
     } else {
       this.router.navigate(['home']);
     }
-
-
+    this.getSkills();
+    this.getseekerskills();
     this.getSeekerInfo()
     this.getEducationInfo()
     this.getCertificationInfo()
@@ -170,6 +191,32 @@ export class SeekerProfileComponent implements OnInit {
     }
   }
 
+  addSkills(){
+this.skill={
+  'certificateName':this.userSkills.certificate_name,
+  'issuedDate':this.userSkills.certificate_issue_date,
+  'skillName':this.userSkills.skill_name,
+  'userID':this.userID
+}
+  console.log(this.skill);
+  this.http.post(this.url_add_skill, this.skill).subscribe(
+    (Response) => {
+      console.log(Response);
+      console.log("skill succesfully added")
+      this.getseekerskills();
+    }
+  )
+
+}
+
+getseekerskills(){
+  this.http.get(this.getseekskills+"/"+this.userID).subscribe((Response)=>{
+    console.log(Response);
+    this.seekerskills=Response;
+    console.log(this.seekerskills);
+  })
+}
+  
   addProject() {
 
     this.postProject = {
@@ -421,6 +468,38 @@ export class SeekerProfileComponent implements OnInit {
 
   }
 
+ 
+
+
+onItemSelect(item: any) {
+  console.log("Item: " , item);
+  console.log("Selected Items: ", this.selectedItems);
+  this.selectedItems.forEach(v => {
+    delete v.isDisabled;
+  });
+}
+
+onItemDeSelect(item: any) {
+  // let index = this.selectedItems.indexOf(item);
+  // this.selectedItems.splice(index, 0);
+  console.log(item);
+  console.log("Deselect: ", this.selectedItems);
+}
+onSelectAll(items: any) {
+  console.log(items);
+}
+
+  getSkills(){
+    this.http.get(this.getskills).subscribe(
+      (Response)=>{
+        if(Response!=null){
+          console.log(Response);
+        this.SKILLS=Response;
+        console.log("Drop down list: " , this.dropdownList);
+        }
+      }
+    )
+  }
 
 
   deleteExperience(id: any) {

@@ -1,8 +1,10 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -16,11 +18,14 @@ import org.springframework.stereotype.Repository;
 
 import com.sony.model.dto.JobPostDTO;
 import com.sony.model.dto.SeekerJobPostDTO;
+import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.EmployerCompany;
 import com.sony.model.entity.JobPost;
+import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.SeekerJobPostStatus;
+import com.sony.model.entity.SkillSet;
 import com.sony.model.entity.User;
 
 @Repository
@@ -72,11 +77,21 @@ public class JobPostDAOImpl implements JobPostDAO {
 			if (!result.isEmpty()) {
 				Iterator<JobPost> iterator = result.iterator();
 				while (iterator.hasNext()) {
+					
 					JobPost jobpost = iterator.next();
+					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
+					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
+					
+					while (iterators.hasNext()) {
+						SkillSet skillset = iterators.next();
+						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+						skillsets.add(skillsetdto);
+					}
+					
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), skillsets,
 							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
@@ -90,24 +105,35 @@ public class JobPostDAOImpl implements JobPostDAO {
 		return jobposts;
 	}
 
-	public JobPost getJobById(Integer jobpostid) {
+	public JobPostDTO getJobById(Integer jobpostid) {
 		Session session = factory.openSession();
-		JobPost jobpost = new JobPost();
-
+		JobPostDTO jobpostdto = null;
 		try {
 			String hql = "FROM JobPost where jobPostId = :jobpostid";
 			Query query = session.createQuery(hql);
 			query.setParameter("jobpostid", jobpostid);
 			JobPost job = (JobPost) query.uniqueResult();
 			if (job != null) {
-				jobpost = job;
+				
+				Iterator<SkillSet> iterators = job.getSkillset().iterator();
+				Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
+				
+				while (iterators.hasNext()) {
+					SkillSet skillset = iterators.next();
+					SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+					skillsets.add(skillsetdto);
+				}
+				jobpostdto = new JobPostDTO(job.getJobPostId(), job.getJobTitle(), job.getJobDescription(),
+						job.getIsActive(), job.getExperience(), job.getNoOfApplicants(), job.getPostDate(),
+						job.getNoOfVacancies(), job.getStreetAddress(), job.getCity(), job.getState(),
+						skillsets, job.getCompanyentity());
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return jobpost;
+		return jobpostdto;
 	}
 
 	public List<JobPostDTO> getAllJobs() {
@@ -122,10 +148,18 @@ public class JobPostDAOImpl implements JobPostDAO {
 				Iterator<JobPost> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					JobPost jobpost = iterator.next();
+					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
+					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
+					
+					while (iterator.hasNext()) {
+						SkillSet skillset = iterators.next();
+						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
+						skillsets.add(skillsetdto);
+					}
 					JobPostDTO jobpostdto = new JobPostDTO(jobpost.getJobPostId(), jobpost.getJobTitle(),
 							jobpost.getJobDescription(), jobpost.getIsActive(), jobpost.getExperience(),
 							jobpost.getNoOfApplicants(), jobpost.getPostDate(), jobpost.getNoOfVacancies(),
-							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), jobpost.getSkillset(),
+							jobpost.getStreetAddress(), jobpost.getCity(), jobpost.getState(), skillsets,
 							jobpost.getCompanyentity());
 					jobposts.add(jobpostdto);
 				}
@@ -135,7 +169,6 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
-		logger.info("JOb postssss" + jobposts.get(0).getJobPostId());
 		return jobposts;
 	}
 
@@ -159,6 +192,25 @@ public class JobPostDAOImpl implements JobPostDAO {
 		}
 	}
 
+	public void deleteJobPost(int jobpostid) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+
+		try {
+			tx = session.beginTransaction();
+			JobPost jobpost = (JobPost) session.get(JobPost.class, jobpostid);
+			session.delete(jobpost);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+	}
+
 	public Integer updateNoApplicants(int jobpostId) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -166,7 +218,8 @@ public class JobPostDAOImpl implements JobPostDAO {
 		try {
 			tx = session.beginTransaction();
 			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;
-			Query query = session.createQuery("update JobPost set noOfApplicants = noOfApplicants + 1 where jobPostId = :jobpostid");
+			Query query = session
+					.createQuery("update JobPost set noOfApplicants = noOfApplicants + 1 where jobPostId = :jobpostid");
 			query.setParameter("jobpostid", jobpostId);
 			result = query.executeUpdate();
 			tx.commit();
@@ -178,5 +231,6 @@ public class JobPostDAOImpl implements JobPostDAO {
 			session.close();
 		}
 		return result;
+
 	}
 }
