@@ -12,13 +12,15 @@ public class SeekerSkillDTO implements Serializable {
 	private String certificateName;
 
 	private String issuedDate;
+	
 	private int userID;
+	
 	private String skillName;
 	private UserDTO user;
 	private SkillSetDTO skillset;
 
 	public SeekerSkillDTO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public SeekerSkillDTO(int jobSeekerSkillId, String certificateName, String issuedDate, UserDTO user,

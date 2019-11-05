@@ -13,10 +13,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "job_seeker_skills")
-// @AssociationOverrides({@AssociationOverride(name = "primaryKey.user",
-// joinColumns = @JoinColumn(name = "user_id")),
-// @AssociationOverride(name = "primaryKey.group",
-// joinColumns = @JoinColumn(name = "skill_id")) })
 public class JobSeekerSkills {
 
 	// JobSeekerSkills jobSeeker=new JobSeekerSkills();
@@ -44,7 +40,6 @@ public class JobSeekerSkills {
 	private int skillLevel;
 
 	public JobSeekerSkills() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public JobSeekerSkills(int jobSeekerSkillId, String certificateName, String issuedDate, User user,

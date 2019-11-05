@@ -58,12 +58,4 @@ public class SkillSet implements Serializable {
 	public void setUser(Set<JobSeekerSkills> user) {
 		this.user = user;
 	}
-
-	// public Set<JobPost> getJobpost() {
-	// return jobpost;
-	// }
-	//
-	// public void setJobpost(Set<JobPost> jobpost) {
-	// this.jobpost = jobpost;
-	// }
 }

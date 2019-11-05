@@ -41,14 +41,6 @@ public class User {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
-	public Set<JobSeekerSkills> getSkillset() {
-		return skillset;
-	}
-
-	public void setSkillset(Set<JobSeekerSkills> skillset) {
-		this.skillset = skillset;
-	}
-
 	public User() {
 	}
 
@@ -59,6 +51,14 @@ public class User {
 		this.emailID = userdto.getEmailID();
 		this.contactNumber = userdto.getContactNumber();
 		this.userType = userdto.getContactNumber();
+	}
+
+	public Set<JobSeekerSkills> getSkillset() {
+		return skillset;
+	}
+
+	public void setSkillset(Set<JobSeekerSkills> skillset) {
+		this.skillset = skillset;
 	}
 
 	public String getUserType() {
