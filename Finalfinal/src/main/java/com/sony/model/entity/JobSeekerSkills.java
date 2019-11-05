@@ -35,6 +35,29 @@ public class JobSeekerSkills {
 	private SkillSet skillset;
 
 	@Column(name = "certificate_name")
+	private String certificateName;
+
+	@Column(name = "issued_date")
+	private String issuedDate;
+
+	@Column(name = "skill_level")
+	private int skillLevel;
+
+	public JobSeekerSkills() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public JobSeekerSkills(int jobSeekerSkillId, String certificateName, String issuedDate, User user,
+			SkillSet skillset) {
+		super();
+		this.jobSeekerSkillId = jobSeekerSkillId;
+		this.certificateName = certificateName;
+		this.issuedDate = issuedDate;
+		this.user = user;
+		this.skillset = skillset;
+
+	}
+
 	public int getJobSeekerSkillId() {
 		return jobSeekerSkillId;
 	}
@@ -57,33 +80,6 @@ public class JobSeekerSkills {
 
 	public void setSkillset(SkillSet skillset) {
 		this.skillset = skillset;
-	}
-
-	private String certificateName;
-
-	@Column(name = "issued_date")
-	private String issuedDate;
-
-	@Column(name = "skill_level")
-	private int skillLevel;
-
-	// @ManyToOne
-	// @JoinColumn
-	// private User user;
-
-	public JobSeekerSkills(int jobSeekerSkillId, String certificateName, String issuedDate,User user,
-			SkillSet skillset) {
-		super();
-		this.jobSeekerSkillId = jobSeekerSkillId;
-		this.certificateName = certificateName;
-		this.issuedDate = issuedDate;
-		this.user = user;
-		this.skillset = skillset;
-
-	}
-
-	public JobSeekerSkills() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getCertificateName() {

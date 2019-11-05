@@ -186,7 +186,7 @@ public class JobPost {
 	@JoinTable(name = "JOB_POST_SKILL", joinColumns = @JoinColumn(name = "job_post_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private Set<SkillSet> skillset = new HashSet<SkillSet>();
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "jobpost")
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "jobpost")
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
 
 	public JobPost() {

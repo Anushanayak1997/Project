@@ -2,6 +2,7 @@ package com.sony.dao;
 
 import java.util.List;
 
+import com.sony.model.dto.CompanyDTO;
 import com.sony.model.entity.Company;
 
 public interface CompanyDAO {
@@ -10,5 +11,5 @@ public interface CompanyDAO {
 	
 	public Company getCompanyById(int companyId);
 	
-	public List<Company> getAllCompany();
+	public List<CompanyDTO> getAllCompany();
 }

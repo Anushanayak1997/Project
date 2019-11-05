@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.dto.CompanyDTO;
+import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.User;
 
@@ -63,12 +66,24 @@ public class CompanyDAOImpl implements CompanyDAO {
 		return result;
 	}
 
-	public List<Company> getAllCompany() {
+	public List<CompanyDTO> getAllCompany() {
 		Session session = factory.openSession();
-		List<Company> companies = new ArrayList<Company>();
+		List<CompanyDTO> companies = new ArrayList<CompanyDTO>();
 
 		try {
-			companies = session.createQuery("FROM Company").list();
+			List<Company> result = session.createQuery("FROM Company").list();
+			if (!result.isEmpty()) {
+				Iterator<Company> iterator = result.iterator();
+				while (iterator.hasNext()) {
+					Company company = iterator.next();
+					CompanyDTO companydto = new CompanyDTO(company.getCompanyId(), company.getCompanyName(),
+							company.getCompanyDescription(), company.getEstablishmentDate(), company.getWebsiteUrl(),
+							company.getHeadquarter(), company.getSpecialities(), company.getIndustry(),
+							company.getType());
+					companies.add(companydto);
+				}
+				// jobposts.addAll(result);
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {

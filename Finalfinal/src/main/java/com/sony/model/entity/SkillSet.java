@@ -29,19 +29,11 @@ public class SkillSet implements Serializable {
 	@Column(name = "skill_id")
 	private int skillId;
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy="skillset")
-	private Set<JobSeekerSkills> user = new HashSet<JobSeekerSkills>();
-
-	public Set<JobSeekerSkills> getUser() {
-		return user;
-	}
-
-	public void setUser(Set<JobSeekerSkills> user) {
-		this.user = user;
-	}
-
 	@Column(name = "skill_name")
 	private String skillName;
+
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "skillset")
+	private Set<JobSeekerSkills> user = new HashSet<JobSeekerSkills>();
 
 	public int getSkillId() {
 		return skillId;
@@ -59,9 +51,13 @@ public class SkillSet implements Serializable {
 		this.skillName = skillName;
 	}
 
-	
+	public Set<JobSeekerSkills> getUser() {
+		return user;
+	}
 
-	
+	public void setUser(Set<JobSeekerSkills> user) {
+		this.user = user;
+	}
 
 	// public Set<JobPost> getJobpost() {
 	// return jobpost;

@@ -14,9 +14,7 @@ public class SeekerSkillDTO implements Serializable {
 	private String issuedDate;
 	private int userID;
 	private String skillName;
-
 	private UserDTO user;
-
 	private SkillSetDTO skillset;
 
 	public SeekerSkillDTO() {

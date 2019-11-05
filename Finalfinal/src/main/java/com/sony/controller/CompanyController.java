@@ -22,7 +22,7 @@ public class CompanyController {
 	CompanyService companyservice;
 
 	@RequestMapping(value = "/getallcompany")
-	public List<Company> getAllCompany() {
+	public List<CompanyDTO> getAllCompany() {
 		return companyservice.getAllCompany(); 
 	}
 	

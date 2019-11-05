@@ -11,7 +11,7 @@ public interface CompanyService {
 
 	public Integer addCompany(CompanyDTO companydto);
 	
-	public List<Company> getAllCompany();
+	public List<CompanyDTO> getAllCompany();
 	
 	public Integer setCompanyIdSession(CompanyDTO companydto);
 

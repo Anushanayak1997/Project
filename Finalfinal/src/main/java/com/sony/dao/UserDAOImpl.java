@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			List<User> result = session.createQuery("FROM User").list();
-			if (!users.isEmpty()) {
+			if (!result.isEmpty()) {
 				Iterator<User> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					User user = iterator.next();

@@ -29,7 +29,7 @@ public class CompanyServiceImpl implements CompanyService{
 	@Autowired
 	EmployerCompanyService employerservice;
 
-	public List<Company> getAllCompany() {
+	public List<CompanyDTO> getAllCompany() {
 		return companydao.getAllCompany();
 	}
 	public Integer addCompany(CompanyDTO companydto) {
