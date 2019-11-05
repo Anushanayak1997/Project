@@ -10,48 +10,40 @@ import com.sony.model.dto.UserDTO;
 @Entity
 @Table(name = "USER_REGISTER")
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator = "user_sequence")
-    @SequenceGenerator(name = "user_sequence", sequenceName = "USER_ID_SEQ")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_sequence")
+	@SequenceGenerator(name = "user_sequence", sequenceName = "USER_ID_SEQ")
 	@Column(name = "user_id")
 	private int userID;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "firstname")
 	private String firstName;
-	
+
 	@Column(name = "lastname")
 	private String lastName;
-	
+
 	@Column(name = "email_id")
 	private String emailID;
-	
+
 	@Column(name = "contact_no")
 	private String contactNumber;
-	
+
 	@Column(name = "user_type")
 	private String userType;
-	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy="user")
+
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<JobSeekerSkills> skillset = new HashSet<JobSeekerSkills>();
-
-	public Set<JobSeekerSkills> getSkillset() {
-		return skillset;
-	}
-
-	public void setSkillset(Set<JobSeekerSkills> skillset) {
-		this.skillset = skillset;
-	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<SeekerJobPostStatus> seekerjobpost = new HashSet<SeekerJobPostStatus>();
-	
+
 	public User() {
 	}
-	
+
 	public User(UserDTO userdto) {
 		this.userID = userdto.getUserID();
 		this.firstName = userdto.getFirstName();
@@ -59,6 +51,14 @@ public class User {
 		this.emailID = userdto.getEmailID();
 		this.contactNumber = userdto.getContactNumber();
 		this.userType = userdto.getContactNumber();
+	}
+
+	public Set<JobSeekerSkills> getSkillset() {
+		return skillset;
+	}
+
+	public void setSkillset(Set<JobSeekerSkills> skillset) {
+		this.skillset = skillset;
 	}
 
 	public String getUserType() {
@@ -124,5 +124,5 @@ public class User {
 	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
 		this.seekerjobpost = seekerjobpost;
 	}
-	
+
 }

@@ -18,7 +18,7 @@ public class JobPostDTO implements Serializable {
 	private String jobTitle;
 	private String jobDescription;
 	private boolean isActive;
-	private String experience;
+	private int experience;
 	private int noOfApplicants;
 	private String postDate;
 	private int noOfVacancies;
@@ -32,7 +32,7 @@ public class JobPostDTO implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, int experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state) {
 		this.jobPostId = jobPostId;
 		this.jobTitle = jobTitle;
@@ -47,7 +47,7 @@ public class JobPostDTO implements Serializable {
 		this.state = state;
 	}
 
-	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, String experience,
+	public JobPostDTO(int jobPostId, String jobTitle, String jobDescription, boolean isActive, int experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
 			Set<SkillSet> skillset, Company company) {
 		this.jobPostId = jobPostId;
@@ -105,11 +105,11 @@ public class JobPostDTO implements Serializable {
 		this.isActive = isActive;
 	}
 
-	public String getExperience() {
+	public int getExperience() {
 		return experience;
 	}
 
-	public void setExperience(String experience) {
+	public void setExperience(int experience) {
 		this.experience = experience;
 	}
 
