@@ -18,6 +18,7 @@ import com.sony.dao.JobPostDAO;
 import com.sony.dao.JobSeekerEducationDAOImpl;
 import com.sony.dao.SkillSetDAO;
 import com.sony.model.dto.JobPostDTO;
+import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.SkillSet;
@@ -48,14 +49,14 @@ public class JobPostServiceImpl implements JobPostService {
 		Company company = companydao.getCompanyById(jobpostdto.getCompanyId());
 		Set<SkillSet> skillset = new HashSet<SkillSet>();
 
-	 Iterator<SkillSet> iterator= skillset.iterator();
-	//	Iterator<SkillSet> iterator = jobpostdto.getSkillset().iterator();
+		//Iterator<SkillSet> iterator= skillset.iterator();
+		Iterator<SkillSetDTO> iterator = jobpostdto.getSkillset().iterator();
 		while (iterator.hasNext()) {
-			SkillSet skill = iterator.next();
+			SkillSetDTO skill = iterator.next();
 			skillset.add(skilldao.getSkillById(skill.getSkillName()));
 		}
 		JobPost jobpost = new JobPost(jobpostdto.getJobPostId(), jobpostdto.getJobTitle(),
-				jobpostdto.getJobDescription(), jobpostdto.isActive(), jobpostdto.getExperience(),
+				jobpostdto.getJobDescription(), jobpostdto.getIsActive(), jobpostdto.getExperience(),
 				jobpostdto.getNoOfApplicants(), jobpostdto.getPostDate(), jobpostdto.getNoOfVacancies(),
 				jobpostdto.getStreetAddress(), jobpostdto.getCity(), jobpostdto.getState(), company, skillset);
 

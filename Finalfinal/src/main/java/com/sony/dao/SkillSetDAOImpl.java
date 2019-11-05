@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.SkillSet;
 import com.sony.model.entity.User;
@@ -49,22 +50,20 @@ public class SkillSetDAOImpl implements SkillSetDAO {
 		return skillId;
 	}
 
-	public List<SkillSet> getAllSkills() {
+	public List<SkillSetDTO> getAllSkills() {
 		Session session = factory.openSession();
-		List<SkillSet> skillset = new ArrayList<SkillSet>();
+		List<SkillSetDTO> skillset = new ArrayList<SkillSetDTO>();
 
 		try {
-			skillset = session.createQuery("FROM SkillSet").list();
-//			if (!users.isEmpty()) {
-//				Iterator<User> iterator = result.iterator();
-//				while (iterator.hasNext()) {
-//					User user = iterator.next();
-//					UserDTO userdto = new UserDTO(user.getUserID(), user.getPassword(), user.getFirstName(),
-//							user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
-//					users.add(userdto);
-//				}
-//				// jobposts.addAll(result);
-//			}
+			List<SkillSet> skills = session.createQuery("FROM SkillSet").list();
+			if (!skills.isEmpty()) {
+				Iterator<SkillSet> iterator = skills.iterator();
+				while (iterator.hasNext()) {
+					SkillSet skill = iterator.next();
+					SkillSetDTO skilldto = new SkillSetDTO(skill.getSkillId(), skill.getSkillName());
+					skillset.add(skilldto);
+				}
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {

@@ -155,7 +155,7 @@ public class JobPost {
 	private String jobDescription;
 
 	@Column(name = "is_active")
-	private boolean isActive;
+	private String isActive;
 
 	@Column(name = "experience")
 	private int experience;
@@ -195,7 +195,8 @@ public class JobPost {
 	public JobPost() {
 		// TODO Auto-generated constructor stub
 	}
-	public JobPost(int jobPostId, String jobTitle, String jobDescription, boolean isActive, int experience,
+
+	public JobPost(int jobPostId, String jobTitle, String jobDescription, String isActive, int experience,
 			int noOfApplicants, String postDate, int noOfVacancies, String streetAddress, String city, String state,
 			Company companyentity, Set<SkillSet> skillset) {
 		this.jobPostId = jobPostId;
@@ -212,8 +213,6 @@ public class JobPost {
 		this.companyentity = companyentity;
 		this.skillset = skillset;
 	}
-
-	
 
 	public String getStreetAddress() {
 		return streetAddress;
@@ -271,14 +270,6 @@ public class JobPost {
 		this.jobDescription = jobDescription;
 	}
 
-	public boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
 	public int getExperience() {
 		return experience;
 	}
@@ -307,6 +298,14 @@ public class JobPost {
 		return noOfVacancies;
 	}
 
+	public void setSkillset(Set<SkillSet> skillset) {
+		this.skillset = skillset;
+	}
+
+	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
+		this.seekerjobpost = seekerjobpost;
+	}
+
 	public void setNoOfVacancies(int noOfVacancies) {
 		this.noOfVacancies = noOfVacancies;
 	}
@@ -319,6 +318,12 @@ public class JobPost {
 		return seekerjobpost;
 	}
 
+	public String getIsActive() {
+		return isActive;
+	}
 
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
 
 }

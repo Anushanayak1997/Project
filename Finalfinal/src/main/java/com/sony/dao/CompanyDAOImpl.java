@@ -11,17 +11,23 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.model.dto.CompanyDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
+import com.sony.model.entity.SeekerJobPostStatus;
 import com.sony.model.entity.User;
+import com.sony.model.entity.UserDetail;
 
 @Repository
 public class CompanyDAOImpl implements CompanyDAO {
 
 	private static SessionFactory factory;
+	
+	private static final Logger logger = LoggerFactory.getLogger(JobSeekerEducationDAOImpl.class);
 
 	public CompanyDAOImpl() {
 		try {
@@ -90,5 +96,47 @@ public class CompanyDAOImpl implements CompanyDAO {
 			session.close();
 		}
 		return companies;
+	}
+
+	public int updateProfileImage(String profileImage, int userId) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Integer result = null;
+		try {
+			tx = session.beginTransaction();
+			Query query = session
+					.createQuery("update UserDetail set profileImage = :profileimage where userId=:userid");
+			query.setParameter("profileimage", profileImage);
+			query.setParameter("userid", userId);
+			result = query.executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
+
+	}
+
+	public UserDetail getUserById(int userId) {
+		Session session = factory.openSession();
+		logger.info("IDDDDD" + userId);
+		UserDetail result = null;
+		try {
+			Query query = session.createQuery("from UserDetail where userId= :userid");
+			query.setParameter("userid", userId);
+			UserDetail user = (UserDetail) query.uniqueResult();
+			logger.info("UserDei" + user.getName());
+			if (user != null) {
+				result = user;
+			}
+		} catch (Exception ex) {
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sony.dao.SkillSetDAO;
+import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.entity.SkillSet;
 
 @Service
@@ -20,7 +21,7 @@ public class SkillSetServiceImpl implements SkillSetService{
 		return false;
 	}
 
-	public List<SkillSet> getAllSkills() {
+	public List<SkillSetDTO> getAllSkills() {
 		return skillsetdao.getAllSkills();
 	}
 	
