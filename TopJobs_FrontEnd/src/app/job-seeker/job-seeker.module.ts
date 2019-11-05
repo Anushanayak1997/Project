@@ -9,12 +9,13 @@ import { SeekerPageComponent } from './seeker-page/seeker-page.component';
 import { SeekerProfileComponent } from './seeker-profile/seeker-profile.component';
 import { HomeModule } from '../home/home.module';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { SeekerViewComponent } from './seeker-view/seeker-view.component';
 
 
 
 
 @NgModule({
-  declarations: [SeekerProfileComponent, ApplicationStatusComponent, ManageAccountComponent, SeekerPageComponent, FileUploadComponent],
+  declarations: [SeekerProfileComponent, ApplicationStatusComponent, ManageAccountComponent, SeekerPageComponent, FileUploadComponent, SeekerViewComponent],
   exports: [
     SeekerPageComponent
   ],

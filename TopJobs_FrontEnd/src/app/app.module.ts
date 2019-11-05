@@ -14,6 +14,7 @@ import { CompanyModule } from './company/company.module';
 import { HomeModule } from './home/home.module';
 import { JobSeekerModule } from './job-seeker/job-seeker.module';
 import { ToastrModule } from 'ngx-toastr';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 
 
@@ -46,8 +47,8 @@ import { ToastrModule } from 'ngx-toastr';
     HomeModule,
     JobSeekerModule,
     NgbModule,
-    NgMultiSelectDropDownModule.forRoot()
-
+    NgMultiSelectDropDownModule.forRoot(),
+    NgImageSliderModule,
   ],
   providers: [CookieService],
  exports:[],

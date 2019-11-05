@@ -23,4 +23,8 @@ export class MainComponent implements OnInit {
   goRegister(){
     this.router.navigate(['register']);
   }
+
+  findCandidates(){
+    this.router.navigate(['seekers']);
+  }
 }

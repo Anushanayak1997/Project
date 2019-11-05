@@ -1,0 +1,25 @@
+.company{
+    margin-top: 5%;;
+   
+  
+}
+
+
+
+.card{
+    height: 100%;
+}
+
+.card-body{
+    height: 100%;
+}
+
+.mainCard{
+    margin-top: 0.45%;
+    color: wheat
+}
+
+.companyHead{
+    text-align: center;
+    color: #f8f7f2fd;
+}
