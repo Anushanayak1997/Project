@@ -6,11 +6,15 @@ import { environment } from 'src/environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+
 export class LoginComponent implements OnInit {
   topicHasError = true;
   submitted = false;
@@ -104,7 +108,7 @@ export class LoginComponent implements OnInit {
                 sessionStorage.setItem('user_id',this.response.userId);
                 console.log("user_id")
                 console.log(sessionStorage.getItem('user_id'));
-                this.router.navigate(['seeker/home']);
+                this.router.navigate(['loading...']);
               
               
               this.Toaster.success("successfully logged In");

@@ -139,7 +139,7 @@ export class SeekerProfileComponent implements OnInit {
   seekerskills:any;
   getseekskills=environment.apiBaseUrl+"getseekerskillbyid";
   constructor(private Seeker: SeekerService, private router: Router, private http: HttpClient) {
-     this.currenturl= this.router.url
+    /* this.currenturl= this.router.url
       this.router.routeReuseStrategy.shouldReuseRoute = function () {
         return false;
       };
@@ -151,6 +151,7 @@ export class SeekerProfileComponent implements OnInit {
       });
 
       console.log("route")
+      */
 
       this.dropdownSettings= {
         singleSelection: false,
@@ -229,11 +230,13 @@ getseekerskills(){
 
     this.http.post(this.url, this.postProject).subscribe(
       (Response) => {
-        console.log("project succesfully added")
+        console.log("project succesfully added");
+       // this.ngOnInit();
+       this.getProjectInfo()
       }
     )
 
-    this.ngOnInit();
+
 
 
   }
@@ -285,7 +288,8 @@ getseekerskills(){
     this.http.post(this.url_add_edu,this.postUG).subscribe(
       (Response)=>{
         console.log(Response);
-        console.log("UG added")
+        console.log("UG added");
+        this.ngOnInit();
       }
     )
  
@@ -310,6 +314,7 @@ getseekerskills(){
     this.http.post(this.url_experience, this.postExperience).subscribe(
       (Response) => {
         console.log(Response);
+        this.ngOnInit();
       }
     )
   }
@@ -454,7 +459,8 @@ getseekerskills(){
           (Response) =>{
             console.log(Response);
 
-            console.log("project deleted")
+            console.log("project deleted");
+            this.ngOnInit();
           }
         )
       }
@@ -504,7 +510,8 @@ onSelectAll(items: any) {
         this.http.delete(this.url_delete_experience+"/"+id).subscribe(
           (Response)=>{
             console.log(Response);
-            console.log("deleted experince")
+            console.log("deleted experince");
+            this.ngOnInit();
           }
         )
       }

@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+
+<div class="container candidates">
+  <div class="companyProfile">
+    <div *ngIf="seekers" class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded">
+
+      <div class="card-deck" *ngFor="let user of seekerlist">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">{{user.emailID}}</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+
+            <button (click)="viewProfile(user.userID)" type="button" class="btn btn-link">View Profile</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
