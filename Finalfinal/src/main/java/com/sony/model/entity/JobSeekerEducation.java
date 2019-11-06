@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.sony.model.dto.EducationDTO;
+
 @Entity
 @Table(name = "job_seeker_education")
 public class JobSeekerEducation {

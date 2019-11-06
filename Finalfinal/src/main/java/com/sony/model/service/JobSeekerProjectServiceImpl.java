@@ -15,8 +15,6 @@ import com.sony.model.entity.JobSeekerProject;
 
 import com.sony.model.entity.User;
 
-import oracle.net.aso.p;
-
 @Service
 public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 
@@ -41,11 +39,11 @@ public class JobSeekerProjectServiceImpl implements JobSeekerProjectService {
 		return null;
 	}
 
-	public List<JobSeekerProject> getAllProject() {
+	public List<SeekerProjectDTO> getAllProject() {
 		return jobseekerprojectdao.getAllProject();
 	}
 
-	public List<JobSeekerProject> getProjectById(int userId) {
+	public List<SeekerProjectDTO> getProjectById(int userId) {
 		return jobseekerprojectdao.getProjectsById(userId);
 	}
 

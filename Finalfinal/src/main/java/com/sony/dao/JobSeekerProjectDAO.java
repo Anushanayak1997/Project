@@ -2,14 +2,15 @@ package com.sony.dao;
 
 import java.util.List;
 
+import com.sony.model.dto.SeekerProjectDTO;
 import com.sony.model.entity.JobSeekerProject;
 
 public interface JobSeekerProjectDAO {
 	Integer addJobSeekerProject(JobSeekerProject project);
 
-	List<JobSeekerProject> getAllProject();
+	List<SeekerProjectDTO> getAllProject();
 
-	List<JobSeekerProject> getProjectsById(int userId);
+	List<SeekerProjectDTO> getProjectsById(int userId);
 
 	void editSeekerProject(JobSeekerProject jobSeekerproject);
 

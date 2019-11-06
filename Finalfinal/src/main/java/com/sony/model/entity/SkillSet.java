@@ -1,27 +1,21 @@
 package com.sony.model.entity;
-
-import java.io.Serializable;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.sony.model.dto.SkillSetDTO;
+
 @Entity
 @Table(name = "skillset")
-public class SkillSet implements Serializable {
+public class SkillSet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "skill_sequence")
@@ -34,6 +28,15 @@ public class SkillSet implements Serializable {
 
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "skillset")
 	private Set<JobSeekerSkills> user = new HashSet<JobSeekerSkills>();
+	
+	public SkillSet() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public SkillSet(SkillSetDTO skillsetdto) {
+		this.skillId = skillsetdto.getSkillId();
+		this.skillName = skillsetdto.getSkillName();
+	}
 
 	public int getSkillId() {
 		return skillId;

@@ -35,9 +35,9 @@ public class JobSeekerSkills {
 
 	@Column(name = "issued_date")
 	private String issuedDate;
-
-	@Column(name = "skill_level")
-	private int skillLevel;
+//
+//	@Column(name = "skill_level")
+//	private int skillLevel;
 
 	public JobSeekerSkills() {
 	}
@@ -93,12 +93,6 @@ public class JobSeekerSkills {
 		this.issuedDate = issuedDate;
 	}
 
-	public int getSkillLevel() {
-		return skillLevel;
-	}
-
-	public void setSkillLevel(int skillLevel) {
-		this.skillLevel = skillLevel;
-	}
+	
 
 }
