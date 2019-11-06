@@ -4,8 +4,20 @@
     <div class="companyProfile mainCard ">
         <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded" >
             <div *ngIf="company">
-            <h4>Company Name :{{company.companyName}}</h4>
-            <h4>Company Description: {{company.companyDescription}}</h4>
+         
+
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"><h5>Company Name </h5></th>
+                    <th scope="col"><h2>{{company.companyName}}</h2></th>
+                  </tr>
+                  <tr>
+                    <th scope="col"><h5> Company Description </h5></th>
+                    <th scope="col"><small>  {{company.companyDescription}} </small></th>
+                  </tr>
+                </thead>
+              </table>
         </div>
         </div>
     </div>
@@ -42,8 +54,8 @@
                         <td>{{data.isActive}}</td>
                         <td><button type="button" class="btn btn-link" (click)="applicants(data.jobPostId)">{{data.noOfApplicants}}</button></td>
                         <td>{{data.postDate}}</td>
-                        <button class="btn btn-primary" type="submit" (click)="onEdit(data.jobPostId)">Edit</button>
-                        <button class="btn btn-primary" type="submit" (click)="onDelete(data.jobPostId)">Delete</button>
+                        <button type="button" class="btn btn-link" type="submit" (click)="onEdit(data.jobPostId)">Edit</button>
+                        <button type="button" class="btn btn-link" type="submit" (click)="onDelete(data.jobPostId)">Delete</button>
                         
                     </tr>
                    
@@ -55,3 +67,4 @@
         </div>
     </div>
 </div>
+

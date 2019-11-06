@@ -13,13 +13,15 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { FindCandidatesComponent } from './find-candidates/find-candidates.component';
 import { LoadingComponent } from './loading/loading.component';
 import { AllCompaniesComponent } from './all-companies/all-companies.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent, AllCompaniesComponent],
+  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent, AllCompaniesComponent, FooterComponent],
   exports: [
    
     MainComponent,
     HeaderComponent,
+    FooterComponent
 
   ],
   imports: [  

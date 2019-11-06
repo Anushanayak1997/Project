@@ -1,7 +1,16 @@
-<h1>hello</h1>
-<div *ngIf="seekerssel" class="container seekercss">
-    <div class="" style="padding:1%">
-        
+<app-header></app-header>
+
+    
+
+<div *ngIf="seekerssel" class="container candidates seekercss">
+    
+<div  class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="">
+            <div class="card-header " style="background-color: #00AA9E; ">
+                    <div  style="text-align: center;">
+                        <h2 >JobSeekers List</h2>
+                    </div>
+                </div>
 
         <div class="" style="background:  #00AA9E;;" *ngFor="let seeker of seekerssel; let i = index">
             <div class="card" >
@@ -19,3 +28,5 @@
         </div>
     </div>
 </div>
+</div>
+
