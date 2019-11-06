@@ -1,0 +1,36 @@
+
+<app-header></app-header>
+
+
+
+<div class="container candidates">
+        <div class="companyProfile">
+          <div *ngIf ="companyDisplay" class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded"> <!--ng if-->
+            <div class="card-header " style="background-color: #00AA9E; ">
+                <div  style="text-align: center;">
+                    <h2 >Company Description</h2>
+                </div>
+            </div>
+            <div class="card-deck">  <!--ng for-->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{companyDisplay.companyName}}</h5>
+      
+                 
+                  <p class="card-text">{{companyDisplay.companyDescription}}</p><br>
+                  <p class="card-title"><strong> Establishment Date:</strong>{{companyDisplay.establishmentDate}}</p>
+                  <p class="card-title"><strong> Headquarter:</strong>{{companyDisplay.headquarter}}</p>
+                  <p class="card-title"><strong> industry: </strong>{{companyDisplay.industry}}</p>
+                  <p class="card-title"><strong> specialities: </strong>{{companyDisplay.specialities}}</p>
+                  <p class="card-title"><strong> type: </strong>{{companyDisplay.type}}</p>
+                  <p class="card-title"><strong> websiteUrl: </strong>{{companyDisplay.websiteUrl}}</p>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+        <div class="container" style="margin-top: 3%;" >
+                <button type="button" class="btn btn-primary btn-lg btn-block" (click)="goHome()">Home</button>
+        </div>
+      </div>
