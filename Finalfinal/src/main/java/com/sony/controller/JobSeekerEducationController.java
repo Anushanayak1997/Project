@@ -32,7 +32,7 @@ public class JobSeekerEducationController {
 	}
 	
 	@RequestMapping(value = "/getseekereducationbyid/{userId}")
-	public List<JobSeekerEducation> getSeekerEducationById(@PathVariable int userId) {
+	public List<EducationDTO> getSeekerEducationById(@PathVariable int userId) {
 		if(jobseekereducationservice.getSeekerEducationById(userId) != null) {
 			return jobseekereducationservice.getSeekerEducationById(userId);
 		}

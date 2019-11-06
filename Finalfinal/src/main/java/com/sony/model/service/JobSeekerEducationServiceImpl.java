@@ -42,7 +42,7 @@ public class JobSeekerEducationServiceImpl implements JobSeekerEducationService 
 		return educationdao.getAllSeekerEducation();
 	}
 
-	public List<JobSeekerEducation> getSeekerEducationById(int userId) {
+	public List<EducationDTO> getSeekerEducationById(int userId) {
 		return educationdao.getSeekerEducationById(userId);
 	}
 
