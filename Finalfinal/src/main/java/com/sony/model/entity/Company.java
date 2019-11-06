@@ -44,9 +44,6 @@ public class Company {
 	@Column(name = "company_type")
 	private String type;
 
-	@Column(name = "profile_image")
-	public String profileImage;
-
 	public Company() {
 	}
 
@@ -61,21 +58,6 @@ public class Company {
 		this.specialities = specialities;
 		this.industry = industry;
 		this.type = type;
-	}
-
-	public Company(int companyId, String companyName, String companyDescription, String establishmentDate,
-			String websiteUrl, String headquarter, String specialities, String industry, String type,
-			String profileImage) {
-		this.companyId = companyId;
-		this.companyName = companyName;
-		this.companyDescription = companyDescription;
-		this.establishmentDate = establishmentDate;
-		this.websiteUrl = websiteUrl;
-		this.headquarter = headquarter;
-		this.specialities = specialities;
-		this.industry = industry;
-		this.type = type;
-		this.profileImage = profileImage;
 	}
 
 	public int getCompanyId() {
@@ -148,14 +130,6 @@ public class Company {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public String getProfileImage() {
-		return profileImage;
-	}
-
-	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
 	}
 
 }

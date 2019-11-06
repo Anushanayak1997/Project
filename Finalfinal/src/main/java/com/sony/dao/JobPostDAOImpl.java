@@ -215,7 +215,6 @@ public class JobPostDAOImpl implements JobPostDAO {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer result = null;
-		logger.info("IDDDDD AAAAAAA" + jobpostId);
 		try {
 			tx = session.beginTransaction();
 			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;
