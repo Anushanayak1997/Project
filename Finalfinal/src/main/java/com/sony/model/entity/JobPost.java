@@ -35,7 +35,7 @@ public class JobPost {
 	private String postDate;
 
 	@Column(name = "no_of_vacancies")
-	private int noOfVacancies; 
+	private int noOfVacancies;  
 
 	@Column(name = "street_address")
 	private String streetAddress;
