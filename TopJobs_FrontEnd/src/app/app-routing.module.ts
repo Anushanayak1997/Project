@@ -82,18 +82,18 @@ const routes: Routes = [
     path: "seeker/home", component: SeekerPageComponent,
   },
   {
-    path: "seeker/profile", component:SeekerProfileComponent
+    path: "seeker/profile", component:SeekerProfileComponent,
   },
-  {
-    path: "seeker/:id", component:SeekerViewComponent
-  },
+  
   {
     path: "seeker/status", component: ApplicationStatusComponent,
   },
   {
     path: "manage/account", component: ManageAccountComponent,
   },
-
+  {
+    path: "seeker/:id", component:SeekerViewComponent,
+  },
 
 
 ];
