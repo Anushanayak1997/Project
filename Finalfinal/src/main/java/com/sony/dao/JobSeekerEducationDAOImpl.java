@@ -90,7 +90,7 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 			Query query = session.createQuery("from JobSeekerEducation where user.userID= :userid");
 			query.setParameter("userid", userId);
 			List<JobSeekerEducation> education = query.list();
-			if (education != null) {
+			if (education != null) { 
 				Iterator<JobSeekerEducation> iterators = education.iterator(); 
 				while (iterators.hasNext()) {
 					JobSeekerEducation edu = iterators.next();
