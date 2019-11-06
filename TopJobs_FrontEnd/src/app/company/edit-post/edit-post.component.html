@@ -158,7 +158,7 @@
 
                         <input type="number" #experience="ngModel" required class="form-control"
                             [class.is-invalid]="experience.invalid && experience.touched" name="experience"
-                            [(ngModel)]="userModel.experience" min="0">
+                            [(ngModel)]="userModel.experience" min="0" max="30">
                         <small class="text-danger" [class.d-none]="experience.valid || experience.untouched">experience
                             is required</small>
 

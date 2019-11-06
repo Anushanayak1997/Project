@@ -150,7 +150,7 @@ export class SeekerProfileComponent implements OnInit {
         }
       });
 
-      console.log("route")
+    
       */
 
       this.dropdownSettings= {
@@ -169,9 +169,9 @@ export class SeekerProfileComponent implements OnInit {
 
     this.userType = sessionStorage.getItem('user_type');
     this.userID = sessionStorage.getItem('user_id');
-    console.log(this.userID)
+   
     if (this.userType == 'JobSeeker') {
-      console.log("correct user");
+     
     } else {
       this.router.navigate(['home']);
     }
@@ -198,11 +198,10 @@ this.skill={
   'skillName':this.userSkills.skill_name,
   'userID':this.userID
 }
-  console.log(this.skill);
+ 
   this.http.post(this.url_add_skill, this.skill).subscribe(
     (Response) => {
-      console.log(Response);
-      console.log("skill succesfully added")
+      
       this.getseekerskills();
     }
   )
@@ -211,9 +210,9 @@ this.skill={
 
 getseekerskills(){
   this.http.get(this.getseekskills+"/"+this.userID).subscribe((Response)=>{
-    console.log(Response);
+    
     this.seekerskills=Response;
-    console.log(this.seekerskills);
+   
   })
 }
   
@@ -226,11 +225,11 @@ getseekerskills(){
       'description': this.userProjectsAdd.description
     }
 
-    console.log(this.postProject)
+   
 
     this.http.post(this.url, this.postProject).subscribe(
       (Response) => {
-        console.log("project succesfully added");
+      
        // this.ngOnInit();
        this.getProjectInfo()
       }
@@ -249,10 +248,10 @@ getseekerskills(){
       'endingDate':this.userEducation10.end_date,
       'marksPercentages':this.userEducation10.marks_percentage
     }
-    console.log(this.post10);
+   
     this.http.post(this.url_add_edu,this.post10).subscribe(
       (Response)=>{
-        console.log(Response)
+    
         this.getEducationInfo();
       }
     )
@@ -269,7 +268,7 @@ getseekerskills(){
     }
     this.http.post(this.url_add_edu,this.post12).subscribe(
       (Response)=>{
-        console.log(Response);
+        
         this.getEducationInfo();
       }
     )
@@ -287,8 +286,7 @@ getseekerskills(){
     }
     this.http.post(this.url_add_edu,this.postUG).subscribe(
       (Response)=>{
-        console.log(Response);
-        console.log("UG added");
+        
         this.getEducationInfo();
       }
     )
@@ -308,12 +306,10 @@ getseekerskills(){
       'state': this.AdduserExperience.state
     }
 
-    console.log("post exp")
-    console.log(this.postExperience);
-
+   
     this.http.post(this.url_experience, this.postExperience).subscribe(
       (Response) => {
-        console.log(Response);
+       
         this.getExperienceInfo();
       }
     )
@@ -340,7 +336,7 @@ getseekerskills(){
     this.Seeker.getEducationIfo().subscribe(
       (Response) => {
     
-        console.log(Response)
+       
         this.Eduinfo = Response;
      
         for (let edu of this.Eduinfo) {

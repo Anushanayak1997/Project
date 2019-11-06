@@ -10,10 +10,17 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title">{{User.firstName}} {{User.lastName}}</h5>
-                        <h6>{{User.emailID}}</h6>
+                        <h3 class="card-title">{{User.firstName}} {{User.lastName}}</h3>
+                        <h5>{{User.emailID}}</h5><br>
+                        <h6>Skills</h6>
+                        <div>
+                            <ul *ngFor = "let skill of skills">
+                                <li>{{skill.skillset.skillName}}</li>
+                            </ul>
+                        </div>
+                        
                         <p class="card-text">.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-muted"></small></p>
                     </div>
                 </div>
             </div>
