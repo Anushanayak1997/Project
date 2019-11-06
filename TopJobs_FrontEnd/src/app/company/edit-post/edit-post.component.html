@@ -45,7 +45,7 @@
                         </th>
 
                         <th scope="row">
-                            <input type="text" #Applicants="ngModel" disabled required class="form-control"
+                            <input type="number" #Applicants="ngModel" disabled required class="form-control"
                                 [class.is-invalid]="Applicants.invalid && Applicants.touched" name="Applicants"
                                 [(ngModel)]="userModel.Applicants" placeholder={{beforejobpost.noOfApplicants}}>
                             <small class="text-danger"
@@ -54,9 +54,9 @@
                         </th>
 
                         <th scope="row">
-                            <input type="text" #Vacancies="ngModel" required class="form-control"
+                            <input type="number" #Vacancies="ngModel" required class="form-control"
                                 [class.is-invalid]="Vacancies.invalid && Vacancies.touched" name="Vacancies"
-                                [(ngModel)]="userModel.Vacancy" placeholder={{beforejobpost.noOfVacancies}}>
+                                [(ngModel)]="userModel.Vacancy" placeholder={{beforejobpost.noOfVacancies}} min="0">
 
                             <small class="text-danger" [class.d-none]="Vacancies.valid || Vacancies.untouched"> vacancies is
                                 required</small>
@@ -145,7 +145,7 @@
 
                         <input type="number" #Vacancy="ngModel" required class="form-control"
                             [class.is-invalid]="Vacancy.invalid && Vacancy.touched" name="Vacancy"
-                            [(ngModel)]="userModel.Vacancy">
+                            [(ngModel)]="userModel.Vacancy" min="0">
                         <small class="text-danger" [class.d-none]="Vacancy.valid || Vacancy.untouched">Vacancy is
                             required</small>
 
@@ -158,7 +158,7 @@
 
                         <input type="number" #experience="ngModel" required class="form-control"
                             [class.is-invalid]="experience.invalid && experience.touched" name="experience"
-                            [(ngModel)]="userModel.experience">
+                            [(ngModel)]="userModel.experience" min="0">
                         <small class="text-danger" [class.d-none]="experience.valid || experience.untouched">experience
                             is required</small>
 
