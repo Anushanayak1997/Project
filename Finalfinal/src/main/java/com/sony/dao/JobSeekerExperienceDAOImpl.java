@@ -23,7 +23,7 @@ import com.sony.model.entity.User;
 
 @Repository
 public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
-	
+
 	private static SessionFactory factory;
 
 	public JobSeekerExperienceDAOImpl() {
@@ -61,16 +61,18 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		try {
 			List<JobSeekerExperience> result = session.createQuery("FROM JobSeekerExperience").list();
 			if (!result.isEmpty()) {
-				Iterator<JobSeekerExperience> iterator= result.iterator();
+				Iterator<JobSeekerExperience> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					JobSeekerExperience seekerexperience = iterator.next();
-					SeekerExperienceDTO experiencedto=new SeekerExperienceDTO(seekerexperience.getJobSeekerExperienceId(),seekerexperience.getJobTitle(),seekerexperience.getStartDate(),seekerexperience.getEndDate(),seekerexperience.getJobDescription(),seekerexperience.getStreetAddress(),seekerexperience.getCity(),seekerexperience.getState(),seekerexperience.getUser());
-					
+					SeekerExperienceDTO experiencedto = new SeekerExperienceDTO(
+							seekerexperience.getJobSeekerExperienceId(), seekerexperience.getJobTitle(),
+							seekerexperience.getStartDate(), seekerexperience.getEndDate(),
+							seekerexperience.getJobDescription(), seekerexperience.getStreetAddress(),
+							seekerexperience.getCity(), seekerexperience.getState(), seekerexperience.getUser());
 					experience.add(experiencedto);
-			
 				}
-			}}
-	 catch (HibernateException e) {
+			}
+		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -78,35 +80,45 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 		return experience;
 	}
 
-	public List<SeekerExperienceDTO> getExperienceById(int userId) { 
-	
-			Session session = factory.openSession();
-			List<SeekerExperienceDTO> result = null;
-			try {
-				Query query = session.createQuery("from JobSeekerExperience where user.userID= :userid");
-				query.setParameter("userid", userId);
-				List<SeekerExperienceDTO> seekerexperience = new ArrayList<SeekerExperienceDTO>();
-				seekerexperience = query.list();
-				if (seekerexperience != null)
-					result = seekerexperience;
-			} catch (Exception ex) {
-			} finally {
-				session.close();
+	public List<SeekerExperienceDTO> getExperienceById(int userId) {
+
+		Session session = factory.openSession();
+		List<SeekerExperienceDTO> result = new ArrayList<SeekerExperienceDTO>();
+		try {
+			Query query = session.createQuery("from JobSeekerExperience where user.userID= :userid");
+			query.setParameter("userid", userId);
+			List<JobSeekerExperience> seekerexperiences = query.list();
+			if (seekerexperiences != null) {
+				Iterator<JobSeekerExperience> iterator = seekerexperiences.iterator();
+				while (iterator.hasNext()) {
+					JobSeekerExperience seekerexperience = iterator.next();
+					SeekerExperienceDTO experiencedto = new SeekerExperienceDTO(
+							seekerexperience.getJobSeekerExperienceId(), seekerexperience.getJobTitle(),
+							seekerexperience.getStartDate(), seekerexperience.getEndDate(),
+							seekerexperience.getJobDescription(), seekerexperience.getStreetAddress(),
+							seekerexperience.getCity(), seekerexperience.getState(), seekerexperience.getUser());
+					result.add(experiencedto);
+				}
 			}
-			return result;
+		} catch (Exception ex) {
+		} finally {
+			session.close();
 		}
+		return result;
+	}
 
 	public void editSeekerExperience(JobSeekerExperience jobseekerexperience) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			JobSeekerExperience initexperience = (JobSeekerExperience) session.get(JobSeekerExperience.class, jobseekerexperience.getJobSeekerExperienceId());
+			JobSeekerExperience initexperience = (JobSeekerExperience) session.get(JobSeekerExperience.class,
+					jobseekerexperience.getJobSeekerExperienceId());
 			initexperience.setJobTitle(jobseekerexperience.getJobTitle());
-			
-//			initjobpost.setIsActive(jobpost.getIsActive());
-//			initjobpost.setNoOfVacancies(jobpost.getNoOfVacancies());
-//			
+
+			// initjobpost.setIsActive(jobpost.getIsActive());
+			// initjobpost.setNoOfVacancies(jobpost.getNoOfVacancies());
+			//
 			session.evict(jobseekerexperience);
 			session.update(initexperience);
 			tx.commit();
@@ -118,7 +130,6 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 			session.close();
 		}
 
-		
 	}
 
 	public void deleteSeekerExperience(int experienceId) {
@@ -127,7 +138,7 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 
 		try {
 			tx = session.beginTransaction();
-			JobSeekerExperience experience = (JobSeekerExperience)session.get(JobSeekerExperience.class, experienceId); 
+			JobSeekerExperience experience = (JobSeekerExperience) session.get(JobSeekerExperience.class, experienceId);
 			session.delete(experience);
 			tx.commit();
 		} catch (HibernateException e) {
@@ -138,9 +149,6 @@ public class JobSeekerExperienceDAOImpl implements JobSeekerExperienceDAO {
 			session.close();
 		}
 
-		
 	}
 
-	}
-
-
+}
