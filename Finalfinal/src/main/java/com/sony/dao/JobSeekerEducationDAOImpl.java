@@ -91,7 +91,7 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 			query.setParameter("userid", userId);
 			List<JobSeekerEducation> education = query.list();
 			if (education != null) {
-				Iterator<JobSeekerEducation> iterators = education.iterator();
+				Iterator<JobSeekerEducation> iterators = education.iterator(); 
 				while (iterators.hasNext()) {
 					JobSeekerEducation edu = iterators.next();
 					logger.info("EDDDDDDD" + edu.getEducationType());
