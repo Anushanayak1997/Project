@@ -253,7 +253,7 @@ getseekerskills(){
     this.http.post(this.url_add_edu,this.post10).subscribe(
       (Response)=>{
         console.log(Response)
-        console.log("10th added")
+        this.getEducationInfo();
       }
     )
   }
@@ -270,7 +270,7 @@ getseekerskills(){
     this.http.post(this.url_add_edu,this.post12).subscribe(
       (Response)=>{
         console.log(Response);
-        console.log("12th added");
+        this.getEducationInfo();
       }
     )
     
@@ -289,7 +289,7 @@ getseekerskills(){
       (Response)=>{
         console.log(Response);
         console.log("UG added");
-        this.ngOnInit();
+        this.getEducationInfo();
       }
     )
  
@@ -314,7 +314,7 @@ getseekerskills(){
     this.http.post(this.url_experience, this.postExperience).subscribe(
       (Response) => {
         console.log(Response);
-        this.ngOnInit();
+        this.getExperienceInfo();
       }
     )
   }
