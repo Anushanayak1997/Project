@@ -9,7 +9,7 @@ public interface JobSeekerEducationService {
 
 	public Integer addJobSeekerEducation(EducationDTO education);
 
-	List<JobSeekerEducation> getAllSeekerEducation();
+	List<EducationDTO> getAllSeekerEducation();
 
 	List<JobSeekerEducation> getSeekerEducationById(int userId);
 

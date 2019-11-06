@@ -9,9 +9,9 @@ import com.sony.model.entity.JobSeekerProject;
 public interface JobSeekerProjectService {
 	public Integer addJobSeekerProject(SeekerProjectDTO jobseekerproject);
 
-	public List<JobSeekerProject> getAllProject();
+	public List<SeekerProjectDTO> getAllProject();
 
-	public List<JobSeekerProject> getProjectById(int userId);
+	public List<SeekerProjectDTO> getProjectById(int userId);
 
 	public void editSeekerProject(JobSeekerProject jobSeekerproject);
 

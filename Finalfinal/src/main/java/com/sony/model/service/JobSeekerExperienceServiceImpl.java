@@ -40,11 +40,11 @@ public class JobSeekerExperienceServiceImpl implements JobSeekerExperienceServic
 		return null;
 	}
 
-	public List<JobSeekerExperience> getAllSeekerExperience() {
+	public List<SeekerExperienceDTO> getAllSeekerExperience() {
 		return experiencedao.getAllSeekerExperience();
 	}
 
-	public List<JobSeekerExperience> getExperienceById(int userId) {
+	public List<SeekerExperienceDTO> getExperienceById(int userId) {
 		return experiencedao.getExperienceById(userId);
 	}
 

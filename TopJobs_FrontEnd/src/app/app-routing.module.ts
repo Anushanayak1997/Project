@@ -25,6 +25,8 @@ import { SelectedseekersComponent } from './company/selectedseekers/selectedseek
 import { FindCandidatesComponent } from './home/find-candidates/find-candidates.component';
 import { SeekerViewComponent } from './job-seeker/seeker-view/seeker-view.component';
 import { LoadingComponent } from './home/loading/loading.component';
+import { ViewCompanyComponent } from './company/view-company/view-company.component';
+import { AllCompaniesComponent } from './home/all-companies/all-companies.component';
 const routes: Routes = [
    { path: "", component: MainComponent, pathMatch: 'full' },
   {
@@ -68,6 +70,13 @@ const routes: Routes = [
   },
   {
     path: "loading...", component: LoadingComponent,
+  },
+  {
+    path: "company", component: AllCompaniesComponent,
+  },
+  
+  {
+    path: "company/:id", component: ViewCompanyComponent,
   },
   {
     path: "seeker/home", component: SeekerPageComponent,

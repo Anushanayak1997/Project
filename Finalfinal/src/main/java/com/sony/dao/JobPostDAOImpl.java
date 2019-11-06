@@ -6,34 +6,33 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
-
 import com.sony.model.dto.JobPostDTO;
+
 import com.sony.model.dto.SeekerJobPostDTO;
 import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
-import com.sony.model.entity.EmployerCompany;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
 import com.sony.model.entity.SeekerJobPostStatus;
 import com.sony.model.entity.SkillSet;
 import com.sony.model.entity.User;
 
+
 @Repository
 public class JobPostDAOImpl implements JobPostDAO {
 
 	private static SessionFactory factory;
 
-	private static final Logger logger = LoggerFactory.getLogger(JobPostDAOImpl.class);
+//	private static final Logger logger = LoggerFactory.getLogger(JobPostDAOImpl.class);
 
 	public JobPostDAOImpl() {
 		try {
@@ -151,7 +150,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
 					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
 					
-					while (iterator.hasNext()) {
+					while (iterators.hasNext()) {
 						SkillSet skillset = iterators.next();
 						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
 						skillsets.add(skillsetdto);
@@ -169,6 +168,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		} finally {
 			session.close();
 		}
+
 		return jobposts;
 	}
 
@@ -215,6 +215,7 @@ public class JobPostDAOImpl implements JobPostDAO {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer result = null;
+		logger.info("IDDDDD AAAAAAA" + jobpostId);
 		try {
 			tx = session.beginTransaction();
 			// UPDATE Tag t set t.count = t.count + 1 WHERE t.id = :id;

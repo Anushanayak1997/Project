@@ -48,9 +48,10 @@ public class User {
 		this.userID = userdto.getUserID();
 		this.firstName = userdto.getFirstName();
 		this.lastName = userdto.getLastName();
+		this.password = userdto.getPassword();
 		this.emailID = userdto.getEmailID();
 		this.contactNumber = userdto.getContactNumber();
-		this.userType = userdto.getContactNumber();
+		this.userType = userdto.getUserType();
 	}
 
 	public Set<JobSeekerSkills> getSkillset() {

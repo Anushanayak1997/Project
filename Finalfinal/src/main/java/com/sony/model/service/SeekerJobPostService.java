@@ -3,8 +3,6 @@ package com.sony.model.service;
 import java.util.List;
 
 import com.sony.model.dto.SeekerJobPostDTO;
-import com.sony.model.entity.SeekerJobPostStatus;
-import com.sony.model.entity.User;
 
 public interface SeekerJobPostService {
 	

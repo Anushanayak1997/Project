@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sony.model.dto.SeekerExperienceDTO;
-import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerExperience;
-import com.sony.model.entity.User;
 import com.sony.model.service.JobSeekerExperienceService;
 
 @RestController
@@ -21,7 +19,7 @@ public class JobSeekerExperienceController {
 	JobSeekerExperienceService jobseekerexperienceservice;
 	
 	@RequestMapping(value = "/getallseekerexperience")
-	public List<JobSeekerExperience> getAllSeekerExperience() {
+	public List<SeekerExperienceDTO> getAllSeekerExperience() {
 		return jobseekerexperienceservice.getAllSeekerExperience();
 	}
 	
@@ -31,7 +29,7 @@ public class JobSeekerExperienceController {
 	}
 	
 	@RequestMapping(value = "/getexperiencebyid/{userId}")
-	public List<JobSeekerExperience> getExperiencesById(@PathVariable int userId) {
+	public List<SeekerExperienceDTO> getExperiencesById(@PathVariable int userId) {
 		return jobseekerexperienceservice.getExperienceById(userId);
 	}
 	

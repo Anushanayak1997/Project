@@ -43,9 +43,9 @@ public class UserServiceImpl implements UserService {
 	public List<UserDTO> getAllUsers() {
 		return userdao.getAllUsers();
 	}
-
+	boolean status;
 	public HashMap<String, Integer> authenticateuser(Login loginentity) {
-		boolean status;
+		
 		Integer companyid;
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();

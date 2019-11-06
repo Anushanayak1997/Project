@@ -1,7 +1,10 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -14,9 +17,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.sony.controller.CompanyController;
+import com.sony.model.dto.EducationDTO;
+import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.JobPost;
 import com.sony.model.entity.JobSeekerEducation;
+import com.sony.model.entity.SkillSet;
 import com.sony.model.entity.User;
 
 import oracle.net.aso.l;
@@ -55,18 +61,26 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		return jobseekereducationid;
 	}
 
-	public List<JobSeekerEducation> getAllSeekerEducation() {
+	public List<EducationDTO> getAllSeekerEducation() {
 		Session session = factory.openSession();
-		List<JobSeekerEducation> education = new ArrayList<JobSeekerEducation>();
+		List<EducationDTO> seekereducation = new ArrayList<EducationDTO>();
 
 		try {
-			education = session.createQuery("FROM JobSeekerEducation").list();
+			List<JobSeekerEducation> education = session.createQuery("FROM JobSeekerEducation").list();
+			
+			Iterator<JobSeekerEducation> iterators = education.iterator();
+			while (iterators.hasNext()) {
+				JobSeekerEducation edu = iterators.next();
+				EducationDTO educationdto = new EducationDTO(edu);
+				seekereducation.add(educationdto);
+			}
+
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return education;
+		return seekereducation;
 	}
 
 	public List<JobSeekerEducation> getSeekerEducationById(int userId) {
