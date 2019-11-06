@@ -281,9 +281,9 @@ getseekerskills(){
     this.postUG = {
       'userId': this.userID,
       'educationType' :'ug',
-      'startingDate':this.userEducation12.start_date,
-      'endingDate':this.userEducation12.end_date,
-      'marksPercentages':this.userEducation12.marks_percentage
+      'startingDate':this.userEducationUG.start_date,
+      'endingDate':this.userEducationUG.end_date,
+      'marksPercentages':this.userEducationUG.marks_percentage
     }
     this.http.post(this.url_add_edu,this.postUG).subscribe(
       (Response)=>{

@@ -165,24 +165,24 @@
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        <span class="input-group-text" id="">Start Date</span>
                                     </div>
-                                    <input type="text" #start_date="ngModel" [(ngModel)]="userEducation10.start_date"
+                                    <input type="date" #start_date="ngModel" [(ngModel)]="userEducation10.start_date"
                                         placeholder="start_date" name="start_date"><br>
 
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        <span class="input-group-text" id="">End Date</span>
                                     </div>
-                                    <input type="text" #end_date="ngModel" [(ngModel)]="userEducation10.end_date"
+                                    <input type="date" #end_date="ngModel" [(ngModel)]="userEducation10.end_date"
                                         placeholder="end_date" name="end_date"><br>
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-at'></i></span>
+                                        <span class="input-group-text" id="">Marks/Percentage</span>
                                     </div>
-                                    <input type="number" #marks_percentage="ngModel"
+                                    <input type="number" #marks_percentage="ngModel" min="0" max="100"
                                         [(ngModel)]="userEducation10.marks_percentage" placeholder="marks_percentage"
                                         name="marks_percentage"><br>
 
@@ -219,24 +219,24 @@
 
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        <span class="input-group-text" id="">Start Date</span>
                                     </div>
-                                    <input type="text" #start_date="ngModel" [(ngModel)]="userEducation12.start_date"
+                                    <input type="date" #start_date="ngModel" [(ngModel)]="userEducation12.start_date"
                                         placeholder="start_date" name="start_date"><br>
 
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                        <span class="input-group-text" id="">End Date</span>
                                     </div>
-                                    <input type="text" #end_date="ngModel" [(ngModel)]="userEducation12.end_date"
+                                    <input type="date" #end_date="ngModel" [(ngModel)]="userEducation12.end_date"
                                         placeholder="end_date" name="end_date"><br>
                                 </div>
                                 <div class="form-group input-group">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id=""><i class='fas fa-at'></i></span>
+                                        <span class="input-group-text" id="">Marks/Percentage</span>
                                     </div>
-                                    <input type="text" #marks_percentage="ngModel"
+                                    <input type="number" #marks_percentage="ngModel" min="0" max="100"
                                         [(ngModel)]="userEducation12.marks_percentage" placeholder="marks_percentage"
                                         name="marks_percentage"><br>
 
@@ -276,24 +276,24 @@
 
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                    <span class="input-group-text" id="">Start Date</span>
                                 </div>
-                                <input type="text" #start_date="ngModel" [(ngModel)]="userEducationUG.start_date"
+                                <input type="date" #start_date="ngModel" [(ngModel)]="userEducationUG.start_date"
                                     name="start_date"><br>
 
                             </div>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                    <span class="input-group-text" id="">End Date</span>
                                 </div>
-                                <input type="text" #end_date="ngModel" [(ngModel)]="userEducationUG.end_date"
+                                <input type="date" #end_date="ngModel" [(ngModel)]="userEducationUG.end_date"
                                     name="end_date"><br>
                             </div>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id=""><i class='fas fa-at'></i></span>
+                                    <span class="input-group-text" id="">Marks/Percentage</span>
                                 </div>
-                                <input type="number" #marks_percentage="ngModel"
+                                <input type="number" #marks_percentage="ngModel" min="0" max="100"
                                     [(ngModel)]="userEducationUG.marks_percentage" name="marks_percentage"><br>
 
                             </div>
@@ -328,7 +328,7 @@
                     <h5 class="card-title"></h5>
                     <span class="card-text">Certificate Name:</span><b
                         *ngIf="skills.certificateName">{{skills.certificateName}}</b><br><br>
-                    <span class="card-text">Certificate issue_date:</span><b
+                    <span class="card-text">Certificate issued date:</span><b
                         *ngIf="skills.issuedDate">{{skills.issuedDate}}</b><br><br>
                     <span class="card-text">Skill :</span><b *ngIf="skills.skillset.skillName">{{skills.skillset.skillName}}</b><br><br>
                     <button data-toggle="modal" data-target="#certificate" style="color:#00AA9E;"
@@ -366,7 +366,7 @@
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Certificate Name</span>
                                         </div>
                                         <input type="text" #certificate_name="ngModel"
                                             [(ngModel)]="userSkills.certificate_name" placeholder="certificate name"
@@ -375,7 +375,7 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Issued Date</span>
                                         </div>
                                         <input type="date" #issualDate="ngModel"
                                             [(ngModel)]="userSkills.certificate_issue_date" placeholder="issued date"
@@ -414,8 +414,8 @@
                         <h5 class="card-title"></h5>
                         <span class="card-text">Project Name:</span><b
                             *ngIf="project.title">{{project.title}}</b><br><br>
-                        <span class="card-text">description: </span><b *ngIf="project.role">{{project.role}}</b><br><br>
-                        <span class="card-text">role: </span><b
+                        <span class="card-text">Description: </span><b *ngIf="project.role">{{project.role}}</b><br><br>
+                        <span class="card-text">Role: </span><b
                             *ngIf="project.description">{{project.description}}</b><br><br>
                         <button data-toggle="modal" style="color:#00AA9E;" class="btn btn-link"
                             (click)="onDeleteProject(project.jobSeekerProjectId)">Delete</button>
@@ -429,7 +429,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Project_Name</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Project Name</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -440,8 +440,7 @@
 
                                         <div class="form-group input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i
-                                                        class='fas fa-user-alt'></i></span>
+                                                <span class="input-group-text" id="">Project Title</span>
                                             </div>
                                             <input type="text" #title="ngModel" [(ngModel)]="userProjects.title"
                                                 name="title"><br>
@@ -449,8 +448,7 @@
 
                                         <div class="form-group input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i
-                                                        class='fas fa-user-alt'></i></span>
+                                                <span class="input-group-text" id="">Project Description</span>
                                             </div>
                                             <textarea #description="ngModel" [(ngModel)]="userProjects.description"
                                                 placeholder="description" name="description"></textarea><br>
@@ -458,8 +456,7 @@
 
                                         <div class="form-group input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id=""><i
-                                                        class='fas fa-user-alt'></i></span>
+                                                <span class="input-group-text" id="">Project role</span>
                                             </div>
                                             <input type="text" #role="ngModel" [(ngModel)]="userProjects.role"
                                                 placeholder="role" name="role"><br>
@@ -484,7 +481,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Project_Name</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Project Name</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -495,7 +492,7 @@
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Project Title</span>
                                         </div>
                                         <input type="text" #title="ngModel" [(ngModel)]="userProjectsAdd.title"
                                             name="title"><br>
@@ -503,7 +500,7 @@
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Project Description</span>
                                         </div>
                                         <textarea #description="ngModel" [(ngModel)]="userProjectsAdd.description"
                                             placeholder="description" name="description"></textarea><br>
@@ -511,7 +508,7 @@
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Project role</span>
                                         </div>
                                         <input type="text" #role="ngModel" [(ngModel)]="userProjectsAdd.role"
                                             placeholder="role" name="role"><br>
@@ -547,19 +544,19 @@
 
                         <div class="card-body">
                             <h5 class="card-title"></h5>
-                            <span class="card-text">job_title:</span><b
+                            <span class="card-text">Job title:</span><b
                                 *ngIf="experience.jobTitle">{{experience.jobTitle}}</b><br><br>
-                            <span class="card-text">start_date: </span><b
+                            <span class="card-text">Start Date: </span><b
                                 *ngIf="experience.startDate">{{experience.startDate}}</b><br><br>
-                            <span class="card-text">end_date: </span><b
+                            <span class="card-text">End Date: </span><b
                                 *ngIf="experience.endDate">{{experience.endDate}}</b><br><br>
-                            <span class="card-text">job_descrispantion: </span><b
+                            <span class="card-text">Job Descrispantion: </span><b
                                 *ngIf="experience.jobDescription">{{experience.jobDescription}}</b><br><br>
-                            <span class="card-text">streetaddress: </span><b
+                            <span class="card-text">Street Address: </span><b
                                 *ngIf="experience.streetAddress">{{experience.streetAddress}}</b><br><br>
-                            <span class="card-text">city: </span><b
+                            <span class="card-text">City: </span><b
                                 *ngIf="experience.city">{{experience.city}}</b><br><br>
-                            <span class="card-text">state: </span><b
+                            <span class="card-text">State: </span><b
                                 *ngIf="experience.state">{{experience.state}}</b><br><br>
 
                             <div *ngIf="Experinceinfo!=''">
@@ -590,46 +587,41 @@
 
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">Job title</span>
                                                 </div>
                                                 <input type="text" #job_title="ngModel"
-                                                    [(ngModel)]="userExperience.job_title" placeholder="job_title"
+                                                    [(ngModel)]="userExperience.job_title" placeholder="job title"
                                                     name="job_title"><br>
                                             </div>
 
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">Start Date</span>
                                                 </div>
-                                                <input type="text" #start_date="ngModel"
-                                                    [(ngModel)]="userExperience.start_date" placeholder="start_date"
+                                                <input type="date" #start_date="ngModel"
+                                                    [(ngModel)]="userExperience.start_date" placeholder="start date"
                                                     name="start_date"><br>
                                             </div>
 
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">End Date</span>
                                                 </div>
-                                                <input type="text" #end_date="ngModel"
-                                                    [(ngModel)]="userExperience.end_date" placeholder="end_date"
+                                                <input type="date" #end_date="ngModel"
+                                                    [(ngModel)]="userExperience.end_date" placeholder="end date"
                                                     name="end_date"><br>
                                             </div>
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">Job Descrispantion</span>
                                                 </div>
                                                 <input type="text" #job_description="ngModel"
                                                     [(ngModel)]="userExperience.job_description"
-                                                    placeholder="job_description" name="job_description"><br>
+                                                    placeholder="job_description" name="job description"><br>
                                             </div>
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">Street Address</span>
                                                 </div>
                                                 <input type="text" #streetaddress="ngModel"
                                                     [(ngModel)]="userExperience.streetaddress"
@@ -637,16 +629,14 @@
                                             </div>
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">City</span>
                                                 </div>
                                                 <input type="text" #city="ngModel" [(ngModel)]="userExperience.city"
                                                     placeholder="city" name="city"><br>
                                             </div>
                                             <div class="form-group input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text" id=""><i
-                                                            class='fas fa-user-alt'></i></span>
+                                                    <span class="input-group-text" id="">State</span>
                                                 </div>
                                                 <input type="text" #state="ngModel" [(ngModel)]="userExperience.state"
                                                     placeholder="state" name="state"><br>
@@ -686,55 +676,55 @@
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Job Title</span>
                                         </div>
                                         <input type="text" #job_title="ngModel"
-                                            [(ngModel)]="AdduserExperience.job_title" placeholder="job_title"
+                                            [(ngModel)]="AdduserExperience.job_title" placeholder="job title"
                                             name="job_title"><br>
                                     </div>
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Start Date</span>
                                         </div>
-                                        <input type="text" #start_date="ngModel"
-                                            [(ngModel)]="AdduserExperience.start_date" placeholder="start_date"
+                                        <input type="date" #start_date="ngModel"
+                                            [(ngModel)]="AdduserExperience.start_date" placeholder="start date"
                                             name="start_date"><br>
                                     </div>
 
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">End Date</span>
                                         </div>
-                                        <input type="text" #end_date="ngModel" [(ngModel)]="AdduserExperience.end_date"
+                                        <input type="date" #end_date="ngModel" [(ngModel)]="AdduserExperience.end_date"
                                             placeholder="end_date" name="end_date"><br>
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Job description</span>
                                         </div>
                                         <input type="text" #job_description="ngModel"
                                             [(ngModel)]="AdduserExperience.job_description"
-                                            placeholder="job_description" name="job_description"><br>
+                                            placeholder="job description" name="job_description"><br>
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">Street </span>
                                         </div>
                                         <input type="text" #streetaddress="ngModel"
-                                            [(ngModel)]="AdduserExperience.streetaddress" placeholder="streetaddress"
+                                            [(ngModel)]="AdduserExperience.streetaddress" placeholder="street address"
                                             name="streetaddress"><br>
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">City</span>
                                         </div>
                                         <input type="text" #city="ngModel" [(ngModel)]="AdduserExperience.city"
                                             placeholder="city" name="city"><br>
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" id=""><i class='fas fa-user-alt'></i></span>
+                                            <span class="input-group-text" id="">State</span>
                                         </div>
                                         <input type="text" #state="ngModel" [(ngModel)]="AdduserExperience.state"
                                             placeholder="state" name="state"><br>
