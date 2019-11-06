@@ -67,7 +67,7 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 
 		try {
 			List<JobSeekerEducation> education = session.createQuery("FROM JobSeekerEducation").list();
-			
+
 			Iterator<JobSeekerEducation> iterators = education.iterator();
 			while (iterators.hasNext()) {
 				JobSeekerEducation edu = iterators.next();
@@ -83,16 +83,23 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 		return seekereducation;
 	}
 
-	public List<JobSeekerEducation> getSeekerEducationById(int userId) {
+	public List<EducationDTO> getSeekerEducationById(int userId) {
 		Session session = factory.openSession();
-		List<JobSeekerEducation> result = null;
+		List<EducationDTO> result = new ArrayList<EducationDTO>();
 		try {
 			Query query = session.createQuery("from JobSeekerEducation where user.userID= :userid");
 			query.setParameter("userid", userId);
-			List<JobSeekerEducation> education = new ArrayList<JobSeekerEducation>();
-			education = query.list();
-			if (education != null)
-				result = education;
+			List<JobSeekerEducation> education = query.list();
+			if (education != null) { 
+				Iterator<JobSeekerEducation> iterators = education.iterator(); 
+				while (iterators.hasNext()) {
+					JobSeekerEducation edu = iterators.next();
+					logger.info("EDDDDDDD" + edu.getEducationType());
+					EducationDTO educationdto = new EducationDTO(edu);
+					logger.info("EDDDDDDhhhD" + educationdto.getEducationType());
+					result.add(educationdto);
+				}
+			}
 			logger.info("SIZERRR" + result.size());
 		} catch (Exception ex) {
 		} finally {
@@ -133,7 +140,7 @@ public class JobSeekerEducationDAOImpl implements JobSeekerEducationDAO {
 
 		try {
 			tx = session.beginTransaction();
-			JobSeekerEducation education = (JobSeekerEducation)session.get(JobSeekerEducation.class, educationId); 
+			JobSeekerEducation education = (JobSeekerEducation) session.get(JobSeekerEducation.class, educationId);
 			session.delete(education);
 			tx.commit();
 		} catch (HibernateException e) {

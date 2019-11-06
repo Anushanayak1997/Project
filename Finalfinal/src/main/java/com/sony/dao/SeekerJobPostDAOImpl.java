@@ -101,7 +101,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 
 					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
 					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
-					while (iterator.hasNext()) {
+					while (iterators.hasNext()) {
 						SkillSet skillset = iterators.next();
 						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
 						skillsets.add(skillsetdto);
@@ -147,7 +147,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 
 					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
 					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
-					while (iterator.hasNext()) {
+					while (iterators.hasNext()) {
 						SkillSet skillset = iterators.next();
 						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
 						skillsets.add(skillsetdto);
@@ -192,7 +192,7 @@ public class SeekerJobPostDAOImpl implements SeekerJobPostDAO {
 
 					Iterator<SkillSet> iterators = jobpost.getSkillset().iterator();
 					Set<SkillSetDTO> skillsets = new HashSet<SkillSetDTO>();
-					while (iterator.hasNext()) {
+					while (iterators.hasNext()) {
 						SkillSet skillset = iterators.next();
 						SkillSetDTO skillsetdto = new SkillSetDTO(skillset.getSkillId(), skillset.getSkillName());
 						skillsets.add(skillsetdto);

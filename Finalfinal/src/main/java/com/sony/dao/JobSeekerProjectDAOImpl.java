@@ -27,7 +27,7 @@ import com.sony.model.entity.JobSeekerProject;
 public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 
 	private static SessionFactory factory;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
 	public JobSeekerProjectDAOImpl() {
@@ -38,6 +38,7 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
+
 	public Integer addJobSeekerProject(JobSeekerProject project) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -64,46 +65,57 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		try {
 			List<JobSeekerProject> result = session.createQuery("FROM JobSeekerProject").list();
 			if (!result.isEmpty()) {
-				Iterator<JobSeekerProject> iterator= result.iterator();
+				Iterator<JobSeekerProject> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					JobSeekerProject seekerproject = iterator.next();
-					SeekerProjectDTO projectdto=new SeekerProjectDTO(seekerproject.getJobSeekerProjectId(),seekerproject.getTitle(),seekerproject.getDescription(),seekerproject.getRole(),seekerproject.getUser());
-					
+					SeekerProjectDTO projectdto = new SeekerProjectDTO(seekerproject.getJobSeekerProjectId(),
+							seekerproject.getTitle(), seekerproject.getDescription(), seekerproject.getRole(),
+							seekerproject.getUser());
 					project.add(projectdto);
-			
+
 				}
-			}}
-	 catch (HibernateException e) {
+			}
+		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
 		return project;
 	}
-	
+
 	public List<SeekerProjectDTO> getProjectsById(int userId) {
 		Session session = factory.openSession();
-		List<SeekerProjectDTO> result = null;
+		List<SeekerProjectDTO> result = new ArrayList<SeekerProjectDTO>();
 		try {
 			Query query = session.createQuery("from JobSeekerProject where user.userID = :userId");
 			query.setParameter("userId", userId);
-			List<SeekerProjectDTO> seekerprojects = new ArrayList<SeekerProjectDTO>();
-			seekerprojects = query.list();
+			List<JobSeekerProject> seekerprojects =  query.list();
 			logger.info("Projects");
-			if (seekerprojects != null)
-				result = seekerprojects;
+			if (seekerprojects != null) {
+				Iterator<JobSeekerProject> iterator = seekerprojects.iterator();
+				while (iterator.hasNext()) {
+					JobSeekerProject seekerproject = iterator.next();
+					SeekerProjectDTO projectdto = new SeekerProjectDTO(seekerproject.getJobSeekerProjectId(),
+							seekerproject.getTitle(), seekerproject.getDescription(), seekerproject.getRole(),
+							seekerproject.getUser());
+
+					result.add(projectdto);
+				}
+			}
 		} catch (Exception ex) {
 		} finally {
 			session.close();
 		}
 		return result;
 	}
+
 	public void editSeekerProject(JobSeekerProject jobSeekerproject) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			JobSeekerProject initproject = (JobSeekerProject) session.get(JobSeekerProject.class, jobSeekerproject.getJobSeekerProjectId());
+			JobSeekerProject initproject = (JobSeekerProject) session.get(JobSeekerProject.class,
+					jobSeekerproject.getJobSeekerProjectId());
 			initproject.setDescription(jobSeekerproject.getDescription());
 			initproject.setRole(jobSeekerproject.getRole());
 			initproject.setTitle(jobSeekerproject.getTitle());
@@ -117,16 +129,16 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 		} finally {
 			session.close();
 		}
-	
-		
+
 	}
+
 	public void deleteSeekerProject(int projectId) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			JobSeekerProject project = (JobSeekerProject)session.get(JobSeekerProject.class, projectId); 
+			JobSeekerProject project = (JobSeekerProject) session.get(JobSeekerProject.class, projectId);
 			session.delete(project);
 			tx.commit();
 		} catch (HibernateException e) {
@@ -135,9 +147,8 @@ public class JobSeekerProjectDAOImpl implements JobSeekerProjectDAO {
 			e.printStackTrace();
 		} finally {
 			session.close();
-		
-		
+
+		}
+
 	}
-	
-	}
-	}
+}
