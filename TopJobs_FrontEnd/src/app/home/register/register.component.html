@@ -106,8 +106,8 @@
                     </div>
 
                     <input type="number" #contactNumber="ngModel" required class="form-control"
-                        [class.is-invalid]="contactNumber.invalid && contactNumber.touched" name="contactNumber"
-                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" pattern="[789][0-9]{9}">
+                        [class.is-invalid]="contactNumber.invalid && contactNumber.touched"  name="contactNumber"
+                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" minlength="10" maxlength="10">
                     <small class="text-danger"
                         [class.d-none]="contactNumber.valid || contactNumber.untouched">contactNumber
                         is

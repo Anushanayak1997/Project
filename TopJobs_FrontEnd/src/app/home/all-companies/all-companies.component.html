@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="container candidates">
+  
+        <div class="companyProfile">
+          <div *ngIf="companies" class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded"> <!--ng if-->
+            <div class="card-header " style="background-color: #00AA9E; ">
+                <div  style="text-align: center;">
+                    <h2 >Companies List</h2>
+                </div>
+            </div>
+            <div *ngFor="let company of companies" class="card-deck">  <!--ng for-->
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{company.companyName}}</h5>
+      
+                  
+                  <p class="card-text">{{company.companyDescription}}</p>
+      
+                  <button (click)="viewCompany(company.companyId)" type="button" class="btn btn-link">View More</button>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </div>

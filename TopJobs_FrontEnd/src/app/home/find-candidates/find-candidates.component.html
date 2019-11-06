@@ -4,7 +4,11 @@
 <div class="container candidates">
   <div class="companyProfile">
     <div *ngIf="seekers" class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded">
-
+        <div class="card-header " style="background-color: #00AA9E; ">
+            <div  style="text-align: center;">
+                <h2 >JobSeekers List</h2>
+            </div>
+        </div>
       <div class="card-deck" *ngFor="let user of seekerlist">
         <div class="card">
           <div class="card-body">

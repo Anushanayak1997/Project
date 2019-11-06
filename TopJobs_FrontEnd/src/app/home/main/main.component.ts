@@ -27,4 +27,8 @@ export class MainComponent implements OnInit {
   findCandidates(){
     this.router.navigate(['seekers']);
   }
+
+  findJobs(){
+    this.router.navigate(['company']);
+  }
 }

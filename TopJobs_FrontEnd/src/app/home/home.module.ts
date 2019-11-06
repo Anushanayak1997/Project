@@ -12,9 +12,10 @@ import { CompaniesComponent } from './companies/companies.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { FindCandidatesComponent } from './find-candidates/find-candidates.component';
 import { LoadingComponent } from './loading/loading.component';
+import { AllCompaniesComponent } from './all-companies/all-companies.component';
 
 @NgModule({
-  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent],
+  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent, AllCompaniesComponent],
   exports: [
    
     MainComponent,
