@@ -36,13 +36,13 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, private _http: HttpClient,private Toaster:ToastrService) { }
 
   regiseterModel = new RegiseterUser(
-    "Namrata",
-    "Nadang",
-    "nammu@gmail.com ",
-    "nammu9989",
-    "987654321",
-    "1",
-    "a1",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
   )
 
   ngOnInit() {
