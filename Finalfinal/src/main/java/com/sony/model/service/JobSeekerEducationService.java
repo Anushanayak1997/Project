@@ -11,7 +11,7 @@ public interface JobSeekerEducationService {
 
 	List<EducationDTO> getAllSeekerEducation();
 
-	List<JobSeekerEducation> getSeekerEducationById(int userId);
+	List<EducationDTO> getSeekerEducationById(int userId);
 
 	void editseekereducation(JobSeekerEducation jobSeekerEducation);
 
