@@ -22,7 +22,7 @@
 
                         <input input-smtype="text" #companyName="ngModel" required class="form-control" minlength="3"
                             [class.is-invalid]="companyName.invalid && companyName.touched" name="companyName"
-                            [(ngModel)]="userModel.companyName" placeholder="companyName">
+                            [(ngModel)]="userModel.companyName" placeholder="Company Name">
 
                         <div *ngIf="!(companyName.valid || companyName.touched)">
                             <small class="text-danger" *ngIf="companyName.required">companyNamer is required</small>
@@ -73,7 +73,7 @@
 
                         <input type="url" #websiteUrl="ngModel" required class="form-control"
                             [class.is-invalid]="websiteUrl.invalid && websiteUrl.touched" name="websiteUrl"
-                            [(ngModel)]="userModel.websiteUrl" placeholder="company website">
+                            [(ngModel)]="userModel.websiteUrl" placeholder="Company website">
                         <small class="text-danger" [class.d-none]="websiteUrl.valid || websiteUrl.untouched">websiteUrl
                             is
                             required</small>
@@ -87,7 +87,7 @@
 
                         <input type="text" #headquarter="ngModel" required class="form-control"
                             [class.is-invalid]="headquarter.invalid && headquarter.touched" name="headquarter"
-                            [(ngModel)]="userModel.headquarter" placeholder="headquarter">
+                            [(ngModel)]="userModel.headquarter" placeholder="Headquarter">
                         <small class="text-danger"
                             [class.d-none]="headquarter.valid || headquarter.untouched">headquarter is
                             required</small>
@@ -100,7 +100,7 @@
 
                         <input type="text" #specialities="ngModel" required class="form-control"
                             [class.is-invalid]="specialities.invalid && specialities.touched" name="specialities "
-                            [(ngModel)]="userModel.specialities " placeholder="specialities">
+                            [(ngModel)]="userModel.specialities " placeholder="Specialities">
                         <small class="text-danger"
                             [class.d-none]="specialities.valid || specialities.untouched">specialities
                             is
@@ -113,7 +113,7 @@
 
                         <input type="text" #industry="ngModel" required class="form-control"
                             [class.is-invalid]="industry.invalid && industry.touched" name="industry "
-                            [(ngModel)]="userModel.industry " placeholder="industry">
+                            [(ngModel)]="userModel.industry " placeholder="Industry">
                         <small class="text-danger" [class.d-none]="industry.valid || industry.untouched">industry
                             is
                             required</small>
@@ -123,20 +123,18 @@
                             <span class="input-group-text" id=""><i class="fas fa-pen"></i></span>
                         </div>
 
-                        <input type="text" #type="ngModel" required class="form-control" placeholder="company type"
+                        <input type="text" #type="ngModel" required class="form-control" placeholder="Company type"
                             [class.is-invalid]="type.invalid && type.touched" name="type" [(ngModel)]="userModel.type ">
                         <small class="text-danger" [class.d-none]="type.valid || type.untouched">company type
                             is
                             required</small>
                     </div>
                     <div class="form-group  input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id=""><i class="fas fa-pen"></i></span>
-                        </div>
+                      
 
-                        <input   #image="ngModel" required  class="form-control" placeholder="company image"
+                        <input   #image="ngModel" required  class="form-control" placeholder="Company image"
                          style="display: none" [(ngModel)]="userModel.image" name="image" type="file" (change)="onFileChanged($event)" #fileInput>
-                        <button (click)="fileInput.click($event)"  class="btn btn-info" >Select File</button>
+                        <button (click)="fileInput.click($event)"  class="btn btn-info" >Upload Company Image</button>
                       
 
                     </div>
