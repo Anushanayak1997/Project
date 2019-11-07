@@ -30,6 +30,7 @@ export class JobPostsComponent implements OnInit {
    public companies = [];
   jobposts:any;
   userType: string;
+  image: any;
 
   constructor( private route:Router,private companyservice:CompanyService,private _http: HttpClient,private jobservice:JobpostService) { }
 

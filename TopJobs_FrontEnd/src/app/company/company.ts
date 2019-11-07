@@ -8,6 +8,7 @@ export class Company {
         public specialities: string,
         public industry: string,
         public type: string,
+        public image:any
     ) {}
 }
 

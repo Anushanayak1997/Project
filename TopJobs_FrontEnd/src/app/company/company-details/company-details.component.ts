@@ -19,12 +19,16 @@ import { catchError } from 'rxjs/operators';
 export class CompanyDetailsComponent implements OnInit {
   compDetails:any;
   url = environment.apiBaseUrl + "addcompanydetails";
+
   userType: string;
   company: any;
+  selectedFile: File;
+  Data:any = [];
+  a: void;
 
   ngOnInit() {
     this.userType=sessionStorage.getItem('user_type');
-    
+
     if(this.userType == 'Employer'){
       console.log("correct user");
     }else{
@@ -35,7 +39,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   title = 'app';
 
-  userModel = new Company('', '', '', "", '', '', "", "");
+  userModel = new Company('', '', '', "", '', '', "", "","");
   
   errorMsg = '';
 
@@ -53,7 +57,8 @@ export class CompanyDetailsComponent implements OnInit {
       'specialiaties':this.userModel.specialities,
       'industry':this.userModel.industry,
       'type':this.userModel.type,
-      'userId':sessionStorage.getItem('user_id')
+      'userId':sessionStorage.getItem('user_id'),
+      'compimage':this.Data[0]
     }
     console.log(this.compDetails);
     console.log("000000")
@@ -77,6 +82,27 @@ export class CompanyDetailsComponent implements OnInit {
   goEmployerDetails() {
     this.route.navigate(['company/jobpost']);
   }
+
+  onFileChanged(evt) {
+    const file = evt.target.files[0];
+    console.log("File uploaded", file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = this.handleReaderLoaded.bind(this);
+      this.a= reader.readAsBinaryString(file);
+     
+    }
+  }
+  handleReaderLoaded(e) {
+    this.Data.push(btoa(e.target.result));
+    console.log("Base645", this.Data[0]);
+    
+   
+  }
+
+
+
+
 }
 
 

@@ -40,14 +40,14 @@ export class CompaniesComponent implements OnInit {
         console.log(Response);
         this.companies = Response
         for(let company of this.companies){
-          if(company.companyName == "sony"){
+          if(company.companyName == "SONY"){
 
             this.sony_name = company.companyName;
             this.sony_disc = company.companyDescription;
             this.sony_website =company.websiteUrl;
             console.log(this.sony_website);
 
-          } if(company.companyName == "Havlet P"){
+          } if(company.companyName == "HP"){
 
             this.hp_name = company.companyName;
             this.hp_disc = company.companyDescription;

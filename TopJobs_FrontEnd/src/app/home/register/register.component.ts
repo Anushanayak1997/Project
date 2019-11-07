@@ -38,9 +38,9 @@ export class RegisterComponent implements OnInit {
   regiseterModel = new RegiseterUser(
     "Namrata",
     "Nadang",
-    "nammu@gmail.com ",
+    "aksajjan282@gmail.com ",
     "nammu9989",
-    "987654321",
+    "9876543210",
     "1",
     "a1",
   )

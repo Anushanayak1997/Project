@@ -1,15 +1,15 @@
 <div class="navbar-fixed-top">
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand"  [routerLink]="['/home']">
-            <h4 class="display-6" style="color: wheat;">TopJobs</h4>
+            <h3 class="display-6" style="color: white "><b>TopJobs </b></h3>
 
         </a>
         <div class="btn-group">
             <div *ngIf="!loggedIn">
                 <button (click)="gologin()" type="button"
-                    class="btn btn-primary btn btn-info btn-outline mr-1 ">Login</button>
+                    class="btn btn-primary btn btn-info btn-outline mr-1 "><b>Login</b></button>
                 <button (click)="goRegister()" type="button"
-                    class="btn btn-primary btn btn-info btn-outline mr-1">Register</button>
+                    class="btn btn-primary btn btn-info btn-outline mr-1"><b>Register</b></button>
 
             </div>
             <div *ngIf="loggedIn" class="btn-group">
@@ -22,10 +22,10 @@
 
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" routerLink="/seeker/home">Home</a>
-                            <a class="dropdown-item" routerLink="/seeker/profile">profile </a>
-                            <a class="dropdown-item" routerLink="/seeker/status">status</a>
-                            <a class="dropdown-item" routerLink="/manage/account">account</a>
+                            <a class="dropdown-item" routerLink="/seeker/home"><b>Home</b></a>
+                            <a class="dropdown-item" routerLink="/seeker/profile"><b>Profile</b> </a>
+                            <a class="dropdown-item" routerLink="/seeker/status"><b>Status</b></a>
+                            <a class="dropdown-item" routerLink="/manage/account"><b>Account</b></a>
                         </div>
                     </div>
                 </div>
@@ -35,15 +35,15 @@
 
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" routerLink="/home">Home</a>
-                        <a class="dropdown-item" routerLink="/company/jobpost">Job posts</a>
+                        <a class="dropdown-item" routerLink="/home"><b>Home</b></a>
+                        <a class="dropdown-item" routerLink="/company/jobpost"><b>Job posts</b></a>
                         
-                        <a class="dropdown-item" routerLink="/manage/account">account</a>
+                        <a class="dropdown-item" routerLink="/manage/account"><b>Account</b></a>
                     </div>
                 </div>
 
                 <button (click)="goLogOut()" type="button"
-                    class="btn btn-primary btn btn-info btn-outline mr-1 ">logOut</button>
+                    class="btn btn-primary btn btn-info btn-outline mr-1 "><b>  Log Out </b></button>
             </div>
 
         </div>
