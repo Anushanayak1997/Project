@@ -104,7 +104,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = factory.openSession();
 		List<UserDTO> users = new ArrayList<UserDTO>();
 
-		try {
+		try { 
 			List<User> result = session.createQuery("FROM User").list();
 			if (!result.isEmpty()) {
 				Iterator<User> iterator = result.iterator();
