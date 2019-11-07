@@ -1,12 +1,45 @@
-
 <app-header></app-header>
 <div class="container">
     <div class="companyProfile mainCard ">
-        <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded" >
+        <div class="table  card bg-light shadow-lg p-3 mb-5 bg-white rounded">
             <div *ngIf="company">
-            <h4>Company Name :{{company.companyName}}</h4>
-            <h4>Company Description: {{company.companyDescription}}</h4>
-        </div>
+
+                <div class="container">
+
+
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col ">
+                            <img src="{{'data:image/png;base64,' + company.compimage}}" class="img-thumbnail imageclass"
+                                alt="Cinque Terre">
+                        </div>
+                        <div class="col-sm-8 ">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col-sm-8">
+                                            <h5>Company Name </h5>
+                                        </th>
+                                        <th scope="col">
+                                            <h2>{{company.companyName}}</h2>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">
+                                            <h5> Company Description </h5>
+                                        </th>
+                                        <th scope="col"><small> {{company.companyDescription}} </small></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </div>
 
@@ -23,33 +56,36 @@
         <div class="row">
             <div class="table-responsive card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded">
                 <table class="table">
-                   
-                        <tr style="background-color: #00AA9E; color: wheat;">
 
-                                <tr>
-                                        <th>sl no</th>
-                                        <th>jobTitle</th>
-                                        <th>status</th>
-                                        <th>noOfApplicants</th>
-                                        <th>postDate</th>
-                                        
-                                    </tr>
+                    <tr style="background-color: #00AA9E; color: wheat;">
+
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Job Title</th>
+                        <th>Status</th>
+                        <th>No. Of Applicants</th>
+                        <th>Post Date</th>
+
+                    </tr>
 
                     <tr *ngFor="let data of jobposts; let i=index">
                         <th scope="row">{{i+1}}</th>
-                   
+
                         <td>{{data.jobTitle}}</td>
                         <td>{{data.isActive}}</td>
-                        <td><button type="button" class="btn btn-link" (click)="applicants(data.jobPostId)">{{data.noOfApplicants}}</button></td>
+                        <td><button type="button" class="btn btn-link"
+                                (click)="applicants(data.jobPostId)">{{data.noOfApplicants}}</button></td>
                         <td>{{data.postDate}}</td>
-                        <button class="btn btn-primary" type="submit" (click)="onEdit(data.jobPostId)">Edit</button>
-                        <button class="btn btn-primary" type="submit" (click)="onDelete(data.jobPostId)">Delete</button>
-                        
+                        <button type="button" class="btn btn-link" type="submit"
+                            (click)="onEdit(data.jobPostId)">Edit</button>
+                        <button type="button" class="btn btn-link" type="submit"
+                            (click)="onDelete(data.jobPostId)">Delete</button>
+
                     </tr>
-                   
 
 
-                    
+
+
                 </table>
             </div>
         </div>

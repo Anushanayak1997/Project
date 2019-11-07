@@ -34,6 +34,6 @@ export class ApplicationStatusComponent implements OnInit {
 
 
   toApply(){
-    this.router.navigate(['/seeker/home'])
+    this.router.navigate(['/seeker/home']);
   }
 }

@@ -1,9 +1,17 @@
-<p>file-upload works!</p>
-<div class="form-group">
-    <label for="file">Choose File</label>
-    <input type="file"
-           id="file"
-           (change)="handleFileInput($event.target.files)">
+<h3>Image Uploading Module</h3>
+
+
+<div>
+    <input type="file" (change)="onFileChanged($event)">
+
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
 </div>
 
-<button (click)="uploadFileToActivity()"></button>
+<input type="button" (click)="onUpload()" value="upload">
+
+<hr />
+
+Received Image:
+
+{{ receivedImageData['pic'] | json}}
+<img [src]="convertedImage" >

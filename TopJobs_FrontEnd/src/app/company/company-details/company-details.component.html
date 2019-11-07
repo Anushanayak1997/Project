@@ -1,22 +1,20 @@
-
-
 <app-header></app-header>
 <div class="container mainCard">
 
 
 
-    <form #userForm="ngForm" *ngIf="!submitted"  novalidate>
+    <form #userForm="ngForm" *ngIf="!submitted" novalidate>
 
         <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
             <div class="card-header " style="background-color: #00AA9E; ">
-                <div class="" >
+                <div class="">
                     <h2>Company Details</h2>
                 </div>
             </div>
 
             <article class="card-body mx-auto " style="min-width: 70%;">
                 <div class="">
-                    
+
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id=""><i class="fas fa-building"></i><strong></strong></span>
@@ -28,13 +26,15 @@
 
                         <div *ngIf="!(companyName.valid || companyName.touched)">
                             <small class="text-danger" *ngIf="companyName.required">companyNamer is required</small>
-                            <small class="text-danger" *ngIf="companyName.minlength">companyNamemust be minimum 3 charcters</small>
+                            <small class="text-danger" *ngIf="companyName.minlength">companyNamemust be minimum 3
+                                charcters</small>
                         </div>
                     </div>
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class='far fa-clipboard'  style='font-size:36px'></i><strong></strong></span>
+                            <span class="input-group-text"><i class='far fa-clipboard'
+                                    style='font-size:36px'></i><strong></strong></span>
                         </div>
 
                         <textarea rows="2" type="textarea" #companyDescription="ngModel" required class="form-control"
@@ -55,7 +55,8 @@
 
                         <input type="date" #establishmentDate="ngModel" required class="form-control"
                             [class.is-invalid]="establishmentDate.invalid && establishmentDate.touched"
-                            name="establishmentDate" [(ngModel)]="userModel.establishmentDate" placeholder="About the company">
+                            name="establishmentDate" [(ngModel)]="userModel.establishmentDate"
+                            placeholder="About the company">
                         <small class="text-danger"
                             [class.d-none]="establishmentDate.valid || establishmentDate.untouched">establishmentDate
                             is
@@ -66,14 +67,15 @@
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id=""><i class='fas fa-globe-americas'></i><strong></strong></span>
+                            <span class="input-group-text" id=""><i
+                                    class='fas fa-globe-americas'></i><strong></strong></span>
                         </div>
 
                         <input type="url" #websiteUrl="ngModel" required class="form-control"
                             [class.is-invalid]="websiteUrl.invalid && websiteUrl.touched" name="websiteUrl"
                             [(ngModel)]="userModel.websiteUrl" placeholder="company website">
-                        <small class="text-danger"
-                            [class.d-none]="websiteUrl.valid || websiteUrl.untouched">websiteUrl is
+                        <small class="text-danger" [class.d-none]="websiteUrl.valid || websiteUrl.untouched">websiteUrl
+                            is
                             required</small>
                     </div>
 
@@ -99,7 +101,7 @@
                         <input type="text" #specialities="ngModel" required class="form-control"
                             [class.is-invalid]="specialities.invalid && specialities.touched" name="specialities "
                             [(ngModel)]="userModel.specialities " placeholder="specialities">
-                        <small class="text-danger" 
+                        <small class="text-danger"
                             [class.d-none]="specialities.valid || specialities.untouched">specialities
                             is
                             required</small>
@@ -112,8 +114,7 @@
                         <input type="text" #industry="ngModel" required class="form-control"
                             [class.is-invalid]="industry.invalid && industry.touched" name="industry "
                             [(ngModel)]="userModel.industry " placeholder="industry">
-                        <small class="text-danger"
-                            [class.d-none]="industry.valid || industry.untouched">industry
+                        <small class="text-danger" [class.d-none]="industry.valid || industry.untouched">industry
                             is
                             required</small>
                     </div>
@@ -128,16 +129,28 @@
                             is
                             required</small>
                     </div>
+                    <div class="form-group  input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id=""><i class="fas fa-pen"></i></span>
+                        </div>
+
+                        <input   #image="ngModel" required  class="form-control" placeholder="company image"
+                         style="display: none" [(ngModel)]="userModel.image" name="image" type="file" (change)="onFileChanged($event)" #fileInput>
+                        <button (click)="fileInput.click($event)"  class="btn btn-info" >Select File</button>
+                      
+
+                    </div>
 
 
 
-                    <button class="btn btn-primary btn-space btnStyle" [disabled]="userForm.form.invalid || topicHasError" type="submit"
-                    (click)="onSubmit()"><strong>Save</strong>
+                    <button class="btn btn-primary btn-space btnStyle"
+                        [disabled]="userForm.form.invalid || topicHasError" type="submit"
+                        (click)="onSubmit()"><strong>Save</strong>
                     </button>
-                   
-                    <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="goEmployerDetails()" type="button" 
-                      ><strong>Next</strong>
-                </button>
+
+                    <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="goEmployerDetails()"
+                        type="button"><strong>Next</strong>
+                    </button>
                 </div>
             </article>
         </div>

@@ -15,32 +15,49 @@ export class SeekerPageComponent implements OnInit {
   url2 = environment.apiBaseUrl + "getalljobs";
   url3 = environment.apiBaseUrl + "applyjobpost";
   url4 = environment.apiBaseUrl + "getapplicantsbyuserid/" + this.userId;
+  getseekskills=environment.apiBaseUrl+"getseekerskillbyid";
+
   User:any;
   seekerjobpost: any;
   jobDetails: any;
   userType:any;
   Status: any = [];
+  seekerskills: Object;
+  skills: Object;
 
   constructor(private http:HttpClient,private router:Router) { }
 
   ngOnInit() {
+    this.getseekerskills();
    this.userType=sessionStorage.getItem('user_type');
+   this.userId=sessionStorage.getItem('user_id');
     if(this.userType == 'JobSeeker'){
-      console.log("correct user", this.userId);
+     
       this.getSeekerStatus();
       this.getJobSeeker();
       this.getJobs();
     }else{
       this.router.navigate(['home']);
     }
+
+   
+
+  }
+
+  getseekerskills(){
+    this.http.get(this.getseekskills+"/"+this.userId).subscribe((Response)=>{
+ 
+      this.skills = Response;
+    })
   }
 
   getJobSeeker(){
-    console.log(sessionStorage.getItem('user_id'));
+  
     this.http.get(this.url1).subscribe(
       (Response)=>{
-        console.log("User details", Response);
+       
         this.User = Response;
+        console.log(this.User);
       })
   }
 
@@ -54,7 +71,7 @@ export class SeekerPageComponent implements OnInit {
               this.jobDetails[i].status = 1;
           }
         }
-        console.log("Job Posts", this.jobDetails)
+       
       }
     )
   }
@@ -63,22 +80,22 @@ export class SeekerPageComponent implements OnInit {
     this.http.get(this.url4).subscribe(
       (Response)=>{
         this.Status = Response;
-        console.log("Status", this.Status);
+       
       }
     )
   }
 
   onApply(jobpostid) {
-    console.log("Index ", jobpostid);
+   
     this.seekerjobpost = {
       'userId':sessionStorage.getItem('user_id'),
       'jobpostId': jobpostid,
       'status': 'Applied'
     }
-    console.log(this.seekerjobpost);
+   
     this.http.post(this.url3,this.seekerjobpost).subscribe(
       (response) => {
-        console.log('Success!', response);
+       
       });
   }
 }

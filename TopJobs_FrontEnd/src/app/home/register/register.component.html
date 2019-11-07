@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <h4 class="display-6" style="color: wheat;">TopJobs</h4>
+            <h3 class="display-6" style="color: white "><b>TopJobs </b></h3>
     </a>
 </nav>
 
@@ -40,7 +40,7 @@
 
                     <input input-smtype="text" #firstName="ngModel" required class="form-control" minlength="3"
                         [class.is-invalid]="firstName.invalid && firstName.touched" name="firstName"
-                        [(ngModel)]="regiseterModel.firstName" placeholder="firstName">
+                        [(ngModel)]="regiseterModel.firstName" placeholder="First Name">
 
                     <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" style="color: red;">
                         <small *ngIf="firstName.errors.required">
@@ -62,7 +62,7 @@
 
                     <input type="text" #lastName="ngModel" required class="form-control"
                         [class.is-invalid]="lastName.invalid && lastName.touched" name="lastName"
-                        [(ngModel)]="regiseterModel.lastName" placeholder="lastName">
+                        [(ngModel)]="regiseterModel.lastName" placeholder="Last Name">
                     <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">lastName
                         is
                         required</small>
@@ -72,10 +72,12 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id=""><i class='fas fa-at'></i><strong></strong></span>
                     </div>
-
-                    <input type="email" #emailID="ngModel" required class="form-control"
+                    
+                    <input type="text" #emailID="ngModel" required class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         [class.is-invalid]="emailID.invalid && emailID.touched" name="emailID"
-                        [(ngModel)]="regiseterModel.emailID" placeholder="emailID"  >
+                        [(ngModel)]="regiseterModel.emailID" placeholder="Email ID" 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                        >
                           <div *ngIf="emailID.invalid && (emailID.dirty || emailID.touched)"
                             style="color: red;">
                              <div *ngIf="emailID.errors.required">
@@ -85,6 +87,12 @@
                                 Enter a valid Email
                               </div>
                           </div>
+
+                         <!-- <div *ngIf="emailID.errors && (emailID.invalid || emailID.touched)">
+                            <small class="text-danger" *ngIf="emailID.errors.required">contact number required</small>
+                            <small class="text-danger" *ngIf="emailID.errors.pattern">contact number must be of length 10</small>
+                        </div>-->
+
 
 
 
@@ -96,8 +104,8 @@
 
                     <input type="password" #password="ngModel" required class="form-control"
                         [class.is-invalid]="password.invalid && password.touched" name="password"
-                        [(ngModel)]="regiseterModel.password" placeholder="" required minlength="3">
-                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is
+                        [(ngModel)]="regiseterModel.password" placeholder="Password" required minlength="3">
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is
                         required</small>
                 </div>
                 <div class="form-group input-group">
@@ -105,13 +113,18 @@
                         <span class="input-group-text" id=""><i class="fa fa-mobile" aria-hidden="true"></i></span>
                     </div>
 
-                    <input type="number" #contactNumber="ngModel" required class="form-control"
+                    <input type="tel" pattern="^\d{10}$" #contactNumber="ngModel" required class="form-control"
                         [class.is-invalid]="contactNumber.invalid && contactNumber.touched"  name="contactNumber"
-                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" minlength="10" maxlength="10">
-                    <small class="text-danger"
+                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" >
+                    <!--<small class="text-danger"
                         [class.d-none]="contactNumber.valid || contactNumber.untouched">contactNumber
                         is
-                        required</small>
+                        required</small>-->
+                        <div *ngIf="contactNumber.errors && (contactNumber.invalid || contactNumber.touched)">
+                            <small class="text-danger" *ngIf="contactNumber.errors.required">contact number required</small>
+                            <small class="text-danger" *ngIf="contactNumber.errors.pattern">contact number must be of length 10</small>
+                        </div>
+
                 </div>
 
                 <div *ngIf="regiseterModel.userType=='Employer'">
@@ -122,28 +135,32 @@
                         <select class="form-control" id="" [(ngModel)]="regiseterModel.companyName" name="companyName"
                             required>
                             <option *ngFor="let company of details ; let i=index" [value]="company.companyId">
-                                {{company.companyName}}
+                              <b> {{company.companyName}} </b>  
                             </option>
-                            <option value="others"> others</option>
+                            <option value="others">Others </option>
 
                         </select>
-                        <small class="text-danger" [class.d-none]="!topicHasError || companyName.untouched">Please
-                            choose a Company</small>
+                        <small class="text-danger" [class.d-none]="!topicHasError || companyName.untouched">
+                            <b> Please
+                            choose a Company  </b></small>
                     </div>
+                    
+                </div>
+                <div class="col-md-6 offset-md-3">
+                    <span class="input-group-text" id="">Upload image</span>
+                    <input class="form-control" type="file" (change)="onUploadChange($event)">  
 
                 </div>
-
-
-
+                <br>
                 <button class="btn btn-info btn-space btnStyle" (click)="onSubmit()"
-                    [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
+                    [disabled]="userForm.form.invalid || topicHasError || !status "><strong>submit</strong>
                 </button>
                 &nbsp;
                 <button class="btn btn-info btn-space btnStyle" (click)="onNext()"
-                    [disabled]="userForm.form.invalid || topicHasError  "><strong>login</strong>
+                    [disabled]="userForm.form.invalid || topicHasError || !onsubmit "><strong>login</strong>
                 </button>
             <br>
-                <button type="button" class="btn btn-link" (click)="login()">Already registered?login here</button>
+                <button type="button" class="btn btn-link" (click)="login()">Already registered? Login here.</button>
                 
             </article>
 
@@ -152,3 +169,5 @@
     </form>
 
 </div>
+
+
