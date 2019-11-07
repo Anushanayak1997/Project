@@ -1,5 +1,6 @@
 package com.sony.model.service;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import com.sony.controller.CompanyController;
 import com.sony.dao.EmployerCompanyDAO;
 import com.sony.dao.UserDAO;
 import com.sony.model.dto.UserDTO;
+import com.sony.model.entity.Company;
 import com.sony.model.entity.Login;
 import com.sony.model.entity.User;
 
@@ -31,8 +33,11 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	HttpSession httpsession;
 
-	public Integer addUser(User userenity) {
-		Integer userId = userdao.addUser(userenity);
+	public Integer addUser(UserDTO userdto) {
+		byte[] imageByte = Base64.getDecoder().decode(userdto.getUserimage());
+		User user = new User(userdto);
+		user.setImage(imageByte);
+		Integer userId = userdao.addUser(user);
 		if (userId != null) {
 			httpsession.setAttribute("userid", userId);
 			return userId;
@@ -55,8 +60,6 @@ public class UserServiceImpl implements UserService {
 			if (user.getUserType().equalsIgnoreCase("Employer")) {
 				logger.info("USer" + user);
 				companyid = employercompanydao.getCompanyId(user.getUserID());
-//				httpsession.setAttribute("userid", user.getUserID());
-//				httpsession.setAttribute("companyid", companyid);
 				map.put("userId", user.getUserID());
 				map.put("companyId", companyid);
 				status = true;
@@ -70,7 +73,6 @@ public class UserServiceImpl implements UserService {
 			status = false;
 			return null;
 		}
-//		return map;
 	}
 
 	public UserDTO getUserById(int userId) {
@@ -80,5 +82,13 @@ public class UserServiceImpl implements UserService {
 	public void editUser(User user) {
 		userdao.editUser(user);
 		
+	}
+
+	public Integer addResume(UserDTO userdto) {
+		return userdao.addResume(userdto);
+	}
+	
+	public String getResume(int userId) {
+		return userdao.getResume(userId);
 	}
 }

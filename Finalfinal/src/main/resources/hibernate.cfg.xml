@@ -34,7 +34,7 @@
 		<mapping class="com.sony.model.entity.SeekerJobPostStatus" />
 		
 		
-		<mapping class="com.sony.model.entity.UserDetail" />
+		<mapping class="com.sony.model.entity.Avatar" />
 	
 	
    				

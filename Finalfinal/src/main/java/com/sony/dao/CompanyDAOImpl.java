@@ -1,6 +1,8 @@
 package com.sony.dao;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,13 +22,13 @@ import com.sony.model.dto.UserDTO;
 import com.sony.model.entity.Company;
 import com.sony.model.entity.SeekerJobPostStatus;
 import com.sony.model.entity.User;
-import com.sony.model.entity.UserDetail;
+import com.sony.model.entity.Avatar;
 
 @Repository
 public class CompanyDAOImpl implements CompanyDAO {
 
 	private static SessionFactory factory;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(JobSeekerEducationDAOImpl.class);
 
 	public CompanyDAOImpl() {
@@ -57,14 +59,18 @@ public class CompanyDAOImpl implements CompanyDAO {
 		return companyId;
 	}
 
-	public Company getCompanyById(int companyId) {
+	public CompanyDTO getCompanyById(int companyId) {
 		Session session = factory.openSession();
-		Company result = null;
+		CompanyDTO result = null;
 		try {
-			Query query = session.createQuery("from Company where companyId='" + companyId + "'");
+			Query query = session.createQuery("from Company where companyId= :companyid");
+			query.setParameter("companyid", companyId);
 			Company company = (Company) query.uniqueResult();
-			if (company != null)
-				result = company;
+			if (company != null) {
+				result = new CompanyDTO(company);
+				String image = Base64.getEncoder().encodeToString(company.getImage());
+				result.setCompimage(image);
+			}
 		} catch (Exception ex) {
 		} finally {
 			session.close();
@@ -75,17 +81,19 @@ public class CompanyDAOImpl implements CompanyDAO {
 	public List<CompanyDTO> getAllCompany() {
 		Session session = factory.openSession();
 		List<CompanyDTO> companies = new ArrayList<CompanyDTO>();
-
+		String image = null;
 		try {
 			List<Company> result = session.createQuery("FROM Company").list();
 			if (!result.isEmpty()) {
 				Iterator<Company> iterator = result.iterator();
 				while (iterator.hasNext()) {
 					Company company = iterator.next();
+					image = Base64.getEncoder().encodeToString(company.getImage());
+					logger.info("Imageeeeeeeee" + image);
 					CompanyDTO companydto = new CompanyDTO(company.getCompanyId(), company.getCompanyName(),
 							company.getCompanyDescription(), company.getEstablishmentDate(), company.getWebsiteUrl(),
 							company.getHeadquarter(), company.getSpecialities(), company.getIndustry(),
-							company.getType());
+							company.getType(), image);
 					companies.add(companydto);
 				}
 				// jobposts.addAll(result);
@@ -98,40 +106,41 @@ public class CompanyDAOImpl implements CompanyDAO {
 		return companies;
 	}
 
-	public int updateProfileImage(String profileImage, int userId) {
+	
+//-------------------------------------------------UploadImage------------------------------------------------------------------//
+	public Integer addImage(byte[] file) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer result = null;
+		Integer id = null;
 		try {
 			tx = session.beginTransaction();
-			Query query = session
-					.createQuery("update UserDetail set profileImage = :profileimage where userId=:userid");
-			query.setParameter("profileimage", profileImage);
-			query.setParameter("userid", userId);
-			result = query.executeUpdate();
-			tx.commit();
-		} catch (HibernateException e) {
-			if (tx != null)
-				tx.rollback();
-			e.printStackTrace();
+			Avatar avatar = new Avatar();
+	        avatar.setImage(file);
+	        id = (Integer) session.save(avatar);
+	        tx.commit();
+	    } catch (Exception e) {
+	    	if(tx != null) {
+	    		tx.rollback();
+	    	}
+		     e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return result;
-
+		return id;
 	}
 
-	public UserDetail getUserById(int userId) {
+	public String getImage(int avatarId) {
 		Session session = factory.openSession();
-		logger.info("IDDDDD" + userId);
-		UserDetail result = null;
+		byte[] bAvatar = null;
+		Avatar avatar = new Avatar();
+		String result = null;
 		try {
-			Query query = session.createQuery("from UserDetail where userId= :userid");
-			query.setParameter("userid", userId);
-			UserDetail user = (UserDetail) query.uniqueResult();
-			logger.info("UserDei" + user.getName());
-			if (user != null) {
-				result = user;
+			Query query = session.createQuery("from Avatar where avatarId= :avatarid");
+			query.setParameter("avatarid", avatarId);
+			avatar = (Avatar) query.uniqueResult();
+			bAvatar = avatar.getImage();
+			if (bAvatar != null) {
+				result = Base64.getEncoder().encodeToString(bAvatar);
 			}
 		} catch (Exception ex) {
 		} finally {

@@ -17,4 +17,8 @@ public interface UserDAO {
 	public User authenticateuser(Login loginentity);
 
 	public void editUser(User user);
+
+	public Integer addResume(UserDTO userdto);
+	
+	public String getResume(int userId);
 }

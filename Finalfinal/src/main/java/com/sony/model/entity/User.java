@@ -34,6 +34,14 @@ public class User {
 
 	@Column(name = "user_type")
 	private String userType;
+	
+	@Lob
+	@Column(name = "image", columnDefinition = "BLOB")
+	private byte[] image;
+	
+	@Lob
+	@Column(name = "resume", columnDefinition = "BLOB")
+	private byte[] resume;
 
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<JobSeekerSkills> skillset = new HashSet<JobSeekerSkills>();
@@ -124,6 +132,22 @@ public class User {
 
 	public void setSeekerjobpost(Set<SeekerJobPostStatus> seekerjobpost) {
 		this.seekerjobpost = seekerjobpost;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public byte[] getResume() {
+		return resume;
+	}
+
+	public void setResume(byte[] resume) {
+		this.resume = resume;
 	}
 
 }

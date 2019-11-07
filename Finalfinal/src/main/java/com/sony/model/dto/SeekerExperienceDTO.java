@@ -42,7 +42,7 @@ public class SeekerExperienceDTO implements Serializable{
 	public SeekerExperienceDTO(int jobSeekerExperienceId, String jobTitle, String startDate, String endDate,
 			String jobDescription, String streetAddress, String city, String state, User user) {
 		super();
-		JobSeekerExperienceId = jobSeekerExperienceId;
+		this.JobSeekerExperienceId = jobSeekerExperienceId;
 		this.jobTitle = jobTitle;
 		this.startDate = startDate;
 		this.endDate = endDate;

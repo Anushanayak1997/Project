@@ -15,13 +15,15 @@ public class CompanyDTO implements Serializable {
 	private String specialities;
 	private String industry;
 	private String type;
+	private byte[] image;
+	private String compimage;
 	private int userId;
 
 	public CompanyDTO() {
 	}
 
 	public CompanyDTO(int companyId, String companyName, String companyDescription, String establishmentDate,
-			String websiteUrl, String headquarter, String specialities, String industry, String type, int userId) {
+			String websiteUrl, String headquarter, String specialities, String industry, byte[] image, int userId) {
 		this.companyId = companyId; 
 		this.companyName = companyName;
 		this.companyDescription = companyDescription;
@@ -31,11 +33,12 @@ public class CompanyDTO implements Serializable {
 		this.specialities = specialities;
 		this.industry = industry;
 		this.type = type;
+		this.image = image;
 		this.userId = userId;
 	}
 
 	public CompanyDTO(int companyId, String companyName, String companyDescription, String establishmentDate,
-			String websiteUrl, String headquarter, String specialities, String industry, String type) {
+			String websiteUrl, String headquarter, String specialities, String industry, String type, String compimage) {
 		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
@@ -46,13 +49,26 @@ public class CompanyDTO implements Serializable {
 		this.specialities = specialities;
 		this.industry = industry;
 		this.type = type;
+		this.compimage = compimage;
+	}
+	
+	public CompanyDTO(Company company) {
+		this.companyId = company.getCompanyId();
+		this.companyName = company.getCompanyName();
+		this.companyDescription = company.getCompanyDescription();
+		this.establishmentDate = company.getEstablishmentDate();
+		this.websiteUrl = company.getWebsiteUrl();
+		this.headquarter = company.getHeadquarter();
+		this.specialities = company.getSpecialities();
+		this.industry = company.getIndustry();
+		this.type = company.getType();
 	}
 
 	public Company getCompany(CompanyDTO companydto) {
 		Company company = new Company(companydto.getCompanyId(), companydto.getCompanyName(),
 				companydto.getCompanyDescription(), companydto.getEstablishmentDate(), companydto.getWebsiteUrl(),
 				companydto.getHeadquarter(), companydto.getSpecialities(), companydto.getIndustry(),
-				companydto.getType());
+				companydto.getType(), companydto.getImage());
 		return company;
 	}
 
@@ -134,6 +150,22 @@ public class CompanyDTO implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public String getCompimage() {
+		return compimage;
+	}
+
+	public void setCompimage(String compimage) {
+		this.compimage = compimage;
 	}
 
 }
