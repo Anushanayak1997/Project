@@ -20,8 +20,12 @@ public interface CompanyService {
 	
 	public Integer setCompanyIdSession(CompanyDTO companydto);
 
-	public Company getCompanyById(int companyId);
+	public CompanyDTO getCompanyById(int companyId);
 	
-	public int store(MultipartFile file, int companyId , HttpSession session); 
+	// public int store(MultipartFile file, int companyId , HttpSession session); 
+	
+	public Integer addImage(byte[] file);
+
+	public String getImage(int avatarId);
 
 }

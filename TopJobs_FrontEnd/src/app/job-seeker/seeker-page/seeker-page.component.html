@@ -16,12 +16,17 @@
                     <div class="card-body">
                         <h3 class="card-title">{{User.firstName}} {{User.lastName}}</h3>
                         <h5>{{User.emailID}}</h5><br>
-                        <h6>Skills</h6>
-                        <div>
+                        
+                        <h6 >Upload resume</h6>
+                        <!--<div>
                             <ul *ngFor = "let skill of skills">
                                 <li>{{skill.skillset.skillName}}</li>
                             </ul>
-                        </div>
+                        </div>-->
+
+                        <input   required  class="form-control" placeholder="company image"
+                        style="display: none"  name="image" type="file" (change)="onUploadChange($event)" #fileInput>
+                       <button (click)="fileInput.click($event)"  class="btn btn-info" >Select File</button>
                         
                         <p class="card-text">.</p>
                         <p class="card-text"><small class="text-muted"></small></p>
@@ -31,7 +36,7 @@
         </div>
 
         <div class="" style="background:  #00AA9E;;" *ngFor="let jobpost of jobDetails; let i = index">
-            <div class="card" >
+            <div class="card"  >
                 <div class="card-header">
                        <h5>{{jobpost.company.companyName}}</h5>
                 </div>

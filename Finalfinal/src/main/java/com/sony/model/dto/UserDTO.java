@@ -13,6 +13,10 @@ public class UserDTO implements Serializable {
 	private String emailID;
 	private String contactNumber;
 	private String userType;
+	private byte[] image;
+	private String userimage;
+	private byte[] resume;
+	private String userresume;
 	
 	public UserDTO() {
 		
@@ -85,6 +89,38 @@ public class UserDTO implements Serializable {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public String getUserimage() {
+		return userimage;
+	}
+
+	public void setUserimage(String userimage) {
+		this.userimage = userimage;
+	}
+
+	public byte[] getResume() {
+		return resume;
+	}
+
+	public void setResume(byte[] resume) {
+		this.resume = resume;
+	}
+
+	public String getUserresume() {
+		return userresume;
+	}
+
+	public void setUserresume(String userresume) {
+		this.userresume = userresume;
 	}
 
 }

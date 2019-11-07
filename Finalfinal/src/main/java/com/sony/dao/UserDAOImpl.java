@@ -1,6 +1,7 @@
 package com.sony.dao;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import com.sony.model.entity.JobSeekerProject;
 
 import com.sony.model.dto.JobPostDTO;
 import com.sony.model.dto.UserDTO;
+import com.sony.model.entity.Avatar;
 import com.sony.model.entity.JobPost;
 
 import com.sony.model.entity.Login;
@@ -72,6 +74,8 @@ public class UserDAOImpl implements UserDAO {
 			User user = (User) query.uniqueResult();
 			if (user != null) {
 				result = new UserDTO(user.getUserID(),user.getPassword(), user.getFirstName(), user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+				String image = Base64.getEncoder().encodeToString(user.getImage());
+				result.setUserimage(image);
 			}
 		} catch (Exception ex) {
 		} finally {
@@ -100,7 +104,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = factory.openSession();
 		List<UserDTO> users = new ArrayList<UserDTO>();
 
-		try {
+		try { 
 			List<User> result = session.createQuery("FROM User").list();
 			if (!result.isEmpty()) {
 				Iterator<User> iterator = result.iterator();
@@ -108,9 +112,10 @@ public class UserDAOImpl implements UserDAO {
 					User user = iterator.next();
 					UserDTO userdto = new UserDTO(user.getUserID(), user.getPassword(), user.getFirstName(),
 							user.getLastName(), user.getEmailID(), user.getContactNumber(), user.getUserType());
+					String image = Base64.getEncoder().encodeToString(user.getImage());
+					userdto.setUserimage(image);
 					users.add(userdto);
 				}
-				// jobposts.addAll(result);
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -136,7 +141,8 @@ public class UserDAOImpl implements UserDAO {
 		User user = null;
 
 		try {
-			Query query = session.createQuery("from User where emailID='" + emailID + "'");
+			Query query = session.createQuery("from User where emailID= :emailid");
+			query.setParameter("emailid", emailID);
 			user = (User) query.uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -152,8 +158,6 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			tx = session.beginTransaction();
 			User inituser = (User) session.get(User.class, user.getUserID());
-		//	logger.info("userid"+user.getUserID());
-			
 			inituser.setFirstName(user.getFirstName());
 			inituser.setLastName(user.getLastName());
 			inituser.setEmailID(user.getEmailID());
@@ -169,6 +173,48 @@ public class UserDAOImpl implements UserDAO {
 			session.close();
 		}
 		
+	}
+
+	public Integer addResume(UserDTO userdto) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		Integer result = null;
+		try {
+			tx = session.beginTransaction();
+			byte[] resumeByte = Base64.getDecoder().decode(userdto.getUserresume());
+			Query query = session.createQuery("update User set resume = :resumebyte where userID = :userid");
+			query.setParameter("userid", userdto.getUserID());
+			query.setParameter("resumebyte", resumeByte);
+			result = query.executeUpdate();
+	        tx.commit();
+	    } catch (Exception e) {
+	    	if(tx != null) {
+	    		tx.rollback();
+	    	}
+		     e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
+	}
+	
+	public String getResume(int userId) {
+		Session session = factory.openSession();
+		String result = null;
+		try {
+			Query query = session.createQuery("FROM User where userID = :userid");
+			query.setParameter("userid", userId);
+			User user = (User) query.uniqueResult();
+			if (user != null) {
+				result = Base64.getEncoder().encodeToString(user.getResume());
+			}
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return result;
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.sony.model.service;
 
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +14,7 @@ import com.sony.dao.CompanyDAO;
 import com.sony.dao.JobPostDAO;
 
 import com.sony.dao.SkillSetDAO;
+import com.sony.model.dto.CompanyDTO;
 import com.sony.model.dto.JobPostDTO;
 import com.sony.model.dto.SkillSetDTO;
 import com.sony.model.entity.Company;
@@ -37,12 +39,18 @@ public class JobPostServiceImpl implements JobPostService {
 	HttpSession httpsession;
 
 	public List<JobPostDTO> getJobsByCompId(int companyid) {
-		Company company = companydao.getCompanyById(companyid);
+		CompanyDTO companydto = companydao.getCompanyById(companyid);
+		Company company = new Company(companydto);
+		byte[] image = company.getByteArrayImage(companydto.getCompimage());
+		company.setImage(image);
 		return jobpostdao.getJobsByCompId(company);
 	}
 
 	public Integer addJobPost(JobPostDTO jobpostdto) {
-		Company company = companydao.getCompanyById(jobpostdto.getCompanyId());
+		CompanyDTO companydto = companydao.getCompanyById(jobpostdto.getCompanyId());
+		Company company = new Company(companydto);
+		byte[] image = company.getByteArrayImage(companydto.getCompimage());
+		company.setImage(image);
 		Set<SkillSet> skillset = new HashSet<SkillSet>();
 
 		//Iterator<SkillSet> iterator= skillset.iterator();

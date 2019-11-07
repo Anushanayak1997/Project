@@ -67,7 +67,7 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 		try {
 			Query query = session.createQuery("FROM JobSeekerSkills");
 			List<JobSeekerSkills> seekerskill=query.list();
-			if(skills!=null)
+			if(seekerskill!=null)
 			{
 				Iterator<JobSeekerSkills> iterator = seekerskill.iterator();
 				while(iterator.hasNext())
@@ -100,10 +100,10 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 			Query query = session.createQuery("from JobSeekerSkills where user.userID = :userId");
 			query.setParameter("userId", userId);
 			List<JobSeekerSkills> result = query.list();
-			logger.info("Projects");
-			if (seekerprojects != null) {
+
+			if (result != null) {
 				Iterator<JobSeekerSkills> iterator = result.iterator();
-				logger.info("userid"+userId);
+
 				while (iterator.hasNext()) {
 					JobSeekerSkills jobSeekerskill = iterator.next();
 					User user = jobSeekerskill.getUser();
@@ -115,7 +115,6 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 							jobSeekerskill.getCertificateName(), jobSeekerskill.getIssuedDate(),
 							userdto,skilldto);
 					seekerprojects.add(seekerskilldto);
-					logger.info("id"+seekerskilldto.getUserID());
 				}
 			}
 		} catch (Exception ex) {
@@ -132,7 +131,6 @@ public class JobSeekerSkillDAOImpl implements JobSeekerSkillDAO {
 			tx = session.beginTransaction();
 			JobSeekerSkills initskills = (JobSeekerSkills) session.get(JobSeekerSkills.class,
 					skills.getJobSeekerSkillId());
-			// logger.info("userid"+user.getUserID());
 
 			initskills.setCertificateName(skills.getCertificateName());
 			initskills.setIssuedDate(skills.getIssuedDate());

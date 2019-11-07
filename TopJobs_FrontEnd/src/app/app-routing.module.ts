@@ -14,6 +14,7 @@ import { SeekerPageComponent } from './job-seeker/seeker-page/seeker-page.compon
 import { SeekerProfileComponent } from './job-seeker/seeker-profile/seeker-profile.component';
 import { ApplicationStatusComponent } from './job-seeker/application-status/application-status.component';
 import { ManageAccountComponent } from './job-seeker/manage-account/manage-account.component';
+import{ManageaccountComponent} from './home/manageaccount/manageaccount.component';
 import { JobDescriptionComponent } from './company/job-description/job-description.component';
 
 import { JobSeekerModule } from './job-seeker/job-seeker.module';
@@ -89,7 +90,7 @@ const routes: Routes = [
     path: "seeker/status", component: ApplicationStatusComponent,
   },
   {
-    path: "manage/account", component: ManageAccountComponent,
+    path: "manage/account", component: ManageaccountComponent,
   },
   {
     path: "seeker/:id", component:SeekerViewComponent,

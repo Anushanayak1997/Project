@@ -1,12 +1,17 @@
 package com.sony.model.entity;
 
+import java.util.Base64;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.sony.model.dto.CompanyDTO;
 
 // import com.sony.model.entity.JobPostEntity;
 
@@ -43,12 +48,16 @@ public class Company {
 
 	@Column(name = "company_type")
 	private String type;
+	
+	@Lob
+	@Column(name = "image", columnDefinition = "BLOB")
+	private byte[] image;
 
 	public Company() {
 	}
 
 	public Company(int companyId, String companyName, String companyDescription, String establishmentDate,
-			String websiteUrl, String headquarter, String specialities, String industry, String type) {
+			String websiteUrl, String headquarter, String specialities, String industry, String type, byte[] image) {
 		this.companyId = companyId;
 		this.companyName = companyName;
 		this.companyDescription = companyDescription;
@@ -58,6 +67,23 @@ public class Company {
 		this.specialities = specialities;
 		this.industry = industry;
 		this.type = type;
+		this.image = image;
+	}
+	
+	public Company(CompanyDTO company) {
+		this.companyId = company.getCompanyId();
+		this.companyName = company.getCompanyName();
+		this.companyDescription = company.getCompanyDescription();
+		this.establishmentDate = company.getEstablishmentDate();
+		this.websiteUrl = company.getWebsiteUrl();
+		this.headquarter = company.getHeadquarter();
+		this.specialities = company.getSpecialities();
+		this.industry = company.getIndustry();
+		this.type = company.getType();
+	}
+	
+	public byte[] getByteArrayImage(String image) {
+		return Base64.getDecoder().decode(image);
 	}
 
 	public int getCompanyId() {
@@ -130,6 +156,14 @@ public class Company {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 }

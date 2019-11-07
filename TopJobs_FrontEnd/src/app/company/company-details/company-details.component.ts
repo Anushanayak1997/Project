@@ -25,6 +25,8 @@ export class CompanyDetailsComponent implements OnInit {
   selectedFile: File;
   Data:any = [];
   a: void;
+  status: number=0;
+  onsubmit: number=0;
 
   ngOnInit() {
     this.userType=sessionStorage.getItem('user_type');
@@ -62,7 +64,7 @@ export class CompanyDetailsComponent implements OnInit {
     }
     console.log(this.compDetails);
     console.log("000000")
-
+    this.onsubmit=1;
     this._http.post(this.url,this.compDetails).subscribe(
       (response) => {
         console.log('Success!', response);
@@ -86,6 +88,8 @@ export class CompanyDetailsComponent implements OnInit {
   onFileChanged(evt) {
     const file = evt.target.files[0];
     console.log("File uploaded", file);
+
+    this.status=1;
     if (file) {
       const reader = new FileReader();
       reader.onload = this.handleReaderLoaded.bind(this);
