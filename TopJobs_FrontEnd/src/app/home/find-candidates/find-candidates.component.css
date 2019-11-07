@@ -2,3 +2,14 @@
     margin-top: 2%;
 
 }
+
+
+@media only screen and (max-width: 600px) {
+    
+    .imageclass{
+        margin-top: 1%;;
+        height: 100%;
+        width: 100%;
+      
+    }
+      }
