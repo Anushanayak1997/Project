@@ -54,13 +54,14 @@ export class FindCandidatesComponent implements OnInit {
 
     console.log(this.users);
   
-    if(this.users == ('JobSeeker' || 'Employer' ) ){
-      this.router.navigate(['seeker/' + id])
+    if(sessionStorage.getItem('user_id')!= undefined ){
+      console.log("user selet");
+      this.router.navigate(['seeker/' + id]);
     }else{
       setTimeout(() => 
       {
         
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
       },
       2000);
       this.Toaster.warning('You have not Logged in', 'login to view');

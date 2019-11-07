@@ -5,10 +5,11 @@
 </nav>
 
 
-<article class="card-body mx-auto " style="min-width: 70%;">
+
 <div class="container mainCard">
 
     <form #userForm="ngForm" *ngIf="!submitted" novalidate>
+           <!-- <article class="card-body mx-auto " style="min-width: 70%;">-->
         <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
             <div class="card-header " style="background-color: #00AA9E; ">
                 <div class="">
@@ -18,22 +19,69 @@
 
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id=""><i class='fas fa-user-alt'></i><strong></strong>*</span>
+                    <span class="input-group-text" id="">Old Password<strong></strong>*</span>
                 </div>
 
                 <input input-smtype="text" #oldPwd="ngModel" required class="form-control" minlength="3"
                     [class.is-invalid]="oldPwd.invalid && oldPwd.touched" name="oldPwd"
-                    [(ngModel)]="manage.oldPwd" placeholder="Old password">
-
+                    [(ngModel)]="manage.oldPwd" placeholder="Old password" appForbiddenName="bob">
+              
                 <div *ngIf="oldPwd.invalid && (oldPwd.dirty || oldPwd.touched)" style="color: red;">
                     <small *ngIf="oldPwd.errors.required">
                         firstName is required.
                       </small>
                      
-                      <small *ngIf="oldPwd.errors.minlength">
+                      <div *ngIf="oldPwd.errors.minlength">
+                          <small *ngIf="oldPwd !=User.password">
+                              old password doesn't match
+                          </small>
+                        
+                      </div>
+
+                     
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">New Password<strong></strong>*</span>
+                </div>
+
+                <input input-smtype="text" #newPwd="ngModel" required class="form-control" minlength="3"
+                    [class.is-invalid]="newPwd.invalid && newPwd.touched" name="newPwd"
+                    [(ngModel)]="manage.newPwd" placeholder="New password " >
+
+                <div *ngIf="newPwd.invalid && (newPwd.dirty || newPwd.touched)" style="color: red;">
+                    <small *ngIf="newPwd.errors.required">
+                        firstName is required.
+                      </small>
+                     
+                      <small *ngIf="newPwd.errors.minlength">
                         firstName must be at least 3 characters long.
                       </small>
                 </div>
             </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Confirm new password<strong></strong>*</span>
+                </div>
 
-        
+                <input input-smtype="text" #confPwd="ngModel" required class="form-control" minlength="3"
+                    [class.is-invalid]="confPwd.invalid && confPwd.touched" name="confPwd"
+                    [(ngModel)]="manage.confPwd" placeholder="Re enter new  password " >
+
+                <div *ngIf="confPwd.invalid && (confPwd.dirty || confPwd.touched)" style="color: red;">
+                    <small *ngIf="confPwd.errors.required">
+                        firstName is required.
+                      </small>
+                     
+                      <small *ngIf="confPwd.errors.minlength">
+                        firstName must be at least 3 characters long.
+                      </small>
+                </div>
+            </div>
+            <button class="btn btn-info btn-space btnStyle" (click)="onNext()"
+            [disabled]="userForm.form.invalid || topicHasError"><strong>Change password</strong>
+        </button>
+  </div>
+    </form>
