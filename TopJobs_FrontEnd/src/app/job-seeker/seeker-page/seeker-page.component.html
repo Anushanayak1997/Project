@@ -5,8 +5,11 @@
     <div class="" style="padding:1%">
         <div class="card mb-3">
             <div class="row no-gutters">
-                <div class="col-md-4">
+               <!-- <div class="col-md-4">
                     <img src="../../../assets/img/gender2.jpg" class="card-img" alt="..." style="width:282px" >
+                </div>-->
+                <div *ngIf="User.userimage">
+                    <img src="{{'data:image/png;base64,' +User.userimage}}" height="80%" width="100%"  />
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

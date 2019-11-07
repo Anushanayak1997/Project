@@ -39,6 +39,9 @@ export class SeekerPageComponent implements OnInit {
     }else{
       this.router.navigate(['home']);
     }
+
+   
+
   }
 
   getseekerskills(){
@@ -54,6 +57,7 @@ export class SeekerPageComponent implements OnInit {
       (Response)=>{
        
         this.User = Response;
+        console.log(this.User);
       })
   }
 

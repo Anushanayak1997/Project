@@ -33,6 +33,11 @@ export class RegisterComponent implements OnInit {
       'Content-Type': 'application/json'
     })
   }
+  a: void;
+  Data:any=[];
+  image: any;
+  status: number=0;
+  onsubmit: number=0;
   constructor(private router: Router, private _http: HttpClient,private Toaster:ToastrService) { }
 
   regiseterModel = new RegiseterUser(
@@ -68,13 +73,15 @@ export class RegisterComponent implements OnInit {
     console.log("----->")
     console.log(this.regiseterModel.userType)
     console.log(this.regiseterModel);
+    this.onsubmit=1;
     this.user = {
       'firstName': this.regiseterModel.firstName,
       'lastName': this.regiseterModel.lastName,
       'password': this.regiseterModel.password,
       'emailID': this.regiseterModel.emailID,
       'contactNumber': this.regiseterModel.contactNumber,
-      'userType': this.regiseterModel.userType
+      'userType': this.regiseterModel.userType,
+      'userimage':this.Data[0]
     }
 console.log(this.user);
 
@@ -161,6 +168,28 @@ console.log(this.user);
 login(){
   this.router.navigate(['login']);
 }
+onUploadChange(evt: any) {
+  const file = evt.target.files[0];
+  console.log("File uploaded", file);
+  if (file) {
+    const reader = new FileReader();
+    this.status=1;
+    reader.onload = this.handleReaderLoaded.bind(this);
+    this.a= reader.readAsBinaryString(file);
+    // this.http.post(this.url , this.Data);
+  }
+}
+handleReaderLoaded(e) {
+  this.Data.push(btoa(e.target.result));
+  console.log("Base645", this.Data[0]);
+  
+}
 
+onDownload() {
+  this._http.get(this.url1).subscribe((res) => {
+    console.log("Response server", res['Image']);
+    this.image = res['Image'];
+  });
+}
 
 }

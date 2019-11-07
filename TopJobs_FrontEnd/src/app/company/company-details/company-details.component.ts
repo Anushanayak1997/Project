@@ -50,7 +50,7 @@ export class CompanyDetailsComponent implements OnInit {
       'establishmentDate':this.userModel.establishmentDate,
       'websiteUrl':this.userModel.websiteUrl,
       'headquarter':this.userModel.headquarter,
-      'specialiaties':this.userModel.specialities,
+      'specialities':this.userModel.specialities,
       'industry':this.userModel.industry,
       'type':this.userModel.type,
       'userId':sessionStorage.getItem('user_id')

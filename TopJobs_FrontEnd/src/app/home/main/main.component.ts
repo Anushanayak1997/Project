@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+
   cookieValue: string;
 
   constructor(private router: Router,private cookieService: CookieService) { }

@@ -16,6 +16,8 @@ import { IDropdownSettings} from 'ng-multiselect-dropdown';
   styleUrls: ['./seeker-profile.component.css']
 })
 export class SeekerProfileComponent implements OnInit {
+  todaydate:Date = new Date();
+
   skills: any;
   id: any;
   info: any;

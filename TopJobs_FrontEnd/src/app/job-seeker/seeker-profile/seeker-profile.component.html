@@ -598,7 +598,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="">Start Date</span>
                                                 </div>
-                                                <input type="date" #start_date="ngModel"
+                                                <input type="date" #start_date="ngModel"  max="2013-10-20"
                                                     [(ngModel)]="userExperience.start_date" placeholder="start date"
                                                     name="start_date"><br>
                                             </div>
@@ -687,7 +687,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="">Start Date</span>
                                         </div>
-                                        <input type="date" #start_date="ngModel"
+                                        <input type="date" #start_date="ngModel" max="2013-10-20"
                                             [(ngModel)]="AdduserExperience.start_date" placeholder="start date"
                                             name="start_date"><br>
                                     </div>

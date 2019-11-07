@@ -72,8 +72,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id=""><i class='fas fa-at'></i><strong></strong></span>
                     </div>
-
-                    <input type="email" #emailID="ngModel" required class="form-control"
+                    
+                    <input type="text" #emailID="ngModel" required class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         [class.is-invalid]="emailID.invalid && emailID.touched" name="emailID"
                         [(ngModel)]="regiseterModel.emailID" placeholder="emailID"  >
                           <div *ngIf="emailID.invalid && (emailID.dirty || emailID.touched)"
@@ -86,6 +86,12 @@
                               </div>
                           </div>
 
+                         <!-- <div *ngIf="emailID.errors && (emailID.invalid || emailID.touched)">
+                            <small class="text-danger" *ngIf="emailID.errors.required">contact number required</small>
+                            <small class="text-danger" *ngIf="emailID.errors.pattern">contact number must be of length 10</small>
+                        </div>-->
+
+
 
 
                 </div>
@@ -96,7 +102,7 @@
 
                     <input type="password" #password="ngModel" required class="form-control"
                         [class.is-invalid]="password.invalid && password.touched" name="password"
-                        [(ngModel)]="regiseterModel.password" placeholder="" required minlength="3">
+                        [(ngModel)]="regiseterModel.password" placeholder="password" required minlength="3">
                     <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is
                         required</small>
                 </div>
@@ -105,13 +111,18 @@
                         <span class="input-group-text" id=""><i class="fa fa-mobile" aria-hidden="true"></i></span>
                     </div>
 
-                    <input type="number" #contactNumber="ngModel" required class="form-control"
+                    <input type="tel" pattern="^\d{10}$" #contactNumber="ngModel" required class="form-control"
                         [class.is-invalid]="contactNumber.invalid && contactNumber.touched"  name="contactNumber"
-                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" minlength="10" maxlength="10">
-                    <small class="text-danger"
+                        [(ngModel)]="regiseterModel.contactNumber" placeholder="contactNumber" >
+                    <!--<small class="text-danger"
                         [class.d-none]="contactNumber.valid || contactNumber.untouched">contactNumber
                         is
-                        required</small>
+                        required</small>-->
+                        <div *ngIf="contactNumber.errors && (contactNumber.invalid || contactNumber.touched)">
+                            <small class="text-danger" *ngIf="contactNumber.errors.required">contact number required</small>
+                            <small class="text-danger" *ngIf="contactNumber.errors.pattern">contact number must be of length 10</small>
+                        </div>
+
                 </div>
 
                 <div *ngIf="regiseterModel.userType=='Employer'">
@@ -132,15 +143,18 @@
                     </div>
 
                 </div>
+                <div class="col-md-6 offset-md-3">
+                    <span class="input-group-text" id="">Upload image</span>
+                    <input class="form-control" type="file" (change)="onUploadChange($event)">  
 
-
-
+                </div>
+                <br>
                 <button class="btn btn-info btn-space btnStyle" (click)="onSubmit()"
-                    [disabled]="userForm.form.invalid || topicHasError "><strong>submit</strong>
+                    [disabled]="userForm.form.invalid || topicHasError || !status "><strong>submit</strong>
                 </button>
                 &nbsp;
                 <button class="btn btn-info btn-space btnStyle" (click)="onNext()"
-                    [disabled]="userForm.form.invalid || topicHasError  "><strong>login</strong>
+                    [disabled]="userForm.form.invalid || topicHasError || !onsubmit "><strong>login</strong>
                 </button>
             <br>
                 <button type="button" class="btn btn-link" (click)="login()">Already registered?login here</button>
