@@ -2,8 +2,6 @@ package com.sony.model.dto;
 
 import java.io.Serializable;
 
-
-
 public class SeekerSkillDTO implements Serializable {
 
 	private int jobSeekerSkillId;
@@ -11,15 +9,15 @@ public class SeekerSkillDTO implements Serializable {
 	private String certificateName;
 
 	private String issuedDate;
-	
+
 	private int userID;
-	
+
 	private String skillName;
 	private UserDTO user;
 	private SkillSetDTO skillset;
 
 	public SeekerSkillDTO() {
-		
+
 	}
 
 	public SeekerSkillDTO(int jobSeekerSkillId, String certificateName, String issuedDate, UserDTO user,

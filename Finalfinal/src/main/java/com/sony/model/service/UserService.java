@@ -9,7 +9,7 @@ import com.sony.model.entity.User;
 
 public interface UserService {
 
-	public Integer addUser(User userenity);
+	public Integer addUser(UserDTO useredto);
 
 	public List<UserDTO> getAllUsers();
 
@@ -18,4 +18,8 @@ public interface UserService {
 	public HashMap<String, Integer> authenticateuser(Login loginentity);
 
 	public void editUser(User user);
+
+	public Integer addResume(UserDTO userdto);
+	
+	public String getResume(int userId);
 }

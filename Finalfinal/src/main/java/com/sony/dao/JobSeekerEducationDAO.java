@@ -17,7 +17,5 @@ public interface JobSeekerEducationDAO {
 
 	void editSeekerEducation(JobSeekerEducation jobSeekerEducation);
 
-	
-
 	void deleteSeekerEducation(int educationId);
 }
