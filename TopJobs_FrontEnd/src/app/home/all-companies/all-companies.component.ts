@@ -34,7 +34,7 @@ export class AllCompaniesComponent implements OnInit {
         console.log(Response);
         this.companies = Response
         for(let company of this.companies){
-          
+          console.log(company)
         }
       }
     )
