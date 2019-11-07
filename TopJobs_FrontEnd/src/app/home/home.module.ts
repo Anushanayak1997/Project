@@ -14,9 +14,10 @@ import { FindCandidatesComponent } from './find-candidates/find-candidates.compo
 import { LoadingComponent } from './loading/loading.component';
 import { AllCompaniesComponent } from './all-companies/all-companies.component';
 import { FooterComponent } from './footer/footer.component';
+import { ManageaccountComponent } from './manageaccount/manageaccount.component';
 
 @NgModule({
-  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent, AllCompaniesComponent, FooterComponent],
+  declarations: [MainComponent, LoginComponent, RegisterComponent, HeaderComponent, CompaniesComponent, FindCandidatesComponent, LoadingComponent, AllCompaniesComponent, FooterComponent, ManageaccountComponent],
   exports: [
    
     MainComponent,

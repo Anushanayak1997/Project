@@ -1,0 +1,39 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+            <h3 class="display-6" style="color: white "><b>TopJobs </b></h3>
+    </a>
+</nav>
+
+
+<article class="card-body mx-auto " style="min-width: 70%;">
+<div class="container mainCard">
+
+    <form #userForm="ngForm" *ngIf="!submitted" novalidate>
+        <div class="card bg-light text-center shadow-lg p-3 mb-5 bg-white rounded ">
+            <div class="card-header " style="background-color: #00AA9E; ">
+                <div class="">
+                    <h2>Manage Account</h2>
+                </div>
+            </div>
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id=""><i class='fas fa-user-alt'></i><strong></strong>*</span>
+                </div>
+
+                <input input-smtype="text" #oldPwd="ngModel" required class="form-control" minlength="3"
+                    [class.is-invalid]="oldPwd.invalid && oldPwd.touched" name="oldPwd"
+                    [(ngModel)]="manage.oldPwd" placeholder="Old password">
+
+                <div *ngIf="oldPwd.invalid && (oldPwd.dirty || oldPwd.touched)" style="color: red;">
+                    <small *ngIf="oldPwd.errors.required">
+                        firstName is required.
+                      </small>
+                     
+                      <small *ngIf="oldPwd.errors.minlength">
+                        firstName must be at least 3 characters long.
+                      </small>
+                </div>
+            </div>
+
+        

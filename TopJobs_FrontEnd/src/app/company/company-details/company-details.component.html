@@ -144,11 +144,12 @@
 
 
                     <button class="btn btn-primary btn-space btnStyle"
-                        [disabled]="userForm.form.invalid || topicHasError" type="submit"
+                        [disabled]="userForm.form.invalid || topicHasError || !status" type="submit"
                         (click)="onSubmit()"><strong>Save</strong>
                     </button>
 
                     <button class="btn btn-primary btn btn-primary btn-space btnStyle" (click)="goEmployerDetails()"
+                    [disabled]="!onsubmit"
                         type="button"><strong>Next</strong>
                     </button>
                 </div>
