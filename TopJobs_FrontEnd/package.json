@@ -25,7 +25,7 @@
     "angular-bootstrap-datetimepicker": "^3.0.0",
     "bootstrap": "^4.3.1",
     "html2canvas": "^1.0.0-rc.5",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "moment": "^2.24.0",
     "ng-image-slider": "^2.2.0",
     "ng-modals": "^1.0.4",
